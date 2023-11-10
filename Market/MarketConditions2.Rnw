@@ -1,0 +1,81 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\graphicspath{{../../Pictures/}}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Market Conditions 2}
+\author{Rob Hayward}
+
+
+\begin{document}
+
+\titlepage
+
+\begin{frame}{Market focus}
+	Market focus is 
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Inflation 
+	\item Labour market
+	\item Wages
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Quiz 1}
+\begin{enumerate}
+\item What are the three functions of finance?
+\pause
+\item What are the three financial institutions?
+\pause
+\item The name of the US central bank?
+\pause
+\item Write down the equation for FV given PV, R and n
+\pause
+\item Current price of gold
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Market focus 2}
+	Central banks
+\begin{itemize}[<+-| alert@+>]
+	\item Raise rates
+	\item Potential GDP
+	\item Expectations
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Quz 2}
+\begin{enumerate}
+\item  What is JNK?
+\pause
+\item Who is Jay Powell? 
+\pause
+\item How is the real rate calculated? 
+\pause
+\item What does ETF stand for? 
+\pause
+\item Identify assets and liabilities
+\begin{itemize}
+\item loans
+\item deposits
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\end{document}

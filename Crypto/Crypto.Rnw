@@ -1,0 +1,475 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{{../../Pictures/}}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{Crypto Currencies and the BlockChain}
+\author{Rob Hayward}
+\date{October 2021}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\begin{frame}{}
+\centering
+\includegraphics[scale = 0.15]{BTC}
+\end{frame}
+
+
+\section{The blockchain}
+\begin{frame}{The blockchain}
+This is a distributed ledger
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item It is a record
+\item It is not centralised
+\item It is a network based on nodes
+\item It is publicly available
+\item This makes it more flexible and robust
+\item It removes the central authority
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Network}
+\includegraphics[scale = 1.0]{centraliseddistributed}
+\end{frame}
+
+\begin{frame}{Encryption}
+To hide information
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Create a \emph{cipher}
+\begin{itemize}
+\item requires a key for encryption 
+\item requires a key for decryption
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Julius Caesar}
+\includegraphics[scale = 0.8]{juliuscaesar}
+\end{frame}
+
+\begin{frame}{Caesar Cipher}
+\begin{centering}
+\includegraphics[scale = 0.6]{Caesarcipher}
+\end{centering}
+\end{frame}
+
+\begin{frame}{Enigma}
+\includegraphics[scale = 0.8]{EnigmaMachineLabeled}
+\end{frame}
+
+\begin{frame}{Rotation}
+\includegraphics[scale = 0.4]{Enigma_rotor_set}
+\end{frame}
+
+\begin{frame}{Solving problems}
+There are two main ways to solve any problem
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Work out the answer
+\begin{itemize}
+\item use knowledge 
+\item use formula
+\end{itemize}
+\item Trial and error
+\begin{itemize}
+\item numeric methods or \emph{brute force}
+\item Thomas Edison
+%Nicola Tesla derided this method, said theory should be used
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hash function}
+\begin{block}{}
+A hash function will take a given input and translate that into an output of fixed length
+\end{block}
+\end{frame}
+
+\begin{frame}{Hashing}
+Hashing
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item A hash value is returned from hashing
+\item There is a risk of \emph{collision}
+\item It is \emph{deterministic}
+\item It only goes one way
+\item It is useful to have fixed size
+\end{itemize}
+\end{frame}
+
+\section{Bitcoin}
+
+\begin{frame}{Bitcoin}
+Bitcoin
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Oct 2008 Satoshi Nakamoto White Paper
+\item \emph{Bitcoin: A Peer-to-peer electonic cash system}
+\item Based on the blockchain
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The mechanics}
+\begin{center}
+\includegraphics[scale = 0.37]{blockchain}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}{Money status}
+Functions of money
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Means of transaction
+\item Store of value
+\item Unit of account
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Means of transaction}
+The more that institutions use Bitcoin, the more valuable it becomes
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Feb 2021: Elon Musk announces that Tesla has bought \$1.5bn Bitcoin but...
+\item Environmental costs
+\item BNY Mellon (custodian bank)
+\item ETF and futures
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Store of value}
+<<BTC, fig.height=4.5, cache=TRUE, echo = FALSE, warning=FALSE, message=FALSE>>=
+require(quantmod)
+da <- getSymbols(Symbols = 'BTC-USD', auto.assign = FALSE) 
+plot(da$`BTC-USD.Close`, type = 'l', subset = "2020-01-01/", 
+     main = "BTC price")
+@
+\end{frame}
+
+\begin{frame}{Store of value}
+<<BTC2, fig.height=4.5, cache=TRUE, echo = FALSE, warning=FALSE, message=FALSE>>=
+require(quantmod)
+BACR <- ROC(da$`BTC-USD.Close`, type = 'continuous')
+plot(BACR, type = 'l', subset = "2020-01-01/", 
+     main = "BTC price")
+@
+\end{frame}
+
+\begin{frame}{Alternative Asset}
+Assets may be valuable if they are not correlated with other assets
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item What are the key factors that drive returns?
+\item Is Bitcoin an alternative to Gold? 
+\item Is Bitcoin correlated with other assets? 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Electricity use}
+The environmental effect of mining has become a large issue
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Environmentalists claim that Bitcoin uses 0.5\% of world's electricity on just 350,000 daily transactions
+\item This would require 14 times the world's energy use to replace credit cards
+\item Fan(boy)s says that there is an incentive to use and develop cheap sources of energy
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Types of 'currencies'}
+Types of currencies
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Digital: digitally represents value
+\item Virtual: not denominated in legal tender
+\item Convertible: convertible to fiat
+\item Decentralised: no central authority
+\item Cryptocurrencies: currencies that use cryptographic methods
+\item Token:  not currency but a right or interest
+\item Non-fungible tokens (NFT), traded on OpenSea
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stable coin}
+There are three types of stable coin
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Fiat collateralised
+\begin{itemize}
+\item Tether/USDC
+\end{itemize}
+\item Crypto collateralised
+\begin{itemize}
+\item MarketDAO
+\end{itemize}
+\item Non-collateralised
+\begin{itemize}
+\item Basis
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tether}
+\includegraphics[scale = 1.0]{stablecoin.png}
+\end{frame}
+
+\begin{frame}{Assets}
+\includegraphics[scale=1.0]{thetherassets.png}
+\end{frame}
+
+\begin{frame}{Links to conventional finance}
+\begin{itemize}[<+-| alert@+>]
+\item Crypto world is the \emph{wild west} with high margins and low regulation
+\item Conventional finance wants a piece of the action
+\item Some Crypto players want legitimacy/respectability (but not all)
+\item Regulators are poised
+\item Link between conventional and Crypto world is traditionally murky and expensive
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Links to conventional finance}
+However, that is changing
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item US futures market (Dec 2017)
+\item US ETF (Oct 2021)
+\item Paypall and Walmart ATMs
+% 21 Oct 2021
+\end{itemize}
+\end{frame}
+
+\section{Ethereum}
+\begin{frame}{Ethereum}
+Ethereum allows people to build automated platforms
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Aims to replace internet third parties that store data and record transactions or changes in ownership
+\item Smart contract: if certain conditions are met, this is followed by certain outcomes
+\item Based on the currency ether
+\item Examples: interest, automated market-making, ratings
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ethereum 2}
+Aims to deal with the problems of scalability
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Aim to make the system scalable
+\item Move from \emph{Proof of work} to \emph{Proof of stake}
+\begin{itemize}
+\item proof of stake algo called Casper replaces mining
+\end{itemize}
+\item \emph{Shading} so that you do not need every computer to verify every transaction
+\end{itemize}
+\end{frame}
+
+\begin{frame}{DAO}
+Decentralised Autonomous Organisation (DAO)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Users hold appropriate coin
+\item This allows them to use the \emph{product}
+\item There is no headquarters or management team, just the code
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Decentralised exchanges}
+One of the DeFi organisations built on the Ethereum network is \textbf{uniswap}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item A Decentralised Exchange (DEX) with Automated Market-maker (AMM)
+\item Pools of liquidity allow the exchange of coins ERC-tokens 
+\item This is also allows providers of liquidity to get paid a \emph{gas fee}
+\item It is based on a \emph{Constant product}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{DEX AMM}
+The Uniswap system is based on 
+\pause
+\begin{block}{Constant product}
+\begin{equation*}
+CP = ETH_{value} \times token_{value}
+\end{equation*}
+\end{block}
+\vspace{1.5cm}
+\pause
+\footnotesize{Coins are deposited and removed so that the GM constant product remains the same once 0.3\% fee has been paid}
+\end{frame}
+
+\begin{frame}{DEX AMM 2}
+From the \href{https://uniswap.org/whitepaper.pdf}{White Paper}
+\pause
+\begin{block}{}
+\begin{align*}
+(x_1 -0.003 \Delta{x}) y_1 =& x_0 y_0\\
+\Delta x =& \frac{y_1}{0.003}(x_1 y_1 - x_0 y_0)
+\end{align*}
+\end{block}
+\vspace{1.5cm}
+\pause
+\footnotesize{Where $x_0$ and $y_0$ are the original pools, $x_1$ and $y_1$ are the new pools and $\Delta x$ is the change in x while 0.003 is the gas charge}
+\end{frame}
+
+\section{evai}
+\begin{frame}{evai CEO}
+\includegraphics[scale = 1.0]{Matt}
+\end{frame}
+
+\begin{frame}{evai}
+Matt Dixon is CEO evai
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Provide ratings of coins, currencies and exchanges
+\item Wide variety and lack of history
+\item Based on 9 risk factors
+\item \href{https://www.evai.io/}{https://www.evai.io/}
+\item \href{https://www.brighton.ac.uk/news/2020/brighton-professor-devises-cryptocurrency-rating-system}{Professor Andros Gregoriou}
+\item Will create market indices and other investment tools
+\end{itemize}
+\end{frame}
+\begin{frame}{Difficulty of valuation}
+Difficulty of valuation
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Mixture of...
+\begin{itemize}
+\item currency: based on belief
+\item utility token:value of assets
+\item new technology: unproven
+\end{itemize}
+\item Lack of cash flow to discount
+\item Ownership of assets?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Crypto Challenge}
+To enter the Crypto Coin Challenge: 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Select ONE Crypto coin to buy and ONE Crypto coin to sell. 
+\item Write one paragraph explaining your decision for your purchase and sale
+\item Performance will be evaluated at the end Enrichment Week and the end of the Year. 
+\item Prizes and glory await the winnings
+\item If you do not write an explanation, you are not included in the game. 
+\item I will take the starting value of the coin at the price that I can find when I read your reasoning. 
+\end{itemize}
+\end{frame}
+
+\section{Regulation}
+\begin{frame}{Key regulatory issues}
+There are a number of issues
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Theft of cold and warm wallets
+\item Are coins securities?
+\item Money laundering
+\item Central bank digital currencies (CBDC)
+\item Tax 
+% 15 Oct 2021
+\item AML and KYC 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Initial Coin Offering}
+Like an IPO
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Pre-announcement
+\item Offer
+\item PR campaign
+\item Crowdsale
+\item Launched on exchange
+\item Are these \emph{securities}?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Taxation}
+Crypto gains are treated as \textbf{Capital gains}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item IRS: \emph{Operation Hidden Treasure}
+\item Data from key exchanges Coinbase, Kraken, Poloniex
+\item UK government is also gathering information
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CBDC}
+Important issues
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Central bank counterparty (not distributed)
+\item Loss of anonymity
+\item Temporary cash injections
+\item Bank runs
+\item Chinese Winter Olympics 4-20 Feb 2022
+\item First-mover advantage
+% there is more about this on 1 May 2021
+\end{itemize}
+\end{frame}
+
+\begin{frame}{To the moon!}
+\includegraphics[scale = 1]{ttm}
+\pause
+hodl...
+\end{frame}
+
+\end{document}
+
+\begin{frame}{Bank of America}
+Fox New Reports that Bank of American has been identifying customers
+\pause
+\begin{block}{}
+\begin{itemize}
+\item Transacted with debit card in Washington on Jan 5 or 6
+\item Bought weapons on related goods (including t-shirts)
+\item Paid for hotels of AirBnB reservations for Jan 5 or 6
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Patriot Act}
+Patriot Act was passed after 9/11
+\pause
+\begin{block}{Section 314a}
+Authorizes the government to share with financial institutions the names, addresses and other data about individuals and groups suspected of terrorist and money laundering activity, and in turn requires those firms to search their records and tell the authorities if they find a match. 
+\end{block}
+\end{frame}
+
+

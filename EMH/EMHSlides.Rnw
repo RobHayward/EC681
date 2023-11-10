@@ -1,0 +1,285 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{listing}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Efficient market hypothesis}
+\author{Rob Hayward}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}{Some thoughts about stocks}
+\begin{itemize}[<+-| alert@+>]
+\item Stocks tend to rise in price over time
+\item The price of a stock is as much about the number of shares as the quality of the company
+\item We would like to compare performance
+\item Use \textbf{returns} rather than share price
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Returns}
+The returns are the \emph{percentage change in the price}
+\pause
+\begin{block}{}
+\begin{align*}
+R_{t+1} &= \frac{P_{t+1} - P_t}{P_t}\\
+&= \frac{P_{t+1}}{P_t} - \frac{P_t}{P_t}\\
+&= \frac{P_{t+1}}{P_t} -1
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}{EMH}
+The efficient market hypothesis
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Information is processed efficiently
+\item There may be under-reaction and over-reaction but on average it will be about right
+\item There is no systematic bias
+\item Returns follow a \emph{random walk (with drift)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{EMH}
+Random walk 
+\begin{block}{}
+\begin{align*}
+P_{t+1} &= P_{t} + \varepsilon\\
+P_{t+1} - P_{t}&= \varepsilon\\
+\Delta P_t &=\varepsilon
+\end{align*}
+\end{block}
+\pause
+\vspace{1cm}
+where $\varepsilon \sim N(0, \sigma^2)$
+\end{frame}
+
+\begin{frame}{Price plot 1}
+<<emh, echo=FALSE, fig.height=4.5, warning=FALSE, message=FALSE, warning=FALSE, message=FALSE>>=
+set.seed(2)
+e <- rnorm(100)
+x <- rep(NA, 100)
+x[1] = 100
+for(i in 2:length(x)){
+  x[i] = x[i - 1] + e[i]
+}
+plot(x, type = 'l', main = "Plot 1")
+@
+\end{frame}
+
+\begin{frame}{Price plot 2}
+<<emh2, echo = FALSE, fig.height = 4.5, warning=FALSE, message=FALSE>>=
+BAC <- read.csv("Data/BAC.csv")
+BAC <- BAC[rev(rownames(BAC)),]
+plot(BAC[1:100, 2], type = 'l', main = "Plot 2", ylab = "x")
+@
+\end{frame}
+
+\begin{frame}{Return plot 1}  
+<<emh3, echo = FALSE, fig.height = 4.5, warning=FALSE, message=FALSE>>=
+Rx <- diff(x) / x[-length(x)] 
+plot(Rx, type = 'l', main = "Plot 3", ylab = "Rx")
+@
+\end{frame}
+
+\begin{frame}{Return plot 2}
+<<emh4, echo = FALSE, fig.height = 4.5, warning=FALSE, message=FALSE>>=
+BACR <- diff(BAC[,2]) / BAC[-length(BAC), 2] 
+plot(BACR[1:100], type = 'l', main = "Plot 4", ylab = "Rx")
+@
+\end{frame}
+
+\begin{frame}{Return Bank of America}
+<<emh5, echo = FALSE, fig.height = 4.5, warning=FALSE, message=FALSE>>=
+plot(BACR, type = 'l', main = "Plot 5", ylab = "BACR")
+@
+\end{frame}
+
+\begin{frame}{Spectrum of efficiency}
+Not binary (black or white)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Efficient use of information
+\item This changes over time and place
+\begin{itemize}
+\item Blue chips vs emerging markets and smaller firms
+\item Periods of calm and crisis
+\end{itemize}
+\end{itemize}
+\pause
+\vspace{1cm}
+Probably better to think of a \emph{spectrum of efficiency}: from more to less efficient depending on place and time
+\end{frame}
+
+\begin{frame}{Fama}
+Eugene Fama
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Weak form efficiency}: cannot use past price to determine next price
+\item \emph{Semi-strong form efficiency}: cannot use public information to determine next price
+\item \emph{Strong form}: cannot use private information to determine next price
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The evidence 1}
+The evidence for weak form market efficiency
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Weak form: there is evidence of serial correlation and reversal
+\item \emph{Technical analysis} looks for trends and reversals
+\item Mixed evidence for whether this is profitable after transaction costs
+\item Behavioural biases lead to trends and overshooting
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Efficient reaction to information}
+<<info1, echo=FALSE, fig.height=4.8, warning=FALSE, message=FALSE>>=
+x <- seq(-5, 5, 1)
+y <- c(0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA)
+plot(x, y, type = 'l', ylim = c(-4, 8), xlab = "Event Days", ylab = "Return", 
+     main = "Efficient reaction to good news")
+# set up matrix of points for the additional lines
+z1 <- matrix(c(0, 4, 4, 4), ncol = 2, byrow = TRUE)
+z2 <- matrix(c(0, 0, 0, 4), ncol = 2)
+lines(z1)
+lines(z2)
+@
+\end{frame}
+
+\begin{frame}{Under-reaction to information}
+<<info2, echo=FALSE, fig.height=4.8, warning=FALSE, message=FALSE>>=
+x <- seq(-5, 5, 1)
+y <- c(0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA)
+plot(x, y, type = 'l', ylim = c(-4, 8), xlab = "Event Days", ylab = "Return", 
+     main = "Under-reaction to good news")
+# set up matrix of points for the additional lines
+z1 <- matrix(c(0, 4, 4, 4), ncol = 2, byrow = TRUE)
+z2 <- matrix(c(0, 0, 0, 4), ncol = 2)
+lines(z1)
+lines(z2)
+z3 <- matrix(c(0, 0, 2, 4), ncol = 2, byrow = TRUE)
+lines(z3, lty = 2)
+text(2.4, 2, "Under-reaction")
+@
+\end{frame}
+
+\begin{frame}{Over-reaction to information}
+<<info3, echo=FALSE, fig.height=4.8, warning=FALSE, message=FALSE>>=
+x <- seq(-5, 5, 1)
+y <- c(0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA)
+plot(x, y, type = 'l', ylim = c(-4, 8), xlab = "Event Days", ylab = "Return", 
+     main = "Over-reaction to good news")
+# set up matrix of points for the additional lines
+z1 <- matrix(c(0, 4, 4, 4), ncol = 2, byrow = TRUE)
+z2 <- matrix(c(0, 0, 0, 4), ncol = 2)
+lines(z1)
+lines(z2)
+z4 <- matrix(c(0, 4, 0, 7, 2, 4), ncol = 2, byrow = TRUE)
+lines(z4, lty = 2)
+text(2.4, 6, "Overshooting")
+@
+\end{frame}
+
+
+\begin{frame}{Evidence on semi-strong form efficiency}
+\begin{itemize}[<+-| alert@+>]
+\item There is some evidence of a \emph{January effect}. Does it still exist? 
+\item The \emph{small company effect}
+\item \emph{Price to book ratio}
+\item \emph{PE ratio}
+\item Value vs growth
+\end{itemize}
+\pause
+It is inconclusive.  However, some of these anomalies are consistent with behavioural theories. 
+\end{frame}
+
+\begin{frame}{Price-to-Book ratio}
+Company returns for each P/B decile (1962 to 1989)
+\begin{center}
+\includegraphics[width = 4.3in, height = 2.4in]{"figure/book"}
+\end{center}
+\tiny Fama \& French, "The Cross Section of Expected Stock Returns", \emph{Journal of Finance}, 46 (1992)
+\end{frame}
+
+\begin{frame}{Evidence on strong form}
+\begin{itemize}[<+-| alert@+>]
+\item Can \emph{private information} achieve \emph{abnormal returns}?
+\item Laws on \emph{insider trading}
+\item Abnormal trading ahead of 49\% of N.American deals (80\% hotel and Casino deals and 52\% of banking deals)
+\item Greece and ERM
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary}
+\begin{itemize}[<+-| alert@+>]
+\item EMH does not mean that market is always right
+\item Does not mean that everyone has the same opinion
+\item There are winners and losers, lucky and unlucky
+\item Cannot \textbf{systematically} beat the market
+\item Can't achieve \emph{excess returns}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tests of EMH}
+Test of EMH: can the market be beaten systematically? 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item An investment rule that will consistently achieve excess returns 
+\begin{itemize}
+\item Moving average, Winners vs losers
+\end{itemize}
+\item Use of public information 
+\begin{itemize}
+\item Accounting information: high liquidity, high investment
+\item Types of company: environmental, socially responsible
+\end{itemize}
+\item Any rule that is superior to the market portfolio
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The assignment}
+The EMH suggests that those that are most diversified will do best on average
+\pause
+\begin{block}{}
+\textbf{However,}
+\end{block}
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item We only play once
+\item Some will be lucky
+\item Some will be unlucky
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Failure of active management}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Many studies find that active managers are not successful on average
+\begin{itemize}
+\item Malkiel (1995), Gruber (1996), Wermers (2000, 2003), and Jones
+and Wermers (2011)
+\item Morningstar: only 16.9\% of US large-growth managers were able to beat their passive counterparts over the 10 year period
+\end{itemize}
+\item Cost and fees are a major factor
+\item BIS only 8\% of European funds beat their benchmark in 2011-16
+\item There are exceptions
+\end{itemize}
+\end{frame}
+
+\end{document}

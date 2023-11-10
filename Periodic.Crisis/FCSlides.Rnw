@@ -1,0 +1,406 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{tikz}
+ \usetikzlibrary{arrows,positioning}
+\usepackage{multirow}
+\usepackage{eurosym}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Financial Crisis}
+\author{Rob Hayward}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Reading}
+The main reading for this week are from 
+\begin{itemize}
+\item Kindleberger, C.P., \emph{Manias, Panics, and Crashes}, Wiley 
+\item C. Reinhard and K.S. Rogoff, \emph{This time is different: eight centuries of financial folly}
+\item Krugman, P. \emph{International Economies: Theory and Policy}: financial globalisation, opportunity and risk
+\item Howells, P. and K. Bain, \emph{The Economics of Money Banking and Finance}, Case Studies: 1, 2, 4 and 6
+\end{itemize}
+
+Also reading on Student Central
+\end{frame}
+
+\section{2007-08 Financial Crisis}
+\begin{frame}{2007-08 Financial Crisis}
+\emph{The Economist} of 7th September 2013 (on StudentCentral): The 2007-08 financial crisis was a consequence of five factors.
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Financiers
+\item Central bank and regulators
+\item The macroeconomic backdrop
+\item The 'savings glut' in Asia
+\item European banks
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Financiers}
+\begin{itemize}[<+-| alert@+>]
+\item Excessive lending (US housing and others)
+\item Excessive risk taking (incentives for short-term profits)
+\item New financial products
+\item \emph{Moral hazard}
+\item Implicit subsidy
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Central bank and regulators}
+Allowed financiers to take too much risk
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Complacent view of sector
+\item Regulatory capture
+\item \emph{Washington consensus}
+\item Independent central banks and inflation targets drew attention away from asset price inflation and bank excess
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{The macroeconomic backdrop 1}
+1985 to 2007-08 was a relatively benign period for developed economies
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item GDP and inflation growth was quite stable
+\item Shocks were mostly confined to emerging economies and were largely confined
+\item Monetary policy was believed to be powerful and effective
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The macroeconomic backdrop 2}
+<<macro, fig.height=4.5, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="US GDP">>=
+da <- read.csv("../../ECM04/Financial_Crisis/Data/USGDP.csv", na.strings = "n/a", 
+               stringsAsFactors = FALSE)
+names <- c("Date", "GDP")
+names(da) <- names
+da$Date <- as.Date(da$Date, format = "%d/%m/%Y")
+da$GDPl <- c(rep(NA, 1), da$GDP)[1:length(da$GDP)]
+da$GDPr <- (da$GDP - da$GDPl)/da$GDPl
+plot(da$Date[93:244], da$GDPr[93:244], type = 'l', main = "Percent change in quarterly US GDP", xlab = "Date", ylab = "Quarterly Percentage Change")
+@
+\end{frame}
+
+\begin{frame}{The savings glut in Asia 1}
+Large current account surpluses in Asian and oil-exporting countries export savings to the rest of the world
+\begin{block}{}
+\begin{equation*}
+\underbrace{(S-I)}_{\text{Private}} + \underbrace{(T-G)}_{\text{Public}} + \underbrace{(M-X)}_{\text{Overseas}} = 0
+\label{eqref:bal}
+\end{equation*}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{The savings glut in Asia 2}
+<<CA, fig.height=4.5, echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Selected current account positions of emerging economies">>=
+names <- c("Date", "CA.B", "CA.C", "CA.I", "CA.SA", "CA.V")
+da <- read.csv("../../ECM04/Financial_Crisis/Data/Current.csv", na.strings = "n/a", 
+               stringsAsFactors = FALSE)
+names(da) <- names
+par(mfrow = c(2,2))
+plot(da$Date[16:28], da$CA.B[16:28], type = 'l', main = "Brazil Current Account", 
+     xlab = "Date", ylab = "Percentage of GDP")
+plot(da$Date[16:28], da$CA.C[16:28], type = 'l', main = "Chinese Current Account", 
+     xlab = "Date", ylab = "Percentage of GDP")
+plot(da$Date[16:28], da$CA.V[16:28], type = 'l', main = "Vietnam Current Account", 
+     xlab = "Date", ylab = "Percentage of GDP")
+plot(da$Date[16:28], da$CA.SA[16:28], type = 'l', main = "Saudi Current Account", 
+     xlab = "Date", ylab = "Percentage of GDP")
+@
+\end{frame}
+
+\begin{frame}{European banks}
+As a version of the carry trade, European (and other) banks borrowed US dollars and bought other USD-denominated assets
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item US government bonds
+\item Safe parts of CDO
+\item Fannie Mae and Freddie Mac
+\item Other risky assets
+\end{itemize}
+\end{frame}
+
+
+\section{Theories of financial crisis}
+\begin{frame}{Anatomy of typical crisis}
+\begin{block}{}
+Charles P Kindleberger, \textbf{Manias, Crashes and Panics: A history of financial crisis}
+\end{block}
+Drawing from a detailed examination of 46 episodes from 1618 to the present. 
+\end{frame}
+
+\begin{frame}{Kindleberger anatomy}
+Kindleberger identifies five key components
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Displacement
+\item Credit boom 
+\item Speculation
+\item Tipping point
+\item Revulsion 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher's debt deflation}
+Irvin Fisher identified nine factors behind the \emph{Great Depression}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Over-indebtedness; 
+\item Collapse in the volume of currency; 
+\item A falling price level; 
+\item A decline in net worth; 
+\item Declining profits; 
+\item Falling production, trade and employment; 
+\item The replacement of optimism with pessimism; 
+\item The hoarding of cash and the slowing of velocity of circulation; 
+\item The constraint imposed by the inability of the nominal rate of interest to fall below zero 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher findings}
+As a result of Fisher
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The effects of default were more widely assessed
+\item Default does more than just re-distribute wealth
+\item Deflation increases the real burden of debt
+\item Bernanke: default can affect bank balance sheet and credit supply 
+\item Importance of preventing deflation
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Minsky}
+Hyman Minsky developed the \emph{Financial Instability Hypothesis (FIH)}
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item There is \emph{endogenous instability} because periods of calm encourage increased risk-taking
+\item Lending develops through stages of hedge, speculative and Ponzie
+\item Equity finance moves towards debt finance, conditions become fragile
+\end{itemize}
+\pause
+Minsky argued for compartmentalisation of parts of the financial system to prevent contagion
+\end{frame}
+
+\section{Sovereign debt crises}
+\begin{frame}{Reinhart and Rogoff}
+\begin{block}{}
+C.M. Reinhard and K.S. Rogoff, \emph{This Time is Different}
+\end{block}
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Sovereign debt is usually a political decision
+\item Four types of sovereign debt
+\begin{itemize}
+\item Domestic investors and domestic debt
+\item Domestic investors and foreign debt
+\item Foreign investors and domestic debt
+\item Foreign investors and foreign debt
+\end{itemize}
+\pause
+Interaction of forces.  
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Interplay of sovereign debt and financial system}
+\begin{itemize}[<+-| alert@+>]
+\item Banks hold government debt as a \emph{risk-free asset} that is liquid and safe
+\item There may be a carry trade
+\item Increased risk or reduced liquidity will reduce debt value and affect balance sheet
+\item Viscous feedback loop in European debt crisis
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Commercial bank balance sheet}
+\begin{figure}
+\begin{tikzpicture}[scale = 0.75]
+%\draw [very thin, color = gray](0, 0) grid (14, 7);
+\draw [thick] (2, 6) to (12, 6);
+\draw [thick] (7, 7) to (7, 0);
+\node [above] at (10, 6) {Liabilities};
+\node [above] at (4, 6) {Assets};
+\node [right] at (7, 5) {Deposits 1000};
+\node [left] at (7, 5) {Cash 100};
+\node [right] at (7, 4) {Borrowing 200};
+\node [left] at (7, 4) {Tbills 200};
+\draw (3, 2) to (11, 2);
+\node [right] at (7, 3) {Capital 200};
+\node [left] at (7, 3) {Loans 1200};
+\node [right] at (7, 1) {Total 1400};
+\node [left] at (7, 1) {Total 1400};
+\end{tikzpicture}
+\caption{Commercial bank balance sheet}
+\label{figref:bb}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Irish case}
+Irish banks bankrupted the government after collapse of Irish property market
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item 29 Sep 2008 bank deposits and debt guaranteed
+\item Irish banks had debts of \euro{} 100 bn
+\item Irish government deficit rose to 32\% in 2010
+\item Euro funds required Dec 2010
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ireland}
+<<Ire, echo=FALSE, fig.height=4.5, fig.cap="Irish Deficit to GDP Ratio", message=FALSE, warning=FALSE>>=
+names <- c("Date", "Def.F", "Sdef.F", "Deb.F", "Def.G", "Sdef.G", "Deb.G",
+           "Def.Gr", "Sdef.Gr", "Deb.Gr", "Def.Ir", "Sdef.Ir", "Deb.Ir",
+           "Def.I", "Sdef.I", "Deb.I","Def.S", "Sdef.S", "Deb.S",
+           "Def.UK", "Sdef.UK", "Deb.UK", "Def.US", "Sdef.US", "Deb.US")
+da <- read.csv("../../ECM04/Financial_Crisis/Data/EUDef.csv", skip = 1, na.strings = "n/a")
+names(da) <- names
+plot(da$Date, da$Def.Ir, type = 'l', xlab = "Date", ylab = "Percent of GDP", main = "Irish deficit to GDP ratio")
+@
+\end{frame}
+\begin{frame}{Case study 1: Greece}
+On-going. Greece aims to have a primary surplus of 3.5\% of GDP but has outstanding debt of 179\% of GDP
+\begin{block}{}
+\begin{equation}\label{eqref:debt}
+\Delta \frac{D_t}{Y_t} = d_p + (r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{Debt sustainability 1}
+\begin{block}{}
+\begin{equation}\label{eqref:debt1}
+\frac{D_t}{Y_t} = d_p + (1 + r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+Where $D_t$ is the level of debt at time $t$; $Y_t$ is the \emph{nominal} GDP at time $t$; $d-P$ is the primary government deficit; $r$ is the average interest payment on the debt; $g$ is the growth rate of nominal GDP.
+\end{frame}
+
+\begin{frame}{Debt sustainability 2}
+Re-arranging Equation \ref{eqref:debt1}
+\begin{block}{}
+\begin{equation}\label{eqref:debt2}
+\frac{D_t}{Y_t} = d_p + \frac{D_{t-1}}{Y_{t-1}} + (r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+and therefore,
+\begin{block}{}
+\begin{equation}\label{eqref:debt3}
+\Delta \frac{D_t}{Y_t} = d_p + (r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Debt Sustainability 3}
+If the ratio of debt to GDP remains stable, that could be considered to be sustainable.  Therefore, if $\Delta \frac{D_t}{Y_t}$ is set to zero, Equation \ref{eqref:debt3} becomes 
+\begin{block}{}
+\begin{equation}\label{eqref:debt4}
+0 = d_p + (r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{Debt Sustainability 4}
+This makes it very clear that, with the ratio of debt to GDP $(\frac{D_{t-1}}{Y_{t-1}})$ given, sustainability depends on 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item The primary balance $(d_p)$
+\item The average interest paid on the debt $(r)$ 
+\item The rate of nominal GDP growth $(g)$.  
+\end{itemize}
+\pause
+Therefore, for the debt to be sustainable, the primary balance must be equal to the difference between the rate of interest paid on the debt and the rate of nominal growth in the economy. 
+\end{frame}
+
+\begin{frame}{Primary balance}
+Taxation $(T)$ and Government spending $(G)$ are affected by the rate of economic growth $(g)$
+\begin{block}{}
+\begin{equation}
+T = \beta_1(Y), \qquad \beta_1 > 0;
+\end{equation}
+\end{block}
+and
+\begin{block}{}
+\begin{equation}
+G = \beta_2(Y), \qquad \beta_2 < 0;
+\end{equation}
+\end{block}
+\end{frame}
+
+%\begin{frame}{Case study 2: Argentina}
+%Default in 2002 of \textdollar 82 bn
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item Agreed 70\% \emph{haircut} with 93\% of creditors 2005
+%\item \emph{Distressed debt} or \emph{Vulture} funds sought to gain control of Argentine %assets
+%\item NY court: \emph{pari passu} or all equal
+%\item Need for restructuring system like that of firms and households
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}{CAPE}
+<<earnings, echo = FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.cap= "Cumulative, adjusted price earnings ratio">>=
+library(xts)
+names <- c("Date", "S&P", "Dividend", "Earnings", "CPI", "Date.frac", "Long rate", "Real price", "Real dividend", "Real earnings", "PE10")
+da2 <- read.csv("../../CamTrading/Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
+da2 <- da2[, c(1, dim(da2)[2])]
+da2$Date <- as.yearmon(da2$Date, format = "&Y.%m")
+plot(da2$Date, da2$CAPE, type = 'l', main = "CAPE 1871 to 2018", 
+     ylab = "CAPE", xlab = "Year")
+text(1966, 26, "24.1 Jan 1966", col = "DarkGreen")
+text(2018, 36, "33.6", col = "DarkGreen")
+text(1925, 34, "32.6 Jan 1929", col = "DarkGreen")
+text(1982, 44, "44.2 Dec 1999", col = "DarkGreen")
+@
+\end{frame}
+
+\begin{frame}{Current bond trendline}
+<<trend2, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
+da2 <- read.csv('../../CamTrading/Data/Bond.csv')
+da2[,1] <- as.Date(da2$DATE, format = '%Y-%m-%d')
+colnames(da2) <- c("Date", "Yield")
+plot(da2, type = 'l', main = "US 10-year bond yield")
+y <- c(10, 1.0)
+x <- c(6085, 20050)
+lines(x, y, col = "DarkGreen")
+@
+\end{frame}
+
+\begin{frame}{US interest rates}
+<<money, echo=FALSE, fig.height=4.6, fig.width=6.7>>=
+da <- read.csv('../../Data/Rate.csv', skip = 5)
+da$Date <- as.Date(da$Time.Period, format = "%Y-%m-%d")
+  plot(da$Date, da[,2], type = 'l', main = "US Official Interest Rate", col = 'black', 
+     xlab = "Year", ylab = "Rate")
+@
+\end{frame}
+
+\begin{frame}{Fed balance sheet}
+<<reserves, echo=FALSE, fig.height=4.6, fig.width=6.7>>=
+da2 <- read.csv('../../Data/Res.csv')
+da2$Date <- as.Date(da2$DATE, format =  "%Y-%m-%d")
+#https://stackoverflow.com/questions/28159936/formatting-large-
+#  currency-or-dollar-values-to-millions-billions
+da2$WALCL <- round(da2$WALCL /1e6, 1)
+plot(da2$Date, da2$WALCL, type = 'l', main = "Total Assets of the 
+     US Federal Reserve", xlab = "Year", ylab = "Tn", col = "black")
+@
+\end{frame}
+\end{document}
+

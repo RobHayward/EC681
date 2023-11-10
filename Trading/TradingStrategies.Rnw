@@ -1,0 +1,321 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table,]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{arrows,positioning}
+\graphicspath{{../../Pictures/}}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{Investment Strategies}
+\author{Rob Hayward}
+\date{Jan 2020}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Overview}
+There are a number of investment strategies that you can assess
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item A diversified portfolio
+\item Active management of the portfolio
+\begin{itemize}
+\item a modification of the diversidied portfolio
+\item active management
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modern Portfolio Theory}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[thick, color ={rgb: OliveGreen, 5; white, 1}] (1.0, 0.5) to [out = 120, in = 210] (2.0, 2.0) to [out = 25, in = 180] (5, 2.5);
+\pause
+\node at (1.0, 1.0) [right] {\scriptsize Efficient Frontier};
+\pause
+\node at (1.9, 2) [above left] {MP};
+\draw [fill = OliveGreen] (2, 2) circle [radius = 0.05];
+\pause
+\node at (0, 1) [left] {rf};
+\pause
+\draw[domain = 0.0:3.9, color = black] plot(\x, {1 + 0.5*\x});
+\pause
+  \node at (3.5, 2.65) [right] {\scriptsize Capital Market Line};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Some questions about MPT}
+Some questions about MPT
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The \emph{investment universe}
+\item The market portfolio
+\item Investors are risk-averse
+\item Expected vs historical record
+\item A mean-variance analysis
+\item Lack of transaction costs
+\item Risk free rate
+\item Stability of relationships
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Benchmark}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{lll}
+\textbf{ETF} 	& \textbf{Weight} 	& \textbf{Comment}\\
+SPY 		& 40\%			& S\&P 500\\
+TLT		& 20\%			& US 10-year gov\\
+GLD		& 10\%			& Gold\\
+EEM		& 20\%			& Emerging market equities\\
+Cash		& 10\%			& Cash
+\end{tabular}
+\end{center}
+\end{frame}
+
+\section{Asset Allocation:}
+
+\begin{frame}{Asset performance}
+\includegraphics[scale = 0.7]{../Pictures/assetperformance2019}
+\end{frame}
+
+\begin{frame}{Stock valuation: CAPE}
+\includegraphics[scale=0.4]{../Official/2020/CAPE}
+\end{frame}
+
+\begin{frame}{Earnings}
+We are in the middle of the earnings season
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Earnings for 4Q19
+\item Earnings are expected to fall by 0.6\% from 4Q18
+\item There was a 0.3\% fall in 3Q19
+\item Tough comparison with tax cut
+\item Margins are important
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stock prices and earnings}
+\includegraphics[scale = 0.5]{../../Pictures/StockEarnings}
+\end{frame}
+
+\begin{frame}{US out-performance}
+US stock have out-performed the rest of the world
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Increased profit margins
+\item Technoloy companies
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Overseas markets}
+\includegraphics[scale = 0.5]{../../Pictures/USoutper}
+\end{frame}
+
+\begin{frame}{US profit margins}
+\includegraphics[scale = 0.8]{../../Pictures/profitmargins}
+\end{frame}
+
+\begin{frame}{FAANGs}
+The major stocks have been 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item FaceBook
+\item Apple
+\item Amazon
+\item Netfilx
+\item Google (now Alphabet)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{FANGS}
+\includegraphics[scale = 0.7]{../../Pictures/Big10Margin}
+\end{frame}
+
+\begin{frame}{Global liquidity}
+Since the beginning of 2018 global liquidity has been increased
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Rate cuts in the US and around the world
+\item End to \emph{tapering}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Liquidity}
+\includegraphics[scale = 0.5]{../../Pictures/FedBalanceSheet}
+\end{frame}
+
+\begin{frame}{Equity risk premium}
+The equity risk premium is the return required for taking risk.
+\begin{block}{}
+\begin{equation}
+ERP = R_e - R_{rf} \quad \text{or} \quad R_e - R_b
+\end{equation}
+\end{block}
+Where $ERP$ is the equity risk premium; $R_e$ is the return on equity; $R_fr$ is the risk-free return and $R_b$ is the return on bonds. 
+\end{frame}
+
+\begin{frame}{Fed Model}
+The Fed model compares the stock market's earnings yield (E/P) to the yield on long-term government bonds. 
+\pause
+\begin{block}{}
+\begin{equation*}
+\frac{E}{P} = Y_{10}
+\end{equation*}
+\end{block}
+\pause
+Former Fed Chairman Greenspan refers to the link between the fall in the real yield on fixed income that occurred since 1990 and the increase in the P/E ratio and return on housing.
+\end{frame}
+%
+\begin{frame}{Current bond trendline}
+<<trend2, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
+da2 <- read.csv('Bond.csv')
+da2[,1] <- as.Date(da2$DATE, format = '%Y-%m-%d')
+colnames(da2) <- c("Date", "Yield")
+plot(da2, type = 'l', main = "US 10-year bond yield")
+y <- c(10, 1.0)
+x <- c(6085, 20050)
+lines(x, y, col = "DarkGreen")
+@
+\end{frame}
+
+\begin{frame}{US interest rates}
+<<money, echo=FALSE, fig.height=4.6, fig.width=6.7>>=
+da <- read.csv('FedFunds.csv', skip = 5)
+da$Date <- as.Date(da$Time.Period, format = "%Y-%m-%d")
+  plot(da$Date, da[,2], type = 'l', main = "US Official Interest Rate", col = 'black', 
+     xlab = "Year", ylab = "Rate")
+@
+\end{frame}
+
+\begin{frame}{Fed balance sheet}
+<<reserves, echo=FALSE, fig.height=4.6, fig.width=6.7>>=
+da2 <- read.csv('Res.csv')
+da2$Date <- as.Date(da2$DATE, format =  "%Y-%m-%d")
+#https://stackoverflow.com/questions/28159936/formatting-large-
+#  currency-or-dollar-values-to-millions-billions
+da2$WALCL <- round(da2$WALCL /1e6, 1)
+plot(da2$Date, da2$WALCL, type = 'l', main = "Total Assets of the 
+     US Federal Reserve", xlab = "Year", ylab = "Tn", col = "black")
+@
+\end{frame}
+
+
+\begin{frame}{Yield}
+\includegraphics[scale = 0.9]{../../Pictures/StocksandDividends}
+\end{frame}
+
+\begin{frame}{Gold}
+Some characteristics of gold
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item It is difficult to value
+\item There is no income (there is cost)
+\item Usually associated with an inflation hedge (though evidence does not support)
+\item Usually a \emph{safe-haven}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Emerging equties}
+Key issues
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Is considered a risky investment
+\item Will tend to suffer if there is international economic or political tension
+\item Will benefit if the US dollar is weaker (as most expect) as this will allow their exchange rates to strengthen and provide a capital gain 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{EEM Countries}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{lll}
+\textbf{ETF} 	& \textbf{Weight} 	& \textbf{Comment}\\
+Country & Weight \\
+\hline
+China & 34.3\% \\
+South Korean & 11.7\% \\
+Taiwan & 11.7\% \\
+India & 8.6\% \\
+Brazil & 7.5\% \\
+Other \ & 26.2\%
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{EEM Sectors}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{lll}
+\textbf{ETF} 	& \textbf{Weight} 	& \textbf{Comment}\\
+Sector & Weight \\
+\hline
+Financials & 24.2\%  \\
+Information Technology  & 15.7\% \\
+Consumer Discretionary & 14.1\% \\
+Communication Services & 11.0\%  \\
+Energy & 7.4\% \\
+Materials \ & 7.4\% \\
+Consumer Staples & 6.3\% \\
+Industrials & 5.2\% \\
+Real Estate & 3.0\% \\
+Health Care & 2.8\% \\
+Utilities & 2.7\%
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+
+
+
+\begin{frame}{Asset Allocation}
+Therefore your portfolio can be 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Overweight}
+\item \emph{Underweight}
+\end{itemize}
+\pause
+For particular assets
+\end{frame}
+
+
+\end{document}

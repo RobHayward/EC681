@@ -1,0 +1,96 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Islamic Finance}
+\author{Rob Hayward}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+
+\section{Shariah Law}
+\begin{frame}{Shariah law}
+The Islamic religion prohibits the payment of \emph{riba} and other activites
+\begin{itemize}
+\item Riba is usually translated as \emph{usuary} or \emph{excessive interest}
+\item Usuary has been and remains an issue in western banking
+\begin{itemize}
+\item Interest loans banned in ancient Greece and Rome
+\item Early Christian prohibition of usuary left market for lending to those aligned to judaism 
+\item Names like \emph{Rothschilds} and \emph{Goldman Sachs} and \emph(Warburg)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sharing of risk}
+The emphasis in Islamic finance is the \emph{sharing of risk} and having a real product underlying all financial transactions
+\begin{itemize}
+\item With interest payments, there is no risk and therefore money is making a return for itself
+\item Islamic finance does encourage entrepreneurial activities
+\item Islamic products are usually designed to share the risk
+\item There is also prohibition of activites linked to alchol, prostitution, gambling and other prohibited actions
+\end{itemize}
+\end{frame}
+
+\section{Islamic Products}
+\begin{frame}{Islamic banking}
+The main Islamic banking products are
+\begin{itemize}
+\item \textbf{Musharakah}:  A joint venture established by bank and borrower. Profits and losses are shared in fixed proportion.  Fixed payments are prohibited. 
+\item \textbf{Ijara}: A rental agreement that will allow a someone to use an assets (house, car, machinary) for a fixed period and a fixed price
+\item \textbf{Mudarabah}: A partnership where one party provides the money for an investment while the other provides the management and the labour
+\item \textbf{Hibah}:  A gift given volentarily.  This is a proportion of the profits. Islamic banks pay customers a gift on savings. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Capital market products}
+The main Islamic product is the \emph{Sukuk}.  These are bonds that conform with Shariah law.  
+\begin{itemize}
+\item Sukuk represent part ownership of tangible.  Risk and gains are shared. 
+\item Sukuk are administered through \emph{Special Purpose Vehicles} (SPV) by the issue of certificates
+\item There are some disputes over the legal access to the assets of the SPV
+\item There are some risks that Islamic scholars decalre securities that were \emph{halal}
+\item There are futures and warrant markets in Malaysia
+\end{itemize}
+\end{frame}
+
+ 
+\section{Issues}
+\begin{frame}{Issues}
+Among the issues
+\begin{itemize}
+\item Islamic sukuk issuance costs are above those of conventional bonds (Asian Development Bank).  Profits on Sukuk in Malaysia are 8\% higher
+\item Higher advisor fees because more complex
+\item Sukuk bond are almost as cheap as conventional in Middle East
+\item Efforts to make London a financial hub of Islamic finance: Islamic finance taskforce
+\item Is Islamic finance more stable than conventional finance?  IMF says no.
+\end{itemize}
+\end{frame}
+
+\end{document}

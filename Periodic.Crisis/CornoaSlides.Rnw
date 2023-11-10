@@ -1,0 +1,62 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{{../../Pictures/}}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{Coronavirus Crisis}
+\author{Rob Hayward}
+
+
+\begin{document}
+
+\begin{frame}{Global Equities}
+\includegraphics[scale = 0.3]{GlobalEquities}
+\end{frame}
+
+\begin{frame}{Drawdown 1}
+\includegraphics[scale = 0.5]{drawdown}
+\end{frame}
+
+\begin{frame}{Drawdown 2}
+\includegraphics[scale = 0.35]{drawdown2}
+\end{frame}
+
+\begin{frame}{Corporate bonds}
+\includegraphics[scale = 0.45]{Corbond}
+\end{frame}
+
+\begin{frame}{Credit}
+\includegraphics[scale = 0.3]{credit}
+\end{frame}
+
+\begin{frame}{VIX}
+\includegraphics[scale = 0.4]{vixageddan}
+\end{frame}
+
+
+\end{document}

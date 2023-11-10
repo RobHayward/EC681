@@ -1,0 +1,350 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{{../../Pictures/}}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{ESG}
+\author{Rob Hayward}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\begin{frame}{}
+\includegraphics[scale = 1.2]{worldaflame}
+\end{frame}
+
+
+
+\begin{frame}{Rise of ESG}
+\includegraphics[scale = 0.5]{ESGfunds}
+\end{frame}
+
+\begin{frame}{Investment styles}
+The ESG focus has changed over time
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Initially ESG investment was about avoiding companies with ESG issues
+\begin{itemize}
+\item Norwegian Petroleum Fund excluded 17 tobacco companies in January 2010
+\end{itemize}
+\item Now there is more focus on identifying firms with positive characteristics
+\begin{itemize}
+\item search for ESG factors
+\item ESG may be linked to low volatility and value
+\end{itemize}
+\item There is increased attention on involvement in firms and influencing their behaviour
+\begin{itemize}
+\item Engine No. 1
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Theory}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Change the cost of capital to promote good and stifle bad
+\begin{itemize}
+\item this means lower returns for investors
+\end{itemize}
+\item ESG factors may suggest improved long-term performance
+\begin{itemize}
+\item but do these overshoot?
+\end{itemize}
+\item Activism may make the firm safer and more profitable
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Engine No. One: externalities}
+\includegraphics[scale = 0.25]{ESGvalue}
+\end{frame}
+
+\section{Environmental}
+\begin{frame}{Environmental}
+Environmental
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Supporting investment in alternative energy sources
+\item Cutting support for fossil fuels and other polluters
+\begin{itemize}
+\item student activism on endowment funds
+\item attacking banks for their lending practices
+\item Green bonds 
+\begin{itemize}
+\item lower cost of finance
+\item contingent rate
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Environmental}
+Environmental 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Government action against global warming
+\item Public opinion
+\item Reputational damage
+\item Europe is leading (c.f. data protection)
+\item Central bank bond-buying
+\end{itemize}
+\end{frame}
+
+\section{Social}
+\begin{frame}{Social}
+Social
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Social responsibility
+\item Avoiding reputational risk
+\item Promoting diversity
+\item Is it more important for B2C than B2B?
+\item Bonds for social development
+\begin{itemize}
+\item lower cost of finance
+\item contingent rate
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Social}
+Social
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The objective of the firm (Business Roundtable)
+\item Public opinion
+\item Consumer power
+\item Build back better!
+\item Inequality, Brexit and Trump
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Business Roundtable}
+Business change
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item 1962 - Friedman: \emph{Capitalism and Freedom}
+\item Primacy of stockholders
+\item Stakeholder theories (definitions)
+% long-run or short-run.  trade one against the other? 
+\item Business Roundtable switch 2019 to \emph{stakeholders}
+\item Warren and Saunders
+\item Controversial
+\end{itemize}
+\end{frame}
+
+\section{Governance}
+\begin{frame}{Governance}
+Governance
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Stakeholders
+\item Workers rights 
+\item German model
+\item Worker, co-operatives, DAO, Marxism
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Governance}
+Governance
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Ownership structure
+\item Founder risk
+\item Facebook and Mark Zuckerburg
+\item We Work and Adam Neumann
+\item Increased competition
+\end{itemize}
+\end{frame}
+
+\section{UN}
+\begin{frame}{United Nations}
+UN 17 Sustainable Development Goals
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item UN Principles for Responsible Investment
+\item Lunched in 2015 to supplement the Millennium Development Goals
+\item Includes climate change, gender equality and eradication of poverty
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Principles for Responsible Investment}
+PRI
+\begin{enumerate}[<+-| alert@+>]
+\pause
+\item Incorporate ESG into analysis and decisions
+\item Be active in ownership for ESG factors
+\item Seek appropriate ESG disclosure
+\item Promote acceptance and implementation of PRI
+\item Work to enhance the effectiveness of PRI
+\item Report progress in implementing  PRI
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{New Accounting Rules}
+UK and EU are at the forefront 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Financial Conduct Authority (FCA) announced measures on in March 2020
+\item UK-listed firms 
+\begin{itemize}
+\item climate-related disclosures
+\item climate risk and opportunities
+\end{itemize}
+\item EU regulations require on-line publication of sustainability impacts
+\item Biden administration in US is bogged down in Republican legal challenges
+\begin{itemize}
+\item Erisa, the Employee Retirement Income Security Act of 1974, sets out precise fiduciary requirements for regulated pension funds
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Case study}
+\begin{frame}{RepRisk Business Intelligence Index (RRI}
+Identifies vulnerable projects, firms and sectors
+\begin{itemize}[<+-| alert@+>]
+\pause 
+\item Monitors 28 ESG topics and 45 topic tags
+\item Based on authenticity and novelty
+\item RR Rating from AAA to D
+\item Index will return to zero after 2 years of no incidents
+\item \href{https://www.reprisk.com/our-approach}{https://www.reprisk.com/our-approach}
+\end{itemize}
+\end{frame}
+
+\section{Issues}
+\begin{frame}{Issues}
+There are a number of issues associated with ESG
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The rise of passive investment may conflict with ESG aims
+\begin{itemize}
+\item but it gives \emph{owners} a broader perspective
+\end{itemize}
+\item The difficulty of measurement and lack of standardisation 
+\begin{itemize}
+\item lack of benchmarks 
+\item lack of accounting standards equivalent
+\item how are external managers to be evaluated?
+\item avoidance of \emph{greenwashing}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Measurement}
+\begin{itemize}[<+-| alert@+>]
+\item boohoo
+\item Technology companies
+\item Tesla
+\item Sectoral bias
+\begin{itemize}
+\item pandemic
+\item airlines-technology
+\end{itemize}
+\end{itemize}
+% put something in here about the measurement. 
+% Look for developments. 
+\end{frame}
+
+\begin{frame}{Comparison of performance}
+Measurement of risk and return
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Return 
+\begin{itemize}
+\item is it significant? 
+\end{itemize}
+\item Risk 
+\begin{itemize}
+\item the usual issues with risk
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For you}
+\begin{block}{}
+Read the Morgan Stanley article on ESG performance and then complete the multiple choice questions
+\end{block}
+\end{frame}
+
+\begin{frame}{For you 2}
+\begin{block}{}
+Collect data for the $S\&P$ 500 (SPY) and an ESG version of this index (ESGV), 
+assess the performance!
+\end{block}
+\end{frame}
+
+%\begin{frame}{For you}
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item We have three groups
+%\begin{itemize}
+%\item Environmental
+%\item Social
+%\item Governance
+%\end{itemize}
+%\item Answer the following questions:
+%\begin{itemize}
+%\item What is it? 
+%\item How is it measured? 
+%\item What is the performance? 
+%\end{itemize}
+%\item Output
+%  \begin{itemize}
+%  \item Report
+%  \item Slides/presentation
+%\end{itemize}
+%\end{itemize}
+%\pause
+%Send to me by midnight Wednesday 24 March
+%\end{frame}
+%
+%\begin{frame}{Output}
+%Deliverables
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item From you
+%  \begin{itemize}
+%  \item the report, slides or presentation
+%  \item an audit of tasks that were completed
+%  \end{itemize}
+%\item From me
+%  \begin{itemize}
+%  \item I will review and correct (if necessary)
+%  \item I will post to My Studies so that you get the overall picture
+%  \end{itemize}
+%\end{itemize}
+%\end{frame}
+\end{document}

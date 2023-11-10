@@ -1,0 +1,66 @@
+\documentclass[12pt, a4paper, oneside]{hitec} % Paper size, default font size and one-sided paper
+%\graphicspath{{./Figures/}} % Specifies the directory where pictures are stored
+%\usepackage[dcucite]{harvard}
+\usepackage{rotating}
+\usepackage{textpos}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{pdflscape}
+\usepackage[flushleft]{threeparttable}
+\usepackage{multirow}
+\usepackage[comma, sort&compress]{natbib}% Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
+\usepackage{graphicx}
+%\bibliographystyle{plainnat}
+\bibliographystyle{agsm}
+\usepackage[colorlinks = true, citecolor = blue, linkcolor = blue]{hyperref}
+%\hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
+%\renewcommand[\harvardurl]{URL: \url}
+ \usepackage{listings}
+ \usepackage{tikz}
+ \usetikzlibrary{arrows,positioning}
+ \usepackage{color}
+ \graphicspath{{../Pictures/}}
+\definecolor{mygrey}{gray}{0.95}
+\lstset{backgroundcolor=\color{mygrey}}
+\begin{document}
+\title{Financial Institutions Questions}
+\author{Rob Hayward}
+%\date{\today}
+\maketitle
+%\begin{abstract}
+%erehrere
+%\end{abstract}
+Please answer the following questions
+\begin{enumerate}
+\item A bank has capital or equity of \$200m and borrowing of \$1000m.  There is \$200m in cash, \$400m in relatively safe loans and \$600m in risky loans.  Assume that the borrowing cost is 1.0\% (borrowing and lending), the return on the safe loans is 8\% and the return on the risky loans is 10\%, what is the annual profit (revenue less cost)?   What is the return on assets (profit as a percentage of assets)?  What is the return on equity (profit as a percent of equity)?
+
+\begin{figure}[!h]
+\begin{tikzpicture}
+%\draw [very thin, color = gray](0, 0) grid (14, 7);
+\draw [thick] (2, 6) to (12, 6);
+\draw [thick] (7, 7) to (7, 0);
+\node [above] at (10, 6) {Liabilities};
+\node [above] at (4, 6) {Assets};
+%\node [right] at (7, 5) {Deposits 1000};
+%\node [left] at (7, 5) {Cash 100};
+%\node [right] at (7, 4) {Borrowing 200};
+%\node [left] at (7, 4) {Loans 1200};
+%\draw (3, 2) to (11, 2);
+%\node [right] at (7, 3) {Capital 200};
+%\node [left] at (7, 3) {Buildings etc. 100};
+%\node [right] at (7, 1) {Total 1400};
+%\node [left] at (7, 1) {Total 1400};
+\end{tikzpicture}
+\end{figure}
+
+
+\item How can the institution increase return on assets and return on equity? 
+\item How does this all change if an additional \$600m is borrowed to finance the granting of \$300m safe loans and \$300m risky loans? 
+\item Assume that the value of safe assets falls by another 25\% and the value of risky assets falls by 25\%.   How does this affect the
+balance sheet? 
+\item If bank borrowing has a maturity of 1 month, what are the advantages and risks?
+\item What calculations are necessary for estimation of pension fund liabilities? 
+\item What is the difference between being insolvent and being illiquid? 
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,102 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\graphicspath{{../../Pictures/}}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Market Conditions}
+\author{Rob Hayward}
+
+
+\begin{document}
+
+\titlepage
+
+\begin{frame}{Valuation}
+\begin{block}{}
+\begin{equation}
+\frac{P}{E} = \frac{\text{Price per share}}{\text{Earnings per share}}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{Earnings}
+Earnings
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Microsoft
+\item Google
+\item Facebook
+\item Amazon
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wile E. Coyote}
+\includegraphics[scale=1.0]{WECoyote}
+\end{frame}
+
+\begin{frame}{Meta}
+\includegraphics[scale=0.28]{FACE}
+\end{frame}
+
+\begin{frame}{Meta PE}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Was 37 one year ago
+\item Now 9
+\item S\&P 500 is 18
+\item Capitalisation is down \$676bn this year
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Performance}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \href{https://finance.yahoo.com/quote/META/}{https://finance.yahoo.com/quote/META/}
+\item \href{https://finance.yahoo.com/quote/AAPL/}{https://finance.yahoo.com/quote/AAPL/}
+\item \href{https://finance.yahoo.com/quote/GOOG/}{https://finance.yahoo.com/quote/GOOG/}
+\item \href{https://finance.yahoo.com/quote/AMZN/}{https://finance.yahoo.com/quote/AMZN/}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Interest rates}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Nov 1 and Nov 2.  
+\item Fed-funds target:  3.00 to 3.25 percent
+\item Expected to be increased to 3.75 to 3.40 percent
+\item Australia, Canada and ECB
+\item Decelerate, pause, 'pivot'
+\item US GDP
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Goldilocks}
+\includegraphics[scale=1.0]{Goldilocks}
+\end{frame}
+
+\begin{frame}{Newsletters}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \href{https://www.bloomberg.com/account/newsletters/points-of-return}{Points of Return}
+\item \href{https://www.bloomberg.com/account/newsletters/money-stuff}{Money Stuff}
+\end{itemize}
+\end{frame}
+\end{document}
+

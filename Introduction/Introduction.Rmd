@@ -1,0 +1,45 @@
+---
+title: "Introduction"
+author: "RobHayward"
+date: "18 September 2017"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+There are a number of important issues that are associated with the functioning of the economy: 
+
+#### What happens when the financial system does not work well
+ 
+  - the weakness of many economies in the aftermath of the Global Financial Crisis (GFC) is still affecting government deficits, the stability of banks and the rate of economic growth in many economies. 
+ 
+  - one fact that is being the inability of less developed countries to converge with more developed nations (as the convergence theory would suggest) is the lack of funding.  Local banks and international capital flows do not always facilitate investment as the theory suggests. 
+ 
+To understand more about this issue we should think about the *functions* of the financial system:  what is it supposed to do? 
+
+* it intermediates savings and borrowing (brings them together)
+* it intermediates risk (allows those that want to avoid risk to pay others to take it from them)
+* it usually manages the payments system. 
+
+![Circular Flow](../../Pictures/CircularFlow.jpg)
+
+#####Savings
+Some Households have some income that they will not immediately spend. Savings are usually made so that consumption can be smoothed out and to protect against events that will may affect future income.  Households hope to make returns that will reward them for delaying consumption (and allow others to consume), protect against inflation and reward them for taking risk.  
+
+If households cannot find people and institutions that want to borrow or take risk are likely to have to save more and do it privately (under the pillow), reducing spending in the economy and leaving less funds for others to use. 
+
+#####Investment
+Business (and government) need funds.  Business need funds for working capital (the day-to-day business expense) and for capital project (buying new plant and machinery and software); government needs to fund the difference between what is collected in tax and what is spent by government departments. 
+
+If firms cannot borrow to meet their working capital needs, they will have to reduce the size of their operation to that financed by internal funds; if they cannot invest in new plant, machinery and software, they will not be able to improve efficiency and expand their operations; if government cannot borrow, it will have to reduce spending to the level of taxation. 
+
+The consequences for the economy are likely to be: 
+
+* households become more risk-averse and cautious, reducing entrepreneurial spirit and the scope for new ideas and inventions
+
+* households will tend to save more but this saving will not be available for others to use
+
+* business will become smaller and will become more concentrated amongst those that already have funds (the rich)
+
+* there will be less business investment, fewer new machines and therefore a reduction in productivity.  Economic growth will be reduced. 
+

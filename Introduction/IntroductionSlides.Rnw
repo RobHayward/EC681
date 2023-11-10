@@ -1,0 +1,249 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{listing}
+% for placing images in slides
+\usepackage[absolute, overlay]{textpos}
+\usepackage{tikz}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+%\usepackage[hidelinks]{hyperref}
+\graphicspath{{../../Pictures/}}
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+% Title and author information
+\title{Introduction to the financial system}
+\author{Rob Hayward}
+\date{Oct 2023}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{block}{}
+Understanding the role of the financial system in the economy is a fundamental question that will aid you understanding of the whole  module
+\end{block}
+\pause
+\vspace{1cm}
+It is also central to many of the issues surrounding microfinance, innovation, economic development, financial crises,Crypto currencies, regulation, Islamic finance and the banking system.
+\end{frame}
+
+\section{Functions of the financial system}
+\begin{frame}{The circular flow}
+\centering
+\includegraphics[scale = 0.45]{CF}
+\end{frame}
+
+\begin{frame}{Functions of financial system}
+There are three main functions:
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item intermediate savings and borrowing
+\item transfer, diversify and pool risk
+\item manage the payment system
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Key players}
+The financial system must allow savers and borrowers to find each other. This can improve the position of each
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Jane has \$100 spare for 1 year.  She would like a return of \$10 for delaying consumption; 
+\item Alex has a project that requires \$100 to earn \$120 in one year.
+\item everyone is better off as long as \emph{transaction costs} do not exceed \$10. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transaction costs}
+Transaction costs must kept low to ensure that transactions are carried out and each side benefits.  The main transaction costs are:
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item search
+\item verification
+\item monitor
+\item enforce
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Other necessary factors}
+The financial system also requires supportive infrastructure such as 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item a legal system that works effectively
+\item confidence and trust
+\item institutions: banks, regulators, lawyers and many more
+\end{itemize}
+\pause
+\vspace{1cm}
+\includegraphics[scale = 0.05]{Enron}
+\end{frame}
+
+\begin{frame}{Risk}
+The system should allow risk to be pooled, diversified and transferred
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Pooled (insurance)
+\item Diversified (portfolio)
+\item Transferred (Hedge funds)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The payment system}
+\includegraphics[scale = 1.0]{Bitcoinlogo}
+\end{frame}
+
+\section{Key actors}
+\begin{frame}{Key actors}
+The key players in this story are
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item households
+\item firms
+\item government 
+\item financial institutions (more later)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Households}
+Households are trying to 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item borrow - if they are young or require funds for purchase of expensive education or housing etc.
+\item save - 
+\begin{itemize} 
+\item if they are saving for the future
+\item if they are saving as a precaution -  \emph{rainy day}
+\end{itemize}
+\item the net of this is available for business and the government
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Households}
+\begin{block}{}
+saving for the future is about \emph{life cycle hypothesis}
+\end{block}
+\pause
+\begin{block}{}
+rainy days are about \emph{risk}
+\end{block}
+\end{frame}
+
+\begin{frame}{Firms}
+Firms want to 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item borrow funds 
+\begin{itemize}
+\item working capital
+\item make investments
+\end{itemize}
+\item reduce risk
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Government}
+The government wants to 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item finance the gap between taxation and government spending
+\item manage the amount of money in the economy
+\end{itemize}
+\pause
+\vspace{1cm}
+\includegraphics[scale = 0.5]{cash}
+\end{frame}
+
+\begin{frame}{Risk free rate}
+<<rr, fig.height=4.6, echo=FALSE, warning=FALSE,message=FALSE>>=
+# This comes from the St, Louis Fed REAINTRATREARAT1YE
+da <- read.csv('../../Data/US1yrreal.csv', col.names = c("Date", "R.Rate"))
+da$Date <- as.Date(da$Date)
+plot(da$Date, da$R.Rate, type = 'l', xlab = "Date", ylab = "Rate", main = "US 1-year real rate")
+abline(h  = 0, col = 'brown')
+@
+\end{frame}
+
+\begin{frame}{Gilt edged stock}
+\includegraphics[scale=0.25]{UKgilt}
+\end{frame}
+
+\begin{frame}{Transfer and pooling of risk}
+Specialist institutions will emerge to allow for the transfer, diversification and pooling of risk
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item insurance companies pool risk
+\item funds will diversify risk
+\item derivative markets allow risk to be transferred
+\begin{itemize}
+\item speculators intermediate derivative markets
+\end{itemize}
+\item the government may have a role
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Financial sectors}
+There are two main sectors
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The banking system 
+\begin{itemize}
+\item loans advances
+\item deposits
+\item the money market
+\end{itemize}
+\item Capital markets
+\begin{itemize}
+\item equity market
+\item debt market
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{UK NBFI}
+	\begin{center}
+		\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+		\begin{tabular}{l l l}
+			Sector&Size&Activity\\
+			\hline
+			Pension & \$4.1tn & Investment for retirement\\
+			Insurance & \$3.2tn & Provide financial protection\\
+			Funds & \$10.4tr & Invest client money\\
+			\hline
+		\end{tabular}
+	\end{center}
+	\pause
+	\small{Funds include hedge funds and other investment vehicles}
+\end{frame}
+
+\section{Finance and Development}
+\begin{frame}{Economic and financial development}
+It has long been thought that financial development was essential for economic development
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item financial crisis showed that financial sector can can cause long term damage to the economy
+\item correlation is not causation
+\item there is now a greater emphasis on institutions, including culture, regulation and ethics
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For you...}
+To complete for next class
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Read the article about finance and development on MyStudies
+\item Complete the short multiple choice quiz
+\end{itemize}
+\end{frame}
+
+
+\end{document}
+

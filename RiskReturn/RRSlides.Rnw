@@ -1,0 +1,337 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{listing}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+\graphicspath{{./Pictures/}}
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Risk and Return}
+\author{Rob Hayward}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Introduction}
+Some fundamentals
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \textbf{Return}  What is expected from the investment
+\item \textbf{Risk} How likely things will turn out different from expectations
+\item There is \textbf{usually} a relationship between risk and return:  more return is required to  take more risk
+\item When the market is \textbf{efficient}, return is just a compensation for taking risk
+\item There is inefficiency when the return is more than just compensation for taking risk
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Expected return}
+There are three methods of estimating the return that is likely to be received from an investment
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \textbf{Using past performance} as a sample that can be used to estimate the population (including future) of returns
+\item \textbf{Identifying the level of expected risk} (same problems in estimation) and using this to assess the return that would compensate for this risk
+\item \textbf{Look into the future} and determine the return that you will receive
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Expected risk}
+Expected risk involves the same estimation problem as expected return with added complication
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Difference between \textbf{risk} and \textbf{uncertainty}
+\begin{itemize}
+\item Risk can be quantified
+\item Risk is associated with probability
+\item Uncertainty cannot be quantified 
+\item Frank Knight (1921)
+\item Keynes (1936)
+\item Nassim Taleb (2007): \emph{Black Swan}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nassim Taleb}
+\centering
+\includegraphics{Taleb_mug}
+\end{frame}
+
+\begin{frame}{Sampling}
+Take a \textbf{sample} and use that to understand the \textbf{population}
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item The sample is part of the population
+\item The sample should be a random draw
+\item No \emph{Confounding}
+\begin{itemize}
+\item This sample comes from the \textbf{good years}
+\item This sample only includes \textbf{economic boom}
+\end{itemize}
+\item Usually: the larger the sample the better
+\item Is the distant past still part of the population?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bank of America share price}
+<<BAC, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5>>=
+BAC <- read.csv("../EMH/Data/BAC.csv")
+BAC$Date <- as.Date(BAC$Date, format = "%d/%m/%Y")
+colnames(BAC) <- c("Date", "Close")
+BAC <- BAC[rev(rownames(BAC)),]
+BACR <- diff(BAC$Close) / BAC$Close[-length(BAC$Close)]
+BAC <- cbind(BAC[-1,], BACR)
+plot(BAC$Date, BAC$Close, type = 'l', xlab = "Date", ylab = "Price", 
+     main = "Bank of America share price")
+@
+\end{frame}
+
+\begin{frame}{Bank of America return}
+<<BACR, echo=FALSE,warning=FALSE, message=FALSE, fig.height=4.5>>=
+plot(BAC$Date, BAC$BACR, type = 'l', xlab = "Date", ylab = "Return", 
+     main = "Bank of America return")
+abline(h = 0, col = 'darkgreen', lty = 2)
+@
+\end{frame}
+
+\begin{frame}{Histogram of Bank of America return}
+<<BACH, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5>>=
+hist(BAC$BACR, breaks = 10, ylab = "Frequency", col = "darkgreen", 
+     main = "Histogram of Bank of America returns", xlab = "BAC return")
+@
+\end{frame}
+
+\begin{frame}{Expected return}
+Expected return is the return that is most likely
+\pause
+\begin{block}{}
+\begin{equation*}
+Mean = \frac{\sum_{t=1}^T (BACR_t)}{T}
+\end{equation*}
+\end{block}
+\pause
+\vspace{1cm}
+Where, $BACR_t$ is Bank of America return at time $t$ and $\sum_{t=1}^T$ means add everything from $t = 1$ to $t = T$; $T$ is the total size of the sample.
+\end{frame}
+
+\begin{frame}{Mean return}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+<<BACH2, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5>>=
+hist(BAC$BACR, breaks = 10, ylab = "Frequency", col = "darkgreen", 
+     main = "Histogram of Bank of America returns", xlab = "BAC return")
+abline(v = mean(BAC$BACR, col = "black"), lwd = 3)
+@
+\end{column}
+\begin{column}{0.48\linewidth}
+\begin{block}{Mean}
+\begin{align*}
+\mu_{BACR} =& \frac{\sum_{t = 1}^T BACR_t}{T}\\
+=& \frac{\Sexpr{round(sum(BAC$BACR),4)}}{\Sexpr{length(BAC$BACR)}}\\
+=& \Sexpr{round(mean(BAC$BACR), 4)}
+\end{align*}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Expected return}
+<<BACH3, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5>>=
+hist(BAC$BACR, breaks = 10, ylab = "Frequency", col = "darkgreen", 
+     main = "Histogram of Bank of America returns", xlab = "BAC return")
+abline(v = mean(BAC$BACR, col = "black"), lwd = 3)
+text(-0.07, 60, labels = "Mean")
+@
+\end{frame}
+
+\begin{frame}{Risk of something unexpected}
+\begin{itemize}[<+-| alert@+>]
+\item We know what is \textbf{most likely}.  
+\item What is the risk that we get something different from that? 
+\item It will depend upon how far returns are dispersed around the mean (expected value)
+\item What is the dispersion? 
+\begin{itemize}
+\item Maximum and minimum 
+\item Variance and standard deviation
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Variance}
+The variance about the mean
+\pause
+\begin{block}{}
+\begin{equation*}
+variance = \frac{\sum_{t=1}^T (BACR_t - \bar{BACR})^2}{T - 1}
+\end{equation*}
+\end{block}
+\pause
+\vspace{1cm}
+Where $\bar{BACR}$ is the \emph{estimated} mean of Bank of America returns.
+\end{frame}
+
+\begin{frame}{Standard deviation}
+Because variance is denominated in squared returns, it is often easier to use the standard deviation which is measured in returns. 
+\pause
+\begin{block}{}
+\begin{align*}
+sd =& \sqrt(var)\\
+sd =& \sqrt{\frac{\sum_{t=1}^T (BARC_t = \bar{BACR})^2}{T-1}}\\
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Standard deviation and normal distribution}
+<<sd, warning=FALSE, message=FALSE, echo=FALSE, fig.height=4.5>>=
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x)
+plot(x, y, type = 'l', main = "Normal distribution: mean = 0, sd = 1", 
+     xlab = "Returns", ylab = "Probability")
+@
+\end{frame}
+
+\begin{frame}{Standard deviation and normal distribution}
+<<sd1, warning=FALSE, message=FALSE, echo=FALSE, fig.height=4.5>>=
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x)
+plot(x, y, type = 'l', main = "Normal distribution: mean = 0, sd = 1", 
+     xlab = "Returns", ylab = "Probability")
+cord.x <- seq(-1, 1, 0.01)
+cord.y <- dnorm(cord.x)
+cord.y <- c(0, cord.y, 0)
+cord.x <- c(-1, cord.x, 1)
+polygon(cord.x, cord.y, col = 'dark green')
+text(0, 0.2, "One standard \n deviation \n = 68%")
+@
+\end{frame}
+
+\begin{frame}{Standard deviation and normal distribution}
+<<sd2, warning=FALSE, message=FALSE, echo=FALSE, fig.height=4.5>>=
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x)
+plot(x, y, type = 'l', main = "Normal distribution: mean = 0, sd = 1", 
+     xlab = "Returns", ylab = "Probability")
+cord.x <- seq(-2, 2, 0.01)
+cord.y <- dnorm(cord.x)
+cord.y <- c(0, cord.y, 0)
+cord.x <- c(-2, cord.x, 2)
+polygon(cord.x, cord.y, col = 'dark green')
+text(0, 0.2, "Two standard \n deviation \n = 95%")
+@
+\end{frame}
+
+\begin{frame}{Standard deviation and normal distribution}
+<<sd3, warning=FALSE, message=FALSE, echo=FALSE, fig.height=4.5>>=
+x <- seq(-4, 4, length = 100)
+y <- dnorm(x)
+plot(x, y, type = 'l', main = "Normal distribution: mean = 0, sd = 1", 
+     xlab = "Returns", ylab = "Probability")
+cord.x <- seq(-3, 3, 0.01)
+cord.y <- dnorm(cord.x)
+cord.y <- c(0, cord.y, 0)
+cord.x <- c(-3, cord.x, 3)
+polygon(cord.x, cord.y, col = 'dark green')
+text(0, 0.2, "Three standard \n deviations \n = 99.7%")
+@
+\end{frame}
+
+\begin{frame}{Historical risk and return (1972-88)}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{lll}
+Asset & Mean & SD\\
+\hline
+Cash & 0.065 & 0.028\\
+Bonds & 0.098 & 0.122\\
+Stocks & 0.124 & 0.180\\
+Property & 0.135 & 0.167\\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Property}
+<<rr2, echo=FALSE, fig.height=4.6>>=
+library(RColorBrewer)
+colors <- brewer.pal(n = 5, "Greens")
+cash <- rnorm(10000, 0.065, 0.028)
+bonds <- rnorm(10000, 0.098, 0.122)
+stocks <- rnorm(10000, 0.124, 0.180)
+property <- rnorm(10000, 0.135, 0.167)
+plot(density(property, adjust = 2), xlim = c(-0.6, 0.6), ylim = c(0, 14.0), main = "Distribution of asset returns", xlab = "Return", 
+     col = colors[2])
+#lines(density(stocks, adjust = 2), col = 'red')
+#lines(density(bonds, adjust = 2), col = 'blue')
+#lines(density(cash, adjust = 2), col = 'black')
+legend(inset = 0.03, "topleft", legend = c("property"), fill = colors[2])
+@
+\end{frame}
+
+\begin{frame}{Property and stocks} 
+<<rr3, echo=FALSE, fig.height=4.6>>= 
+plot(density(property, adjust = 2), xlim = c(-0.6, 0.6), ylim = c(0, 14.0), main = "Distribution of asset returns", xlab = "Return", 
+     col = colors[2])
+lines(density(stocks, adjust = 2), col = colors[3])
+#lines(density(bonds, adjust = 2), col = colors[3])
+#lines(density(cash, adjust = 2), col = 'black')
+legend(inset = 0.03, "topleft", legend = c("property", "stocks"), fill = colors[c(2, 3)])
+@
+\end{frame}
+
+\begin{frame}{Property and bonds and stocks}
+<<rr4, echo=FALSE, fig.height=4.6>>=
+#plot(density(property, adjust = 2), xlim = c(-0.6, 0.6), ylim = c(0, 14.0), main = "Distribution of asset returns", xlab = "Return")
+plot(density(property, adjust = 2), xlim = c(-0.6, 0.6), ylim = c(0, 14.0), main = "Distribution of asset returns", xlab = "Return", 
+     col = colors[2])
+lines(density(stocks, adjust = 2), col = colors[3])
+lines(density(bonds, adjust = 2), col = colors[4])
+legend(inset = 0.03, "topleft", legend = c("property","stocks","bonds"), fill = colors[c(2, 3, 4)])
+#lines(density(cash, adjust = 2), col = 'black')
+@
+\end{frame}
+
+\begin{frame}{Property and bonds and stocks and cash}
+<<rr5, echo=FALSE, fig.height=4.6>>=
+plot(density(property, adjust = 2), xlim = c(-0.6, 0.6), ylim = c(0, 14.0), main = "Distribution of asset returns", xlab = "Return",
+     col = colors[2])
+lines(density(stocks, adjust = 2), col = colors[3])
+lines(density(bonds, adjust = 2), col = colors[4])
+lines(density(cash, adjust = 2), col = colors[5])
+legend(inset = 0.03, "topleft", legend = c("property",  "stocks", "bonds", "cash"), fill = colors[c(2, 3, 4, 5)])
+@
+\end{frame}
+\begin{frame}{Risk and return}
+<<rr, echo=FALSE, message=FALSE, warning=FALSE, fig.height=4.5>>=
+Risk <- c(0.028, 0.122, 0.180, 0.167)
+Return <- c(0.065, 0.098, 0.124, 0.135)
+plot(Risk, Return, ylim = c(0, 0.15), pch = 3, main = "Risk and return of assets")
+text(0.029, 0.065, "Cash", pos =3)
+text(0.122, 0.098, "Bonds", pos = 1)
+text(0.172, 0.124, "Stocks", pos = 1)
+text(0.167, 0.135, "Property", pos = 2)
+abline(a = 0.03, b = 0.6, col = "dark green")
+@
+\end{frame}
+
+%\begin{frame}{Assignment}
+%Possible assignment options
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item Critically consider the use of Modern Portfolio Theory
+%\item Importance of the assumptions
+%\item Asset correlation
+%\item The investment period
+%\item The investment goals
+%\item The investment universe
+%\end{itemize}
+%\end{frame}
+\end{document}

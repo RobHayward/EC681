@@ -1,0 +1,537 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
+\usepackage[absolute, overlay]{textpos}
+\definecolor{MyBrown}{RGB}{180, 151, 90}
+%\usepackage{multirow}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\graphicspath{{../Pictures/}}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\begin{document}
+% Title and author information
+\title{Smart beta and portfolio construction}
+\author{Rob Hayward}
+\date{Feb-2018}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Outline} 
+\tableofcontents
+\end{frame}
+
+\section{Modern portfolio theory}
+\begin{frame}{Modern Portfolio Theory}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[thick, color ={rgb: brown, 5; white, 1}] (1.0, 0.5) to [out = 120, in = 210] (2.0, 2.0) to [out = 25, in = 180] (5, 2.5);
+\pause
+\node at (1.0, 1.0) [right] {\scriptsize Efficient Frontier};
+\pause
+\node at (1.9, 2) [above left] {MP};
+\draw [fill = brown] (2, 2) circle [radius = 0.05];
+\pause
+\node at (0, 1) [left] {rf};
+\pause
+\draw[domain = 0.0:3.9, color = black] plot(\x, {1 + 0.5*\x});
+\pause
+  \node at (3.5, 2.65) [right] {\scriptsize Capital Market Line};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Some questions about MPT}
+Some questions about MPT
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The \emph{investment universe}
+\item The market portfolio
+\item Expected vs historical record
+\item A mean-variance analysis
+\item Lack of transaction costs
+\item Risk free rate
+\item Stability of relationships
+\item Investors are risk-averse
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\draw [domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+\pause
+\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Other risk factors}
+A number of additional risk factors have been found
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Small cap companies} seem to generate high returns relative to their risk
+\item \emph{Value firm} appear to generate high returns relative to their risk
+\item \emph{Growth firms} appear to generate low returns relative to their risk
+\item There are other \emph{risk factors} or anomalies that we will return to later
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+%\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\pause
+\draw [fill = brown] (3.5, 2.5) circle [radius = 0.05];
+\node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
+\pause
+\draw [fill = brown] (1.5, 1.5) circle [radius = 0.05];
+\node at (1.5, 1.5) [left] {\scriptsize Value};
+\pause
+\draw [fill = brown] (3.5, 2.0) circle [radius = 0.05];
+\node at (3.5, 2.0) [right] {\scriptsize Growth};
+\end{tikzpicture}
+\end{frame}
+
+%
+\section{Smart beta}
+%\begin{frame}{Criticisms of index investment}
+%There are a number of persistent criticisms of using traditional indices as the basis for investment
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item An index may not be available (non-investable)
+%\item Index investment impedes the process of \emph{price discovery}
+%\item Capitalisation-weighted indices are \textbf{NOT} equivalent to the \emph{market portfolio}
+%\begin{itemize}
+%\item weights must be increased as shares gain in price
+%\item causes investors to buy \emph{winning stocks} and sell \emph{losing stocks}
+%\item buy \emph{growth} and sell \emph{value}
+%\item overweight over-valued and under-weight undervalued
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}{Smart Beta}
+There are two types of Smart Beta:
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Take \emph{value-weighted} indices and weight them by some other measure
+\item Use risk \emph{factors} or anomalies 
+\end{itemize}
+\end{frame}
+
+\section{Factor investment}
+\begin{frame}{Factor investment}
+Fundamentally-weighted indices would tend to pick up the value and growth anomalies: Ang, Goetzmann and Schaefer (2009)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item They may even pick up some of the small-cap anomaly
+\item Investors have sought to systematically capture others
+\begin{itemize}
+\item Momentum
+\item Low volatility 
+\item Quality
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+%\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\pause
+\draw [fill = brown] (3.5, 2.5) circle [radius = 0.05];
+\node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
+\pause
+\draw [fill = brown] (1.5, 1.5) circle [radius = 0.05];
+\node at (1.5, 1.5) [left] {\scriptsize Value};
+\pause
+\draw [fill = brown] (3.5, 2.0) circle [radius = 0.05];
+\node at (3.5, 2.0) [right] {\scriptsize Growth};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Factor investment}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l r r }
+\textbf{Factor} & \textbf{What is it?} & \textbf{Metric} \\
+\hline
+Value & Cheap & Book-to-price\\
+Size & Small cap & Capitalisation\\
+Momentum & Past performance & Recent gains\\
+Low vol & Low risk & Standard deviation\\
+Dividend & High dividend & Dividend yield\\
+Quality & Robust & Debt or management\\
+\end{tabular}
+\end{center}
+\end{table}
+Most common factors, what they are and how they can be measured
+\end{frame}
+
+\begin{frame}{Factor risks}
+\begin{itemize}[<+-| alert@+>]
+\pause
+  \item \textbf{Value:} behavioural bias of pro-cyclical investment: De Bondt and Thaler (1985) and Fama French (1993)
+\item \textbf{Growth:} behavioural bias of pro-cyclical investment: De Bondt and Thaler (1985) and Fama French (1993)
+\item \textbf{Small cap:} increased risk of small firms, liquidity or access to funding: Fama French (1993)
+\item \textbf{Momentum:} behavioural and institutional serial correlation: Jagadesh and Titman (1993)
+\item \textbf{Volatility:} Black, Jensen and Scholes (1972)
+\item \textbf{High dividend:}
+\item \textbf{Quality:} 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results of factor investment}
+Investec analysis of following factors for S\&P 500 and MSCI EAFE (Dec 1991 to Dec 2015)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \textbf{Value:} 20\% of stocks with the lowest price-to-book ratio
+\item \textbf{Small tilt:} 20\% with smallest capitalisation
+\item \textbf{Momentum:} 20\% with the highest 12-month price return
+\item \textbf{Low volatility:} 20\% with the lowest 12-month realised volatility
+\item \textbf{Quality:} top 20\% of stocks with highest rating for return on equity, debt-to-equity and earnings variability
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results 1}
+Dec 1991 to Dec 2015
+%\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r }
+\textbf{Portfolio/index} & \textbf{Return} & \textbf{Risk-adjusted return} \\
+\hline
+S\&P 500        & 9.0\% &  0.6\\
+Quality         & 11.1\% & 0.8\\
+Value           & 10.6\% & 0.5\\
+Small tilt      & 13.9\% & 0.6\\
+Momentum        & 12.0\% & 0.8\\
+Low volatility &  10.5\% & 0.9\\
+\end{tabular}
+\end{center}
+\end{table}
+US stocks; risk-adjusted return is return per unit of volatility. Bender, Briand, Melas, Subramanian (2013)
+\end{frame}
+
+\begin{frame}{Results 2}
+Dec 1991 to Dec 2015
+%\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r }
+\textbf{Portfolio/index} & \textbf{Return} & \textbf{Risk-adjusted return} \\
+\hline
+MSCI EAFA        & 4.7\% &  0.3\\
+Quality         & 9.7\% & 0.7\\
+Value           & 9.5\% & 0.5\\
+Small tilt      & 7.9\% & 0.4\\
+Momentum        & 9.0\% & 0.6\\
+Low volatility &  10.0\% & 0.8\\
+\end{tabular}
+\end{center}
+\end{table}
+International stocks; risk-adjusted return is return per unit of volatility. Bender, Briand, Melas, Subramanian (2013).
+\end{frame}
+% Barra Risk models also inclue liqudiity and growth but these do not 
+% produce excess retruns over the long-run. 
+% Do we use the next slide or put some of this information in the sliede abovve
+
+\section{Portfolio Construction}
+\begin{frame}{ETF list}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l p{8cm} l}
+\textbf{Ticker} & \textbf{Description} & \textbf{Cost}\\
+\hline
+SPY & S\&P 500 index & 0.09\\
+TLT & 10-year plus government & 0.15\\ 
+EEM & MSCI emerging markets & 0.48\\
+GLD & Gold index & 0.40\\
+EWJ & MSCI Japan & 0.48\\
+XLK & Technology sector & 0.15\\
+LQD & Investment grade corporate bond & 0.15\\
+RSP & Equal-weight S\&P 500 & 0.48\\
+USO & US oil & 0.66\\
+QQQ & NASDAQ technology & 0.20\\
+BOND&  Pimco active bond investment & 0.55\\
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}{Portfolio construction}
+Portfolio construction
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Equal weights (50:50) of SPY and TLT
+\item No costs
+\item No re-balancing (they are 60:40 at the end)
+\begin{itemize}
+\item rebalancing will tend to improve returns as it will sell winners and buy losers
+\item rebalancing will increase costs
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Portfolio performance}
+<<port, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
+da <- read.csv('../../CamTrading/Data/port.csv')
+plot(da$Date, da$rebasePort, type = 'l', xlab = "Date", ylab = "Re-based Value", 
+     main = "Portfolio Performance")
+lines(da$Date, da$rebasetlt, col = 'DarkGreen')
+lines(da$Date, da$rebasespy, col = 'Brown')
+legend('topleft', c('Portfolio', 'SPY', 'TLT'), lty = 1, 
+       col = c("Black", "DarkGreen", "Brown"))
+@
+\end{frame}
+
+\begin{frame}{Relative Performance}
+% latex table generated in R 3.2.3 by xtable 1.8-2 package
+% Fri Feb  2 07:58:59 2018
+\begin{table}[ht]
+\centering
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{rrrrrr}
+  \hline
+ Asset & AnnRet & AnnVol & Sharpe & DailyMax & DailyMin \\ 
+  \hline
+SPY & 9.22 & 14.14 & 0.65 & 14.52 & -9.84 \\
+TLT & 7.56 & 13.54 & 0.56 & 5.17 & -5.04\\
+Port & 8.64 & 8.55 & 1.01 & 5.18 & -3.80\\
+   \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Adjusting portfolio weights}
+Some active management? 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The weights do not have to be 50:50
+\begin{itemize}
+\item Change to meet circumstances
+\item \emph{Market-timing} is not usually successful
+\end{itemize}
+\item Add other assets to the portfolio
+\begin{itemize}
+\item asset diversification: cash, commodities, real estate
+\item country diversification
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Market timing}
+When are stocks and bonds going to do well? 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Equity valuation
+\begin{itemize}
+\item earnings
+\item the business cycle
+\end{itemize}
+\item Bond valuation
+\begin{itemize}
+\item the real return (nominal less inflation expectation)
+\item the business cycle
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Equity valuation}
+There are three main ways of looking at value
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Cyclically adjusted price earnings ratio (CAPE). 
+\item Tobin's Q
+\item The equity risk premium
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPE}
+Used by Robert Shiller in \emph{Irrational Exuberance}
+\pause
+\begin{block}{}
+\begin{equation*}
+CAPE = \frac{\text{S\&P500 real price}}{\text{10-year MA S\&P 500 earnings}}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{CAPE}
+<<earnings, echo = FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.cap= "Cumulative, adjusted price earnings ratio">>=
+library(xts)
+names <- c("Date", "S&P", "Dividend", "Earnings", "CPI", "Date.frac", "Long rate", "Real price", "Real dividend", "Real earnings", "PE10")
+da2 <- read.csv("../../CamTrading/Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
+da2 <- da2[, c(1, dim(da2)[2])]
+da2$Date <- as.yearmon(da2$Date, format = "&Y.%m")
+plot(da2$Date, da2$CAPE, type = 'l', main = "CAPE 1871 to 2018", 
+     ylab = "CAPE", xlab = "Year")
+text(1966, 26, "24.1 Jan 1966", col = "DarkGreen")
+text(2018, 36, "33.6", col = "DarkGreen")
+text(1925, 34, "32.6 Jan 1929", col = "DarkGreen")
+text(1982, 44, "44.2 Dec 1999", col = "DarkGreen")
+@
+\end{frame}
+
+\begin{frame}{Tobin's Q}
+The market value of equity relative to the replacement cost of capital
+\begin{block}{}
+\begin{equation*}
+Q = \frac{\text{Market value}}{\text{Corporate net worth}}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Equity risk premium}
+The equity risk premium is the return required for taking risk.
+\begin{block}{}
+\begin{equation}
+ERP = R_e - R_{rf} \quad \text{or} \quad R_e - R_b
+\end{equation}
+\end{block}
+Where $ERP$ is the equity risk premium; $R_e$ is the return on equity; $R_fr$ is the risk-free return and $R_b$ is the return on bonds. 
+\end{frame}
+
+%\begin{frame}{Fed Model}
+%The Fed model compares the stock market's earnings yield (E/P) to the yield on long-term government bonds. 
+%\pause
+%\begin{block}{}
+%\begin{equation*}
+%\frac{E}{P} = Y_{10}
+%\end{equation*}
+%\end{block}
+%\pause
+%Former Fed Chairman Greenspan refers to the link between the fall in the real yield on fixed income that occurred since 1990 and the increase in the P/E ratio and return on housing.
+%\end{frame}
+%
+\begin{frame}{Current bond trendline}
+<<trend2, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
+da2 <- read.csv('../../CamTrading/Data/Bond.csv')
+da2[,1] <- as.Date(da2$DATE, format = '%Y-%m-%d')
+colnames(da2) <- c("Date", "Yield")
+plot(da2, type = 'l', main = "US 10-year bond yield")
+y <- c(10, 1.0)
+x <- c(6085, 20050)
+lines(x, y, col = "DarkGreen")
+@
+\end{frame}
+%\begin{frame}{Active components of fund}
+%There are a number of places where the fund must be active
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item Deciding on the appropriate market
+%\item Finding an investable fund
+%\item Frequency of asset re-balancing
+%\item Factor tilts
+%\item Active security selection
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Factors in Norwegian oil fund}
+%Ang, Goetzmann and Schaefer (2009) find the following factors explain the active activity of fund
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item \textbf{Term:} yield curve 
+%\item \textbf{Credit:} credit risk
+%\item \textbf{FX carry:} carry-trade
+%\item \textbf{Liquidity:} purchase illiquid assets
+%\item \textbf{Value-growth:} long-value/short-growth
+%\item \textbf{Size:} long-small cap/short-large cap
+%\item \textbf{Momentum:} Buy recent winners sell recent losers
+%\item \textbf{Vol:} Spread between implied and realised volatility
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Portfolio construction}
+%\begin{tikzpicture} 
+%%\draw[very thin, color = gray](0, 0) grid (12, 6);
+%\tikzstyle{block} = [draw, rectangle, text width = 5em, 
+%  text centered, minimum height = 6mm, node distance = 5em];
+%\tikzstyle{line} = [draw, -stealth, thick]
+%\node [block] at (1.5, 4) (one) {\scriptsize True 'market' \\ (unobserved)};
+%\node [block] at (5, 4) (two) {\scriptsize Passive investable \\ benchmark};
+%\node [block] at (5, 2) (twoandhalf) {\scriptsize Alternative \\ assets};
+%\node [block] at (8.5, 4) (three) {\scriptsize Rebalanced \\ benchmark};
+%\node [block] at (8.5, 2) (four) {\scriptsize Dynamic factor \\ allocation};
+%\node [block] at (8.5, 0) (five) {\scriptsize Active \\ Portfolio};
+%\path [line] (one) -- (two);
+%\path [line] (two) -- (three);
+%\path [line] (two) -- (twoandhalf);
+%\path [line] (three) -- (four);
+%\path [line] (four) -- (five);
+%\node at (3, 5.5) [align = center]{\scriptsize Choice of investable \\ \scriptsize benchmark};
+%\node at (6.5, 5.5) [align = center]{\scriptsize Rebalancing \\ \scriptsize gain};
+%\node at (11, 3) [align = center] {\scriptsize Factor \\ \scriptsize risk premia};
+%\node at (11, 1) [align = center] {\scriptsize Active \\ \scriptsize management};
+%\node at (2, 0) [align = center] {\scriptsize Adapted from \\ \scriptsize Ang, Brandt, Denison (2014)};
+%\end{tikzpicture}
+%\end{frame} 
+%
+\begin{frame}{References and further reading}
+\begin{itemize}
+
+\item Bender J., R. Briand, D. Melas, R. Subramanian, (2013), 'Foundations for Factor Investing", MSCI Research Insight. 
+
+\item Malkiel B., (1995), "Returns from Investing in Equity Mutual Funds 1971 to 1991", Journal of Finance, 50, 549-572
+\item \href{http://www.econ.yale.edu/~shiller/data.htm}{Link to Shiller data}
+
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Reading}
+\begin{center}
+\includegraphics[height = 3.0in]{factorbook}
+\end{center}
+\end{frame}
+\end{document}

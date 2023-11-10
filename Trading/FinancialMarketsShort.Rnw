@@ -1,0 +1,374 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table,]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{arrows,positioning}
+\graphicspath{{../../Pictures/}}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{Financial Markets}
+\author{Rob Hayward}
+\date{October 2021}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Markets}
+\begin{center}
+\includegraphics[height = 2.6in, trim = 10 20 00 16]{Fin.jpg}
+% trim is left, lower, right, upper
+\end{center}
+\end{frame}
+
+\begin{frame}{Market microstructure}
+Market microstructure: the study of markets
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Institutional features and how they have changed over time
+\item Price discovery: the way that information gets into the price
+\end{itemize}
+\vspace{5mm}
+\pause
+They are related
+\end{frame}
+
+\section{Institutional Structures}
+\begin{frame}{Institutional structures}
+There are four ways that financial markets can be organised
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item \emph{Open outcry}
+\item Dealer-orientated or market-maker systems
+\item Electronic order markets
+\item Decentralised liquidity pools
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Evolution of markets}
+\begin{figure}
+\begin{tikzpicture}
+\filldraw[teal!20!green!, draw=black] (0,1) rectangle (8,2);
+\node at (3.6, 1.5) {\footnotesize Open Outcry};
+\filldraw[teal!40!green, draw=black] (0, 2) rectangle (12, 3);
+\node at (6, 2.5) {\footnotesize Market-Making/Dealer};
+\filldraw[teal!60!green, draw=black] (6, 3) rectangle (12, 4);
+\node at (8.6, 3.5) {\footnotesize Electronic Order Market};
+\filldraw[teal!80!green, draw=black] (9, 4) rectangle (12, 5);
+\node at (10.5, 4.5) {\footnotesize Liquidity Pool};
+\draw [thick, ->] (0, -0.6) -- (12, -0.6);
+\node at (5.8, -0.2) {\footnotesize Changes in regulation and technology};
+\node at (5.8, -1.0) {Time};
+\end{tikzpicture}
+%\caption{The evolution of market structures}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Open outcry}
+\begin{center}
+\includegraphics[height = 2.6in, trim = 00 20 00 20]{Open-Out-Cry.jpg}
+% trim is left, lower, right, upper
+\end{center}
+\href{https://www.youtube.com/watch?v=RLySXTIBS3c}{Trading Places}
+\end{frame}
+
+\begin{frame}{Market making/Dealer}
+\begin{center}
+\includegraphics[scale=0.3]{NYSE}
+%\includegraphics[height = 1.8in, trim = 0 10 0 10]{LSE}
+\end{center}
+\end{frame}
+
+\begin{frame}{Multiple market-maker: FX}
+\begin{tikzpicture}[xscale = 1, yscale = 1]
+\draw [blue] (1,1) rectangle (3, 2);
+\node at (2, 1.5) {Fund};
+\draw [blue] (6,5) rectangle (8, 6);
+\node at (7, 5.5) {Firm};
+\draw [blue] (11,1) rectangle (13, 2);
+\node at (12, 1.5) {Fund};
+\pause
+\draw [red] (5,3) circle [radius = 0.5];
+\node at (5, 3) {mm};
+\draw [red] (7,2) circle [radius = 0.5];
+\node at (7,2) {mm};
+\draw [red] (4,0) circle [radius = 0.5];
+\node at (4,0) {mm};
+\draw [red] (8,4) circle [radius = 0.5];
+\node at (8, 4) {mm};
+\draw [red] (9,0) circle [radius = 0.5];
+\node at (9, 0) {mm};
+\pause
+\draw [thick] [->] (3,2) -- (4.5,2.8);
+\pause
+\draw [<->] (4.1, 0.6) -- (4.8, 2.5);
+\draw [<->] (4.5, 0) -- (8.5, 0);
+\draw [<->] (8.8, 0.4) -- (7.5, 2);
+\draw [<->] (9, 0.5) -- (8.1, 3.5);
+\draw [<->] (4.2, 0.5) -- (6.4, 2);
+\draw [<->] (7.4, 2.5) -- (7.9, 3.5);
+\pause
+\draw [thick] [->] (8.5, 4) -- (11,2);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Electronic order markets}
+\begin{center}
+\includegraphics[height = 2.6in, trim = 00 20 00 20]{picture2.png}
+% trim is left, lower, right, upper
+\end{center}
+\end{frame}
+
+\begin{frame}{Terms to be aware of}
+Terms to be aware of
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Bid and Ask
+\item Long and short
+\item Market and Limit
+\item Liquidity
+\item Margin
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Margin}
+Margin means that you do not have to put up all the money immediately
+\begin{block}{}
+\pause
+\begin{itemize}
+\item if margin requirement is 50\%
+\item you can buy \$2 million stock with your \$1 million
+\item if shorts are 150\%
+\item you can sell \$2 million stock with your \$1 million
+% this is the 2 million from the stock and 1 million that you already have. 
+\end{itemize}
+\end{block}
+\pause
+Margin will change with the risk and liquidity of the market and with the nature of the collateral - \emph{maintenance margin}
+\end{frame}
+
+\begin{frame}{Transaction costs}
+The exchanges are often public companies
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item There is a payment to the exchange for each transaction
+\item Exchanges may compete via transaction costs
+\item Rebates can be offered to those institutions willing to provide liquidity
+\item Centralised crypto exchanges (Binance) use the same system 
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Decentralised exchanges}
+%These are new technology-based exchanged based on \emph{liquidity pools}
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item Uniswap and sushi are examples
+%\item Investors supply \emph{pool} of coins that can be used for exchange
+%\item Investors are \emph{paid} for providing these liquidity pools
+%\item Rates are based on formula that is automated
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Decentralised exchanges}
+%One of the DeFi organisations built on the Ethereum network is \textbf{uniswap}
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item A Decentralised Exchange (DEX) with Automated Market-Maker (AMM)
+%\item Pools of liquidity allow the exchange of coins ERC-tokens 
+%\item This is also allows providers of liquidity to get paid a \emph{gas fee}
+%\item It is based on a \emph{Constant product}
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{DEX AMM}
+%The Uniswap system is based on 
+%\pause
+%\begin{block}{Constant product}
+%\begin{equation*}
+%CP = ETH_{value} \times token_{value}
+%\end{equation*}
+%\end{block}
+%\vspace{1.5cm}
+%\pause
+%\footnotesize{Coins are deposited and removed so that the GM constant product remains the same once 0.3\% fee has been paid}
+%\end{frame}
+%
+%\begin{frame}{DEX AMM 2}
+%From the \href{https://uniswap.org/whitepaper.pdf}{White Paper}
+%\pause
+%\begin{block}{}
+%\begin{align*}
+%(x_1 -0.003 \Delta{x}) y_1 =& x_0 y_0\\
+%\Delta x =& \frac{y_1}{0.003}(x_1 y_1 - x_0 y_0)
+%\end{align*}
+%\end{block}
+%\vspace{1.5cm}
+%\pause
+%\footnotesize{Where $x_0$ and $y_0$ are the original pools, $x_1$ and $y_1$ are the new pools and $\Delta x$ is the change in x while 0.003 is the gas charge}
+%\end{frame}
+%
+%\begin{frame}{Constant product}
+%<<ConstantProd, echo = FALSE, fig.height=4.8>>=
+%# If x * y = C
+%x <- seq(1,10,length = 100)
+%C <- 100
+%y <- C/x
+%plot(x, y, type = 'l', main = "Constant Product Model", xlab = "x balance", ylab = "y balance")
+%@
+%\end{frame}
+%
+%
+\section{Liquidity}
+\begin{frame}{Other important concepts}
+\begin{itemize}[<+-| alert@+>]
+\item Primary and secondary markets
+\item Market participants
+\begin{itemize}
+\item informed traders
+\item noise or liquidity traders
+\item real money
+\item hedgers or speculators
+\end{itemize}
+\item Institutions
+\begin{itemize}
+\item bank
+\item investment bank
+\item fund
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Liquidity}
+Kyle (1985) identified three main measures of liquidity
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item `Tightness' - the bid-offer spread
+\item `Depth' - the price move for a specific order size
+\item `Resilience' - Speed that price returns to equilibrium
+\end{itemize}
+\pause
+A. Persuad identified \emph{`Liquidity Black Holes'} in State Street Global Insight.  This emphasises the importance of diversity of opinion otherwise there is a risk that 'positive feedback is created
+\end{frame}
+
+\section{Price Discovery}
+\begin{frame}{Price Discovery}
+How does the information get into the price? 
+\pause
+Kyle (1985) - \emph{Continuous Auctions and Insider Trading} \emph{Econometrica} \textbf{53b(6)}
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Dealer Market
+\item Two types of trader - `informed' and `noise'
+\item Orders move prices
+\item Market makers count votes (order flow)
+\item Informed traders seek to benefit from information
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Efficient reaction to information}
+<<info1, echo=FALSE, fig.height=4.8,warning=FALSE,message=FALSE>>=
+x <- seq(-5, 5, 1)
+y <- c(0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA)
+plot(x, y, type = 'l', ylim = c(-4, 8), xlab = "Event Days", ylab = "Return", 
+     main = "Efficient reaction to good news")
+# set up matrix of points for the additional lines
+z1 <- matrix(c(0, 4, 4, 4), ncol = 2, byrow = TRUE)
+z2 <- matrix(c(0, 0, 0, 4), ncol = 2)
+lines(z1)
+lines(z2)
+@
+\end{frame}
+
+\begin{frame}{Momentum}
+<<info2, echo=FALSE, fig.height=4.8,warning=FALSE,message=FALSE>>=
+x <- seq(-5, 5, 1)
+y <- c(0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA)
+plot(x, y, type = 'l', ylim = c(-4, 8), xlab = "Event Days", ylab = "Return", 
+     main = "Under-reaction to good news")
+# set up matrix of points for the additional lines
+z1 <- matrix(c(0, 4, 4, 4), ncol = 2, byrow = TRUE)
+z2 <- matrix(c(0, 0, 0, 4), ncol = 2)
+lines(z1)
+lines(z2)
+z3 <- matrix(c(0, 0, 2, 4), ncol = 2, byrow = TRUE)
+lines(z3, lty = 2)
+text(2.4, 2, "Under-reaction")
+@
+\end{frame}\begin{frame}{Over-reaction to information}
+<<info3, echo=FALSE, fig.height=4.8, warning=FALSE>>=
+x <- seq(-5, 5, 1)
+y <- c(0, 0, 0, 0, 0, 0, NA, NA, NA, NA, NA)
+plot(x, y, type = 'l', ylim = c(-4, 8), xlab = "Event Days", ylab = "Return", 
+     main = "Over-reaction to good news")
+# set up matrix of points for the additional lines
+z1 <- matrix(c(0, 4, 4, 4), ncol = 2, byrow = TRUE)
+z2 <- matrix(c(0, 0, 0, 4), ncol = 2)
+lines(z1)
+lines(z2)
+z4 <- matrix(c(0, 4, 0, 7, 2, 4), ncol = 2, byrow = TRUE)
+lines(z4, lty = 2)
+text(2.4, 6, "Overshooting")
+@
+\end{frame}
+
+\begin{frame}{Markets today}
+The structure of markets have been shaped by 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Technology
+\begin{itemize}
+\item algo trading
+\item high-frequency-trading (HFT)
+\end{itemize}
+\item Regulation
+\begin{itemize}
+\item more exchanges
+\item more capital
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{RIT - price discovery cases}
+%Three cases
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item Case 1 - information about the intrinsic value is gradually unveiled.  Traders do not have the same information 
+%\item Case 2 - Information about the intrinsic value becomes more precise with time
+%\item Case 3 - Information becomes more precise with time and there is an exchange traded fund (ETF) that based on the value of the two securities that provides arbitrage opportunities  
+%\end{itemize}
+%\end{frame}
+%
+\end{document}
+%%%%%

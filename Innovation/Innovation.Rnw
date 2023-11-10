@@ -1,0 +1,295 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usetikzlibrary{arrows,positioning}
+\graphicspath{{../Pictures/}}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{Financial Innovation}
+\author{Rob Hayward}
+\date{March 2021}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Financial innovation}
+Financial innovation has been caused by 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Volatility
+\item Regulation
+\item Technology
+\end{itemize}
+\pause
+\begin{block}{}
+Howells and Bain: The Economics of Money, Banking and Finance (Prentice Hall)
+\end{block}
+\end{frame}
+
+\begin{frame}{Financial innovation}
+\begin{columns}{}
+\begin{column}{0.48\linewidth}
+\includegraphics[scale = 0.7]{catwalk}
+\end{column}
+\begin{column}{0.47\linewidth}
+\includegraphics[scale = 0.6]{pharma}
+\end{column}
+\end{columns}
+\vspace{2cm}
+Financial innovation is hard to patent or protect
+\end{frame}
+
+\begin{frame}{Product life cycle}
+\begin{tikzpicture}[scale = 1.5]
+\tikzset{shift={(current page.center)}, yshift = -5.0}
+%\draw[very thin, color = gray](0, 0) grid (7, 2);
+\draw [<->, thick] (0, 2) node (yaxis) [above] {Sales} 
+  |- (7, 0) node (xaxis) [below] {Time};
+\draw[thick, color = teal] (0.0, 0.0) to [out = 14, in = 240] (2.0, 1.0) to [out = 60, in = 180] (3, 2) to [out = 360, in = 170] (7, 0);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+%\draw [thick, fill = green, fill opacity = 0.2] (0.0, 0.0) to [out = 10, in = 240] (2.0, 1.0) to (2, 0) -- (0, 0);
+\node [scale = 0.51] at  (1, 0.5) {Launch};
+%\draw [thick, fill = green, fill opacity = 0.4] (2.0, 0.0) to (2.0, 1.0) to [out = 60, in = 180] (3, 2) to (3, 0) to (2, 0);
+\node [scale = 0.5] at  (2.5, 0.5) {Growth};
+%\draw [thick, fill = green, fill opacity = 0.6] (3.0, 0.0) to (3.0, 2.0) to [out = 345, in = 150] (4, 1.65) to (4, 0) to (3, 0);
+\node [scale = 0.5] at (3.5, 0.5) {Maturity};
+%\draw [thick, fill = green, fill opacity = 0.8] (4.0, 0.0) to (4.0, 1.65) to [out =   330, in =   135] (5, 1) to [out = 325, in = 170] (7, 0) to (4, 0);
+\node [scale = 0.5] at (5, 0.5) {Decline};
+\draw [dashed] (1.8, 0) -- (1.8, 2.1);
+\draw [dashed] (3.0, 0) -- (3.0, 2.1);
+\draw [dashed] (4.4, 0) -- (4.4, 2.1);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Product life cycle 2}
+This means
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Innovations must be exploited as swiftly as possible
+\item There is a continued demand for new products
+\item See Lias' Poker
+\end{itemize}
+\pause
+\includegraphics[scale=0.1]{Lpoker} 
+\end{frame}
+
+\begin{frame}{History of financial system}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item World System
+\begin{itemize}
+\item 1973: Collapse of Bretton Woods
+\item 1995: Mexico and then 1997 Asian market collapse
+\item 2007-08: Global Financial Crisis (GFC)
+\end{itemize}
+\item UK Commercial and merchant banks
+\begin{itemize}
+\item 1986: 'Big Bang'
+\item privatisation of mutual organisations
+\end{itemize}
+\item US money center and investment banks
+\begin{itemize}
+\item Glass Steagal Act (1933)
+\end{itemize}
+\item EU
+\begin{itemize}
+\item MiFID 1
+\item MiFID 2
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Commercial innovation}
+\begin{itemize}[<+-| alert@+>]
+\item Electronic card payment
+\begin{itemize}
+\item Diners Club 1957
+\item American Express
+\end{itemize}
+\item Payments and access
+\begin{itemize}
+\item ATMs
+\item debit cards
+\item contactless payments
+\end{itemize}
+\item Investments
+\begin{itemize}
+\item mutual funds
+\item Exchange Traded Funds (ETF)
+\end{itemize}
+\item Disintermediation
+\begin{itemize}
+\item internet banking
+\item crowd funding
+\item AI and decentralised finance
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wholesale Innovation}
+\begin{itemize}[<+-| alert@+>]
+\item Capital markets
+\begin{itemize}
+\item structured products
+\item CDO and other financial engineering
+\end{itemize}
+\item Hedging risk
+\begin{itemize}
+\item commodity derivatives
+\item financial derivatives
+\item credit derivatives (CDS)
+\end{itemize}
+\item Institutions
+\begin{itemize}
+\item hedge funds
+\item private equity funds
+\item algo and high-frequency trading (HFT)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Regulation}
+\begin{frame}{Avoidance of regulation}
+Innovation can be used to avoid regulation
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Euro-dollar market
+\begin{itemize}
+\item Regulation Q (1933 to 2011)
+\item Soviet and Oil-producing US dollar funds
+\end{itemize}
+\item Financial holding companies
+\begin{itemize}
+\item Glass-Steagal
+\end{itemize}
+\item STRIPS 1985 
+\begin{itemize}
+\item avoidance of income tax
+\item accounting loopholes
+\end{itemize}
+\item Development of capital markets
+\begin{itemize}
+\item capital restrictions on banks
+\item securitisation 
+\item special purpose vehicles (SPV)
+\item special purpose acquisition company (SPAC)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Economic and Financial Volatility}
+\begin{frame}{Volatility}
+Many new products were a response to the increase in volatility in the 1970s and beyond
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Bretton Woods collapse and the floating of currencies
+\item Interest rate volatility with the Volcker deflation
+\item Financial crises (Mexico, Asia, Russia, Argentina)
+\item Financial derivatives
+\begin{itemize}
+\item Futures
+\item Options
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exchange rate volatility}
+<<FX, fig.height=4.6, echo=FALSE>>==
+da <- read.csv('./EXUSUK.csv')
+# remove the unwanted marks
+da$DATE <- gsub('\\+AC0', "", da$DATE)
+da$DATE <- as.Date(da$DATE, format = '%Y-%m-%d')
+plot(da$DATE, da$EXUSUK, type = 'l', main = "US-UK Exchange Rate", 
+     xlab = "Date", ylab = "USD/GBP")
+@
+\end{frame}
+
+\begin{frame}{Interest rate volatility}
+<<tbill, fig.height=4.6, echo=FALSE>>==
+da <- read.csv('./TB3MS.csv')
+# remove the unwanted marks
+da$DATE <- gsub('\\+AC0', "", da$DATE)
+da$DATE <- as.Date(da$DATE, format = '%Y-%m-%d')
+plot(da$DATE, da$TB3MS, type = 'l', main = "US 3m Tbill", 
+     xlab = "Date", ylab = "Percentage")
+@
+\end{frame}
+
+\section{Technology}
+
+\begin{frame}{Technology}
+New technology has had major effects
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Electronic order books
+\item Quantification of risk
+\item Algo and HFT
+\item Disintermediation
+\item Blockchain
+\end{itemize}
+\end{frame}
+
+\begin{frame}{AI and big data}
+Issues with AI and algo
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Can democratise finance
+\item Can cut borrowing costs with bid data
+\item AI can embed bias (racism and sexism)
+\item Network effect of big data
+\item Risk if models are similar
+\item Opacity
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Regulation of AI and big data}
+There are a number of steps that have been suggested
+\begin{itemize}[<+-| alert@+>]
+\item Need for financial rather than tech regulation 
+\item Regulators and risk managers must bridge silos
+\item Take knowledge out of the hands of the \emph{geeks}
+\item Politicians need to take more interest
+\end{itemize}
+\pause
+\vspace{1cm}
+G. Tett, AI is reshaping finance, \emph{Financial Times}, Nov 19 2020
+
+\href{https://www.ft.com/content/c7d9a81c-e6a3-4f37-bbfd-71dcefda3739}{https://www.ft.com/content/c7d9a81c-e6a3-4f37-bbfd-71dcefda3739}
+\end{frame}
+
+
+\end{document}

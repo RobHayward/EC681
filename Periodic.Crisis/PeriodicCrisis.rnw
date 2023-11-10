@@ -1,0 +1,169 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{graphicx}
+\graphicspath{{./Figures/}}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Periodic Financial Crisis}
+\author{Rob Hayward}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{History}
+\begin{frame}{History of Crisis}
+\begin{itemize}[<+-| alert@+>]
+\item 1987 - Dow Jones Crash (23\%)
+\item 1992 - ERM crisis
+\item 1995 - Mexican Currency crisis
+\item 1997 Asian Crisis
+\item 1998 Russian default
+\item 1998 LTCM
+\item 2001 Dot com crash
+\item 2008 Lehman collapse
+\end{itemize}
+\end{frame}
+
+
+\section{Theory}
+
+\begin{frame}{Creative Destruction}
+\begin{itemize}[<+-| alert@+>]
+\item Marx
+\begin{itemize}
+\item The destruction of capitalism
+\item Destroys the old ways of doing things
+\item Crisis to keep workers subservient
+\end{itemize}
+\item Schumpeter
+\begin{itemize}
+\item The creation of new industries and ideas
+\item The new replaces the old
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Hyman Minsky}
+There is inherent instability in the system.  The \emph{Financial Instability Hypothesis} (FIH)
+\begin{itemize}[<+-| alert@+>]
+\item The economy will evolve from one of \emph{hedge financing}
+\item To \emph{speculative financing}
+\begin{itemize}[<+-| alert@+>]
+\item Debt-to-equity ratio rises
+\item Repayments are high relative to income
+\end{itemize}
+\item \emph{Ponzie Finance} where income is insufficient to pay interest or principal 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Minsky Moment}
+The reversal is brutal
+\begin{itemize}[<+-| alert@+>]
+\item It is very hard to determine when the bubble will burst
+\item The crash is more intense and explosive than the build up of instability
+\item Financial institutions are interconnected.  There are non-linear network effects
+\end{itemize}
+\end{frame}
+
+\begin{frame}{US lending}
+\begin{center}
+\includegraphics[height = 3.2in]{ US loans}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Sudden Stops}
+Krugman and others analysed the process of the Asian crisis.  It also applies to the ERM and elsewhere
+\begin{itemize}[<+-| alert@+>]
+\item There is some fundamental imbalance or weakness
+\item There are speculative attacks on fixed exchange rates
+\item \emph{Hedge Funds} Use leverage to increase the size of their bets
+\item Crash requires overseas borrowing (to plug the loss of foreign exchange reserves)
+\item IMF have imposed austerity measures on the top of collapse of financial system and devaluation of the exchange rate
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sudden Stops 2}
+This is most frequently associated with fixed exchange rates, a reversal of currency flow and banking crisis
+\begin{itemize}[<+-| alert@+>]
+\item Positive attitude encourages inflow of capital
+\item Wages and asset prices rise
+\item Central Bank fights exchange rate appreciation
+\item Low interest foreign currency loans increase fragility
+\end{itemize}
+\end{frame}
+
+\section{Evidence}
+\begin{frame}{Asian Crisis: Rupiah}
+\begin{center}
+\includegraphics[height = 3.2in]{IND}
+\end{center}
+\end{frame} 
+
+\begin{frame}{Sterling and ERM}
+\begin{center}
+\includegraphics[height = 3.2in]{GBPDEM}
+\end{center}
+\end{frame}
+
+%\begin{frame}{US House Prices}
+%\begin{center}
+%\includegraphics[height = 3.2in]{USloans}
+%\end{center}
+%\end{frame}
+
+
+\begin{frame}{Political Economy}
+There are a range of views that suggest that economic and financial crisis are a function of political power
+\begin{itemize}[<+-| alert@+>]
+\item Financialisation of the economy
+\begin{itemize}
+\item Trading of commodities
+\end{itemize}
+\item Rising consumer debt is a response to the increase in inequality
+\begin{itemize}
+\item The only way to maintain consumer spending
+\end{itemize}
+\item Globalisation of capital has led to a flow of financial capital around the world
+\begin{itemize}
+\item Evades regulation and tax
+\item Causes problems when it arrives and when it leaves
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Larry Summers - bubble land}
+Lack of investment requires bubbles
+\begin{itemize}[<+-| alert@+>]
+\item Real interest rate required to stimulate investment is negative
+\begin{itemize}
+\item Cyclical caution
+\item Lack of monetisable investment opportunities
+\end{itemize}
+\item Investment must be encouraged by capital gains
+\item Capital gains are asset appreciation 
+\item Economy lurches from one bubble to the next to encourage sufficient investment to spur the economy
+\end{itemize}
+\end{frame}
+
+\end{document}

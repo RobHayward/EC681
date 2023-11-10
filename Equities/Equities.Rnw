@@ -1,0 +1,355 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{tikz}
+\graphicspath{{../../Pictures/}}
+\usetikzlibrary{arrows,positioning}
+\usepackage{multirow}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Equities}
+\author{Rob Hayward}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Types of firm}
+There are a range of different types of firm.  They differ in objectives, access to capital and divorce between ownership and control
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Sole proprietorship
+\item Partnership
+\item Limited liability company
+\begin{itemize}
+\item Private company
+\item Public company
+\end{itemize}
+\item Joint ventures
+\item Government-owned
+\item Non-profit
+\item Cooperative/open source
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Funding start-ups}
+Equity has a large advantage over debt for smaller companies. 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item No immediate repayment burden that can kill the company
+\item Investors get a share of success
+\end{itemize}
+\pause
+Types of funding
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Business Angels
+\item Venture capital 
+\item Private equity
+\end{itemize}
+\pause
+Specialisation, contacts, knowledge and diversification
+\end{frame}
+
+\begin{frame}{Primary and secondary markets}
+\begin{itemize}[<+-| alert@+>]
+\item Primary market:  Initial Placement Offers (IPO) where private firms become public firms. 
+\item Secondary market:  Provision of liquidity allowing investors to change their mind.  
+\end{itemize}
+\pause
+Keynes made the case that liquidity was for individual investors but not for society as a whole. 
+\end{frame}
+
+\section{Agency theory}
+\begin{frame}{Principal-agent}
+The \emph{agent} makes decisions on behalf of the \emph{principal}.  There are costs involved with ensuring that the agent acts in the interest of the principal. 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Owners and managers
+\item Government and people
+\item Central bank and government
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Management incentives}
+The managers own interest will be served by objectives that improve their own utility.  For example:
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Increasing their own compensation.  
+\item Increasing the size of the firm that they are working for.  This may mean maximising revenues rather than profits. 
+\item Improving their own reputation by embarking on large-scale corporate activity.  Mergers and acquisitions. 
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Overcoming agency problems}
+%Overcoming agency problems can take place through 
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item Creating appropriate contracts and compensation.  For example, there could be bonus payments linked to profit targets.  
+%\item Creating tournaments that allow market-like promotion and increases in pay for those that are successful.  
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Issues with the agency solutions}
+%Solutions to agency problems can have effects
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item Increased inequality has been driven by executive pay
+%\item Granting of share options gives an incentive to increase risk
+%\item Tournaments favour individualism over collective action
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Case study: Investment banks}
+%Investment banks as partnerships
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item Smaller, more specialist and more aware of risk
+%\item Partners have a stake in the firm
+%\item Prospective partners can monitor activity
+%\end{itemize}
+%\end{frame}
+%
+%\section{Asymmetries of information}
+%\begin{frame}{Business trends}
+%Two trends exacerbate asymmetries
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item Rise of large, globalised, public companies
+%\begin{itemize}
+%\item Professional managers
+%\item Complex operations
+%\end{itemize}
+%\item Modern fund management
+%\begin{itemize}
+%\item Remote owners of the firm
+%\item Diversified portfolios
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Asymmetries 1}
+%Two forces that hope to reduce asymmetries
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item Regulatory reporting
+%\begin{itemize}
+%\item Quarterly reports of activity
+%\item Income statement, balance sheet, report on performance
+%\end{itemize}
+%\item Professional analysts
+%\begin{itemize}
+%\item Use economies of scale and specialisation to understand firms
+%\item Foster relations with firms
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+%
+%%\begin{frame}{Inside information\?}
+%%Regulation FD says companies should not share public information
+%%\begin{itemize}[<+-| alert@+>]
+%%\pause
+%%\item Ride volumes increase by before EAD
+%%\item Peak on announcement day
+%%\item Announcement week is 7.2\% more than 4 weeks previous
+%%\end{itemize}
+%\pause
+%\href{Choy, S \& O. Hope, Inside the black box of private communications}{https://www.mcgill.ca/desautels/files/desautels/marc_fifth_session_paper.pdf}
+%% 26 May 2021
+%\end{frame}
+
+%\begin{frame}{Asymmetries 2}
+%Problems
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item Accounting irregularities
+%\begin{itemize}
+%\item Enron, WorldCom 
+%\item Accruals and real manipulation
+%\end{itemize}
+%\item Analyst bias
+%\begin{itemize}
+%\item Working for investment bank (Dot.com)
+%\item Collusion with management
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+
+\section{Equity valuation}
+\begin{frame}{Valuation}
+There are more uncertainties in equities than there are in bonds
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item We do not know which dividends will be paid
+\item There is no terminal or maturity value
+\item Firms can collapse
+\item Equity holders have a \emph{residual claim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Valuation}
+\begin{block}{}
+\begin{equation*}
+PV = \sum^{t=\infty}_{t = 0} \frac{D_t}{(1 + R)^t}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Dividend Yield}
+If $D_t$ is constant and lasts for ever, it can be shown that 
+\pause
+\begin{block}{}
+\begin{equation*}
+PV = \sum^{t=\infty}_{t = 0} \frac{D_t}{(1 + R)^t} = \frac{D}{R}
+\end{equation*}
+\end{block}
+\pause
+Therefore, 
+\begin{block}{}
+\begin{equation*}
+R = \frac{D}{P}
+\end{equation*}
+\end{block}
+\pause
+The \emph{Dividend Yield}
+\end{frame}
+
+\begin{frame}{Problems with dividend yield}
+There are two major problems with using dividend yield as a valuation approach: 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item It is not appropriate for growing companies where dividends are getting larger over time
+\item It does not work when there are no dividends and the money is being re-invested
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Price-earnings}
+Another approach would look at total earnings 
+\pause
+\begin{block}{}
+\begin{equation*}
+R = \frac{D_0}{P} + g \rightarrow \frac{E}{P}
+\end{equation*}
+\end{block}
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item This is the inverse of the PE ratio
+\item Average PE ratio is around 14
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Price-earnings 2}
+The price-earnings ratio is a nice metric to value firms
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item If the P/E ratio is high either...
+\begin{itemize} 
+\item future earnings are expected to grow quickly
+\item the firm is over-valued
+\end{itemize}
+\item If the P/E ratio is low either...
+\begin{itemize}
+\item future earnings are expected to fall
+\item the first is under-valued
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Equities and the economy}
+There are two broad approaches to valuation
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Bottom up:  this is the corporate finance rout of understanding the performance of individual companies and amalgamating that to get an overall view of the market
+\item Top down: evaluating equities relative to the economy
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Methods of evaluation}
+There are three broad ways of looking at value
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Cyclically adjusted price earnings ratio (CAPE). 
+\item Tobin's Q
+\item The equity risk premium
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPE}
+Used by Robert Shiller in \emph{Irrational Exuberance}
+\begin{block}{}
+\begin{equation*}
+CAPE = \frac{\text{S\&P500 real price}}{\text{10-year MA S\&P 500 earnings}}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{CAPE}
+<<earnings, echo = FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.cap= "Cumulative, adjusted price earnings ratio">>=
+library(xts)
+names <- c("Date", "S&P", "Dividend", "Earnings", "CPI", "Date.frac", "Long rate", "Real price", "Real dividend", "Real earnings", "PE10")
+da <- read.csv("../../Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
+da <- da[,-dim(da)[2]]
+da$Date <- as.yearmon(da$Date, format = "&Y.%m")
+plot(da$Date, da$CAPE, type = 'l', main = "CAPE 1871 to 2023", 
+     ylab = "CAPE", xlab = "Year")
+text(1966, 26, "24.1 Jan 1966", col = "darkgreen")
+#text(2007, 25, "23.7 2007", col = "darkgreen")
+text(1925, 34, "32.6 Jan 1929", col = "darkgreen")
+text(1982, 44, "44.2 Dec 1999", col = "darkgreen")
+@
+\end{frame}
+
+\begin{frame}{Current PE ratio}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l r r}
+\textbf{Market} & \textbf{Current PE} & \textbf{One year ago}\\
+\hline
+Russell 2000 & 23.7  & 54.0 \\
+NASDAQ 100 &  30.0 & 23.0 \\
+S\&P 500 & 18.8 & 17.9 \\
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+	
+\begin{frame}{Tobin's Q}
+The market value of equity relative to the replacement cost of capital
+\begin{block}{}
+\begin{equation*}
+Q = \frac{\text{Market value}}{\text{Corporate net worth}}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Equity risk premium}
+The equity risk premium is the return required for taking risk.
+\begin{block}{}
+\begin{equation*}
+ERP = R_e - R_{rf} \quad \text{or} \quad R_e - R_b
+\end{equation*}
+\end{block}
+Where $ERP$ is the equity risk premium; $R_e$ is the return on equity; $R_fr$ is the risk-free return and $R_b$ is the return on bonds. 
+\end{frame}
+
+\begin{frame}{Dividend yield vs bond}
+\includegraphics[scale=1.0]{bondstock}
+\end{frame}
+
+\end{document}
+%[<+-| alert@+>]

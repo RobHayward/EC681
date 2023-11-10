@@ -1,0 +1,37 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{article}
+
+% Title and author information
+\title{The bond market}
+\author{Rob Hayward}
+
+\begin{document}
+
+\maketitle
+\section{Bond market questions}
+Please answer the following questions:
+
+
+\begin{itemize}
+\item Please take a look at the World Bond Markets using the Bloomberg function \textbf{WB}.
+\begin{itemize}
+     \item  What has happened to the US 10-year bond yield over the last year
+          and what range has it traded in?
+     \item What is the coupon on the current 10-year benchmark Italian bond?
+     \item What is the 2-year Mexican benchmark bond?
+     \item What has happened to this Mexican bond in the last 3 months?
+     \item What is the spread between the UK and US 10-year benchmarks?
+     \item How has this spread changed over the course of 2023?
+     \item Which part of the US yield curve has moved most since the beginning of the year?
+     \end{itemize}
+\item  Using the Bond Yield Forecast Bloomberg function \textbf{BYF}
+\begin{itemize}
+      \item How is the US 10-year yield expected to change between now and
+          the end of 2024? 
+      \item  Where is the UK 10-year yield expected to be at the end of 2023?
+      \item Use the Sovereign debt owners Bloomberg function \textbf{DEBT} to identify the four largest owners of US government debt.
+      \item Use the World country debt monitor Bloomberg function \textbf{WCDM} to find the Greek credit rating for S\&P, Moodys and Fitch.
+\end{itemize}
+\end{itemize}
+\end{document}
+
+

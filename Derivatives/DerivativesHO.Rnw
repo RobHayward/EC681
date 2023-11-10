@@ -1,0 +1,514 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table,handout]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{Dervivatives}
+\author{Rob Hayward}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\begin{frame}{Introduction}
+There are two major versions of derivatives
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Futures
+\item Options
+\item Also 
+\begin{itemize}
+\item interest rate swaps
+\item credit default swaps
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Futures}
+\begin{frame}{Futures}
+Futures are traded on exchanges.  
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item The futures markets have the most liquidity
+\item Liquidity requires standardisation
+\item Set delivery dates and time
+\item Set quantities
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Importance of liquidity}
+Liquidity is necessary to reduce the cost of transactions and to facilitate trade. There are two types of investor:
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item \emph{Hedger}: these are investors with an underlying interest in the commodity that is being traded
+\item \emph{Speculator}: those with no underlying interest.  
+\item Keynes and Hicks argue that hedgers pay speculators to take risk
+\item Knight argues that speculators use specialisation to reduce risk with purchase of information and diversification
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Pricing futures contracts}
+\begin{block}{}
+\begin{equation*}
+F(t, T) = S(t) \times (1 +r)^{(T-t)}
+\end{equation*}
+\end{block}{}
+or, in continuous time, 
+\begin{block}{}
+\begin{equation*}
+F(t, T) = S(t)e^{r(T-t)}
+\end{equation*}
+\end{block}
+For other futures, storage costs, income in the form of dividends and coupons and any other benefits that accrue from the holding of the commodity. This may be particularly important if there are large storage costs involved for commodities.
+\end{frame}
+
+\begin{frame}{Expectations}
+When there are disruptions in the supply of the commodity, this arbitrage mechanism will not work. In that case, the pricing will be determined by expections. 
+\begin{block}{}
+\begin{equation*}
+F(t, T) = E_t[S(T)]
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Calendar spreads}
+A technique that can reduce risk is to trade a calendar spread
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Futures contracts are set in March, June, Sep, Dec
+\item Spreads between two or more contracts remove risk of a large move in the commodity
+\item \emph{Contango}: future is above the expected spot at contract maturity.
+\item \emph{Normal backwardation}: future is below the expected spot at contract maturity
+\item Trade can be technical or based on the supply-demand
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Commodity investment}
+\begin{itemize}[<+-| alert@+>]
+\item Assess the supply and demand for commodity
+\begin{itemize}
+\item Economic growth/development
+\item Weather
+\item Political factors
+\end{itemize}
+\item Technical analysis
+\begin{itemize}
+\item raw commodities 
+\item calendar spreads or product spreads
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Orange Juice Future}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Unit of trading: 15,000 pounds of solid orange juice
+\item Delivery: Mar, Jun, Sep and Dec. 
+\item Quotation: 5/100 of a cent per pound (\$7.50 per contract)
+\item Physical delvery (US Grade A wth a Brix value of 62.5 or above)
+\item Delivery points: Exchange warehouses in Florida, New Jersey and Delaware
+\item Last trading day: 14th business day prior to the last business day of the month
+\end{itemize}
+\end{frame}
+
+\section{Options}
+\begin{frame}{Terminology}
+	Some key terms
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Call: right to buy
+	\item Put: right to sell
+	\item Strike/Exercise price: price at which buy or sell can be made
+	\item Expiration date: date that option will end
+	\item Exercising: using the option to buy or sell
+	\item American option: can be exercised at any time
+	\item European option can only be exercised at expiration
+	\item At the money: payoff from option is zero
+	\item In the money: payoff from option is positivce
+	\item Out of the money: payoff from option is negative
+\end{itemize}
+\end{frame}	
+
+\begin{frame}{Ralue of long call}
+<<lc, fig.height=4.5, echo=FALSE>>=
+p <- 11:39
+s <- 25
+c <- 2
+v <- pmax(p - s - c, -c)
+plot(p, v, type = 'l', main = 'payoff long call (strike 25)', xlab = 'price of 
+     underlying security', ylab = 'payoff', col = 'darkgreen')
+text(18, 4, 'pc = max(p - s - c, -c)')
+@
+\end{frame}
+
+\begin{frame}{Value of long put}
+<<lp, fig.height=4.5, echo=FALSE>>=
+p <- c(11:39)
+s <- 25
+c <- 2
+v <- pmax(s - p - c, -c)
+plot(p, v, type = 'l', main = 'Payoff Long Put (strike 25)', xlab = 'Price of 
+     underlying security', ylab = 'Payoff', col = 'DarkGreen')
+text(32, 4, 'Pc = Max(S - P - C, -C)')
+@
+\end{frame}
+
+\begin{frame}{Value of short call}
+<<sc, fig.height=4.5, echo=FALSE>>=
+p <- c(11:39)
+s <- 25
+c <- 2
+v<- pmin(s - p + 2, 2)
+plot(p, v, type = 'l', main = 'Payoff Short Call (strike 25)', xlab = 'Price of 
+     underlying security', ylab = 'Payoff', col = 'DarkGreen')
+text(18, -4, 'Pc = Min(S - P - C, -C)') 
+@
+\end{frame}
+
+\begin{frame}{Value of long call}
+<<sp, fig.height=4.5, echo=FALSE>>=
+p <- c(11:39)
+s <- 25
+c <- 2
+v<- pmin(p - s + 2, 2)
+plot(p, v, type = 'l', main = 'Payoff Short Put (strike 25)', xlab = 'Price of 
+     underlying security', ylab = 'Payoff', col = 'DarkGreen')
+text(32, -4, 'Pc = Min(S - P - C, -C)') 
+@
+\end{frame}
+
+\begin{frame}{Black-Scholes}
+	\begin{block}{}
+		\begin{equation}
+			C_{S, t} = N(d_1) - N(d_2)Ke^{-r(T-t)}
+		\end{equation}
+	\end{block}
+	\pause
+	where, 
+	\begin{block}{}
+		\begin{equation}
+			d_1 = \frac{ln \left (\frac{S}{K} \right ) + \left ( r + \frac{\sigma^2}{2} \right ) (T - t)}{\sigma \sqrt{T -t}} 
+		\end{equation}
+		and 
+		\begin{equation}
+			d_2 = d_1 - \sigma \sqrt{T - t}
+		\end{equation}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Black-Scholes}
+	where
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item $S_t$ is the security price
+	\item $S_t$ follows a random walk
+		\begin{itemize}
+			\item $S_t = S_{t-1} + \varepsilon$
+			\item $\varepsilon \sim N(0, \sigma)$
+			\item $R_s = log(S_t) - log(S_{t-1})$
+			\item $R_s = c$ a constant as RWWD
+		\end{itemize}
+	\item $VAR(R_s) = \sigma^2$
+	\item $STD(R_s) = \sigma$ or volatility
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bac, fig.height=4.5,echo=FALSE>>=
+da <- read.csv('../../Data/BACSPY.csv', stringsAsFactors = FALSE)
+da1 <- read.csv('../../Data/BACSPY.csv', stringsAsFactors = FALSE)
+da$Date <- as.Date(da$Date, format = "%d/%m/%Y")
+da$Date[4554:4779] <- as.Date(da1$Date[4554:4779], format = "%Y-%m-%d")
+# create returns
+da$BAC.R <- c(NA, da$BAC[2:length(da$BAC)]/da$BAC[1:length(da$BAC) -1 ] - 1)
+# calculate average return and average standard deivation
+avret <- mean(da$BAC.R, na.rm = TRUE)
+#annual_return <- (1 + avret)^252 - 1
+#annual_return * 100
+varet <- var(da$BAC.R, na.rm = TRUE)
+#annual_vol <- varet * sqrt(252)
+#annual_vol * 100
+#(annual_return - 2 * annual_vol) * 100
+#(annual_return + 2 * annual_vol) * 100
+simulations_matrix <- matrix(NA, nrow = length(da$BAC), ncol = 10)
+set.seed(1)
+for(i in 1:10){
+  # 
+x <- c(da$BAC[1], 1 + rnorm(n = length(da$BAC) - 1, mean = avret, sd = sqrt(varet)))
+simulations_matrix[, i] <- cumprod(x)
+}
+plot(da$Date, da$BAC, type = 'l', lty = 1, lwd = 3, xlab = 'Date', 
+     ylab = 'Price', main = 'Bank of America simulations')
+@
+\end{frame}
+
+
+\begin{frame}{Bank of America Stats}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l l l }
+\textbf{Stat} & \textbf{Value} & \textbf{Annualised} \\
+\hline
+Mean & 0.04\% & 11.7\% \\
+SD & 2.9\% & 46.4\%\\
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}{Normal distribution}
+<<d1, fig.height=4.5, echo=FALSE>>=
+plot(density(rnorm(100000, 0.04, 2.9)), main = "Normal Distribution", 
+     xlab = 'Mean = 0.04; sd = 2.9')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim1, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim2, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim3, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 4], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim4, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 4], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 5], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim5, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 4], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 5], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 6], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim6, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 4], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 5], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 6], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 7], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim7, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 4], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 5], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 6], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 7], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 8], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim8, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 4], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 5], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 6], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 7], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 8], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 9], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim9, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 4], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 5], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 6], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 7], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 8], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 9], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 10], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Bank of America simulation}
+<<bacsim110, fig.height=4.6,echo=FALSE>>=
+plot(da$Date, da$BAC, type = 'l', ylim = c(min(simulations_matrix[,]), 
+     max(simulations_matrix[, ])), lty = 1, lwd = 3, 
+     xlab = 'Date', ylab = 'Price', 
+     main = 'Bank of America simulations')
+lines(da$Date, simulations_matrix[, 2], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 3], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 4], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 5], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 6], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 7], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 8], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 9], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 10], type = 'l', col = 'red')
+lines(da$Date, simulations_matrix[, 1], type = 'l', col = 'red')
+@
+\end{frame}
+
+\begin{frame}{Black-Scholes}
+	\begin{block}{}
+		\begin{equation}
+			C_{S, t} = N(d_1) - N(d_2)Ke^{-r(T-t)}
+		\end{equation}
+	\end{block}
+	\pause
+	where, 
+	\begin{block}{}
+		\begin{equation}
+			d_1 = \frac{ln \left (\frac{S}{K} \right ) + \left ( r + \frac{\sigma^2}{2} \right ) (T - t)}{\sigma \sqrt{T -t}} 
+		\end{equation}
+		and 
+		\begin{equation}
+			d_2 = d_1 - \sigma \sqrt{T - t}
+		\end{equation}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Long Staddle}
+<<ls, fig.height=4.5, echo=FALSE>>=
+p <- c(11:39)
+s <- 25
+c <- 2
+v1 <- pmax(p - s - c, -c)
+v2 <- pmax(s - p - c, -c)
+plot(p, v1 + v2, type = 'l', main = 'Payoff Long Straddle (strike 25)', xlab = 'Price of 
+     underlying security', ylab = 'Payoff', col = 'DarkGreen')
+abline(h = 0, col = 'black', lty = 2)
+text(25, 8, 'Pc = Max(S - P - C, -C) and Pc = Max(S - P - C, -C)') 
+@
+\end{frame}
+
+\begin{frame}{Short Staddle}
+<<ss, fig.height=4.5, echo=FALSE>>=
+p <- c(11:39)
+s <- 25
+c <- 2
+v1 <- pmin(p - s + 2, 2)
+v2 <- pmin(s - p + 2, 2)
+plot(p, v1 + v2, type = 'l', main = 'Payoff Short Straddle (strike 25)', xlab = 'Price of 
+     underlying security', ylab = 'Payoff', col = 'DarkGreen')
+abline(h = 0, col = 'black', lty = 2)
+text(25, -8, 'Pc = Min(S - P - C, -C) and Pc = Min(S - P - C, -C)') 
+@
+\end{frame}
+
+\begin{frame}{The VIX Index}
+<<VIX, fig.height=4.6, echo=FALSE, warning=FALSE>>=
+da <- read.csv('../../Data/VIX.csv')
+da$Date <- sub("[+]AC0", "", da$X.AD0)
+da$Date <- sub("[+]AC0", "", da$Date)
+da$Date <- as.Date(da$Date, format = "%Y-%m-%d")
+plot(da$Date, da$Adj.Close, type = 'l', xlab = "Date", ylab = "VIX index", main = "VIX Index 1990 to present")
+text(x = as.Date("2006-10-30"), y = 75, "Lehman \n Brothers")
+text(x = as.Date("1996-12-01"), y = 50, "LTCM-Russian \n default")
+text(x = as.Date("2012-04-01"), y = 55, "European Debt \n Crisis")
+@
+\end{frame}
+
+
+\end{document}

@@ -1,0 +1,337 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+%\usepackage{listing}
+\usepackage{amsmath}
+\usepackage{tikz}
+\graphicspath{{../../Pictures/}}
+\usepackage{caption}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+% for the feedbackloop.  Details https://tex.stackexchange.com/questions/502559/feedback-diagram/502563
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Financial Institutions}
+\author{Rob Hayward}
+\date{Oct 2023}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Functions of finance}
+\includegraphics[scale = 1.0]{FinSystem.jpeg}
+\end{frame}
+
+\begin{frame}{Functions of finance}
+Functions of finance
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Intermediate savings and borrowing
+\item Transfer, allocate, pool and diversify risk
+\item Manage the payments system
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Asymmetric information}
+A major issue in finance is the imbalance of information 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Moral hazard}
+\item \emph{Adverse selection}
+\item \emph{Regulation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{EMH}
+\includegraphics[scale = 0.2]{oneHundredDollar}
+\end{frame}
+
+\begin{frame}{Firm types}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r}
+Type & Access to finance & Agency risk\\
+\hline
+Sole proprietorship & Limited & None \\
+Partnership & Limited & Low \\
+Private firm & Variable & High \\
+Public firm & Large & High \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Firm types}
+\end{table}
+\pause 
+There are also joint ventures, cooperatives, open-source communities and Decentralised Autonomous Organisations (DAO)
+\end{frame}
+
+\begin{frame}{Access to finance}
+\includegraphics[scale = 3]{Apocalypse_Now_poster}
+\end{frame}
+
+\begin{frame}{BoE Research}
+\begin{block}{}
+Small business need funds but have
+\begin{itemize}
+\item No record
+\item No business assets
+\end{itemize}
+\end{block}
+\vspace{3pt}
+\pause
+\includegraphics[scale=0.5]{house}
+\pause
+\href{https://bankunderground.co.uk/2018/05/25/home-grown-financing-how-small-business-owners-use-their-own-houses-to-support-investment/}{BoE research}
+\end{frame}
+
+\begin{frame}{House as Collateral}
+Research plan
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Directors and home address at Companies House
+\item Land registry
+\item Firm investment
+\end{itemize}
+\end{frame}
+
+\begin{frame}{House as collateral}
+Research findings
+\begin{itemize}[<+-| alert@+>]
+\pause 
+\item Half SME (less than 250 employees) is financed using personal house as collateral
+\item Value of house determine investment 
+\begin{itemize}
+\item 10\% rise in house leads to 2.8\% increase in investment
+\item 10\% rise i house leads to a 0.8\% rise in wages paid
+\end{itemize}
+\item Directors have a personal liability
+\end{itemize}
+\end{frame}
+
+\section{Financial institutions}
+\begin{frame}{Financial institutions}
+There are four main types of financial institution
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Commercial banks
+\item Investment banks
+\item Funds
+\item Other
+\end{itemize}
+\pause
+Many financial institutions are amalgamations of these.
+\end{frame}
+
+\begin{frame}{Commercial bank}
+\begin{figure}
+\begin{tikzpicture}[scale = 0.75]
+%\draw [very thin, color = gray](0, 0) grid (14, 7);
+\draw [thick] (2, 6) to (12, 6);
+\draw [thick] (7, 7) to (7, 0);
+\node [above] at (10, 6) {Liabilities};
+\node [above] at (4, 6) {Assets};
+\node [right] at (7, 5) {Deposits 1000};
+\node [left] at (7, 5) {Cash 100};
+\node [right] at (7, 4) {Borrowing 200};
+\node [left] at (7, 4) {Loans 1200};
+\draw (3, 2) to (11, 2);
+\node [right] at (7, 3) {Capital 200};
+\node [left] at (7, 3) {Buildings etc. 100};
+\node [right] at (7, 1) {Total 1400};
+\node [left] at (7, 1) {Total 1400};
+\end{tikzpicture}
+\caption{Commercial bank balance sheet}
+\label{figref:bb}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Commercial bank 2}
+Bank profits are the difference between return on assets and the cost of liabilities.
+\begin{block}{}
+\begin{equation*}
+\pi_b = RA + OI - CL - FC
+\end{equation*}
+\end{block}
+\pause
+Where $\pi_b$ is the bank profit, RA is the return on assets, OI is other income, CL is the cost of loans and FC are fixed costs
+\end{frame}
+
+\begin{frame}{Bank weakness}
+The inherent weakness of a bank is that it provides liquidity and maturity transformation
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item This is important for savings-lending intermediation
+\item However, it makes banks vulnerable
+\item It can cause banks to collapse
+\item It causes \emph{feedback effects} and \emph{non-linear effects}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Feedback loop}
+\tikzset{block/.style={
+        text=white,
+        fill=OliveGreen!80!black,
+        minimum height=1cm,
+        minimum width=3cm}}
+\begin{tikzpicture}[thick,OliveGreen!80!black]
+\path
+(0,0)       node[block] (N) {Economic shock}
+++(-90:2.5) node[block] (C) {Bad loans}
++(-90:2)    node[block] (O) {Banking collapse};
+\draw[<-] (N.north)--+(90:.5) node[above,black] {Weak economy};
+\draw[->] (N)--(C) node[midway,right,black]{};
+\draw[->] (C)--(O);
+\draw[<-] (N)--++(180:3) coordinate (A)--++(-90:5.5) coordinate (B)-|(O);
+\path (A)--(B) node[midway,left,align=left,black] {Feedback loop};
+\end{tikzpicture} 
+\end{frame}
+
+\begin{frame}{Investment bank 1}
+\begin{figure}
+\begin{tikzpicture}[scale = 0.75]
+%\draw [very thin, color = gray](0, 0) grid (14, 7);
+\draw [thick] (2, 6) to (12, 6);
+\draw [thick] (7, 7) to (7, 0);
+\node [above] at (10, 6) {Liabilities};
+\node [above] at (4, 6) {Assets};
+\node [right] at (7, 5) {Borrowing 200};
+\node [left] at (7, 5) {Securities 300};
+\draw (3, 2) to (11, 2);
+\node [right] at (7, 3) {Capital 200};
+\node [left] at (7, 3) {Buildings etc. 100};
+\node [right] at (7, 1) {Total 400};
+\node [left] at (7, 1) {Total 400};
+\end{tikzpicture}
+\caption{Investment bank balance sheet}
+\label{figref:ib}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Investment bank 2}
+They do not make investments; they are not banks.  Revenue come from, 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Merger and acquisition, disposal of parts of business.  Business strategy. 
+\item Raising capital: IPOs, bond issuance, syndicated loans. 
+\item Making financial markets. 
+\item "In the moving business not the storage business"
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Funds 1}
+There are a wide range of different types of fund
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Pension funds
+\item Insurance funds
+\item Mutual funds
+\item Hedge funds
+\item Private equity (Soft Bank)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Funds 2}
+There is a distinction between 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The fund owners
+\begin{itemize}
+\item firm that runs the pension
+\item insurance company
+\item country, university or family
+\end{itemize}
+\item The fund managers
+\begin{itemize}
+\item BlackRock, Vanguard etc
+\item specialist (asset or country) 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Funds 2}
+\begin{figure}
+\begin{tikzpicture}[scale = 0.75]
+%\draw [very thin, color = gray](0, 0) grid (14, 7);
+\draw [thick] (2, 6) to (12, 6);
+\draw [thick] (7, 7) to (7, 0);
+\node [above] at (10, 6) {Liabilities};
+\node [above] at (4, 6) {Assets};
+\node [right] at (7, 5) {Obligation?};
+\node [left] at (7, 5) {Portfolio 1000};
+%\node [right] at (7, 4) {Borrowing 200};
+%\node [left] at (7, 4) {Loans 1200};
+\draw (3, 2) to (11, 2);
+\node [right] at (7, 3) {Capital 200};
+\node [left] at (7, 3) {Buildings etc. 200};
+\node [right] at (7, 1) {Total 1200};
+\node [left] at (7, 1) {Total 1200};
+\end{tikzpicture}
+\caption{Fund balance sheet}
+\label{figref:fund}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Other institutions}
+There are a wide range of additional institutions that facilitate the smooth operation of the financial system
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Exchanges (NYSE, LSE, NASDAQ, Binance)
+\item Clearing Houses (LCH, ICE, NSCC)
+% National Securities Clearing Corporation 
+% https://www.cfainstitute.org/en/advocacy/issues/central-clearing-houses
+\item Custodians (State Street, Bank of New York)
+\item Providers of information: news and data (Thomson-Reuters, Bloomberg, Rating Agencies)
+\item Other related services (legal, information (data), cultural and historical)
+\end{itemize}
+\pause
+%\href{http://www.johnkay.com/2006/11/28/a-giants-strength-is-valuable-if-not-used-like-a-giant}{John Kay on public exchanges}
+\end{frame}
+
+\begin{frame}{Index providers}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item MSCI, FTSE Russell and S\&P dominate
+\item Their indices account for more than 80\% of European ETF indices
+\begin{itemize}
+\item MSCI has 47\% share
+\end{itemize}
+\item MSCI charges 2.58bp to link to equity indices
+\item Index business has a 76\% margin
+\end{itemize}
+\pause 
+\href{https://www.ft.com/content/29c9e079-a6df-4cbf-8c79-528426b3c7fb}{FT 15 Oct 2021}
+\end{frame}
+
+\begin{frame}{Silicon Valley}
+\includegraphics[scale = 1.0]{Siliconvalley.png}
+\end{frame}
+
+
+\end{document}
+
+\begin{frame}{Information cycle}
+There is a cycle of information (Matt Levine)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Data is messy and not useful
+\item Data is useful and bought by select hedge funds
+\item Hedge funds make money and more people use the data
+\item Everyone uses the data and the advantage is gone
+\item Data providers benefit but funds do not
+\item Data is commoditised? 
+\end{itemize}
+\end{frame}
+%  This is also a law of market evolution. 
+
+

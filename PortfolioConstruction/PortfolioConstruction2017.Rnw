@@ -1,0 +1,417 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{tikz}
+ \usetikzlibrary{arrows,positioning}
+\usepackage[absolute, overlay]{textpos}
+\definecolor{OliveGreen}{RGB}{180, 151, 90}
+\usepackage{multirow}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\graphicspath{{./figure/}}
+\usepackage{amsmath}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+% Title and author information
+\title{Portfolio Construction}
+\author{Rob Hayward}
+\date{}
+\begin{document}
+
+%\begin{frame}
+%\titlepage
+%\end{frame}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Overview} 
+\tableofcontents
+\end{frame}
+
+\section{Modern portfolio theory}
+
+\begin{frame}{Modern Portfolio Theory}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[thick, color ={rgb: brown, 5; white, 1}] (1.0, 0.5) to [out = 120, in = 210] (2.0, 2.0) to [out = 25, in = 180] (5, 2.5);
+\pause
+\node at (1.0, 1.0) [right] {\scriptsize Efficient Frontier};
+\pause
+\node at (1.9, 2) [above left] {MP};
+\draw [fill = brown] (2, 2) circle [radius = 0.05];
+\pause
+\node at (0, 1) [left] {rf};
+\pause
+\draw[domain = 0.0:3.9, color = black] plot(\x, {1 + 0.5*\x});
+\pause
+  \node at (3.5, 2.65) [right] {\scriptsize Capital Market Line};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Modern Portfolio Theory}
+MPT: the \emph{market portfolio} is \emph{mean-variance optimal}
+\pause
+\vspace{1cm}
+\begin{block}{}
+Holding the market portfolio is the alternative to forecasting the expected returns and the expected covariances matrix for hundreds of assets
+\end{block}
+\end{frame}
+
+\begin{frame}{Some questions about MPT}
+Some questions about MPT
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The \emph{investment universe}
+\item The market portfolio
+\item Expected vs historical record
+\item A mean-variance analysis
+\item Lack of transaction costs
+\item Risk free rate
+\item Stability of relationships
+\item Investors are risk-averse
+\end{itemize}
+\end{frame}
+% these may be expanded in slides or just discussion (pictures?)
+
+\begin{frame}{Normal distribution}
+<<norm, fig.height=4.6, echo=FALSE, warning=FALSE>>=
+x <- seq(-3, 3, 0.1)
+fs = function(x, epsilon, delta){
+  dnorm(sinh(delta*asinh(x) - epsilon)) * delta*cosh(delta*asinh(x) - 
+    epsilon)/sqrt(1 + x^2)
+}
+plot(x, fs(x, 0, 1), type = 'l', col = 'darkgreen', main = 'Normal Distribution', 
+     xlab = 'Return', ylab = 'frequency', ylim = c(0, 0.6))
+# http://stats.stackexchange.com/questions/43482/transformation-to-increase-kurtosis-and-skewness-of-normal-r-v
+#lines(x, fs(x, 0, 1.5), type = 'l', lty = 3)
+#lines(x, fs(x, -0.4, 1), type = 'l', lty = 2)
+@
+\end{frame}
+
+\begin{frame}{Black swans}
+\centering
+\includegraphics[scale = 0.2]{blackswan}
+\end{frame}
+
+\begin{frame}{Unknown unknowns}
+\begin{textblock*}{5.2cm}(1cm, 3cm) % (block width) (coords)
+\includegraphics[scale = 0.8]{Rumsfeld}
+\end{textblock*}
+\begin{textblock*}{5.2cm}(6cm, 3cm)
+\begin{block}{}
+There are things we know; there are things we do not know; there are things that we do not know that we do not know
+\end{block}
+\end{textblock*}
+\end{frame}
+
+%\begin{frame}{Expected values}
+\begin{frame}{Capital Asset Pricing Model}
+\emph{Capital Asset Pricing Model} (CAPM) is an important part of the MPT framework 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item There is an public equity risk premium
+\item Returns on individual securities are related to this risk premium
+\item Beta $(\beta)$ is the measure of this relationship
+\begin{itemize}
+\item Covariance of asset returns with market returns
+\end{itemize}
+\item High beta is high risk 
+\item Low beta is low risk
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\draw [domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+\pause
+\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Other risk factors}
+A number of additional risk factors have been found
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Small cap companies} seem to generate high returns relative to their risk
+\item \emph{Value firm} appear to generate high returns relative to their risk
+\item \emph{Growth firms} appear to generate low returns relative to their risk
+\item There are other \emph{risk factors} or anomalies that we will return to later
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+%\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\pause
+\draw [fill = brown] (3.5, 2.5) circle [radius = 0.05];
+\node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
+\pause
+\draw [fill = brown] (1.5, 1.5) circle [radius = 0.05];
+\node at (1.5, 1.5) [left] {\scriptsize Value};
+\pause
+\draw [fill = brown] (3.5, 2.0) circle [radius = 0.05];
+\node at (3.5, 2.0) [right] {\scriptsize Growth};
+\end{tikzpicture}
+\end{frame}
+
+\section{Passive vs active investment}
+\begin{frame}{Active investment}
+Active funds try to take advantage of these apparent inefficiencies
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Value Investment}
+\begin{itemize}
+\item Benjamin Graham
+\item Warren Buffett
+\item Berkshire Hathaway
+\end{itemize}
+\item Security selection
+\begin{itemize}
+\item Stock, bond, commodity or country
+\end{itemize}
+\item Hedge funds
+\begin{itemize}
+\item Range of strategies to capture \emph{alpha} or to find \emph{absolute returns} that are not correlated highly with the market 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Grossman and Stiglitz}
+\begin{block}{}
+The impossibility of informationally efficient markets
+\end{block}
+\begin{itemize}[<+-| alert@+>]
+\pause 
+\item There is a cost to acquiring information
+\item There is a tendency towards an equilibrium where the cost of acquiring information is equal to the benefit to be gained from that information
+\item The benefit is the excess return
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Active management success}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Many studies find that active managers are not successful on average
+\begin{itemize}
+\item Malkiel (1995), Gruber (1996), Wermers (2000, 2003), and Jones
+and Wermers (2011)
+\item Morningstar: only 16.9\% of US large-growth managers were able to beat their passive counterparts over the 10 year period
+\end{itemize}
+\item Cost and fees are a major factor
+\item There are exceptions
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The rise of ETF}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Pooled investment vehicles} with AP
+\item \emph{Authorised participant} will keep ETF value close to that of underlying assets by being prepared to arbitrage the two
+\begin{itemize}
+\item can create new shares or redeem old ones
+\item this may not be easy for illiquid assets
+\end{itemize}
+\item First ETF began in 1993 (SPY)
+\item Middle of 2016 there are more than 1600 ETF on US exchanges with a value of more than \$2.2tn
+\item Competition is reducing prices 
+\item Bond ETF: \$60bn end of 2007 to \$600bn mid 2016
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The rise of passive investment}
+\textbf{ETFGI}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item ETF assets were \$4.3tn in sep 2017 
+\item They were \$3.4tn at the end of 2016
+\item They were \$1.3tn at the end of 2010
+\item There is currently a price war (2-5bp in some places)
+\item Active management fees are down to 63bp in 2017 from 100bp in 2000
+\item This compares to the 2-20 for hedge funds
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Risk of ETF}
+The proliferation of ETF has raised some concerns
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Size and complexity
+\item Risk of \emph{performance chasing}
+% this means that 20\% fall in market would happen in 2 hours not 2 days.
+\item More volume in ETF than the underlying
+\item Some attention on bond ETF (illiquid to liquid test)
+\item Can be redeemed in kind
+\item US (SEC), Irish and French investigations are underway: there are already limits on leverage and the minimum amount of cash)
+% restriction on use of derivatives and maximum of 15\% illiquid funds
+\end{itemize}
+\end{frame}
+
+\section{Smart beta}
+\begin{frame}{Criticisms of index investment}
+There are a number of persistent criticisms of using traditional indices as the basis for investment
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item An index may not be available (non-investable)
+\item Index investment impedes the process of \emph{price discovery}
+\item Capitalisation-weighted indices are \textbf{NOT} equivalent to the \emph{market portfolio}
+\begin{itemize}
+\item weights must be increased as shares gain in price
+\item causes investors to buy \emph{winning stocks} and sell \emph{losing stocks}
+\item buy \emph{growth} and sell \emph{value}
+\item overweight over-valued and under-weight undervalued
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Smart Beta}
+There are two types of Smart Beta:
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Take \emph{value-weighted} indices and weight them by some other measure
+\item Use risk \emph{factors} or anomalies 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamental indexation}
+%\begin{textblock*}{3cm}(1cm, 1.5cm)
+%\includegraphics[scale = 0.3]{RA}
+%\end{textblock*}
+Research Affiliates is generally credited with introducing the first \emph{Smart Beta} fund 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Arnott, R., J. Hsu and P. Moore, \emph{Fundamental Indexation}, Financial Analysts Journal, 2005
+\item Fundamentally-weight index fund was launched in 2005. 
+\item \textbf{RAFI}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices}
+\begin{columns}{}
+\begin{column}{0.48\linewidth}
+\includegraphics[scale = 0.38]{Main-Street}
+\end{column}
+\begin{column}{0.47\linewidth}
+\includegraphics[scale = 0.18]{Wall-Street}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices}
+Arnott, Hsu and More tested a range of alternative (fundamental) weightings
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Book value
+\item Trailing 5-year average cash flow
+\item Trailing 5-year average revenue
+\item Trailing 5-year average gross sales
+\item Trailing 5-year average gross dividends
+\item Total employment
+\item Composite of book, cash-flow, sales and dividends (most widely available for most countries)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Details}
+\begin{itemize}[<+-| alert@+>]
+\item Compustat data from 1962 to 2004
+\item Portfolio re-balanced once a year (at end of year)
+\item Comparison of expansion and recession
+\item Comparison of rising and falling interest rate environments
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices: results}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l r r r}
+\textbf{Portfolio/index} & \textbf{1980s} & \textbf{1990s} & \textbf{2000-04}\\
+\hline
+S\&P 500 & 17.7\% & 18.6\% & -2.1\% \\
+Book & 18.3\%     & 17.1\% & 5.8\%\\
+Income & 19.0\%   & 17.7\% & 7.6\% \\
+Sales & 19.5\%    & 16.8\% & 8.7\% \\
+Dividends & 19.2\% & 15.4\% & 8.0\% \\
+Employment & 17.7\% & 15.7\% & 7.8\%\\
+Composite & 19.0\% & 16.6\% & 7.7\% 
+\end{tabular}
+\end{center}
+\end{table}
+Annualised returns by decade.  Arnott, Hsu and More (2005)
+\end{frame}
+
+\begin{frame}{Fundamentally-weighted index}
+\begin{itemize}[<+-| alert@+>]
+\item Is this \emph{data mining}?
+\begin{itemize}
+\item Based on fundamental measures of company size
+\item Results hold across decades 
+\item Results hold across expansions and contractions
+\item Results hold in rising and falling rate environment
+\end{itemize}
+\item Choosing individual value and growth companies is difficult
+\item Here \emph{market inefficiencies} are found on average
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison to Capitalisation-weighed index (2000-04)}
+%\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r r}
+\textbf{Portfolio/index} & \textbf{Value-added} & \textbf{Std Dev} &  \textbf{Sharpe}\\
+\hline
+S\&P 500 & -0.43pp & 18.0\%& 0.27 \\
+Book &      7.57pp&  18.2\%& 0.17\\
+Income &    9.33pp&  17.5\%& 0.28 \\
+Sales &     10.4pp&  18.2\%& 0.31 \\
+Dividends & 9.71pp&  15.3\%& 0.35 \\
+Employment & 9.55pp& 18.6\%& 0.28\\
+Composite &  9.32pp& 17.2\%& 0.28 
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+
+\end{document}

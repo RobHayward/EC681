@@ -1,0 +1,895 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+%\usepackage{listing}
+\usepackage{amsmath}
+\usepackage{tikz}
+% This is for the two columns
+\usepackage[absolute, overlay]{textpos}
+\graphicspath{{../../Pictures/}}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+% Title and author information
+\title{Diversification}
+\author{Rob Hayward}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Introduction}
+Some fundamentals
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item \textbf{Diversification} seeks to reduce risk
+\pause
+\begin{block}{}
+\begin{quote}
+``Don't put all your eggs in one basket``
+\end{quote}
+\end{block}
+\pause
+\item this can refer to
+\begin{itemize}
+\item stocks
+\item assets
+\item countries
+\item currencies
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Risk aversion}
+We assume that investors are \emph{risk averse}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Therefore, investors will need an incentive to take more risk
+\item The greater the risk aversion, the greater the \emph{risk premium}
+\item The assumption can be questioned
+\begin{itemize}
+\item gambling
+\item meme stocks and bitcoin
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Expected value}
+The \emph{Expected value} is the most likely.
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item It is the one that has been seen the most in the past
+\item We usually take this as the \emph{mean value}
+\begin{itemize}
+\item it could be the median
+\item we may colour that with future expectations
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Mean return}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+<<BACH2, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5>>=
+BAC <- read.csv("../EMH/Data/BAC.csv")
+BAC$Date <- as.Date(BAC$Date, format = "%d/%m/%Y")
+colnames(BAC) <- c("Date", "Close")
+BAC <- BAC[rev(rownames(BAC)),]
+BACR <- diff(BAC$Close) / BAC$Close[-length(BAC$Close)]
+BAC <- cbind(BAC[-1,], BACR)
+hist(BAC$BACR, breaks = 10, ylab = "Frequency", col = "darkgreen", 
+     main = "Histogram of Bank of America returns", xlab = "BAC return")
+abline(v = mean(BAC$BACR, col = "black"), lwd = 3)
+@
+\end{column}
+\begin{column}{0.48\linewidth}
+\begin{block}{Mean}
+\begin{align*}
+\mu_{BACR} =& \frac{\sum_{t = 1}^T BACR_t}{T}\\
+=& \frac{\Sexpr{round(sum(BAC$BACR),4)}}{\Sexpr{length(BAC$BACR)}}\\
+=& \Sexpr{round(mean(BAC$BACR), 4)}
+\end{align*}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Diversification 1}
+\begin{columns}[T]
+\begin{column}{0.48\linewidth}
+No diversification
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Two assets (A) and (B)
+\item Two outcomes (50:50)
+\begin{itemize}
+\item Good (8\% return)
+\item Bad (4\% return)
+\end{itemize}
+\end{itemize}
+\end{column}
+\pause
+\begin{column}{0.48\linewidth}
+Diversification
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{lll}
+& Asset B &\\
+\hline
+Asset A & Good & Bad\\
+Good & 8 (1/4)& 6 (1/4)\\
+Bad & 6 (1/4) & 4 (1/4)
+\end{tabular}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Expected return}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\pause
+No diversification
+\begin{block}{}
+\begin{equation*}
+E[R_i] = \sum_{t=1}^T R_t/T
+\end{equation*}
+\end{block}
+\pause
+Refer to previous page
+\begin{block}{}
+\begin{align*}
+E[R_i] &= \frac{8 + 4}{2}\\
+&= 6
+\end{align*}
+\end{block}
+\end{column}
+\begin{column}{0.48\linewidth}
+\pause
+Diversification
+\begin{block}{}
+\begin{equation*}
+E[R_i] = \sum_{t=1}^T R_t/T
+\end{equation*}
+\end{block}
+\pause
+Refer to previous page
+\begin{block}{}
+\begin{align*}
+E[R_i] &= \frac{8 + 6 + 6 + 4}{4}\\
+&= 6
+\end{align*}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Expected risk}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\pause
+No diversification
+\begin{block}{}
+\begin{equation*}
+E[V_i] = \sum_{t=1}^T (R_t - \bar{R_i})^2/T
+\end{equation*}
+\end{block}
+\pause
+Refer to previous page
+\begin{block}{}
+\begin{align*}
+[E[V_i] &= (2^2 + -2^2)/2\\
+&= 4
+\end{align*}
+\end{block}
+\end{column}
+\begin{column}{0.48\linewidth}
+\pause
+Diversification
+\begin{block}{}
+\begin{equation*}
+E[V_i] = \sum_{t=1}^T (R_t - \bar{R_i})^2/T
+\end{equation*}
+\end{block}
+\pause
+Refer to previous page
+\begin{block}{}
+\begin{align*}
+E[R_i] &= \frac{2^2 + 0^2 + 0^2 - 2^2}{4}\\
+&= 2
+\end{align*}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Risk and return}
+<<rr, echo=FALSE, message=FALSE, warning=FALSE, fig.height=4.5>>=
+Risk <- c(2, 4)
+Return <- c(6, 6)
+plot(Risk, Return, ylim = c(0, 8), xlim = c(0, 5), pch = 3)
+text(2, 6, "Portfolio", pos = 1)
+text(4.5, 6, "No diversification", pos = 1)
+#text(0.172, 0.124, "Stocks", pos = 1)
+#text(0.167, 0.135, "Property", pos = 2)
+abline(a = 0.00, b = 1.5, col = "dark green")
+@
+\end{frame}
+
+\begin{frame}{Risk and return 2}
+<<rr1, echo=FALSE, message=FALSE, warning=FALSE, fig.height=4.5>>=
+Risk <- c(2, 4)
+Return <- c(6, 6)
+plot(Risk, Return, ylim = c(0, 8), xlim = c(0, 5), pch = 3)
+text(2, 6, "Portfolio", pos = 1)
+text(4.5, 6, "No diversification", pos = 1)
+#text(0.172, 0.124, "Stocks", pos = 1)
+#text(0.167, 0.135, "Property", pos = 2)
+abline(a = 2.00, b = 1.8, col = "dark green")
+@
+\end{frame}
+
+\begin{frame}{Covariance}
+Covariance measures the relationship between two variables
+\pause
+\begin{block}{}
+\begin{equation*}
+Cov_{a, b} = \sum_{t = 1}^{t = T}\frac{(a_t - \bar{a})(b_t - \bar{b})}{T}
+\end{equation*}
+\end{block}
+\pause
+Correlation is the same measure but from -1 to +1
+\begin{block}{}
+\begin{equation*}
+Corr_{a,b} = \frac{Cov_{a, b}}{Var(a)Var(b)}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Diversification 2: correlation = 1}
+\begin{columns}[T]
+\begin{column}{0.48\linewidth}
+Correlation equals 1
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Two assets (A) and (B)
+\item Two outcomes (50:50)
+\begin{itemize}
+\item Good (8\% return)
+\item Bad (4\% return)
+\end{itemize}
+\end{itemize}
+\end{column}
+\pause
+\begin{column}{0.48\linewidth}
+Diversification
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{lll}
+& Asset B &\\
+\hline
+Asset A & Good & Bad\\
+Good & 8 (1/2)& \\
+Bad &  & 4 (1/2)
+\end{tabular}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Diversification 3: correlation = -1}
+\begin{columns}[T]
+\begin{column}{0.48\linewidth}
+Correlation equals -1
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Two assets (A) and (B)
+\item Two outcomes (50:50)
+\begin{itemize}
+\item Good (8\% return)
+\item Bad (4\% return)
+\end{itemize}
+\end{itemize}
+\end{column}
+\pause
+\begin{column}{0.48\linewidth}
+Diversification
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{lll}
+& Asset B &\\
+\hline
+Asset A & Good & Bad\\
+Good & & 6 (1/2)\\
+Bad & 6 (1/2) & 
+\end{tabular}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Diversification 4}
+\begin{itemize}[<+-| alert@+>]
+\item So long as correlation is less than 1, there is some benefit from diversification
+\item Any negative correlation is really beneficial
+\item Examples
+\begin{itemize}
+\item Stocks vs bonds
+\item Umbrella and ice cream
+\item Value good, Liddle, public transport
+\item Negative income elasticity
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Modern Portfolio Theory 1}
+\begin{itemize}[<+-| alert@+>]
+\item Harry Markowitz (1952)
+\item Mathematical proof that diversification depends on only two things
+\begin{itemize}
+\item The \textbf{market portfolio} including all assets in the world weighted according to their \emph{capitalisation}
+\item The \textbf{risk free asset}
+\end{itemize}
+\pause
+\ Depends on the \textbf{Investment Universe}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{MPT}
+\begin{center}
+\begin{tikzpicture}
+\uncover<1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11>{
+%\draw [help lines] (0, 0) grid (10, 6);
+\draw [<->, thick] (0, 6) node (yaxis) [above] {$Return$} 
+  |- (10, 0) node (xaxis) [right] {$Risk$};
+}
+  \uncover<2, 3, 4, 5, 6, 7, 8, 9>{
+\draw [fill] (2, 1.8) circle [radius = 1.8pt];
+\node [below] at (2, 1.8) {A};
+\draw [fill] (4, 2.6) circle [radius = 1.8pt];
+\node [below] at (4, 2.6) {B};
+\draw [fill] (6, 3.4) circle [radius = 1.8pt];
+\node [below] at (6, 3.4) {C};
+\draw [fill] (8, 4.2) circle [radius = 1.8pt];
+\node [below] at (8, 4.2) {D};
+%\draw [teal, domain = 0:10] plot (\x, {1 + 0.4 * \x});
+}
+\uncover<3, 4, 5, 6, 7, 8, 9>{\draw [dashed] (2, 1.8) to [out = 50, in = 180] (4, 2.6);}
+\uncover<4, 5, 6, 7, 8, 9>{\draw [dashed] (6, 3.4) to [out = 50, in = 180] (8, 4.2);}
+\uncover<5, 6, 7, 8, 9>{\draw [dashed] (4, 2.6) to [out = 50, in = 180] (6, 3.4);}
+\uncover<6, 7, 8, 9>{
+  \draw [fill] (2.8, 2.4) circle [radius = 1.8pt];
+  \node [above] at (2.8, 2.4) {E};
+  \draw [fill] (4.8, 3.2) circle [radius = 1.8pt];
+  \node [above] at (4.8, 3.2) {F};
+  \draw [fill] (6.9, 4.1) circle [radius = 1.8pt];
+  \node [above] at (6.9, 4.1) {G};
+  }
+\uncover<7, 8, 9, 10, 11>{
+  \draw [dashed] (2.8, 2.4) to [out = 70, in = 180] (6.9, 4.1);
+  }
+\uncover<8, 9, 10, 11>{
+  \draw [fill] (4.4, 3.9) circle [radius = 1.8pt];
+}
+\uncover<9>{
+\node [above] at (4.4, 3.9) {H};
+}
+\uncover<10, 11>{
+  \node [left] at (0, 2.14) {Rf};
+ \draw [teal, domain = 0:9.65] plot (\x, {2.14 + 0.4 * \x});
+ \node [above] at (4.4, 3.9) {Market Portfolio};
+}
+\uncover<11>{
+\node [below] at (7, 6) {Capital Market Line};
+}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{Modern Portfolio Theory 2}
+There are two assets
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item \emph{The market portfolio}
+\begin{itemize}
+\item Composed of all the assets in the \emph{investment universe} weighted by their {market capitalisation}
+\item This depends on the investment universe
+\end{itemize}
+\item The risk-free asset
+\begin{itemize}
+\item Controversial: is anything risk-free?
+\item Government bond
+\item Treasury bill
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{MPT:2}
+\begin{center}
+\begin{tikzpicture}
+%\draw [help lines] (0, 0) grid (10, 6);
+\draw [<->, thick] (0, 6) node (yaxis) [above] {$Return$} 
+  |- (10, 0) node (xaxis) [right] {$Risk$};
+  \draw [dashed] (2.8, 2.4) to [out = 70, in = 180] (6.9, 4.1);
+  \draw [fill] (4.4, 3.9) circle [radius = 1.8pt];
+  \node [left] at (0, 2.14) {Rf};
+ \draw [teal, domain = 0:9.65] plot (\x, {2.14 + 0.4 * \x});
+ \node [above] at (4.4, 3.9) {Market Portfolio};
+\node [below] at (7, 6) {Capital Market Line};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{Modern Portfolio Theory}
+\begin{itemize}[<+-| alert@+>]
+\item Investment options
+\begin{itemize}
+\item Invest in the risk-free asset
+\item Invest in the market portfolio
+\item Invest in some combination of the two
+\item Borrow money at the risk-free rate and buy more of the market portfolio
+\end{itemize}
+\item Controversy
+\begin{itemize}
+\item Ability to borrow at risk-free rate
+\item Investments can be characterised by risk and return
+\item Securities are appropriately priced for risk and return
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A base portfolio}
+\begin{itemize}[<+-| alert@+>]
+\item The risk-free is probably cash
+\item The market could be stocks and bonds (60:40)
+\item The market may also include gold, oil and emerging markets
+\item What are the correct weights? 
+\item Do you want to deviate (underweight or overweight)? 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Correlation}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l p{1.29cm} p{1.29cm} p{1.4cm} p{1.3cm}}
+&US equity&UK equity& Emerg' equity& US bonds\\
+\hline
+US equity & 1.00& & & \\
+UK equity & 0.74 & 1.00& &  \\
+Emerging equity & 0.68& 0.56& 1.00& \\
+US bonds & -0.10 & -0.06 & -0.24 & 1.00\\
+\hline
+\end{tabular}
+Correlation matrix 1994:2003
+\end{frame}
+\end{document}
+% I have put this in to shorten the lesson
+\begin{frame}{ETF list}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l p{8cm} l}
+\textbf{Ticker} & \textbf{Description} & \textbf{Cost}\\
+\hline
+SPY & S\&P 500 index & 0.09\\
+TLT & 10-year plus government & 0.15\\ 
+EEM & MSCI emerging markets & 0.48\\
+GLD & Gold index & 0.40\\
+EWJ & MSCI Japan & 0.48\\
+XLK & Technology sector & 0.15\\
+LQD & Investment grade corporate bond & 0.15\\
+RSP & Equal-weight S\&P 500 & 0.48\\
+USO & US oil & 0.66\\
+QQQ & NASDAQ technology & 0.20\\
+BOND&  Pimco active bond investment & 0.55\\
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}{CAPM}
+William Sharpe adapted and simplified the idea to create the \textbf{Capital Asset Pricing Model}
+\begin{block}{}
+\begin{equation*}
+R_i - rf = \alpha + \beta(R_m - rf)
+\end{equation*}
+\end{block}
+\pause
+Where $R_i$ is the return on a particular asset; $R_m$ is the return on the \emph{market}, $rf$ is the risk-free rate; $\beta$ is the measure of risk and the relationship between the return on the security and the return on the market; $\alpha$ should be zero. 
+\end{frame}
+
+\begin{frame}{Practical issues}
+There are a number of practical issues with the implementation of CAPM
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item High beta do not always do better
+\item There are anomalies
+\begin{itemize}
+\item value
+\item growth
+\item size
+\end{itemize}
+\item Correlations change over time
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Other risk factors}
+A number of additional risk factors have been found
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Small cap companies} seem to generate high returns relative to their risk
+\item \emph{Value firm} appear to generate high returns relative to their risk
+\item \emph{Growth firms} appear to generate low returns relative to their risk
+\item There are other \emph{risk factors} or anomalies that we will return to later
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = OliveGreen] (2.5, 1.75) circle [radius = 0.05];
+%\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\pause
+\draw [fill = OliveGreen] (3.5, 2.5) circle [radius = 0.05];
+\node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
+\pause
+\draw [fill = OliveGreen] (1.5, 1.5) circle [radius = 0.05];
+\node at (1.5, 1.5) [left] {\scriptsize Value};
+\pause
+\draw [fill = OliveGreen] (3.5, 2.0) circle [radius = 0.05];
+\node at (3.5, 2.0) [right] {\scriptsize Growth};
+\end{tikzpicture}
+\end{frame}
+
+\section{Smart beta}
+%\begin{frame}{Criticisms of index investment}
+%There are a number of persistent criticisms of using traditional indices as the basis for investment
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item An index may not be available (non-investable)
+%\item Index investment impedes the process of \emph{price discovery}
+%\item Capitalisation-weighted indices are \textbf{NOT} equivalent to the \emph{market portfolio}
+%\begin{itemize}
+%\item weights must be increased as shares gain in price
+%\item causes investors to buy \emph{winning stocks} and sell \emph{losing stocks}
+%\item buy \emph{growth} and sell \emph{value}
+%\item overweight over-valued and under-weight undervalued
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}{Smart Beta}
+There are two types of Smart Beta:
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Take \emph{value-weighted} indices and weight them by some other measure
+\item Use risk \emph{factors} or anomalies 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamental indexation}
+\begin{textblock*}{3cm}(1cm, 1.5cm)
+\includegraphics[scale = 0.3]{RA}
+\end{textblock*}
+Research Affiliates is generally credited with introducing the first \emph{Smart Beta} fund 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Arnott, R., J. Hsu and P. Moore, \emph{Fundamental Indexation}, Financial Analysts Journal, 2005
+\item Fundamentally-weight index fund was launched in 2005. 
+\item \textbf{RAFI}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices}
+\begin{columns}{}
+\begin{column}{0.48\linewidth}
+\includegraphics[scale = 0.38]{Main-Street}
+\end{column}
+\begin{column}{0.47\linewidth}
+\includegraphics[scale = 0.18]{Wall-Street}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices}
+Arnott, Hsu and More tested a range of alternative (fundamental) weightings
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Book value
+\item Trailing 5-year average cash flow
+\item Trailing 5-year average revenue
+\item Trailing 5-year average gross sales
+\item Trailing 5-year average gross dividends
+\item Total employment
+\item Composite of book, cash-flow, sales and dividends (most widely available for most countries)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Details}
+\begin{itemize}[<+-| alert@+>]
+\item Compustat data from 1962 to 2004
+\item Portfolio re-balanced once a year (at end of year)
+\item Comparison of expansion and recession
+\item Comparison of rising and falling interest rate environments
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices: results}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l r r r}
+\textbf{Portfolio/index} & \textbf{1980s} & \textbf{1990s} & \textbf{2000-04}\\
+\hline
+S\&P 500 & 17.7\% & 18.6\% & -2.1\% \\
+Book & 18.3\%     & 17.1\% & 5.8\%\\
+Income & 19.0\%   & 17.7\% & 7.6\% \\
+Sales & 19.5\%    & 16.8\% & 8.7\% \\
+Dividends & 19.2\% & 15.4\% & 8.0\% \\
+Employment & 17.7\% & 15.7\% & 7.8\%\\
+Composite & 19.0\% & 16.6\% & 7.7\% 
+\end{tabular}
+\end{center}
+\end{table}
+Annualised returns by decade.  Arnott, Hsu and More (2005)
+\end{frame}
+
+\begin{frame}{Fundamentally-weighted index}
+\begin{itemize}[<+-| alert@+>]
+\item Is this \emph{data mining}?
+\begin{itemize}
+\item Based on fundamental measures of company size
+\item Results hold across decades 
+\item Results hold across expansions and contractions
+\item Results hold in rising and falling rate environment
+\end{itemize}
+\item Choosing individual value and growth companies is difficult
+\item Here \emph{market inefficiencies} are found on average
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{Advantages with additional return}
+%You have the advantages of the \emph{capitalisation-weighted} investment without the %costs
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item It is a passive strategy with natural re-weighting
+%\item Large stocks have the largest weight
+%\begin{itemize}
+%\item This means high liquidity and low trading costs
+%\end{itemize}
+%\item Correlation with the returns and volatility of the capitalisation-weighted index is %high
+%\end{itemize}
+%\end{frame}
+
+\section{Factor investment}
+\begin{frame}{Factor investment}
+Fundamentally-weighted indices would tend to pick up the value and growth anomalies: Ang, Goetzmann and Schaefer (2009)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item They may even pick up some of the small-cap anomaly
+\item Investors have sought to systematically capture others
+\begin{itemize}
+\item Momentum
+\item Low volatility 
+\item Quality
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%\begin{frame}{CAPM}
+%\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+%\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+%  |- (5, 0) node (xaxis) [right] {$Risk$};
+%\pause
+%\draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+%\draw [fill = OliveGreen] (2.5, 1.75) circle [radius = 0.05];
+%%\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+%\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+%\pause
+%\draw [fill = OliveGreen] (3.5, 2.5) circle [radius = 0.05];
+%\node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
+%\pause
+%\draw [fill = OliveGreen] (1.5, 1.5) circle [radius = 0.05];
+%\node at (1.5, 1.5) [left] {\scriptsize Value};
+%\pause
+%\draw [fill = OliveGreen] (3.5, 2.0) circle [radius = 0.05];
+%\node at (3.5, 2.0) [right] {\scriptsize Growth};
+%\end{tikzpicture}
+%\end{frame}
+
+\begin{frame}{Factor investment}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l r r }
+\textbf{Factor} & \textbf{What is it?} & \textbf{Metric} \\
+\hline
+Value & Cheap & Book-to-price\\
+Size & Small cap & Capitalisation\\
+Momentum & Past performance & Recent gains\\
+Low vol & Low risk & Standard deviation\\
+Dividend & High dividend & Dividend yield\\
+Quality & Robust & Debt or management\\
+\end{tabular}
+\end{center}
+\end{table}
+Most common factors, what they are and how they can be measured
+\end{frame}
+
+%\begin{frame}{Factor risks}
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%  \item \textbf{Value:} behavioural bias of pro-cyclical investment: De Bondt and Thaler (1985) and Fama French (1993)
+%\item \textbf{Growth:} behavioural bias of pro-cyclical investment: De Bondt and Thaler (1985) and Fama French (1993)
+%\item \textbf{Small cap:} increased risk of small firms, liquidity or access to funding: Fama French (1993)
+%\item \textbf{Momentum:} behavioural and institutional serial correlation: Jagadesh and Titman (1993)
+%\item \textbf{Volatility:} Black, Jensen and Scholes (1972)
+%\item \textbf{High dividend:}
+%\item \textbf{Quality:} 
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}{Results of factor investment}
+Investec analysis of following factors for S\&P 500 and MSCI EAFE (Dec 1991 to Dec 2015)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \textbf{Value:} 20\% of stocks with the lowest price-to-book ratio
+\item \textbf{Small tilt:} 20\% with smallest capitalisation
+\item \textbf{Momentum:} 20\% with the highest 12-month price return
+\item \textbf{Low volatility:} 20\% with the lowest 12-month realised volatility
+\item \textbf{Quality:} top 20\% of stocks with highest rating for return on equity, debt-to-equity and earnings variability
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results 1}
+Dec 1991 to Dec 2015
+%\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r }
+\textbf{Portfolio/index} & \textbf{Return} & \textbf{Risk-adjusted return} \\
+\hline
+S\&P 500        & 9.0\% &  0.6\\
+Quality         & 11.1\% & 0.8\\
+Value           & 10.6\% & 0.5\\
+Small tilt      & 13.9\% & 0.6\\
+Momentum        & 12.0\% & 0.8\\
+Low volatility &  10.5\% & 0.9\\
+\end{tabular}
+\end{center}
+\end{table}
+US stocks; risk-adjusted return is return per unit of volatility. Bender, Briand, Melas, Subramanian (2013)
+\end{frame}
+
+\begin{frame}{Results 2}
+Dec 1991 to Dec 2015
+%\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r }
+\textbf{Portfolio/index} & \textbf{Return} & \textbf{Risk-adjusted return} \\
+\hline
+MSCI EAFA        & 4.7\% &  0.3\\
+Quality         & 9.7\% & 0.7\\
+Value           & 9.5\% & 0.5\\
+Small tilt      & 7.9\% & 0.4\\
+Momentum        & 9.0\% & 0.6\\
+Low volatility &  10.0\% & 0.8\\
+\end{tabular}
+\end{center}
+\end{table}
+International stocks; risk-adjusted return is return per unit of volatility. Bender, Briand, Melas, Subramanian (2013).
+\end{frame}
+% Barra Risk models also include liquidity and growth but these do not 
+% produce excess retruns over the long-run. 
+% Do we use the next slide or put some of this information in the sliede above
+
+\section{Portfolio Construction}
+
+\begin{frame}{Portfolio construction}
+Portfolio construction
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Equal weights (50:50) of SPY and TLT
+\item No costs
+\item No re-balancing (they are 60:40 at the end)
+\begin{itemize}
+\item rebalancing will tend to improve returns as it will sell winners and buy losers
+\item rebalancing will increase costs
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Portfolio performance}
+<<port, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
+da <- read.csv('../../CamTrading/Data/port.csv')
+da$Date <- as.Date(da$Date, format = "%Y-%m-%d")
+plot(da$Date, da$rebasePort, type = 'l', xlab = "Date", ylab = "Re-based Value", 
+     main = "Portfolio Performance", ylim = c(90, max(da$rebasespy)))
+lines(da$Date, da$rebasetlt, col = 'DarkGreen')
+lines(da$Date, da$rebasespy, col = 'Brown')
+legend(inset = 0.03, 'topleft', c('Portfolio', 'TLT', 'SPY'), lty = 1, 
+       col = c("Black", "DarkGreen", "Brown"))
+@
+\end{frame}
+
+\begin{frame}{Relative Performance}
+% latex table generated in R 3.2.3 by xtable 1.8-2 package
+% Fri Feb  2 07:58:59 2018
+\begin{table}[ht]
+\centering
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{rrrrrr}
+  \hline
+ Asset & AnnRet & AnnVol & Sharpe & DailyMax & DailyMin \\ 
+  \hline
+SPY & 9.22 & 14.14 & 0.65 & 14.52 & -9.84 \\
+TLT & 7.56 & 13.54 & 0.56 & 5.17 & -5.04\\
+Port & 8.64 & 8.55 & 1.01 & 5.18 & -3.80\\
+   \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Adjusting portfolio weights}
+Some active management? 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The weights do not have to be 50:50
+\begin{itemize}
+\item Change to meet circumstances
+\item \emph{Market-timing} is not usually successful
+\end{itemize}
+\item Add other assets to the portfolio
+\begin{itemize}
+\item asset diversification: cash, commodities, real estate
+\item country diversification
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Market timing}
+When are stocks and bonds going to do well? 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Equity valuation
+\begin{itemize}
+\item earnings
+\item the business cycle
+\end{itemize}
+\item Bond valuation
+\begin{itemize}
+\item the real return (nominal less inflation expectation)
+\item the business cycle
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The assignment}
+\begin{itemize}[<+-| alert@+>]
+\item Does diversification reduce risk?
+\begin{itemize}
+\item Compare a diversified to non-diversified portfolio
+\item How is diversification carried out in practice
+\end{itemize}
+\item What is the market portfolio?
+\begin{itemize}
+\item \textbf{Exchange traded funds (ETF)}
+\item S\&P 500 index
+\item Diversification across asset classes, countries or currencies
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\end{document}

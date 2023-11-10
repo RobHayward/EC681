@@ -1,0 +1,997 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table,handout]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning}
+\usepackage[absolute, overlay]{textpos}
+\definecolor{MyBrown}{RGB}{180, 151, 90}
+\usepackage{multirow}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\graphicspath{{../../Pictures/}}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+%\usepackage{adjustbox}
+\tikzstyle{block} = [rectangle, rounded corners, minimum width=3cm, 
+  minimum height= 2cm, text centered, text width = 2.8cm, draw = black, fill = brown!20]
+\tikzstyle{shape1} = [circle, minimum width = 3.0cm, fill = brown!20, text centered, 
+text width = 1.4cm, draw = black]
+\tikzstyle{arrow} = [thick, ->, >=stealth]
+\tikzstyle{arrow2} = [thick, <->, >=stealth]
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=MyBrown]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+% Title and author information
+\title{Portfolio Construction and Asset Allocation Techniques}
+\author{Rob Hayward}
+\date{Jan 2019}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} 
+\tableofcontents
+\end{frame}
+
+\section{Modern portfolio theory}
+
+\begin{frame}{Harry Markowitz}
+\begin{center}
+\includegraphics[height = 3.0in]{markowitz}
+\end{center}
+\end{frame}
+
+\begin{frame}{William F. Sharpe}
+\begin{center}
+\includegraphics[height = 3.0in]{sharpe}
+\end{center}
+\end{frame}
+%\begin{frame}{Merton Miller}
+%\begin{center}
+%\includegraphics[height = 3.0in]{merton}
+%\end{center}
+%\end{frame}
+
+\begin{frame}{Modern Portfolio Theory}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[thick, color ={rgb: brown, 5; white, 1}] (1.0, 0.5) to [out = 120, in = 210] (2.0, 2.0) to [out = 25, in = 180] (5, 2.5);
+\pause
+\node at (1.0, 1.0) [right] {\scriptsize Efficient Frontier};
+\pause
+\node at (1.9, 2) [above left] {MP};
+\draw [fill = brown] (2, 2) circle [radius = 0.05];
+\pause
+\node at (0, 1) [left] {rf};
+\pause
+\draw[domain = 0.0:3.9, color = black] plot(\x, {1 + 0.5*\x});
+\pause
+  \node at (3.5, 2.65) [right] {\scriptsize Capital Market Line};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Modern Portfolio Theory}
+MPT: the \emph{market portfolio} is \emph{mean-variance optimal}
+\pause
+\vspace{1cm}
+\begin{block}{}
+Holding the market portfolio is the alternative to forecasting the expected returns and the expected covariances matrix for hundreds of assets
+\end{block}
+\end{frame}
+
+\begin{frame}{Some questions about MPT}
+Some questions about MPT
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The \emph{investment universe}
+\item The market portfolio
+\item Investors are risk-averse
+\item Expected vs historical record
+\item A mean-variance analysis
+\item Lack of transaction costs
+\item Risk free rate
+\item Stability of relationships
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Capital Asset Pricing Model}
+\emph{Capital Asset Pricing Model} (CAPM) is an important part of the MPT framework 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item There is an public equity risk premium
+\item Returns on individual securities are related to this risk premium
+\item Beta $(\beta)$ is the measure of this relationship
+\begin{itemize}
+\item Covariance of asset returns with market returns
+\end{itemize}
+\item High beta is high risk 
+\item Low beta is low risk
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\draw [domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+\pause
+\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Other risk factors}
+A number of additional risk factors have been found
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \emph{Small cap companies} seem to generate high returns relative to their risk
+\item \emph{Value firms} appear to create high returns relative to their risk
+\item \emph{Growth firms} deliver low returns relative to their risk
+\item There are other \emph{risk factors} or anomalies that we will return to later
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+%\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\pause
+\draw [fill = brown] (3.5, 2.5) circle [radius = 0.05];
+\node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
+\pause
+\draw [fill = brown] (1.5, 1.5) circle [radius = 0.05];
+\node at (1.5, 1.5) [left] {\scriptsize Value};
+\pause
+\draw [fill = brown] (3.5, 2.0) circle [radius = 0.05];
+\node at (3.5, 2.0) [right] {\scriptsize Growth};
+\end{tikzpicture}
+\end{frame}
+
+
+\section{Passive vs active investment}
+
+\begin{frame}{Economist and the one hundred dollar bill}
+\begin{center}
+\includegraphics[scale = 0.2]{oneHundredDollar}
+\end{center}
+\end{frame}
+
+\begin{frame}{Market efficiency}
+The Efficient Market Hypothesis 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item There are no \emph{systematic} deviations that allow \emph{supernormal profits} or returns that are more than just compensation for risk
+\item Suggests that any inefficiencies will be swiftly eliminated
+\item Are the anomalies or effects (value, growth etc) inefficiencies or risk factors? 
+	\begin{itemize}
+		\item think we have an anomaly but it is really risk
+		\item know we can bear risk so we can get more return
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Grossman and Stiglitz}
+\begin{block}{}
+The impossibility of informationally efficient markets
+\end{block}
+\begin{itemize}[<+-| alert@+>]
+\pause 
+\item There is a cost to acquiring information
+\item There is a tendency towards an equilibrium where the cost of acquiring information is equal to the benefit to be gained from that information
+\item The benefit is the excess return
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Active investment}
+Active funds try to take advantage of apparent inefficiencies.  There are a range of active funds:
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Hedge and other Alternative Investment vehicles
+\begin{itemize}
+\item employ a range of strategies to capture \emph{alpha} or to find \emph{absolute returns} that are not correlated highly with the market 
+\end{itemize}
+\item \emph{Value Investment}
+\begin{itemize}
+\item Benjamin Graham
+\item Warren Buffett
+\item Berkshire Hathaway
+\item Security selection
+\item Stock, bond, commodity or country
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Value Investment}
+\frametitle{Value investment}
+\begin{center}
+\includegraphics[height = 3.0in]{BGsmall}
+\end{center}
+\end{frame}
+
+
+\section{The ETF revolution}
+
+\begin{frame}{ETF growth}
+<<ETFG, fig.height=4.6, echo=FALSE, warning=FALSE>>=
+da <- read.csv('ETFsize.csv')
+barplot(names.arg = da$Year, height = da$X, xlab = "Date", main = "The Increase In ETF Assets 2003 to 2017", ylab = "bn", col = 'chocolate4')	
+@
+\end{frame}
+
+%\begin{frame}{Largest ETF funds}
+%\begin{table}
+%\begin{center}
+%\rowcolors{1}{MyBrown!20}{MyBrown!5}
+%\begin{tabular}{l r r r}
+%\textbf{Symbol} & \textbf{Name} & \textbf{AUM} & \textbf{Vol}\\
+%\hline
+%SPY & SPDR S\&P 500 & 282b & 60.2m\\
+%IVV & iShares core & 166b &  3.3m\\
+%VTI & Vanguard Total Stock & 107b & 2.1m\\
+%VOO & Vanguard S\&P 500 & 105b & 2.3m\\
+%QQQ & Invesco tech & 74m & 32b\\
+%VEA & Vanguard FT Developed & 71b & 8m\\
+%EFA & iShares MSCI EAFE & 59b & 21m\\
+%IEFA& iShares Core MSCI & 60b & 6m\\
+%VWO & Vanguard Emerging & 58b & 13m\\
+%\end{tabular}
+%\end{center}
+%\end{table}
+%June 2018
+%\end{frame}
+%
+\begin{frame}{Reasons for ETF growth}
+	Reasons for ETF growth
+	\pause
+\begin{itemize}[<+-| alert@+>]
+\item ETF are a response to increased doubts about the benefits of active fund management
+\begin{itemize}
+\item performance of active managers
+\item fees
+\end{itemize}
+	\item ETF are an efficient vehicle for retail and professional investors
+		\begin{itemize}
+     \item they allow cheap access to a wide variety of diversified investments
+			\item their liquidity allows institutions to take large positions even when underlying liquidity may be more limited
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Failure of active management}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Many studies find that active managers are not successful on average
+\begin{itemize}
+\item Malkiel (1995), Gruber (1996), Wermers (2000, 2003), and Jones
+and Wermers (2011)
+\item Morningstar: only 16.9\% of US large-growth managers were able to beat their passive counterparts over the 10 year period
+\end{itemize}
+\item Cost and fees are a major factor
+\item BIS only 8\% of European funds beat their benchmark in 2011-16
+\item There are exceptions
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Effective and efficient vehicle}
+	They provide the best of open-ended and close-ended funds:
+	\pause
+\begin{itemize}[<+-| alert@+>]
+			\item As an open-ended investment vehicle new shares can be created to ensure that ETF price is close to the Net Asset Value (NAV)
+			\item However, like closed-end funds, they can be traded continuously on the exchange rather that just at the end of the say like traditional open-ended funds
+			\item The structure means that dividends can be re-invested and shares can be lent to other institutions to enhance income
+		%\begin{itemize} 
+		%\item this is not the case with SPY which is set up as a mutual fund
+		%\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Other advantages}
+\begin{itemize}[<+-| alert@+>]
+	\item The basic model is easy to understand
+	\item They have expanded into international markets, industrial sectors and a bewildering variety of new areas (see below)
+	\item There can be a tax advantage
+	\item Costs are low
+	\item Cash drag is avoided
+	\item They can be sold short
+	\item The NAV is posted every 15 seconds in the US
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ETF list}
+\begin{table}
+\begin{center}
+\rowcolors{1}{MyBrown!20}{MyBrown!5}
+\begin{tabular}{l p{8cm} l}
+\textbf{Ticker} & \textbf{Description} & \textbf{Cost}\\
+\hline
+SPY & S\&P 500 index & 0.09\\
+TLT & 10-year plus government & 0.15\\ 
+EEM & MSCI emerging markets & 0.48\\
+GLD & Gold index & 0.40\\
+EWJ & MSCI Japan & 0.48\\
+XLK & Technology sector & 0.15\\
+LQD & Investment grade corporate bond & 0.15\\
+RSP & Equal-weight S\&P 500 & 0.48\\
+USO & US oil & 0.66\\
+QQQ & NASDAQ technology & 0.20\\
+BOND&  Pimco active bond investment & 0.55\\
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+	
+\begin{frame}{How they work}
+For the physical ETF
+\pause
+\begin{itemize}[<+-| alert@+>]
+	\item An \emph{Authorised Participant} will deliver the underlying assets to the ETF in exchange for \emph{creation units}
+		\begin{itemize}
+			\item Creation units tend to be in the region of 50,000 shares
+			\item They can be between 20,000 and 600,000
+		\end{itemize}
+	\item Retail and Institutional investors can then purchase the shares through the stock exchange
+	\item The AP can create or redeem shares if there is any divergence between the price of the ETF in the secondary market and the underlying asset value
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Different types}
+	There are two standard models of the ETF: 
+	\pause
+\begin{itemize}[<+-| alert@+>]
+	\item Physical ETF: the Authorised Participant will exchange underlying securities or assets for \emph{creation units} with the ETF sponsor
+		\begin{itemize}
+			\item these securities or assets form the assets of the ETF
+			\item the authorised participant can arbitrage the ETF and assets if there is a divergence in price
+		\end{itemize}
+	\item Synthetic ETF: the Authorised Participant will provide cash in exchange for shares
+		\begin{itemize}
+			\item the fund will use the money to purchase derivatives (usually swaps or futures) that will replicate the desired assets
+			\item structure is more complex but arbitrage may be easier
+			\item underlying assets are not held by the fund  
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Physical  ETF structure}
+%\resizebox{4cm}{!}{
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}
+\scope[shift = {(-6cm, -5.0cm)}, transform canvas={scale=0.9}]
+%  \draw[very thin, color = gray](0, 0) grid (12, 7);
+\node at (2, 2.5) (Stock Exchange) [block] {Stock Exchange};  
+\node at (10, 2.5) [block] {Retail and Institutional Investors};  
+\node at (2, 6.5) [block] {Authorised Participant};  
+\node at (10, 6.5) [block] {ETF};  
+% AP - stock exchange
+\draw [arrow2] (1, 3.5) -- node[left] {Cash} (1, 5.5);
+\draw [arrow2] (3, 5.5) -- node[right] {ETF} (3, 3.5);
+% Primary Market - creation
+\node at (6, 8.5) {\textbf{PRIMARY MARKET}}; 
+\node at (6, 8) {\textbf{Creation}}; 
+\draw [arrow] (3.6, 7) -- node[above] {Creation Unit} (8.4, 7);
+\draw [arrow] (8.4, 7.1) -- node[below] {Portfolio of Securities} (3.6, 7.1);
+% Primary market - redemption
+\node at (6, 5.1) {\textbf{Redemption}}; 
+\draw [arrow] (3.6, 6) -- node[above] {Creation Unit} (8.4, 6);
+\draw [arrow] (8.4, 5.9) -- node[below] {Portfolio of Securities} (3.6, 5.9);
+% Secondary Market
+\node at (6, 0.6) {\textbf{SECONDARY MARKET}}; 
+\draw [arrow2] (3.6, 2.5) -- node[above] {Cash} (8.4, 2.5);
+\draw [arrow2] (8.4, 2.0) -- node[below] {ETF} (3.6, 2.0);
+\endscope
+\end{tikzpicture}
+%\caption{\small{ETF: Primary and Secondary markets: Researve Bank of Australia (March 2011 Bulletin)}}
+\end{figure}
+\end{center}
+\end{frame}
+
+\begin{frame}{Synthetic ETF structure}
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}
+\scope[shift = {(-6cm, -4.8cm)}, transform canvas={scale=0.85}]
+% structure 
+%\draw[very thin, color = gray](0, 0) grid (12, 8);
+%\draw[dashed] (3, 1) -- (3, 8);
+%\draw[dashed] (9, 1) -- (9, 8);
+%\node at (2, 8) {Stage One};
+%\node at (6, 8) {Stage Two};
+%\node at (10, 8) {Stage Three};
+% main blocks
+\node at (6.2, 7.5) [block] {Swap Counterparty};  
+\node at (1, 4.3) [block] {Authorised Participant};  
+\node at (11.0, 5.0) [shape1]{Collateral Basket};
+\node at (6.2, 4.3) [block] {ETF};  
+%\node at (10, 1) [block] {Swap Counterparty 2};  
+\node at (6.2, 1.0) [block] {Retail and Institutional Investors};  
+\node at (1, 1.0) [block] {Exchange};  
+% the arrows
+% Interest rate swap
+\draw [arrow] (7.8, 4.1) -- node[below] {Cash} (9.5, 4.8);
+\draw [arrow] (9.5, 4.8) -- node[above right, text width=2cm, align=center] {Return on collateral} (7.8, 7.9);
+%\draw [arrow] (6, 6.0) -- node[left] {Variable rate cash} (6, 4.8);
+% Creatiom units 
+\draw [arrow] (4.6, 4.0) -- node[above, text width=2cm, align=center] {Index Return} (2.6, 4);
+\draw [arrow] (2.6, 3.8) -- node[below] {Cash} (4.6, 3.8);
+% AP arbitrage
+\draw [arrow2] (1, 2.0) -- node[left] {Cash} (1, 3.3);
+\draw [arrow2] (1.2, 2.0) -- node[right] {ETF} (1.2, 3.3);
+% Secondary market
+\draw [arrow2] (2.6, 1.2) -- node[above] {ETF} (4.6, 1.2);
+\draw [arrow2] (2.6, 0.8) -- node[below] {Cash} (4.6, 0.8);
+% Return swap
+%\draw [arrow] (7.5, 2.9) -- node[above right, distance = 2cm] {Variable rate cash} (10.1, 2.0);
+\draw [arrow] (6.5, 6.5) -- node[left] {Index return} (6.5, 5.3);
+\endscope
+\end{tikzpicture}
+%\caption{Synthetic ETF: Primary and Secondary markets: Researve Bank of Australia (March 2011 Bulletin)}
+\end{figure}
+\end{center}
+\end{frame}
+%
+
+\section{Factor investment}
+\begin{frame}{Criticisms of index investment}
+There are a number of persistent criticisms of using traditional indices as the basis for investment
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item An index may not be available (non-investable)
+\item Index investment impedes the process of \emph{price discovery}
+\item Capitalisation-weighted indices are \textbf{NOT} equivalent to the \emph{market portfolio}
+\begin{itemize}
+\item weights must be increased as shares gain in price
+\item causes investors to buy \emph{winning stocks} and sell \emph{losing stocks}
+\item buy \emph{growth} and sell \emph{value}
+\item overweight over-valued and under-weight undervalued
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Smart Beta}
+There are two types of Smart Beta:
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Take \emph{value-weighted} indices and weight them by some other measure
+\item Use risk \emph{factors} or anomalies 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamental indexation}
+%\begin{textblock*}{3cm}(1cm, 1.5cm)
+%\includegraphics[scale = 0.3]{RA}
+%\end{textblock*}
+Research Affiliates is generally credited with introducing the first \emph{Smart Beta} fund 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Arnott, R., J. Hsu and P. Moore, \emph{Fundamental Indexation}, Financial Analysts Journal, 2005
+\item Fundamentally-weight index fund was launched in 2005. 
+\item \textbf{RAFI}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices}
+\begin{columns}{}
+\begin{column}{0.48\linewidth}
+\includegraphics[scale = 0.38]{Main-Street}
+\end{column}
+\begin{column}{0.47\linewidth}
+\includegraphics[scale = 0.18]{Wall-Street}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices}
+Arnott, Hsu and More tested a range of alternative (fundamental) weightings
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Book value
+\item Trailing 5-year average cash flow
+\item Trailing 5-year average revenue
+\item Trailing 5-year average gross sales
+\item Trailing 5-year average gross dividends
+\item Total employment
+\item Composite of book, cash-flow, sales and dividends (most widely available for most countries)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Details}
+\begin{itemize}[<+-| alert@+>]
+\item Compustat data from 1962 to 2004
+\item Portfolio re-balanced once a year (at end of year)
+\item Comparison of expansion and recession
+\item Comparison of rising and falling interest rate environments
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices: results}
+\begin{table}
+\begin{center}
+\rowcolors{1}{MyBrown!20}{MyBrown!5}
+\begin{tabular}{l r r r }
+\textbf{Portfolio/index} & \textbf{1980s} & \textbf{1990s} & \textbf{2000-04}\\
+\hline
+S\&P 500 & 17.7\% & 18.6\% & -2.1\% \\
+Book & 18.3\%     & 17.1\% & 5.8\%\\
+Income & 19.0\%   & 17.7\% & 7.6\% \\
+Sales & 19.5\%    & 16.8\% & 8.7\% \\
+Dividends & 19.2\% & 15.4\% & 8.0\% \\
+Employment & 17.7\% & 15.7\% & 7.8\%\\
+Composite & 19.0\% & 16.6\% & 7.7\% 
+\end{tabular}
+\end{center}
+\end{table}
+Annualised returns by decade.  Arnott, Hsu and More (2005)
+\end{frame}
+
+\begin{frame}{Fundamentally-weighted index}
+\begin{itemize}[<+-| alert@+>]
+\item Is this \emph{data mining}?
+\begin{itemize}
+\item Based on fundamental measures of company size
+\item Results hold across decades 
+\item Results hold across expansions and contractions
+\item Results hold in rising and falling rate environment
+\end{itemize}
+\item Choosing individual value and growth companies is difficult
+\item Here \emph{market inefficiencies} are found on average
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison with capitalisation-weighted}
+You have the advantages of the \emph{capitalisation-weighted} investment without the costs
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item It is a passive strategy with natural re-weighting
+\item Large stocks have the largest weight
+\begin{itemize}
+\item This means high liquidity and low trading costs
+\end{itemize}
+\item Correlation with the returns and volatility of the capitalisation-weighted index is high
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison to capitalisation-weighed index (2000-04)}
+%\begin{center}
+\rowcolors{1}{MyBrown!20}{MyBrown!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r r}
+\textbf{Portfolio/index} & \textbf{Value-added} & \textbf{Std Dev} &  \textbf{Sharpe}\\
+\hline
+S\&P 500 & -0.43pp & 18.0\%& 0.27 \\
+Book &      7.57pp&  18.2\%& 0.17\\
+Income &    9.33pp&  17.5\%& 0.28 \\
+Sales &     10.4pp&  18.2\%& 0.31 \\
+Dividends & 9.71pp&  15.3\%& 0.35 \\
+Employment & 9.55pp& 18.6\%& 0.28\\
+Composite &  9.32pp& 17.2\%& 0.28 
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+\begin{frame}{Factor investment}
+Fundamentally-weighted indices would tend to pick up the value and growth anomalies: Ang, Goetzmann and Schaefer (2009)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item They may even pick up some of the small-cap anomaly
+\item Investors have sought to systematically capture others
+\begin{itemize}
+\item Momentum
+\item Low volatility 
+\item Quality
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CAPM}
+\begin{tikzpicture}[scale = 2] 
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
+  |- (5, 0) node (xaxis) [right] {$Risk$};
+\pause
+\draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
+\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+%\node at (2.5, 1.75) [above left] {$\beta$ = 1};
+\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
+\pause
+\draw [fill = brown] (3.5, 2.5) circle [radius = 0.05];
+\node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
+\pause
+\draw [fill = brown] (1.5, 1.5) circle [radius = 0.05];
+\node at (1.5, 1.5) [left] {\scriptsize Value};
+\pause
+\draw [fill = brown] (3.5, 2.0) circle [radius = 0.05];
+\node at (3.5, 2.0) [right] {\scriptsize Growth};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Factor investment}
+\begin{table}
+\begin{center}
+\rowcolors{1}{MyBrown!20}{MyBrown!5}
+\begin{tabular}{l r r }
+\textbf{Factor} & \textbf{What is it?} & \textbf{Metric} \\
+\hline
+Value & Cheap & Book-to-price\\
+Size & Small cap & Capitalisation\\
+Momentum & Past performance & Recent gains\\
+Low vol & Low risk & Standard deviation\\
+Dividend & High dividend & Dividend yield\\
+Quality & Robust & Debt or management\\
+\end{tabular}
+\end{center}
+\end{table}
+Most common factors, what they are and how they can be measured
+\end{frame}
+
+
+\begin{frame}{Factor risks}
+\begin{itemize}[<+-| alert@+>]
+\pause
+  \item \textbf{Value:} behavioural bias of pro-cyclical investment: De Bondt and Thaler (1985) and Fama French (1993)
+\item \textbf{Growth:} behavioural bias of pro-cyclical investment: De Bondt and Thaler (1985) and Fama French (1993)
+\item \textbf{Small cap:} increased risk of small firms, liquidity or access to funding: Fama French (1993)
+\item \textbf{Momentum:} behavioural and institutional serial correlation: Jagadesh and Titman (1993)
+\item \textbf{Volatility:} Black, Jensen and Scholes (1972)
+\item \textbf{High dividend:}
+\item \textbf{Quality:} 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results of factor investment}
+Investec analysis of following factors for S\&P 500 and MSCI EAFE (Dec 1991 to Dec 2015)
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \textbf{Value:} 20\% of stocks with the lowest price-to-book ratio
+\item \textbf{Small tilt:} 20\% with smallest capitalisation
+\item \textbf{Momentum:} 20\% with the highest 12-month price return
+\item \textbf{Low volatility:} 20\% with the lowest 12-month realised volatility
+\item \textbf{Quality:} top 20\% of stocks with highest rating for return on equity, debt-to-equity and earnings variability
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results 1}
+Dec 1991 to Dec 2015
+%\begin{center}
+\rowcolors{1}{MyBrown!20}{MyBrown!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r }
+\textbf{Portfolio/index} & \textbf{Return} & \textbf{Risk-adjusted return} \\
+\hline
+S\&P 500        & 9.0\% &  0.6\\
+Quality         & 11.1\% & 0.8\\
+Value           & 10.6\% & 0.5\\
+Small tilt      & 13.9\% & 0.6\\
+Momentum        & 12.0\% & 0.8\\
+Low volatility &  10.5\% & 0.9\\
+\end{tabular}
+\end{center}
+\end{table}
+US stocks; risk-adjusted return is return per unit of volatility. Bender, Briand, Melas, Subramanian (2013)
+\end{frame}
+
+\begin{frame}{Results 2}
+Dec 1991 to Dec 2015
+%\begin{center}
+\rowcolors{1}{MyBrown!20}{MyBrown!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r }
+\textbf{Portfolio/index} & \textbf{Return} & \textbf{Risk-adjusted return} \\
+\hline
+MSCI EAFA        & 4.7\% &  0.3\\
+Quality         & 9.7\% & 0.7\\
+Value           & 9.5\% & 0.5\\
+Small tilt      & 7.9\% & 0.4\\
+Momentum        & 9.0\% & 0.6\\
+Low volatility &  10.0\% & 0.8\\
+\end{tabular}
+\end{center}
+\end{table}
+International stocks; risk-adjusted return is return per unit of volatility. Bender, Briand, Melas, Subramanian (2013).
+\end{frame}
+% Barra Risk models also inclue liqudiity and growth but these do not 
+% produce excess retruns over the long-run. 
+% Do we use the next slide or put some of this information in the sliede abovve
+
+
+
+\begin{frame}{Fixed income}
+Enthusiasm for factor investment has spread from equities to other asset classes, including bonds
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Fama-French (1993) includes maturity and default risk factors for bonds
+\item However, of 573 funds in Morning Star Strategic Beta universe, only 19 are fixed income
+\item Bonds already have a layer of active investment (maturing bonds must be replaced)
+\item There is less reliable data for identifying factors
+\item Over-the-counter market makes pricing less reliable or transparent
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fixed income and capitalisation}
+Capitalisation is even more a problem with fixed income
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item GDP-weighted indices compared to market-capitalisation
+\item Research Affiliates also have
+\begin{itemize}
+\item population
+\item land area
+\item energy consumption
+\end{itemize}
+\item Lower liquidity may reduce the frequency of rebalancing 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamental factors}
+These are for government and corporate sectors
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Government 
+\begin{itemize}
+\item deficit-to-GDP
+\item debt-to-GDP
+\item demographics and political stability
+\end{itemize}
+\item Corporate 
+\begin{itemize}
+\item free cash flow 
+\item leverage
+\end{itemize}
+\item equity-like factors
+\begin{itemize}
+\item Value, size, momentum, volatility, quality
+\end{itemize}
+\item Other
+\begin{itemize}
+\item term, liquidity, credit 
+\end{itemize}  
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Flows to bond ETFs}
+Though lagging equities, increased money has been drawn into bond ETFs this year.  According to Morningstar 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Bond ETFs attracted \$66.8bn of new business in the first 6 months of 2018 (ETFGI)
+\item Bond ETFs attracted \$142bn in 2017 (\$117bn in 2016) 
+\item Rising rate environment is challenging
+\item There remains interest in floating rate, short maturity and emerging market bond ETFs
+\item High yield bonds are less attractive
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Criticisms of Factor investment}
+There are a number of criticism of Smart Beta 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Data mining
+\item Exploitation of the inefficiency should remove that inefficiency
+\item Factors depend on underlying economic conditions
+\item Factors can become crowded or expensive 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Torture the data until it speaks}
+\begin{center}
+\includegraphics[height = 3.0in]{torture}
+\end{center}
+\end{frame}
+
+\begin{frame}{But...}
+Behavioural studies find that it is natural to seek patterns
+\pause
+\vspace{1cm}
+\begin{block}{}
+Even when they do not exist!
+\end{block}
+\end{frame}
+
+\begin{frame}{Patterns emerge}
+\begin{center}
+\includegraphics[scale = 0.35]{jesus-clouds}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Increased efficiency}
+R. Arnott studied performance of factors before and after publication
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item 8 published factors since 1967
+\item Return of 5.8\% before publication
+\item Return of 2.6\% after publication
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Economist and the one hundred dollar bill}
+\begin{center}
+\includegraphics[scale = 0.2]{oneHundredDollar}
+\end{center}
+\end{frame}
+
+%\begin{frame}{Factors are expensive}
+%A study carried out by Research Affiliates in 2015 found that factors were \emph{expensive}
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item Assess whether factors are expensive or cheap by measuring the price-to-book ratio
+%\item Compare the value (price-to-book) vs 5 year returns
+%\item Find the current valuation
+%\item Coefficient measures the relationship between returns and valuation
+%\item Changes in recent years may be driven by valuation
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Factor value}
+%\begin{table}
+%\begin{center}
+%\rowcolors{1}{MyBrown!20}{MyBrown!5}
+%\begin{tabular}{l  p{2.3cm} r}
+%\textbf{Testing} & \textbf{Coefficient} & \textbf{Current value}\\
+%\hline
+%Value vs growth & -1.9\%* & Cheap\\
+%Capitalisation & -0.72\%* & Mid\\
+%Momentum & -0.34\%* & Cheap\\
+%Liquidity & -0.45\%* & Expensive\\ 
+%Beta & -0.00 & Cheap\\
+%Profitable & -0.35\%* & Expensive\\
+%\end{tabular}
+%\end{center}
+%\end{table}
+%Factor valuation vs following 5-year returns.  1967-2015.  R. Arnott, N. Beck, V. Kalesnik and J. West, Feb 2016.  
+%* Statistically significant
+%\end{frame}
+%
+
+\begin{frame}{Fickle factors?}
+	What is the source or the factor \emph{excess return}?
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Inefficiency
+		\begin{itemize}
+			\item behavioural
+			\item institutional 
+		\end{itemize}
+	\item Risk
+		\begin{itemize}
+			\item hidden risk not captured by standard deviation or other quantitative measures
+			\item \emph{Crash risk} for example
+			\item risk that can be safely managed
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{References}
+\begin{frame}{References}
+\begin{itemize}
+	\item Markowitz, (1952), Portfolio Selection, The Journal of Finance, 7, 1, 77-91
+	\item Sharpe, (1964), Capital Asset Prices: A Theory of Market Equilibrium Under Conditions of Risk, Journal of Finance, 19, 3, 425-442
+	\item Grossman and Stiglitz, (1980), On the Impossibility of Informationally Efficient Markets, American Economic Review, 70, 3, 393-408
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+\begin{itemize}
+\item Reserve Bank of Australia, ETF Review, Economic Bulletin, March 2011
+\item Findings Regarding the Market Events of May 6 2010: Report of the Staffs of CFTC and SEC to Joint Advisory Committee of Emerging Regulatory Issues. Sep 30 2010
+Malkiel (1995), Gruber (1996), Wermers (2000, 2003), and Jones
+and Wermers (2011)
+\item Ben-David, Franzoni and Moussawi, (2017), Exchange Traded Funds, NBER Working Paper 22829
+\item Charupat and Miu, (2011), The Pricing and Performance of Leveraged Exchange Traded Funds, Journal of Banking and Finance, 35, 966-977
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+\begin{itemize}
+\item L.F. Ackert and Y.S. Tian, 2008, Arbitrage, Liquidity and Valuation of Exchange Traded Funds, Financial Markets, Institutions and Instruments, 17, 5, 331-363 
+\item Bond and Garcis, (2016), The Equilibrium of Indexing, University of Washington Working Paper 
+\item Israeli, Lee and Shrindharan, (2017), Is there a Dark Side to ETF? An Information Perspective, Review of Accounting Studies, 22, 3, 1048-1083
+\item Glosten, Hallareddy and Zou,  (2016), ETF Trading and Informational Efficiency of Underlying Securities, Duke University Working Paper)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+\begin{itemize}
+\item Wermers and Xue, (2015), Intra-day ETF Trading and the Volatility of the Underlying, University of Maryland Working Paper 
+\item Malkiel, (1995), A Random Walk Down Wall Street
+\item Gruber, (2011), Another Puzzle: The Growth in Actively Managed Funds, Investments and Portfolio Performance, 117-144
+\item Wermers, (2011), Active Management in Mostly Efficient Markets, Financial Analysts Journal, 67, 6, 29-45
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References and further reading}
+\begin{itemize}
+\item Ang, A, W.N. Goetmann and S.M. Schaefer (2009), "Evaluation of Active Management of the Norwegian Government Pension Fund",
+
+\item Arnott, R,. J.C. Hsu and Philip Moore (2005, "Fundamental Indexation", Financial Analysts Journal", Vol 61 No. 2. pp 83-89
+
+\item Bender J., R. Briand, D. Melas, R. Subramanian, (2013), 'Foundations for Factor Investing", MSCI Research Insight. 
+
+\item Black, F., M. Jense, M. Scholes, (1972), "The Capital Asset Pricing Model: Some Empirical Tests", In Studies in the Theory of Capital Markets, edited by M. Jensen, NY Praeger
+
+\item Dalio, R., B. Prince, G. Jensen, "Our Thoughts about Risk Parity and All Weather, Bridgewater Daily Observations" September 16 2015.
+
+\item De Bondt, W. R. Thaler, (1995), "Does the Stock Market Overreact?", Journal of Finance, vol 40, No 3, 793-803 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References cont.}
+\begin{itemize}
+\item Fama E.F, K.R. French, (1992), "The Cross Section of Expected Stock Returns", Journal of Finance, 47, 427-465
+
+\item Fama E.F, K.R. French, (1993), "Common Risk Factors in the Returns on Stock and Bonds", Journal of Finance, 53, 1131-1147
+
+\item Jagadesh N., S. Titman, (1993), "Returns to Buying Winners and Selling Losers: Implications for Stock Market Efficiency", Journal of Finance, Vol 48, No, 1, 65 -  91
+
+\item Kroencke, T., M. Shmeling, A. Schrimpf, "Global Asset Allocation Shifts", BIS Working Paper No. 497, March 2015
+
+\item Malkiel B., (1995), "Returns from Investing in Equity Mutual Funds 1971 to 1991", Journal of Finance, 50, 549-572
+
+\item Podkaminer, E. (2013), Risk Factors as Building Blocks for Portfolio Diversification: the Chemistry of Asset Allocation, CFA Institute. 
+
+\item Ross, S. (1976), "The Arbitrage Theory of Capital Asset Pricing", Journal of Economic Theory, 13 (3), 341-360
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+	\begin{itemize}
+		\item Marcelo, Quiros and Martins, (2013), "The Role of Industry Factors During Volatile Times", Journal of International Financial Markets, Institutions and Money, 26, 273-290
+		\item Coeurbacier and Rey (2011)
+	\item Mishra (2012)
+	\item Berger and Warnock (2003)
+	\item Polwitoon and Tawatnuntachai (2006)
+	\item French and Poterba, (1991), Diversification and International Equity Markets, The American Economic Review, 81, 2, 222-226
+	\end{itemize}
+	\end{frame}
+
+\begin{frame}{Reading}
+\begin{center}
+\includegraphics[height = 3.0in]{factorbook}
+\end{center}
+\end{frame}
+
+
+\end{document}
+
+
