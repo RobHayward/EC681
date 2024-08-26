@@ -1,0 +1,91 @@
+---
+title: "US stocks, US bonds"
+author: "Rob Hayward"
+output: 
+  html_document: 
+    theme: cerulean
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+At the core of a diversified portfolio is a mixture of stocks and bonds. This is an exercise to make a **recommendation about allocations to stocks and bonds** over the coming week (11th to 15th December).
+
+This analysis of will use a combination of fundamental and technical analysis to make a short-term assessment of the outlook for US stocks and bonds.
+
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.height=4.6, fig.cap="Figure 1: US Stock Performance", results='hide'}
+require(quantmod)
+require(quantmod)
+getSymbols('SPY')
+getSymbols('TLT')
+# combine and turn into dataframe
+```
+```{r, message=FALSE, echo=FALSE, warning=FALSE, fig.height=4.6, fig.cap="Figure 1: US Stock Performance"}
+da <- data.frame(cbind(SPY$SPY.Adjusted, TLT$TLT.Adjusted))
+colnames(da) <- c("SPY", "TLT")
+# Create a variables for the dates
+Dates <- as.Date(rownames(da), format = "%Y-%m-%d")
+graphics::plot(Dates, da$SPY, main = "Performance of US Stocks (2007-2023", type = 'l',  xlab = 'Date', ylab = 'Price')
+```
+
+
+```{r, echo=FALSE,message=FALSE,warning=FALSE,fig.height=4.6, fig.cap="Figure 2: US Bond Performance"}
+graphics::plot(Dates, da$TLT, main = "Performance of US Bonds (2007-2023)", type = 'l', xlab = 'Date', ylab = 'Price')
+```
+
+# Fundamental analysis
+
+## Equity analysis
+
+As equities give a share of corporate profits, the value of SPY will be determined by the future outlook for the profits of the S&P 500. Therefore, the following factors are likely to be positive for the SPY.
+
+-   Strong economic growth
+-   Business friendly regulation
+-   Lower interest rates
+
+The moderation in US inflation and the rising expectation that US interest rates will fall has been positive for US stocks in the last couple of months.
+
+## Bond analysis
+
+Bonds or fixed income provide a stated return each year and a a fixed amount on the date that the bond matures or is paid back.  As a result, bonds are very sensitive to inflation as that will erode the value of the money to be received.
+
+Bond yields have fallen this year as inflation and interest rate expectations have moved lower. 
+
+### Task 1
+
++ Go to Bloomberg and find out about the economic surprises in the last week. Which figures are most important?  Write a brief comment on the current market sentiment.  
+
++ Check the releases that will happen in the week ahead. Identify the most important and make some comments about what is expected to happen and what this means for US stocks and bonds.
+
+### Task 2
++ Check Last weeks stock and bond reaction to the economic news.  Does it make sense?  Try to find out what market professionals are saying about the action? 
+
+## Technical analysis
+
+Technical analysis is about finding trends and identifying when trends are likely to change.  There are a wide range of tools that can be used.  
+
+### Task 3
++ Find the main trend for stocks and bonds (last 10 years); find the recent trend (last year).  Comment. 
+  
++ Look for any evidence that the trend has changed (use momentum or trendlines)
+
+## Trading
+
+Trading (particularly in the short term) is about timing.  This is where technical analysis can be important.  
+
+### Task 4
+
++ Identify key levels of support and resistance for stocks and bonds. 
+
++ Look for Fibonacci levels for stocks and bonds
+
+## Reporting
+
+### Task 5
+
++ Put all the elements that you have collected into a one page report. 
+
++ The report should recommendations (buy/sell or overweight/underweight).   You should also report levels to buy/sell and levels to stop-loss and take-profit. 

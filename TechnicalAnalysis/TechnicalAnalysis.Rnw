@@ -157,7 +157,7 @@ Otherwise, there are doubts
 \begin{frame}{SP 500}
 <<hlc, echo = FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
 library(tseries)
-da <- read.csv("../BehaviouralFinance/Data/GSPC.csv")
+da <- read.csv("../../Data/GSPC.csv")
 da$Date <- as.Date(da$Date, format = "%d/%m/%Y")
 da1 <- da[(da$Date  > as.Date("2014-12-25", format = "%Y-%m-%d") 
               & da$Date < as.Date("2015-02-15", format = "%Y-%m-%d")),]
@@ -320,7 +320,7 @@ abline(h = -1, col = 'red', lty = 2)
 \begin{frame}{SP 500}
 <<hlc1, echo = FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
 library(tseries)
-da <- read.csv("../BehaviouralFinance/Data/GSPC.csv")
+da <- read.csv("../../Data/GSPC.csv")
 da$Date <- as.Date(da$Date, format = "%d/%m/%Y")
 da1 <- da[(da$Date  > as.Date("2014-12-25", format = "%Y-%m-%d") 
               & da$Date < as.Date("2015-02-15", format = "%Y-%m-%d")),]

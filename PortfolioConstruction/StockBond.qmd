@@ -1,0 +1,35 @@
+---
+title: "SPY TLT Analysis"
+author: "Rob"
+format: html
+editor: visual
+---
+
+# Introduction
+
+At the core of a diversified portfolio is a mixture of stocks and bonds. The 60:40 portfolio is a standard portfolio.
+
+This analysis of will use a combination of fundamental and technical analysis to make a short-term assessment of the outlook for US stocks and bonds.
+
+# Fundamental analysis
+
+## Equity analysis
+
+As equities give a share of corporate profits, the value of SPY will be determined by the future outlook for the profits of the S&P 500. Therefore, the following factors are likely to be positive for the SPY.
+
+-   Strong economic growth
+-   Business friendly regulation
+-   Lower interest rates
+
+The moderation in US inflation and the rising expectation that US interest rates will fall has been positive for US stocks in the last couple of months.
+
+## Task 1
+>> Go to Bloomberg and find out about the economic suprises in the last week.  Which figures are most important
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+require(quantmod)
+
+```
+
