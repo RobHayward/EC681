@@ -21,7 +21,7 @@
 % Title and author information
 \title{Financial Institutions}
 \author{Rob Hayward}
-\date{Oct 2023}
+\date{Oct 2024}
 
 \begin{document}
 
@@ -50,72 +50,6 @@ A major issue in finance is the imbalance of information
 \item \emph{Moral hazard}
 \item \emph{Adverse selection}
 \item \emph{Regulation}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{EMH}
-\includegraphics[scale = 0.2]{oneHundredDollar}
-\end{frame}
-
-\begin{frame}{Firm types}
-\begin{table}
-\begin{center}
-\begin{tabular}{l r r}
-Type & Access to finance & Agency risk\\
-\hline
-Sole proprietorship & Limited & None \\
-Partnership & Limited & Low \\
-Private firm & Variable & High \\
-Public firm & Large & High \\
-\hline
-\end{tabular}
-\end{center}
-\caption{Firm types}
-\end{table}
-\pause 
-There are also joint ventures, cooperatives, open-source communities and Decentralised Autonomous Organisations (DAO)
-\end{frame}
-
-\begin{frame}{Access to finance}
-\includegraphics[scale = 3]{Apocalypse_Now_poster}
-\end{frame}
-
-\begin{frame}{BoE Research}
-\begin{block}{}
-Small business need funds but have
-\begin{itemize}
-\item No record
-\item No business assets
-\end{itemize}
-\end{block}
-\vspace{3pt}
-\pause
-\includegraphics[scale=0.5]{house}
-\pause
-\href{https://bankunderground.co.uk/2018/05/25/home-grown-financing-how-small-business-owners-use-their-own-houses-to-support-investment/}{BoE research}
-\end{frame}
-
-\begin{frame}{House as Collateral}
-Research plan
-\begin{itemize}[<+-| alert@+>]
-\pause
-\item Directors and home address at Companies House
-\item Land registry
-\item Firm investment
-\end{itemize}
-\end{frame}
-
-\begin{frame}{House as collateral}
-Research findings
-\begin{itemize}[<+-| alert@+>]
-\pause 
-\item Half SME (less than 250 employees) is financed using personal house as collateral
-\item Value of house determine investment 
-\begin{itemize}
-\item 10\% rise in house leads to 2.8\% increase in investment
-\item 10\% rise i house leads to a 0.8\% rise in wages paid
-\end{itemize}
-\item Directors have a personal liability
 \end{itemize}
 \end{frame}
 
@@ -235,9 +169,9 @@ There are a wide range of different types of fund
 \begin{itemize}[<+-| alert@+>]
 \item Pension funds
 \item Insurance funds
-\item Mutual funds
+\item Mutual funds or ETF
 \item Hedge funds
-\item Private equity (Soft Bank)
+\item Private equity (Soft Bank and Apollo)
 \end{itemize}
 \end{frame}
 

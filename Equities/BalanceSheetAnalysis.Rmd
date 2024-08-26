@@ -1,0 +1,32 @@
+---
+title: "Corporate Analysis"
+author: "Rob Hayward"
+date: "2023-12-12"
+output: html_document
+---
+# Corporate analysis
+
+This is an exercise to estiate the value of a firm.  The end product should be firm analysis.  The report will be produced using Bloomberg Analytics. We will move from the economy to the firm. 
+
+## The steps
+
++ Chose a firm to analyse. 
+
++ Get the income statement from Bloomberg.  You can use the \textbf{FA} function.  Download the data to excel. 
+
++ You will have forecasts for 2024 and 2025.  Consider the forecast growth rate of revenues and costs.  Do these feel realistic?  How do we know?  
+
++ Look down at the EPS (lines 53 to 55).  Use the current share price to calculate the PE ratio (you can compare this with the one on the \textbf{DES} page).  
+
++ Calculate the forward PE ratio.  Calculate the share price that would maintain the current PE ratio give the EPS estimates.  Calculate the capital gains that you would receive in this case.  
+
++ 
+
++ G
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
