@@ -6,17 +6,24 @@
 \usepackage{caption}
 \usepackage{tikz}
 \usetikzlibrary{arrows,positioning}
-\usepackage[absolute, overlay]{textpos}
-\definecolor{MyBrown}{RGB}{180, 151, 90}
+\usetikzlibrary{shapes.geometric, arrows}
+%\usepackage[absolute, overlay]{textpos}
+%\definecolor{MyBrown}{RGB}{180, 151, 90}
 %\usepackage{multirow}
-\usepackage[comma, sort&compress]{natbib}
-\usepackage{graphicx}
-\graphicspath{{../Pictures/}}
+%\usepackage[comma, sort&compress]{natbib}
+%\usepackage{graphicx}
+\graphicspath{{../../Pictures/}}
 \usepackage{amsmath}
-\bibliographystyle{agsm}
+%\bibliographystyle{agsm}
 % Specify base color
 \usecolortheme[named=OliveGreen]{structure}
 % See http://goo.gl/p0Phn for other colors
+\tikzstyle{block} = [rectangle, rounded corners, minimum width=3cm, 
+  minimum height= 2cm, text centered, text width = 2.8cm, draw = black, fill = OliveGreen!20]
+\tikzstyle{shape1} = [circle, minimum width = 3.0cm, fill = OliveGreen!20, text centered, 
+text width = 1.4cm, draw = black]
+\tikzstyle{arrow} = [thick, ->, >=stealth]
+\tikzstyle{arrow2} = [thick, <->, >=stealth]
 
 % Specify other colors and options as required
 \setbeamercolor{alerted text}{fg=Maroon}
@@ -34,9 +41,9 @@
 
 \begin{document}
 % Title and author information
-\title{Smart beta and portfolio construction}
+\title{Factor Investment}
 \author{Rob Hayward}
-\date{Feb-2018}
+\date{October 2024}
 
 \begin{frame}
 \titlepage
@@ -284,7 +291,35 @@ International stocks; risk-adjusted return is return per unit of volatility. Ben
 % produce excess retruns over the long-run. 
 % Do we use the next slide or put some of this information in the sliede abovve
 
-\section{Portfolio Construction}
+\section{ETF}
+\begin{frame}{Reasons for ETF growth}
+	Reasons for ETF growth
+	\pause
+\begin{itemize}[<+-| alert@+>]
+\item ETF are a response to increased doubts about the benefits of active fund management
+\begin{itemize}
+\item performance of active managers
+\item fees
+\end{itemize}
+	\item ETF are an efficient vehicle for retail and professional investors
+		\begin{itemize}
+     \item they allow cheap access to a wide variety of diversified investments
+			\item their liquidity allows institutions to take large positions even when underlying liquidity may be more limited
+		\end{itemize}
+\end{itemize}
+\end{frame}\begin{frame}{How they work}
+For the physical ETF
+\pause
+\begin{itemize}[<+-| alert@+>]
+	\item An \emph{Authorised Participant} will deliver the underlying assets to the ETF in exchange for \emph{creation units}
+		\begin{itemize}
+			\item Creation units tend to be in the region of 50,000 shares
+			\item They can be between 20,000 and 600,000
+		\end{itemize}
+	\item Retail and Institutional investors can then purchase the shares through the stock exchange
+	\item The AP can create or redeem shares if there is any divergence between the price of the ETF in the secondary market and the underlying asset value
+\end{itemize}
+\end{frame}
 \begin{frame}{ETF list}
 \begin{table}
 \begin{center}
@@ -308,6 +343,104 @@ BOND&  Pimco active bond investment & 0.55\\
 \end{table}
 \end{frame}
 
+\begin{frame}{Different types}
+	There are two standard models of the ETF: 
+	\pause
+\begin{itemize}[<+-| alert@+>]
+	\item Physical ETF: the Authorised Participant will exchange underlying securities or assets for \emph{creation units} with the ETF sponsor
+		\begin{itemize}
+			\item these securities or assets form the assets of the ETF
+			\item the authorised participant can arbitrage the ETF and assets if there is a divergence in price
+		\end{itemize}
+	\item Synthetic ETF: the Authorised Participant will provide cash in exchange for shares
+		\begin{itemize}
+			\item the fund will use the money to purchase derivatives (usually swaps or futures) that will replicate the desired assets
+			\item structure is more complex but arbitrage may be easier
+			\item underlying assets are not held by the fund  
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+  
+\begin{frame}{Physical  ETF structure}
+%\resizebox{4cm}{!}{
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}
+\scope[shift = {(-6cm, -5.0cm)}, transform canvas={scale=0.9}]
+%  \draw[very thin, color = gray](0, 0) grid (12, 7);
+\node at (2, 2.5) (Stock Exchange) [block] {Stock Exchange};  
+\node at (10, 2.5) [block] {Retail and Institutional Investors};  
+\node at (2, 6.5) [block] {Authorised Participant};  
+\node at (10, 6.5) [block] {ETF};  
+% AP - stock exchange
+\draw [arrow2] (1, 3.5) -- node[left] {Cash} (1, 5.5);
+\draw [arrow2] (3, 5.5) -- node[right] {ETF} (3, 3.5);
+% Primary Market - creation
+\node at (6, 8.5) {\textbf{PRIMARY MARKET}}; 
+\node at (6, 8) {\textbf{Creation}}; 
+\draw [arrow] (3.6, 7) -- node[above] {Creation Unit} (8.4, 7);
+\draw [arrow] (8.4, 7.1) -- node[below] {Portfolio of Securities} (3.6, 7.1);
+% Primary market - redemption
+\node at (6, 5.1) {\textbf{Redemption}}; 
+\draw [arrow] (3.6, 6) -- node[above] {Creation Unit} (8.4, 6);
+\draw [arrow] (8.4, 5.9) -- node[below] {Portfolio of Securities} (3.6, 5.9);
+% Secondary Market
+\node at (6, 0.6) {\textbf{SECONDARY MARKET}}; 
+\draw [arrow2] (3.6, 2.5) -- node[above] {Cash} (8.4, 2.5);
+\draw [arrow2] (8.4, 2.0) -- node[below] {ETF} (3.6, 2.0);
+\endscope
+\end{tikzpicture}
+%\caption{\small{ETF: Primary and Secondary markets: Researve Bank of Australia (March 2011 Bulletin)}}
+\end{figure}
+\end{center}
+\end{frame}
+
+\begin{frame}{Synthetic ETF structure}
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}
+\scope[shift = {(-6cm, -4.8cm)}, transform canvas={scale=0.85}]
+% structure 
+%\draw[very thin, color = gray](0, 0) grid (12, 8);
+%\draw[dashed] (3, 1) -- (3, 8);
+%\draw[dashed] (9, 1) -- (9, 8);
+%\node at (2, 8) {Stage One};
+%\node at (6, 8) {Stage Two};
+%\node at (10, 8) {Stage Three};
+% main blocks
+\node at (6.2, 7.5) [block] {Swap Counterparty};  
+\node at (1, 4.3) [block] {Authorised Participant};  
+\node at (11.0, 5.0) [shape1]{Collateral Basket};
+\node at (6.2, 4.3) [block] {ETF};  
+%\node at (10, 1) [block] {Swap Counterparty 2};  
+\node at (6.2, 1.0) [block] {Retail and Institutional Investors};  
+\node at (1, 1.0) [block] {Exchange};  
+% the arrows
+% Interest rate swap
+\draw [arrow] (7.8, 4.1) -- node[below] {Cash} (9.5, 4.8);
+\draw [arrow] (9.5, 4.8) -- node[above right, text width=2cm, align=center] {Return on collateral} (7.8, 7.9);
+%\draw [arrow] (6, 6.0) -- node[left] {Variable rate cash} (6, 4.8);
+% Creatiom units 
+\draw [arrow] (4.6, 4.0) -- node[above, text width=2cm, align=center] {Index Return} (2.6, 4);
+\draw [arrow] (2.6, 3.8) -- node[below] {Cash} (4.6, 3.8);
+% AP arbitrage
+\draw [arrow2] (1, 2.0) -- node[left] {Cash} (1, 3.3);
+\draw [arrow2] (1.2, 2.0) -- node[right] {ETF} (1.2, 3.3);
+% Secondary market
+\draw [arrow2] (2.6, 1.2) -- node[above] {ETF} (4.6, 1.2);
+\draw [arrow2] (2.6, 0.8) -- node[below] {Cash} (4.6, 0.8);
+% Return swap
+%\draw [arrow] (7.5, 2.9) -- node[above right, distance = 2cm] {Variable rate cash} (10.1, 2.0);
+\draw [arrow] (6.5, 6.5) -- node[left] {Index return} (6.5, 5.3);
+\endscope
+\end{tikzpicture}
+%\caption{Synthetic ETF: Primary and Secondary markets: Researve Bank of Australia (March 2011 Bulletin)}
+\end{figure}
+\end{center}
+\end{frame}
+%
+\section{Portfolio Construction}
 \begin{frame}{Portfolio construction}
 Portfolio construction
 \begin{itemize}[<+-| alert@+>]
@@ -325,12 +458,13 @@ Portfolio construction
 \begin{frame}{Portfolio performance}
 <<port, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
 da <- read.csv('../../CamTrading/Data/port.csv')
+da$Date <- as.Date(da$Date, format = "%Y-%m-%d")
 plot(da$Date, da$rebasePort, type = 'l', xlab = "Date", ylab = "Re-based Value", 
-     main = "Portfolio Performance")
+     main = "Portfolio Performance", ylim = c(min(da$rebasespy), max(da$rebasespy)))
 lines(da$Date, da$rebasetlt, col = 'DarkGreen')
 lines(da$Date, da$rebasespy, col = 'Brown')
-legend('topleft', c('Portfolio', 'SPY', 'TLT'), lty = 1, 
-       col = c("Black", "DarkGreen", "Brown"))
+legend(inset = 0.02, 'topleft', c('Portfolio', 'SPY', 'TLT'), lty = 1, 
+       col = c("Black", "DarkGreen", "Brown"), cex = 0.8)
 @
 \end{frame}
 
@@ -386,7 +520,6 @@ When are stocks and bonds going to do well?
 \end{itemize}
 \end{frame}
 
-
 \begin{frame}{Equity valuation}
 There are three main ways of looking at value
 \pause
@@ -411,13 +544,13 @@ CAPE = \frac{\text{S\&P500 real price}}{\text{10-year MA S\&P 500 earnings}}
 <<earnings, echo = FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.cap= "Cumulative, adjusted price earnings ratio">>=
 library(xts)
 names <- c("Date", "S&P", "Dividend", "Earnings", "CPI", "Date.frac", "Long rate", "Real price", "Real dividend", "Real earnings", "PE10")
-da2 <- read.csv("../../CamTrading/Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
-da2 <- da2[, c(1, dim(da2)[2])]
+da2 <- read.csv("../../Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
+da2 <- da2[, c(1, 13)]
 da2$Date <- as.yearmon(da2$Date, format = "&Y.%m")
-plot(da2$Date, da2$CAPE, type = 'l', main = "CAPE 1871 to 2018", 
+plot(da2$Date, da2$CAPE, type = 'l', main = "CAPE 1871 to 2024", 
      ylab = "CAPE", xlab = "Year")
 text(1966, 26, "24.1 Jan 1966", col = "DarkGreen")
-text(2018, 36, "33.6", col = "DarkGreen")
+text(2017, 36, "36.3", col = "DarkGreen")
 text(1925, 34, "32.6 Jan 1929", col = "DarkGreen")
 text(1982, 44, "44.2 Dec 1999", col = "DarkGreen")
 @
@@ -442,18 +575,7 @@ ERP = R_e - R_{rf} \quad \text{or} \quad R_e - R_b
 Where $ERP$ is the equity risk premium; $R_e$ is the return on equity; $R_fr$ is the risk-free return and $R_b$ is the return on bonds. 
 \end{frame}
 
-%\begin{frame}{Fed Model}
-%The Fed model compares the stock market's earnings yield (E/P) to the yield on long-term government bonds. 
-%\pause
-%\begin{block}{}
-%\begin{equation*}
-%\frac{E}{P} = Y_{10}
-%\end{equation*}
-%\end{block}
-%\pause
-%Former Fed Chairman Greenspan refers to the link between the fall in the real yield on fixed income that occurred since 1990 and the increase in the P/E ratio and return on housing.
-%\end{frame}
-%
+
 \begin{frame}{Current bond trendline}
 <<trend2, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
 da2 <- read.csv('../../CamTrading/Data/Bond.csv')
@@ -465,58 +587,7 @@ x <- c(6085, 20050)
 lines(x, y, col = "DarkGreen")
 @
 \end{frame}
-%\begin{frame}{Active components of fund}
-%There are a number of places where the fund must be active
-%\begin{itemize}[<+-| alert@+>]
-%\pause
-%\item Deciding on the appropriate market
-%\item Finding an investable fund
-%\item Frequency of asset re-balancing
-%\item Factor tilts
-%\item Active security selection
-%\end{itemize}
-%\end{frame}
 
-%\begin{frame}{Factors in Norwegian oil fund}
-%Ang, Goetzmann and Schaefer (2009) find the following factors explain the active activity of fund
-%\begin{itemize}[<+-| alert@+>]
-%\pause
-%\item \textbf{Term:} yield curve 
-%\item \textbf{Credit:} credit risk
-%\item \textbf{FX carry:} carry-trade
-%\item \textbf{Liquidity:} purchase illiquid assets
-%\item \textbf{Value-growth:} long-value/short-growth
-%\item \textbf{Size:} long-small cap/short-large cap
-%\item \textbf{Momentum:} Buy recent winners sell recent losers
-%\item \textbf{Vol:} Spread between implied and realised volatility
-%\end{itemize}
-%\end{frame}
-%
-%\begin{frame}{Portfolio construction}
-%\begin{tikzpicture} 
-%%\draw[very thin, color = gray](0, 0) grid (12, 6);
-%\tikzstyle{block} = [draw, rectangle, text width = 5em, 
-%  text centered, minimum height = 6mm, node distance = 5em];
-%\tikzstyle{line} = [draw, -stealth, thick]
-%\node [block] at (1.5, 4) (one) {\scriptsize True 'market' \\ (unobserved)};
-%\node [block] at (5, 4) (two) {\scriptsize Passive investable \\ benchmark};
-%\node [block] at (5, 2) (twoandhalf) {\scriptsize Alternative \\ assets};
-%\node [block] at (8.5, 4) (three) {\scriptsize Rebalanced \\ benchmark};
-%\node [block] at (8.5, 2) (four) {\scriptsize Dynamic factor \\ allocation};
-%\node [block] at (8.5, 0) (five) {\scriptsize Active \\ Portfolio};
-%\path [line] (one) -- (two);
-%\path [line] (two) -- (three);
-%\path [line] (two) -- (twoandhalf);
-%\path [line] (three) -- (four);
-%\path [line] (four) -- (five);
-%\node at (3, 5.5) [align = center]{\scriptsize Choice of investable \\ \scriptsize benchmark};
-%\node at (6.5, 5.5) [align = center]{\scriptsize Rebalancing \\ \scriptsize gain};
-%\node at (11, 3) [align = center] {\scriptsize Factor \\ \scriptsize risk premia};
-%\node at (11, 1) [align = center] {\scriptsize Active \\ \scriptsize management};
-%\node at (2, 0) [align = center] {\scriptsize Adapted from \\ \scriptsize Ang, Brandt, Denison (2014)};
-%\end{tikzpicture}
-%\end{frame} 
-%
 \begin{frame}{References and further reading}
 \begin{itemize}
 

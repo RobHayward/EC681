@@ -211,6 +211,10 @@ E[R_i] &= \frac{2^2 + 0^2 + 0^2 - 2^2}{4}\\
 \end{columns}
 \end{frame}
 
+\begin{frame}{The free lunch of investment}
+\includegraphics[scale = 1.0]{BigMac}
+\end{frame}
+
 \begin{frame}{Risk and return}
 <<rr, echo=FALSE, message=FALSE, warning=FALSE, fig.height=4.5>>=
 Risk <- c(2, 4)

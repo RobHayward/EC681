@@ -248,7 +248,7 @@ R = \frac{D_0}{P} + g \rightarrow \frac{E}{P}
 \pause
 \begin{itemize}[<+-| alert@+>]
 \item This is the inverse of the PE ratio
-\item Average PE ratio is around 14
+\item Average PE ratio is around 15
 \end{itemize}
 \end{frame}
 
@@ -273,7 +273,7 @@ The price-earnings ratio is a nice metric to value firms
 There are two broad approaches to valuation
 \begin{itemize}[<+-| alert@+>]
 \pause
-\item Bottom up:  this is the corporate finance rout of understanding the performance of individual companies and amalgamating that to get an overall view of the market
+\item Bottom up:  this is the corporate finance way of understanding the performance of individual companies and amalgamating that to get an overall view of the market
 \item Top down: evaluating equities relative to the economy
 \end{itemize}
 \end{frame}
@@ -304,7 +304,7 @@ names <- c("Date", "S&P", "Dividend", "Earnings", "CPI", "Date.frac", "Long rate
 da <- read.csv("../../Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
 da <- da[,-dim(da)[2]]
 da$Date <- as.yearmon(da$Date, format = "&Y.%m")
-plot(da$Date, da$CAPE, type = 'l', main = "CAPE 1871 to 2023", 
+plot(da$Date, da$CAPE, type = 'l', main = "CAPE 1871 to 2024", 
      ylab = "CAPE", xlab = "Year")
 text(1966, 26, "24.1 Jan 1966", col = "darkgreen")
 #text(2007, 25, "23.7 2007", col = "darkgreen")
@@ -320,9 +320,9 @@ text(1982, 44, "44.2 Dec 1999", col = "darkgreen")
 \begin{tabular}{l r r}
 \textbf{Market} & \textbf{Current PE} & \textbf{One year ago}\\
 \hline
-Russell 2000 & 23.7  & 54.0 \\
-NASDAQ 100 &  30.0 & 23.0 \\
-S\&P 500 & 18.8 & 17.9 \\
+Russell 2000 & 25.0  & 24.1 \\
+NASDAQ 100 &  31.7 & 29.3 \\
+S\&P 500 & 24.4 & 20.1 \\
 \end{tabular}
 \end{center}
 \end{table}

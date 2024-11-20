@@ -294,10 +294,6 @@ lines(x, y, col = "DarkGreen")
   @
 \end{frame}
 
-\begin{frame}{Gilts}
-\includegraphics[scale=0.17]{giltyield}
-\end{frame}
-
 \begin{frame}[label=NKMspread]{New Keynesian model}
 \includegraphics[scale=0.5]{markup}
 \end{frame}
