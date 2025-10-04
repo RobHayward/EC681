@@ -30,7 +30,7 @@
 % Title and author information
 \title{Introduction to the financial system}
 \author{Rob Hayward}
-\date{Oct 2024}
+\date{Oct 2025}
 
 
 \begin{document}
@@ -248,10 +248,6 @@ da$Date <- as.Date(da$Date)
 plot(da$Date, da$R.Rate, type = 'l', xlab = "Date", ylab = "Rate", main = "US 1-year real rate")
 abline(h  = 0, col = 'brown')
 @
-\end{frame}
-
-\begin{frame}{Gilt edged stock}
-\includegraphics[scale=0.25]{UKgilt}
 \end{frame}
 
 \begin{frame}{Transfer and pooling of risk}

@@ -21,7 +21,7 @@
 % Title and author information
 \title{Financial Institutions}
 \author{Rob Hayward}
-\date{Oct 2024}
+\date{Oct 2025}
 
 \begin{document}
 
@@ -253,19 +253,5 @@ There are a wide range of additional institutions that facilitate the smooth ope
 
 
 \end{document}
-
-\begin{frame}{Information cycle}
-There is a cycle of information (Matt Levine)
-\begin{itemize}[<+-| alert@+>]
-\pause
-\item Data is messy and not useful
-\item Data is useful and bought by select hedge funds
-\item Hedge funds make money and more people use the data
-\item Everyone uses the data and the advantage is gone
-\item Data providers benefit but funds do not
-\item Data is commoditised? 
-\end{itemize}
-\end{frame}
-%  This is also a law of market evolution. 
 
 
