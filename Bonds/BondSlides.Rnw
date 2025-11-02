@@ -42,8 +42,8 @@
 \item The \emph{maturity} of the debt is the time until it is repaid
 \item Short-term
 \begin{itemize} 
-\item less than one year: commercial paper or tbills (at discount)
-\item more than one year: bonds (may have coupon)
+\item less than one year: tbills or commercial paper (at discount)
+\item more than one year: bonds (usually have a coupon)
 \end{itemize}
 \item Traditionally clipped \emph{the coupon}
 \item Financial engineering (zeros and stripped bonds)
@@ -262,8 +262,8 @@ There are three theories to explain the shape of the yield curve
 
 \begin{frame}{US interest rates}
 <<money, echo=FALSE, fig.height=4.6, fig.width=6.7>>=
-da <- read.csv('../../Data/Rate1.csv')
-da$DATE <- as.Date(da$DATE, format = "%Y-%m-%d")
+da <- read.csv('../../Data/FEDFUNDS.csv')
+da$DATE <- as.Date(da[, 1], format = "%Y-%m-%d")
   plot(da$DATE, da[,2], type = 'l', main = "US Official Interest Rate", col = 'green4', 
      xlab = "Year", ylab = "Rate")
 @
@@ -285,7 +285,7 @@ plot(da2$Date, da2$WALCL, type = 'l', main = "Total Assets of the
 \begin{frame}{We are not in Kansas anymore...}
 <<trend2, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
 da2 <- read.csv('../../Data/Bond.csv')
-da2[,1] <- as.Date(da2$DATE, format = '%Y-%m-%d')
+da2[,1] <- as.Date(da2[, 1], format = '%Y-%m-%d')
 colnames(da2) <- c("Date", "Yield")
 plot(da2, type = 'l', main = "US 10-year bond yield")
 y <- c(10, 1.0)

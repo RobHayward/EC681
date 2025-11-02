@@ -65,11 +65,14 @@ Specialisation, contacts, knowledge and diversification
 \end{frame}
 
 \begin{frame}{Primary and secondary markets}
+Primary and secondary markets
+\pause
 \begin{itemize}[<+-| alert@+>]
 \item Primary market:  Initial Placement Offers (IPO) where private firms become public firms. 
 \item Secondary market:  Provision of liquidity allowing investors to change their mind.  
 \end{itemize}
 \pause
+\vspace{1cm}
 Keynes made the case that liquidity was for individual investors but not for society as a whole. 
 \end{frame}
 
@@ -194,7 +197,7 @@ The managers own interest will be served by objectives that improve their own ut
 There are more uncertainties in equities than there are in bonds
 \begin{itemize}[<+-| alert@+>]
 \pause
-\item We do not know which dividends will be paid
+\item We do not know how much dividends will be paid
 \item There is no terminal or maturity value
 \item Firms can collapse
 \item Equity holders have a \emph{residual claim}
@@ -207,6 +210,8 @@ There are more uncertainties in equities than there are in bonds
 PV = \sum^{t=\infty}_{t = 0} \frac{D_t}{(1 + R)^t}
 \end{equation*}
 \end{block}
+\vspace{1cm}
+$D_t$ = dividend, $R$ = rate of return or yield, t = time in years. 
 \end{frame}
 
 \begin{frame}{Dividend Yield}
@@ -248,7 +253,7 @@ R = \frac{D_0}{P} + g \rightarrow \frac{E}{P}
 \pause
 \begin{itemize}[<+-| alert@+>]
 \item This is the inverse of the PE ratio
-\item Average PE ratio is around 15
+\item Average PE ratio for the S\&P 500 for the last 100 years is around 15
 \end{itemize}
 \end{frame}
 
@@ -304,7 +309,7 @@ names <- c("Date", "S&P", "Dividend", "Earnings", "CPI", "Date.frac", "Long rate
 da <- read.csv("../../Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
 da <- da[,-dim(da)[2]]
 da$Date <- as.yearmon(da$Date, format = "&Y.%m")
-plot(da$Date, da$CAPE, type = 'l', main = "CAPE 1871 to 2024", 
+plot(da$Date, da$CAPE, type = 'l', main = "CAPE 1871 to 2025", 
      ylab = "CAPE", xlab = "Year")
 text(1966, 26, "24.1 Jan 1966", col = "darkgreen")
 #text(2007, 25, "23.7 2007", col = "darkgreen")
@@ -320,9 +325,9 @@ text(1982, 44, "44.2 Dec 1999", col = "darkgreen")
 \begin{tabular}{l r r}
 \textbf{Market} & \textbf{Current PE} & \textbf{One year ago}\\
 \hline
-Russell 2000 & 25.0  & 24.1 \\
-NASDAQ 100 &  31.7 & 29.3 \\
-S\&P 500 & 24.4 & 20.1 \\
+Russell 2000 & 35.32 & 25.0  \\
+NASDAQ 100 & 33.15 & 31.7 \\
+S\&P 500 & 25.47 & 24.4 \\
 \end{tabular}
 \end{center}
 \end{table}
@@ -335,6 +340,19 @@ The market value of equity relative to the replacement cost of capital
 Q = \frac{\text{Market value}}{\text{Corporate net worth}}
 \end{equation*}
 \end{block}
+\end{frame}
+
+\begin{frame}{Tobin's Q over time}
+<<tobinq, echo = FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.cap= "Tobin's Q">>=
+da <- read.csv('../../Data/TobinQSmithers.csv', skip = 6, nrows = 500)
+require(zoo)
+da$Date <- as.yearqtr(1900 + seq(0, 499)/4)
+plot(da$Date, da$Value, type = 'l', col = 'lightgreen', 
+     xlab = 'Year', ylab = "Tobin's Q", main = "Tobin's Q for US stocks")
+lines(da$Date, da[, 22], col = 'darkgreen', lty = 2)
+legend('top', inset = 0.01, legend = c("Q", "Q-ex IP"), 
+       col = c("lightgreen", "darkgreen"), lty = c(1, 2), cex = 0.8)
+@
 \end{frame}
 
 \begin{frame}{Equity risk premium}
