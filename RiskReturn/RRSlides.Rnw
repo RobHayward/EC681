@@ -79,6 +79,7 @@ Take a \textbf{sample} and use that to understand the \textbf{population}
 \end{itemize}
 \item Usually: the larger the sample the better
 \item Is the distant past still part of the population?
+\item Do we need different regimes?
 \end{itemize}
 \end{frame}
 
@@ -162,6 +163,7 @@ text(-0.07, 60, labels = "Mean")
 \begin{itemize}
 \item Maximum and minimum 
 \item Variance and standard deviation
+\item Drawdown
 \end{itemize}
 \end{itemize}
 \end{frame}
