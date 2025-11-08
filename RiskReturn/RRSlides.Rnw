@@ -246,6 +246,28 @@ text(0, 0.2, "Three standard \n deviations \n = 99.7%")
 @
 \end{frame}
 
+\begin{frame}{Drawdown}
+	% this comes from 
+	%https://breakingdownfinance.com/finance-topics/risk-management/drawdown/
+	\begin{block}{Drawdown}
+		\begin{equation}
+			\DD_t = min(0, \frac{P_t - P_{max}}{P_{max}}
+		\end{equation}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Drawdown 2}
+	We can also measure
+\begin{itemize}[<+-| alert@+>]
+	\item The average drawdown
+	\item The maximum drawdown
+	\item The conditional drawdown 
+		\begin{itemize}
+			\item average above a certain level
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
 \begin{frame}{Historical risk and return (1972-88)}
 \begin{center}
 \rowcolors{1}{OliveGreen!20}{OliveGreen!5}
