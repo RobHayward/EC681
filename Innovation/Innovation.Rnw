@@ -8,7 +8,7 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 \usetikzlibrary{arrows,positioning}
-\graphicspath{{../Pictures/}}
+\graphicspath{{../../Pictures/}}
 \usepackage{amsmath}
 \bibliographystyle{agsm}
 % Specify base color
@@ -33,7 +33,7 @@
 % Title and author information
 \title{Financial Innovation}
 \author{Rob Hayward}
-\date{March 2021}
+\date{Nov 2025}
 \begin{document}
 
 \begin{frame}
@@ -107,6 +107,20 @@ This means
 \includegraphics[scale=0.1]{Lpoker} 
 \end{frame}
 
+\begin{frame}{Fintech Innovation Research}
+Three stages
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Ideas and research
+% identifying market caps, technological solutions and 
+% regulatory gaps
+\item Minimum Viable Product (MVP)
+% development, user feedback and customer acquisition and competition
+\item Maturity 
+% attention shifts to operational efficiency, scaling and compliance
+\end{itemize}
+\end{frame}
+
 \begin{frame}{History of financial system}
 \begin{itemize}[<+-| alert@+>]
 \pause
@@ -115,6 +129,7 @@ This means
 \item 1973: Collapse of Bretton Woods
 \item 1995: Mexico and then 1997 Asian market collapse
 \item 2007-08: Global Financial Crisis (GFC)
+\item De-globalisation?
 \end{itemize}
 \item UK Commercial and merchant banks
 \begin{itemize}
@@ -142,20 +157,20 @@ This means
 \end{itemize}
 \item Payments and access
 \begin{itemize}
-\item ATMs
-\item debit cards
+\item ATMs/debit cards
 \item contactless payments
 \end{itemize}
 \item Investments
 \begin{itemize}
 \item mutual funds
 \item Exchange Traded Funds (ETF)
+\item Commission-less entertainment trading
 \end{itemize}
 \item Disintermediation
 \begin{itemize}
 \item internet banking
 \item crowd funding
-\item AI and decentralised finance
+\item AI, decentralised finance and crypto
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -178,6 +193,7 @@ This means
 \item hedge funds
 \item private equity funds
 \item algo and high-frequency trading (HFT)
+\item Crypto?  AI?
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -260,6 +276,7 @@ New technology has had major effects
 \item Algo and HFT
 \item Disintermediation
 \item Blockchain
+\item Liquid pools
 \end{itemize}
 \end{frame}
 
@@ -268,7 +285,7 @@ Issues with AI and algo
 \begin{itemize}[<+-| alert@+>]
 \pause
 \item Can democratise finance
-\item Can cut borrowing costs with bid data
+\item Can cut borrowing costs with big data
 \item AI can embed bias (racism and sexism)
 \item Network effect of big data
 \item Risk if models are similar
@@ -276,8 +293,17 @@ Issues with AI and algo
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Neural Network}
+\includegraphics[scale = 0.2]{NN}
+\end{frame}
+
+\begin{frame}{Neural Network 2}
+\includegraphics[scale = 0.6]{NNMA}
+\end{frame}
+
 \begin{frame}{Regulation of AI and big data}
 There are a number of steps that have been suggested
+\pause
 \begin{itemize}[<+-| alert@+>]
 \item Need for financial rather than tech regulation 
 \item Regulators and risk managers must bridge silos
@@ -291,5 +317,41 @@ G. Tett, AI is reshaping finance, \emph{Financial Times}, Nov 19 2020
 \href{https://www.ft.com/content/c7d9a81c-e6a3-4f37-bbfd-71dcefda3739}{https://www.ft.com/content/c7d9a81c-e6a3-4f37-bbfd-71dcefda3739}
 \end{frame}
 
+\section{Access and Development}
+
+\begin{frame}{Access}
+	Fintech can provide access to finance
+	\pause
+\begin{itemize}[<+-| alert@+>]
+	\item Transaction costs
+		\begin{itemize}
+		\item ease and technology
+		\end{itemize}
+	\item Information
+		\begin{itemize}
+			\item  reputation
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Development}
+\begin{block}{}
+The effect of fintech financing on firm performance: Evidence from emerging economies, 
+\textbf{Journal of International Finanical Markets, Institutions and Money}\\
+vol 103, Sep 2025
+\end{block}
+\end{frame}
+
+\begin{frame}{Development 2}
+45,770 firms across 20 countries from 2012-2020
+
+Findings
+  \pause
+\begin{itemize}[<+-| alert@+>]
+\item Bank lending and fintech are substitutes
+\item Fintech lowers borrowing costs and boosts investment
+\item Digital finance improves productivity 
+\end{itemize}
+\end{frame}
 
 \end{document}
