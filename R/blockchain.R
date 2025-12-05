@@ -1,5 +1,5 @@
 # Blockchain
-# This is a blockchain example from 
+  # This is a blockchain example from 
 # https://www.datacamp.com/community/tutorials/blockchain-r
 # the block will contain financial transactions
 block_example <- list(index = 1, 
