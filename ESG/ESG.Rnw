@@ -49,8 +49,29 @@
 
 
 \begin{frame}{Rise of ESG}
-\includegraphics[scale = 0.5]{ESGfunds}
+\includegraphics[scale = 0.6]{esggrowth}
 \end{frame}
+
+\begin{frame}{The backlash}
+\begin{table}[h!]
+\begin{center}
+\rowcolors{1}{OliveGreen!80}{OliveGreen!5}
+\begin{tabular}{l r r r}
+Region & Flow 2Q25 & Flow 3Q2025 & Assets\\
+\hline
+Europe & 11.3bn & -51.0bn & 3,187bn \\
+US & -5.8bn & -5.1bn &  367b \\
+Asia (ex-Japan) & 0.8bn & 0.9bn & 80bn \\
+Japan & 0.0bn & -0.8bn & 23bn \\
+Total & 6.2bn & -55.1bn & 3,735bn \\
+\hline
+\end{tabular}
+\end{center}
+\caption{\href{https://www.morningstar.com/business/insights/blog/funds/global-sustainable-fund-flows-quarterly-data}{Morning Star}}
+\label{tabref:MS}
+\end{table}
+\end{frame}
+
 
 \begin{frame}{Investment styles}
 The ESG focus has changed over time
@@ -66,9 +87,7 @@ The ESG focus has changed over time
 \item ESG may be linked to low volatility and value
 \end{itemize}
 \item There is increased attention on involvement in firms and influencing their behaviour
-\begin{itemize}
-\item Engine No. 1
-\end{itemize}
+\item Trump and backlash
 \end{itemize}
 \end{frame}
 
@@ -291,6 +310,38 @@ Measurement of risk and return
 \item the usual issues with risk
 \end{itemize}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Trump: OBBB}
+	\includegraphics[scale=1.0]{trump}
+\end{frame}
+
+\begin{frame}{BlackRock}
+	\includegraphics[scale=1.0]{larryfink}
+\end{frame}
+
+\begin{frame}{All in ESG}
+	\begin{block}{2018-22}
+		\begin{itemize}
+			\item 2018 letter said "companies must show that they always make a positive contribution to society"
+			\item 2020: "Climate risk is investment risk"
+			\item 2022: said staeholder capitalism "is not woke"
+		\end{itemize}
+		\end{block}
+\end{frame}
+
+\begin{frame}{Pivot from ESG}
+	\begin{block}{2023-24}
+		\begin{itemize}
+			\item June 2023: Fink said he as \emph{ashamed} of being part of the ESG conversation
+			\item Stoped using the term "ESG"
+			\item 2024 annual letter made no mention of ESG
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Solar}
+	\includegraphics[scale=0.3]{sola}
 \end{frame}
 
 \begin{frame}{For you}
