@@ -1,0 +1,2067 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{textpos}
+\graphicspath{{../../Pictures/}}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{Business Analytics}
+\author{Rob Hayward}
+\date{Dec 2025}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Firm Costs}
+\begin{frame}{Introduction}
+Traditionally firms maximise profits
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Rationality and knowledge
+\item Agency issues
+\item Long-run and short-run
+\item Stakeholder theories
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Profit maximisation}
+Profit-maximisation: Total profit is total revenue less total cost
+\vspace{1cm}
+\pause
+\begin{block}{}
+TP = TR - TC
+\end{block}
+\pause
+\vspace{1cm}
+We concentrate on costs (factors of production)
+\end{frame}
+
+\begin{frame}{Measurement of costs}
+Economic costs include \emph{Opportunity cost}.  
+\pause
+\begin{block}{Total cost}
+\begin{equation*}
+TC = FC + VC
+\end{equation*}
+\end{block}
+\pause
+\begin{block}{Average costs}
+\begin{equation*}
+AC = \frac{TC}{Q}
+\end{equation*}
+\end{block}
+\pause
+\begin{block}{Marginal cost}
+\begin{equation*}
+MC = \frac{\Delta TC}{\Delta Q}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Production}
+\begin{itemize}[<+-| alert@+>]
+\item Use of factors of production
+\item Firms minimise costs given factor prices and technology
+\item Long-run and short-run
+\item Technology will determine the possible production techniques
+\item Use of \emph{isoquants} and \emph{isocosts} 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Production function}
+This production can be represented as 
+\pause
+\begin{block}{}
+\begin{equation*}
+Q = f(K,L)
+\end{equation*}
+\end{block}
+\pause
+$K$ is capital, $L$ is labour and $f$ represents a function
+\end{frame}
+
+\begin{frame}{Marginal Products}
+The \emph{marginal product} is the increase in output from a one unit increase in input. 
+\pause
+\begin{block}{}
+\begin{equation*}
+MP_F = \frac{\text{Change in total product}}{\text{Change in quantity of factor}} 
+ \end{equation*}
+\end{block}
+\pause
+Therefore, the \emph{marginal product of labour} is
+\begin{block}{}
+\begin{equation*}
+MP_L = \frac{\Delta Q}{\Delta L}
+\end{equation*}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Short-run and long-run}
+In the short-run one factor of production is fixed
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Land-fixed and variable labour can be added
+\item Capital is fixed and variable labour can be added
+\item Labour fixed and variable capital added
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Pizza production}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l r r r r r r r}
+Labour & Output & MPL & FC & LC & TC & AC & MC\\
+\hline
+0 &  0  & 0  & 30 & 0  & 30 & 0 & 0\\
+1 & 50  & 50 & 30 & 10 & 40 & 0.80 &  0.2\\
+2 & 90  & 40 & 30 & 20 & 50 & 0.56 & 0.25\\
+3 & 120 & 30 & 30 & 30 & 60 & 0.50 & 0.33\\
+4 & 140 & 20 & 30 & 40 & 70 & 0.50 & 0.50\\
+5 & 150 & 10 & 30 & 50 & 80 & 0.53 & 1.0\\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Production function}
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}[scale = 0.9]
+\draw [help lines] (0, 0) grid (10, 7);
+\draw [<->, thick] (0, 7) node (yaxis) [above] {$Q$} 
+  |- (10, 0) node (xaxis) [right] {$L$};
+\node [below] at (1, 0)  {1};
+\node [below] at (2, 0) {2};
+\node [below] at (3, 0) {3};
+\node [below] at (4, 0) {4};
+\node [below] at (5, 0) {5};
+\node [below] at (6, 0) {6};
+\node [below] at (7, 0) {7};
+\node [below] at (8, 0) {8};
+\node [below] at (9, 0) {9};
+\node [below] at (10, 0) {10};
+\node [left] at (0, 1) {1};
+\node [left] at (0, 2) {2};
+\node [left] at (0, 3) {3};
+\node [left] at (0, 4) {4};
+\node [left] at (0, 5) {5};
+\node [left] at (0, 6) {6};
+\node [left] at (0, 7) {7};
+\draw [olive, thick, domain = 0:10] plot (\x, {0 + 2.0* \x - 0.14 * \x^2});
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+% Bring this slide back in for master's level.
+%\begin{frame}{Diminishing marginal product}
+%The product of labour is 
+%\begin{block}{}
+%\begin{equation*}
+%PL = 2 \times L - 0.14 \times L^2
+%\end{equation*}
+%\end{block}
+%\pause
+%where 
+%\begin{block}{}
+%\begin{equation*}
+%MPL = \frac{\delta Q}{\delta L} = 2 - 0.28L
+%\end{equation*}
+%\end{block}
+%\pause
+%\emph{Partial derivative} because the capital (factory) does not vary
+%\end{frame}
+\begin{frame}{Average Costs}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (5, 2) [above left] {AC};
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Shape of average cost}
+The average cost curve is U shaped because
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Average costs initially fall with specialisation
+\item Average costs initially fall because fixed costs are spread
+\item Average costs eventually rise because of \emph{diminishing returns} in the short-run
+\item Average costs eventually rise because of \emph{diseconomies of scale} in the long-run
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Marginal costs}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (5, 2) [above left] {AC};
+\node at (4, 2.5) [above left] {MC};
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+\draw[thick, color = red] (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, in = 250] (4, 2.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Shape and position of the marginal cost}
+The marginal cost curve is U shaped because
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The marginal cost is the cost of one more unit of output
+\item The marginal cost is below the average cost while average cost is falling
+\item The marginal cost is above the average  cost while the average cost is rising
+\item The marginal cost cuts the average cost at the lowest point on the average cost
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Short-run}
+In the short-run some factors or production are fixed and firms cannot leave or enter the market
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Fixed land with variable labour
+\item Fixed capital with variable labour
+\item Fixed labour with variable capital
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Long-run}
+In the long run all factors can be varied
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item New land and machinery can be bought
+\item Company can merge with others
+\item Returns to scale can be 
+\begin{itemize}
+\item increasing
+\item constant
+\item decreasing
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Long-run and short-run}
+\begin{figure}
+\begin{tikzpicture}[scale=1.0]
+\tiny
+\draw (-0.3,0)-- (0,0) -- (8,0) node [below] {Quantity, units};
+\draw (0,-0.5)-- (0,0) -- (0,5) node [above] {Average total cost, \$};
+\draw (0.2,3.7) to [out=290,in=180] (3.75,1);
+\draw (3.75,1) to [out=360,in=260] (7.6,3.9);
+\node [above] at (7.5,4) {$LRAC$};
+\draw (0.5,3.3) to [out=280,in=180] (1.5,2.2);
+\draw (1.5,2.2) to [out=360,in=255] (2.8,3.3);
+\draw [fill] (0.75,2.65) circle [radius =0.06];
+\node [below] at (0.75,2.55){$a$};
+\node [left] at (2.8,3.3){$SRAC$};
+\draw (2,2.6) to [out=280,in=180] (3.75,1);
+\draw (3.75,1) to [out=360,in=255] (5.3,2.6);
+\draw [fill] (3.75,1) circle [radius =0.06];
+\node [below] at (3.75,1) {$b$};
+\node [left] at (5.1,2) {$SRAC$};
+\draw (4.8,3.4) to [out=280,in=180] (6,2.3);
+\draw (6,2.3) to [out=360,in=270] (7.4,3.5);
+\draw [fill] (7.32,3) circle [radius =0.06];
+\node [below] at (7.32,3) {$c$};
+\node [left] at (7.22,3.2) {$SRAC$};
+\end{tikzpicture}
+\caption{Long-run and short-run average cost curves}
+\end{figure}
+\end{frame}
+
+%\begin{frame}{Cobb Douglas production function}
+%One version of the production function is the \emph{Cobb Douglas}
+%\pause
+%This takes the form
+%\begin{block}{}
+%\begin{align*}
+%Q & = f(K, L)\\
+%  & = AK^{\alpha}L^{\beta}\\
+% & = A*K^{0.5}L^{0.5}
+%\end{align*}
+%\end{block}
+%\pause
+%With $\alpha + \beta = 1$ there are \emph{constant returns to scale}.  A is \emph{total factor productivity}
+%\end{frame}
+
+%\begin{frame}{Cobb Douglas production function 2}
+%Constant returns to scale (increase labour and capital by some arbitrary value c)
+%\pause
+%\begin{block}{}
+%\begin{align*}
+%Q_0 &= AK^{\alpha}L^{\beta}\\
+%Q_1 &= A(cK)^{\alpha}(cL)^{\beta}\\
+% &= Ac^{\alpha}K^{\alpha}c^{\beta}L^{\beta}\\
+% &= c^{\alpha + \beta} A K^{\alpha} L^{\beta}\\
+%Q_1 &= c^{\alpha + \beta} Q_0
+%\end{align*}
+%\end{block}
+%\end{frame}
+
+%\begin{frame}{Cobb Douglas production function 3}
+%<<fig1, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 5.5, cache=TRUE>>=
+%library(RColorBrewer)
+%colors <- brewer.pal(n = 3, "Greens")
+%L = 0:10
+%K = 0:10
+%CD <- function(L, K){
+%  Z <- 2 * L^0.5 * K^0.5
+%  return(Z)
+%}
+%Z <- outer(K, L, CD)
+%persp(L, K, Z, theta = 30, phi = 20, col = colors, ltheta = 1, shade = 0.25, 
+%      xlab = "Labour", ylab = "Capital", zlab = "Output", main = "Cobb Douglas Output")
+%@
+%\end{frame}
+
+%\begin{frame}{Specific production function}
+%If K = 16, L = 25 and A = 20 
+%\pause
+%\begin{block}{}
+%\begin{align*}
+%Q = 20*L^{0.5}*K^{0.5}\\
+%MP_L & = \frac{\delta Q}{\delta L}\\
+%\frac{\delta Q}{\delta L} & = 10K^{0.5}L^{-0.5}\\
+%& = \frac{10\sqrt{16}}{\sqrt{25}} = \frac{40}{5}\\
+%& = 8
+%\end{align*}
+%\end{block}
+%\end{frame}
+%
+%\begin{frame}{Production functions and utility functions}
+%Production functions can also be used as utility functions
+%\pause/
+%\begin{itemize}[<+-| alert@+>]
+%\item Inputs (consumed goods) to outputs (utility)
+%\item The Cobb-Douglas utility function would be 
+%\begin{equation*}
+%U = X_1^{\beta}*X_2^{\alpha}
+%\end{equation*}
+%\end{itemize}
+%\pause
+%$\alpha$ and $\beta$ represent the \emph{marginal utilities} 
+%\pause
+%\vspace{0.5cm}
+%
+%\textbf{Question:} Is $\alpha + \beta = 1, > 1 \text{or} < 1?$
+%\end{frame}
+
+
+% that can all be added later if necessary. 
+%\begin{frame}{Isocost and isoquant}
+%\begin{columns}[T]
+%\begin{column}{0.48\textwidth}
+%\begin{tikzpicture}
+%\draw [help lines] (0, 0) grid (5, 5);
+%\draw [<->, thick] (0, 5) node (yaxis) [above] {$K$} 
+%  |- (5, 0) node (xaxis) [right] {$L$};
+%\draw (4, 0) -- (0, 4);
+%\draw [dashed, ultra thick] (1.5, 3.5) to [out = -80, in = 135] (2.5, 1.5);
+%\draw [dashed, ultra thick] (2.5, 1.5) to [out = -45, in = 160] (4.2, 0.5);
+%\node [below] at (1, 0)  {1};
+%\node [below] at (2, 0) {2};
+%\node [below] at (3, 0) {3};
+%\node [below] at (4, 0) {4};
+%\node [below] at (5, 0) {5};
+%\node [left] at (0, 1) {1};
+%\node [left] at (0, 2) {2};
+%\node [left] at (0, 3) {3};
+%\node [left] at (0, 4) {4};
+%\node [left] at (0, 5) {5};
+%\node [right] at (1.5, 3.5) {$Q_1$};
+%\pause
+%\draw [dashed, thin] (2.5, 0) to (2.5, 1.5);
+%\draw [dashed, thin] (0, 1.5) to (2.5, 1.5);
+%\end{tikzpicture}
+%\end{column}
+%\begin{column}{0.48\linewidth}
+%There are two factors or resources (Capital and Labour) 
+%\begin{itemize}
+%\item Price of (K) = 3
+%\item Price of (L) = 3
+%\item Budget = 12
+%\item Can buy $\frac{12}{3} = 4K$
+%\item Can buy $\frac{12}{3} = 4L$
+%\end{itemize}
+%\begin{equation*}
+%Q_1 = -\frac{MP_L}{MP_K}
+%\end{equation*}
+%\end{column}
+%\end{columns}
+%\end{frame}
+%
+%\begin{frame}{Marginal product}
+%\begin{block}{Marginal product of capital}
+%$MP_K = \frac{\delta Q}{\delta K}$ 
+%\end{block}
+%and
+%\begin{block}{Marginal product of labour}
+%$MP_L = \frac{\delta Q}{\delta L}$
+%\end{block}
+%\begin{block}{}
+%$\frac{MP_L}{MP_K} = $ ratio of marginal products 
+%\end{block}
+%\end{frame}
+%
+%\begin{frame}{Ratio of marginal products}
+%If
+%\begin{itemize}[<+-| alert@+>]
+%\item $MP_K > MP_L$ substitute one unit of K for L to increase output
+%\item $MP_K < MP_L$ substitute one unit of L for K to increase output
+%\end{itemize}
+%\pause
+%The key question is
+%\pause
+%\begin{block}{}
+%At what price can this be done?
+%\end{block}
+%\end{frame}
+%
+%\begin{frame}{Factor payments}
+%As equilibrium is achieved at the tangent of the ratio of cost of input to that of the \emph{marginal rate of technical substitution}
+%%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\begin{block}{}
+%\begin{equation*}
+%\frac{w}{\pi} = \frac{MPP_L}{MPP_K}
+%\end{equation*}
+%\end{block}
+%\pause
+%Idea that factors are paid their marginal product is controversial
+%\end{frame}
+%
+%\begin{frame}{Payment for marginal product}
+%Factors that suggest that the wage will not be equal to the marginal product of labour  
+%\begin{itemize}[<+-| alert@+>]
+%\pause
+%\item Monopsony
+%\item Unions
+%\item Efficiency wages
+%\item Super-star effects
+%\item Differentials
+%\end{itemize}
+%\end{frame}
+%
+\begin{frame}{Factor substitution in practice}
+\begin{textblock*}{5.5cm}(0.6cm, 0.5cm)
+\includegraphics[width = 5.5cm]{handcar}
+\end{textblock*}
+\begin{textblock*}{5.5cm}(6.5cm, 0.5cm)
+\includegraphics[width = 5.5cm]{autocar}
+\end{textblock*}
+\end{frame}
+
+\section{Market Stuction} 
+\begin{frame}{Average Costs}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (5, 2) [above left] {AC};
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Shape of average cost}
+The average cost curve is U shaped because
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Average costs initially fall with specialisation
+\item Average costs initially fall because fixed costs are spread
+\item Average costs eventually rise because of \emph{diminishing returns} in the short-run
+\item Average costs eventually rise because of \emph{diseconomies of scale} in the long-run
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Marginal costs}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (5, 2) [above left] {AC};
+\node at (4, 2.5) [above left] {MC};
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+\draw[thick, color = red] (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, in = 250] (4, 2.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Shape and position of the marginal cost}
+The marginal cost curve is U shaped because
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The marginal cost is the cost of one more unit of output
+\item The marginal cost is below the average cost while average cost is falling
+\item The marginal cost is above the average  cost while the average cost is rising
+\item The marginal cost cuts the average cost at the lowest point on the average cost
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Perfect Competition}
+In a perfectly competitive market, the marginal cost curve is the firm supply curve
+\begin{columns}[T]
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {\scriptsize $TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (5, 2) [above left] {\scriptsize AC};
+\node at (4, 2.5) [above left] {\scriptsize MC};
+\draw [dashed] (5, 1.70) to (0, 1.70);
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+\draw[thick, color = red] (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, in = 250] (4, 2.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {\scriptsize $P$} 
+  |- (5, 0) node (xaxis) [right] {\scriptsize $Q$};
+\node at (4.3, 0.5) [above right] {\scriptsize D};
+\node at (4.3, 3.2) [below left] {\scriptsize S};
+\node at (0, 1.70) [left] {\scriptsize $p^*$};
+\draw (0.25, 3) to (4.5, 0.5);
+\draw (0.25, 0.25) to (4.5, 3);
+\draw [dashed] (5, 1.70) to (0, 1.70);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\end{columns}
+Equilibrium price = $p^* = AR = MR$
+\end{frame}
+
+\begin{frame}{Profit maximisation 1}
+It is hard to know how firms move towards the profit-maximising position.
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Management skill
+\item Trial and error
+\item Luck
+\item Something else
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Profit maximisation 2}
+Profit maximisation \textbf{MUST} happen when
+\pause
+\begin{block}{}
+MC = MR
+\end{block}
+\pause
+Otherwise, profits can be increased
+\end{frame}
+
+\begin{frame}{Profit maximisation 3}
+Profit maximised at MR = MC
+\begin{columns}[T]
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {\scriptsize $TC$} 
+  |- (5, 0) node (xaxis) [right] {\scriptsize $Q$};
+%\node at (5, 2) [above left] {AC};
+\node at (4, 2.5) [above left] {\scriptsize MC};
+\draw [dashed] (5, 1.70) to (0, 1.70);
+\draw [dashed] (3.75, 0) to (3.75, 1.70);
+\node at (3.5, 0) [below] {\scriptsize $q^*$};
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+\draw[thick, color = red] (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, in = 250] (4, 2.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {\scriptsize $P$} 
+  |- (5, 0) node (xaxis) [right] {\scriptsize $Q$};
+\node at (4.3, 0.5) [above right] {\scriptsize D};
+\node at (4.3, 3.5) [below left] {\scriptsize S};
+\draw (0.25, 3) to (4.5, 0.5);
+\draw (0.25, 0.25) to (4.5, 3);
+\draw [dashed] (5, 1.70) to (0, 1.70);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\end{columns}
+Profit-maximising output moves along the MC curve
+\end{frame}
+
+\begin{frame}{Profits and supply}
+Costs include \emph{normal profits}
+\begin{block}{}
+\begin{equation*}
+\pi = TR - TC
+\end{equation*}
+\end{block}
+Profit per unit sold (average profit)
+\begin{block}{}
+\begin{equation*}
+\frac{\pi}{Q} = AR - AC
+\end{equation*}
+\end{block}
+Where there are \emph{super-normal profits} new firms will enter the industry.
+\end{frame}
+
+
+\begin{frame}{Supply increase}
+Profit maximised at MR = MC
+\begin{columns}[T]
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {\scriptsize $TC$} 
+  |- (5, 0) node (xaxis) [right] {\scriptsize $Q$};
+%\node at (5, 2) [above left] {AC};
+%\node at (4, 2.5) [above left] {MC};
+\draw [dashed] (5, 1.70) to (0, 1.70);
+\draw [dashed] (5, 1.40) to (0, 1.40);
+\draw [dashed] (3.75, 0) to (3.75, 1.70);
+\draw [dashed] (3.50, 0) to (3.50, 1.40);
+\node at (3.75, 0) [below] {\scriptsize $q_0^*$};
+\node at (3.50, 0) [below left] {\scriptsize $q_1^*$};
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+\draw[thick, color = red] (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, in = 250] (4, 2.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {\scriptsize $P$} 
+  |- (5, 0) node (xaxis) [right] {\scriptsize $Q$};
+\node at (4.3, 0.5) [above right] {\scriptsize D};
+\node at (4.3, 3.5) [below left] {\scriptsize $S_0$};
+\node at (4.3, 2.5) [below] {\scriptsize $S_1$};
+\draw (0.25, 3) to (4.5, 0.5);
+\draw [dashed] (0.25, 0.25) to (4.5, 3);
+\draw (1.25, 0.25) to (4.0, 2.0);
+\draw [dashed] (5, 1.40) to (0, 1.40);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\end{columns}
+Profit-maximising output moves along the MC curve
+\end{frame}
+
+\begin{frame}{Long-run Equilibrium}
+\begin{columns}[T]
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {\scriptsize $TC$} 
+  |- (5, 0) node (xaxis) [right] {\scriptsize $Q$};
+%\node at (5, 2) [above left] {AC};
+%\node at (4, 2.5) [above left] {MC};
+\draw [dashed] (5, 0.5) to (0, 0.5);
+%\draw [dashed] (5, 1.40) to (0, 1.40);
+%\draw [dashed] (3.75, 0) to (3.75, 1.70);
+\draw [dashed] (2.50, 0) to (2.50, 0.5);
+\node at (2.5, 0) [below] {\scriptsize $q^*$};
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+\draw[thick, color = red] (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, in = 250] (4, 2.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {\scriptsize $P$} 
+  |- (5, 0) node (xaxis) [right] {\scriptsize $Q$};
+%\node at (4.3, 0.5) [above right] {D};
+\node at (5, 1) [above left] {\scriptsize $S$};
+\node at (0, 0.5) [left] {\scriptsize $p^*$};
+%\node at (4.3, 2.5) [below] {$S_1$};
+\draw (0.25, 3) to (4.5, 0.5);
+%\draw [dashed] (0.25, 0.25) to (4.9, 2.8);
+\draw (4, 0) to (5, 1);
+\draw [dashed] (5, 0.5) to (0, 0.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+    \end{columns}
+Long-run equilibrium when price is equal to the minimum on the average cost curve. 
+\end{frame}
+
+\begin{frame}{Monopoly}
+For monopoly, the firm and the market are the same
+There are barriers to entry
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Government or regulatory
+\item Patents or unique product 
+\item Access to customers or materials
+\item First-mover advantage
+\item Threats
+\item Agreements
+\item Network effects
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Monopoly firm}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (5, 2) [above left] {AC};
+\node at (4, 2.5) [above left] {MC};
+\draw[thick, color = blue] (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+\draw[thick, color = red] (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, in = 250] (4, 2.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Monopoly vs perfect competition}
+Consider a large number of market stalls
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Each firm takes the market price
+\item One monopolist buys all the small market traders
+\item The monopolist manages market stalls to maximise profits
+\item MR = MC
+\item Reduce output to the point where there is \emph{unit elasticity}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Monopoly firm}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (5, 2) [above left] {AC};
+\node at (4, 2.5) [above left] {MC};
+\draw (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, in = 220] (5, 2);
+\draw (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, in = 250] (4, 2.5);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\draw [thick, color = blue] (0.4, 2.5) to (5, 1); 
+\node at (5, 1) [below left] {D = AR};
+\draw [thick, color = red] (0.4, 2.5) to (4.5, 0);
+\node at (4.5, 0) [above right] {MR};
+\end{tikzpicture}
+\end{frame}
+
+%\begin{frame}{Average revenue and marginal revenue}
+%The marginal revenue will be below the average revenue
+%\begin{center}
+%\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+%\begin{tabular}{r r r r r}
+%P & Q &TR (P*Q) &AR (TR/Q) &MR ($\Delta TR/\Delta Q$)\\
+%\hline
+%5 & 1 & 5 & 5 & 5\\
+%4 & 2 & 8 & 4 & 3\\
+%3 & 3 & 9 & 3 & 1\\
+%2 & 4 & 8 & 2 & -1\\
+%\end{tabular}
+%\end{center}
+%\end{frame}
+
+%\begin{frame}{Competition vs monopoly}
+%\begin{tikzpicture}[scale = 2]
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+%\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+%  |- (5, 0) node (xaxis) [right] {$Q$};
+%\node at (5, 2) [above left] {AC};
+%\node at (4, 2.5) [above left] {MC = S};
+%\draw (0.5, 2.5) to [out = -60, in = 180] (2.5, 0.5) to [out = 5, %in = 220] (5, 2);
+%\draw (0.5, 0.25) to [out = 0, in = 195] (2.5, 0.5) to [out = 10, %in = 250] (4, 2.5);
+%%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+%\draw [thick, color = blue] (0.4, 2.5) to (5, 1); 
+%\node at (5, 1) [below left] {D = AR};
+%\draw [thick, color = red] (0.4, 2.5) to (4.5, 0);
+%\node at (4.5, 0) [above right] {MR};
+%\pause
+%\draw [fill = red] (3.62, 1.45) circle [radius = 0.05];
+%\node at (3.65, 1.4) [above right] {S = D};
+%\pause
+%\draw [dashed] (3.65, 0) to (3.65, 1.4);
+%\draw [dashed] (0, 1.4) to (3.65, 1.4);
+%\node at (3.65, 0) [below] {qpc};
+%\node at (0, 1.4) [left] {ppc};
+%\end{tikzpicture}
+%\end{frame}
+
+\begin{frame}{Competition vs monopoly 2}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray] (0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (4.5, 2.5) [above left] {AC};
+\node at (3.2, 3) [above left] {MC};
+\draw [thick] (0.0, 3.0) to [out = -60, in = 180] (2, 1.5) to 
+[out = 10, in = 220] (4, 2.5);
+\draw [thick] (0, 2.2) to [out = -35, in = 190] (2, 1.5) to [out = 10, in = 250] (3.2, 3);
+\draw [thick, color = blue] (0, 3) to (5, 1.25); 
+\node at (5, 1.25) [below left] {D = AR};
+\node at (5, 0) [above] {MR};
+\draw [thick, color = red] (0, 3) to (5, 0);
+\pause
+\draw [fill = red] (2.35, 1.6) circle [radius = 0.05];
+\draw [dashed] (2.35, 0) to (2.35, 2.2);
+\node at (2.35, 0) [below] {qm};
+\draw [dashed] (0, 2.2) to (2.35, 2.2);
+\node at (0, 2.2) [left] {pm};
+\pause
+\draw (0, 1.5) to (5, 1.5);
+\node at (5, 1.5) [above left] {LRS};
+\pause
+\draw [dashed] (4.22, 1.53) to (4.22, 0);
+\node at (4.22, 0) [below] {qc};
+\node at (0, 1.53) [left] {pc};
+\draw [fill = red] (4.22, 1.53) circle [radius = 0.05];
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Competition vs monopoly 3}
+When costs do not change, monopoly will charge a higher price and will therefore provide less product.
+\pause
+However, costs are likely to change
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Specialisation
+\item Economies of scale
+\end{itemize}
+\pause
+If the cost curve shifts lower after the take-over, it is possible that more can be supplied at a lower price. 
+\pause
+Monopoly may be able to use super-normal profits for Research and Development (improve products and lower costs)
+\end{frame}
+
+\begin{frame}{Competition vs monopoly 3}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray] (0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (4.5, 2.5) [above left] {AC};
+\node at (3.2, 3) [above left] {MC};
+\draw [thick] (0.0, 3) to [out = -60, in = 180] (2, 1.5) to 
+[out = 10, in = 220] (4, 2.5);
+\draw [thick] (0, 2.2) to [out = -35, in = 190] (2, 1.5) to [out = 10, in = 250] (3.2, 3.0);
+\draw [thick, color = blue] (0, 3) to (5, 1.25); 
+\node at (5, 1.25) [below left] {D = AR};
+\node at (5, 0) [above] {MR};
+\draw [thick, color = red] (0, 3) to (5, 0);
+\pause
+\draw [fill = red] (2.35, 1.6) circle [radius = 0.05];
+\draw [dashed] (2.35, 0) to (2.35, 2.2);
+\node at (2.35, 0) [below] {qm};
+\draw [dashed] (0, 2.2) to (2.35, 2.2);
+\node at (0, 2.2) [left] {pm};
+\pause
+%\draw (0, 1.5) to (5, 1.5);
+%\node at (5, 1.5) [above left] {LRS};
+%\pause
+%\draw [dashed] (4.22, 1.53) to (4.22, 0);
+%\node at (4.22, 0) [below] {qc};
+%\node at (0, 1.53) [left] {pc};
+%\draw [fill = red] (4.22, 1.53) circle [radius = 0.05];
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Competition vs monopoly 3}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray] (0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (4.5, 1.5) [above left] {AC};
+\node at (3.2, 2.0) [above left] {MC};
+\draw [thick] (0.0, 2.0) to [out = -60, in = 180] (2, 0.5) to 
+[out = 10, in = 220] (4, 1.5);
+\draw [thick] (0, 1.2) to [out = -35, in = 190] (2, 0.5) to [out = 10, in = 250] (3.2, 2.0);
+\draw [thick, color = blue] (0, 3) to (5, 1.25); 
+\node at (5, 1.25) [below left] {D = AR};
+\node at (5, 0) [above] {MR};
+\draw [thick, color = red] (0, 3) to (5, 0);
+\pause
+\draw [fill = red] (2.35, 1.6) circle [radius = 0.05];
+\draw [dashed] (2.35, 0) to (2.35, 2.2);
+\node at (2.35, 0) [below] {qm};
+\draw [dashed] (0, 2.2) to (2.35, 2.2);
+\node at (0, 2.2) [left] {pm};
+\pause
+\draw [dashed] (2.9, 0) to (2.9, 2);
+\draw [dashed] (0, 2) to (2.9, 2);
+\draw [fill = red] (2.9, 1.3) circle [radius = 0.05];
+\node at (0, 2) [left] {$pm_2$};
+\node at (2.9, 0) [below] {$qm_2$};
+
+%\pause
+%\draw [dashed] (4.22, 1.53) to (4.22, 0);
+%\node at (5, 1.5) [above left] {LRS};
+%\node at (4.22, 0) [below] {qc};
+%\node at (0, 1.53) [left] {pc};
+%\draw [fill = red] (4.22, 1.53) circle [radius = 0.05];
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Monopoly and welfare}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray] (0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+%\node at (4.5, 1.5) [above left] {AC};
+%\node at (3.2, 2.0) [above left] {MC};
+%\draw [thick] (0.0, 2.0) to [out = -60, in = 180] (2, 0.5) to 
+%[out = 10, in = 220] (4, 1.5);
+%\draw [thick] (0, 1.2) to [out = -35, in = 190] (2, 0.5) to [out = %10, in = 250] (3.2, 2.0);
+\draw [thick, color = blue] (0, 3) to (5, 1); 
+\node at (5, 1.25) [above left] {D = AR};
+\node at (4, 0) [above] {MR};
+\draw [thick, color = red] (0, 3) to (4, 0);
+\draw [thick] (0, 1) to (5, 1);
+\node at (5, 1) [below] {MC};
+\pause
+\draw [fill = red] (2.7, 1.0) circle [radius = 0.05];
+\draw [dashed] (2.7, 0) to (2.7, 1.9);
+\draw [dashed] (0, 1.9) to (2.7, 1.9);
+\pause
+\draw [thick, fill = yellow, fill opacity = 0.2] 
+(0, 1) -- (2.7, 1) -- (2.7, 1.9) -- (0, 1.9);
+\node at (1.5, 1.5) {Profit};
+\pause
+\draw [thick, fill = red, fill opacity = 0.2] 
+(0, 1.9) -- (0, 3) -- (2.7, 1.9);
+\node at (1.3, 2.5) [right] {Consumer Surplus};
+\pause
+\draw [thick, fill = blue, fill opacity = 0.2]
+(2.7, 1) -- (5, 1) -- (2.7, 1.9);
+\node at (3.3, 1.8) [right] {Dead-weight loss};
+%\pause
+%\draw [fill = red] (2.35, 1.6) circle [radius = 0.05];
+%\draw [dashed] (2.35, 0) to (2.35, 2.2);
+%\node at (2.35, 0) [below] {qm};
+%\draw [dashed] (0, 2.2) to (2.35, 2.2);
+%\node at (0, 2.2) [left] {pm};
+%\pause
+%\draw [dashed] (2.9, 0) to (2.9, 2);
+%\draw [dashed] (0, 2) to (2.9, 2);
+%\draw [fill = red] (2.9, 1.3) circle [radius = 0.05];
+%\node at (0, 2) [left] {$pm_2$};
+%\node at (2.9, 0) [below] {$qm_2$};%
+
+%\pause
+%\draw [dashed] (4.22, 1.53) to (4.22, 0);
+%\node at (5, 1.5) [above left] {LRS};
+%\node at (4.22, 0) [below] {qc};
+%\node at (0, 1.53) [left] {pc};
+%\draw [fill = red] (4.22, 1.53) circle [radius = 0.05];
+\end{tikzpicture}
+\end{frame}
+\begin{frame}{Regulation}
+It is also possible to regulate 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Monopolies commission in UK can prevent mergers that generate too much market power
+\item Regulator can set prices and determine output (OFCOM, OFWAT)
+\item Public ownership 
+\begin{itemize}
+\item may have aims other than profit maximisation
+\item there are agency and political pressures
+\end{itemize}
+\end{itemize} 
+\end{frame}
+%\section{Monopolistic competition}
+%\begin{frame}{Monopolistic competition}
+%Monopolistic competition
+%A combination of monopoly and competition
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item There are no significant barriers to entry
+%\item However, there is pricing power so firms face a downward sloping demand curve
+%\item There is \emph{product differentiation}
+%\item Restaurants, game makers, Cinemas $\dots$  
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Monopolistic competition}
+%\begin{tikzpicture}[scale = 2]
+%\draw[very thin, color = gray] (0, 0) grid (5, 3);
+%\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+%  |- (5, 0) node (xaxis) [right] {$Q$};
+%\node at (4.5, 2.5) [above left] {AC};
+%\node at (3.2, 3.0) [above left] {MC};
+%\draw [thick] (0.0, 3.0) to [out = -60, in = 180] (2, 1.5) to 
+%[out = 10, in = 220] (4, 2.5);
+%\draw [thick] (0, 2.2) to [out = -35, in = 190] (2, 1.5) to [out = 10, in = 250] (3.2, 3.0);
+%\pause
+%\draw [thick, color = blue] (0, 3) to (5, 1); 
+%\node at (5.1, 1.25) [above left] {D = AR};
+%\node at (4.1, 0) [above] {MR};
+%\draw [thick, color = red] (0, 3) to (4, 0);
+%\pause
+%%\draw [fill = red] (2.7, 1.0) circle [radius = 0.05];
+%%\draw [dashed] (2.7, 0) to (2.7, 1.9);
+%%\draw [dashed] (0, 1.9) to (2.7, 1.9);
+%\pause
+%\draw [fill = red] (2.0, 1.5) circle [radius = 0.05];
+%\draw [thick, fill = yellow, fill opacity = 0.2] 
+%(0, 1.5) -- (2.0, 1.5) -- (2, 2.2) -- (0, 2.2);
+%\node at (1.0, 1.8) {Profit};
+%\end{tikzpicture}
+%\end{frame}
+%
+%\begin{frame}{Monopolistic competition: Long run 1}
+%\begin{tikzpicture}[scale = 2]
+%\draw[very thin, color = gray] (0, 0) grid (5, 3);
+%\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+%  |- (5, 0) node (xaxis) [right] {$Q$};
+%\node at (4.5, 2.5) [above left] {AC};
+%\node at (3.2, 3.0) [above left] {MC};
+%\draw [thick] (0.0, 3.0) to [out = -60, in = 180] (2, 1.5) to 
+%[out = 10, in = 220] (4, 2.5);
+%\draw [thick] (0, 2.2) to [out = -35, in = 190] (2, 1.5) to [out = 10, in = 250] (3.2, 3.0);
+%
+%\draw [thick, color = blue] (0, 3) to (5, 1); 
+%%\node at (5.1, 1.25) [above left] {D = AR};
+%%\node at (4.1, 0) [above] {MR};
+%\draw [thick, color = red] (0, 3) to (4, 0);
+%
+%
+%
+%%\draw [fill = red] (2.7, 1.0) circle [radius = 0.05];
+%\draw [dashed] (2.7, 0) to (2.7, 1.9);
+%\draw [dashed] (0, 1.9) to (2.7, 1.9);
+%\pause
+%\draw [fill = red] (2.0, 1.5) circle [radius = 0.05];
+%\draw [thick, fill = yellow, fill opacity = 0.2] 
+%(0, 1.5) -- (2.0, 1.5) -- (2, 2.2) -- (0, 2.2);
+%\node at (1.0, 1.8) {Profit};
+%\end{tikzpicture}
+%\end{frame}
+%
+%\begin{frame}{Monopolistic competition: Long run 2}
+%\begin{tikzpicture}[scale = 2]
+%\draw[very thin, color = gray] (0, 0) grid (5, 3);
+%\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+%  |- (5, 0) node (xaxis) [right] {$Q$};
+%\node at (4.5, 2.5) [above left] {AC};
+%\node at (3.2, 3.0) [above left] {MC};
+%\draw [thick] (0.0, 3.0) to [out = -60, in = 180] (2, 1.5) to 
+%[out = 10, in = 220] (4, 2.5);
+%\draw [thick] (0, 2.2) to [out = -35, in = 190] (2, 1.5) to [out = 10, in = 250] (3.2, 3.0);
+%\draw [thick, color = blue] (0, 3) to (3.5, 1); 
+%%\node at (5.1, 1.25) [above left] {D = AR};
+%%\node at (4.1, 0) [above] {MR};
+%\draw [thick, color = red] (0, 3) to (2.5, 0);
+%
+%
+%
+%\draw [fill = red] (2.7, 1.0) circle [radius = 0.05];
+%\draw [dashed] (2.7, 0) to (2.7, 1.9);
+%\draw [dashed] (0, 1.9) to (2.7, 1.9);
+%\pause
+%\draw [fill = red] (2.0, 1.5) circle [radius = 0.05];
+%\draw [thick, fill = yellow, fill opacity = 0.2] 
+%(0, 1.5) -- (2.0, 1.5) -- (2, 2.2) -- (0, 2.2);
+%\node at (1.0, 1.8) {Profit};
+%\end{tikzpicture}
+%\end{frame}
+%
+%\begin{frame}{Monopolistic competition: Long run 3}
+%\begin{tikzpicture}[scale = 2]
+%\draw[very thin, color = gray] (0, 0) grid (5, 3);
+%\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+%  |- (5, 0) node (xaxis) [right] {$Q$};
+%\node at (4.5, 2.5) [above left] {AC};
+%\node at (3.2, 3.0) [above left] {MC};
+%\draw [thick] (0.0, 3.0) to [out = -60, in = 180] (2, 1.5) to 
+%[out = 10, in = 220] (4, 2.5);
+%\draw [thick] (0, 2.2) to [out = -35, in = 190] (2, 1.5) to [out = 10, in = 250] (3.2, 3.0);
+%\draw [thick, color = blue] (0, 3) to (2, 0); 
+%%\node at (5.1, 1.25) [above left] {D = AR};
+%%\node at (4.1, 0) [above] {MR};
+%\draw [thick, color = red] (0, 3) to (1.2, 0);
+%\pause
+%\draw [dashed] (0.48, 0) to (0.48, 2.22); 
+%\draw [dashed] (0, 2.22) to (0.48, 2.22);
+%\node at (0, 2.22) [left] {pmc};
+%\node at (0.48, 0) [below] {qmc};
+%\draw [fill = red] (0.48, 1.84) circle [radius = 0.05];
+%\pause
+%%\draw [dashed] (2, 0) to (2, 1.5);
+%\draw [dashed] (0,1.5) to (2, 1.5);
+%%\node at (2, 0) [below] {qc};
+%\node at (0, 1.5) [left] {pc};
+%\end{tikzpicture}
+%\end{frame}
+%
+%  \begin{frame}{PC vs MC}
+%\begin{itemize}[<+-| alert@+>]
+%\item There is spare capacity in monopolistic competition
+%\item Firms operate at the efficient scale (lowest point on the average cost curve) in perfect competition
+%\item Price is above marginal cost in monopolistic competition
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Summary}
+%\begin{itemize}[<+-| alert@+>]
+%\item Current political debate 
+%\begin{itemize}
+%\item economic rents
+%\item productivity
+%\item inequality
+%\end{itemize}
+%\item Breaking down monopolistic barriers
+%\item Public ownership
+%\item The interaction between economics and political economy
+%\end{itemize}
+%\end{frame}
+\section{Imperfect Competition}
+\begin{frame}{Imperfect competition}
+There are two broad categories of \emph{imperfect competition} 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Monopolistic competition:  where there is \emph{product differentiation}.  There tend to be lots of small companies because there are no barriers to entry
+\item Oligopoly:  where there are some barriers to entry. There tend to be a few large companies
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Competition vs monopoly}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray] (0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (4.5, 2.5) [above left] {AC};
+\node at (3.2, 3) [above left] {MC};
+\draw [thick] (0.0, 3.0) to [out = -60, in = 180] (2, 1.5) to 
+[out = 10, in = 220] (4, 2.5);
+\draw [thick] (0, 2.2) to [out = -35, in = 190] (2, 1.5) to [out = 10, in = 250] (3.2, 3);
+\draw [thick, color = blue] (0, 3) to (5, 1.25); 
+\node at (5, 1.25) [below left] {D = AR};
+\node at (5, 0) [above] {MR};
+\draw [thick, color = red] (0, 3) to (5, 0);
+\pause
+\draw [fill = red] (2.35, 1.6) circle [radius = 0.05];
+\draw [dashed] (2.35, 0) to (2.35, 2.2);
+\node at (2.35, 0) [below] {qm};
+\draw [dashed] (0, 2.2) to (2.35, 2.2);
+\node at (0, 2.2) [left] {pm};
+\pause
+\draw (0, 1.5) to (5, 1.5);
+\node at (5, 1.5) [above left] {LRS};
+\pause
+\draw [dashed] (4.22, 1.53) to (4.22, 0);
+\node at (4.22, 0) [below] {qc};
+\node at (0, 1.53) [left] {pc};
+\draw [fill = red] (4.22, 1.53) circle [radius = 0.05];
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Factors that influence level of competition}
+The level of competition is influenced by 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item The number of firms
+\item The variability of 
+\begin{itemize}
+\item demand 
+\item costs
+\item technology
+\end{itemize}
+\item Level of product standardisation
+\item Durability of barriers to entry
+\item Level of social cohesion
+\end{itemize}
+\end{frame}
+
+
+\section{Cartels}
+\begin{frame}{Interdependence}
+\begin{itemize}[<+-| alert@+>]
+\item A key feature of oligopoly is \emph{interdependence}.  
+\item The firm is influenced by the other firms in the industry
+\item Actions (pricing and output) will depend on expected action of other firms
+\item More complicated analysis.
+\item Use of \emph{game theory}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Duopoly}
+\begin{columns}[T]
+\begin{column}{.48\textwidth}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{r r r}
+Q & P & TR (P $\times$ Q\\
+\hline
+0 & 120 & 0\\
+20 & 100 & 2000\\
+40 & 80 & 3200\\
+60 & 60 & 3600\\
+80 & 40 & 3200\\
+100 & 20 & 2000\\
+120 & 0 & 0\\
+\end{tabular}
+\end{center} 
+\end{column}
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$P$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (4, 0.5) [above right] {D};
+\draw (0, 3) to (4.5, 0);
+%\draw (0.25, 0.25) to (4.5, 3);
+%\draw [dashed] (5, 1.70) to (0, 1.70);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Duopoly 2}
+Outcome depends on the action of the two firms. Marginal cost of drawing water is zero
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Competition
+\begin{itemize} 
+\item MC = MR = 0 (output equal to 60 litres)
+\item total output is equal to 120 litres
+\end{itemize}
+\item Collusion
+\begin{itemize}
+\item profit is maximised at 60 litres (30 each)
+\item profit is 3600 (1800 each) 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Duopoly}
+\begin{columns}[T]
+\begin{column}{.48\textwidth}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{r r r}
+Q & P & TR (P $\times$ Q\\
+\hline
+0 & 120 & 0\\
+20 & 100 & 2000\\
+40 & 80 & 3200\\
+60 & 60 & 3600\\
+80 & 40 & 3200\\
+100 & 20 & 2000\\
+120 & 0 & 0\\
+\end{tabular}
+\end{center} 
+\end{column}
+\begin{column}{.48\textwidth}
+\begin{tikzpicture}
+\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$P$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+\node at (4, 0.5) [above right] {D};
+\draw (0, 3) to (4.5, 0);
+%\draw (0.25, 0.25) to (4.5, 3);
+%\draw [dashed] (5, 1.70) to (0, 1.70);
+%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\end{tikzpicture}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{EU Competition rules}
+The Treaty of Rome prohibits \emph{price-fixing} and \emph{restrictive practices} such as product limitation
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Agreements between two or more firms that restrict competition are prohibited by Article 101 of the Treaty of Rome
+\item Firms in a dominant position may not abuse that position (Article 102 of the Treaty)
+\end{itemize}
+\pause
+The EU Commission has the power to intervene
+\end{frame}
+
+\begin{frame}{Anti-trust}
+A number of anti-trust cases have been fought
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Google 
+\item Microsoft
+\item LCD display 
+\item England football shirts
+\item General Electric and Honeywell
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nash equilibrium}
+Without a cartel, there is an incentive to push output above the \emph{joint} profit-maximising
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Each produce 30 litres at 60 (profit is 3600 or 1800 each)
+\item There is an incentive for one to cheat and produce 40 litres
+\item Total output of 70, price 50, profit 3500 (2000-1500 split)
+\item Or, total output 80, price 40, profit 3200 (1600 each)
+\item \emph{Nash equilibrium}
+\item Total output 90, price 30, profit 2700 (1500 1200 split) 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Number of firms}
+The larger the number of firms, the more likely that the firm will increase output.  Decision for each firm is a balance of 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Output effect (if price is above marginal cost, selling more will raise profit)
+\item Price effect (raising output will increase total output and reduce the price and the profit on all the units sold)
+\end{itemize}
+\pause
+At the extreme as number of firms tends to infinity, output effect dominates and there is perfect competition. 
+\end{frame}
+
+
+\section{Game Theory}
+\begin{frame}{Game theory}
+Game theory is the study of decision-making under interdependence. 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Players or actors make \emph{strategic decisions}
+\item Strategies have \emph{pay-offs} that depend on the decision and the decision that is adopted by other players
+\item Own pay-offs and pay-offs to other players are known
+\item These are portrayed in a \emph{pay-off matrix}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Prisoners' dilemma 1}
+\begin{tikzpicture}[scale = 1.2]
+%\draw[very thin, color = gray](0, 0) grid (12, 7);
+\draw [thick, fill = yellow, fill opacity = 0.2] (3, 1) -- (6, 1) -- (3, 3) -- (3, 1);
+\draw [thick, fill = teal, fill opacity = 0.2] (6, 1) -- (6, 3) -- (3, 3);
+\draw [thick, fill = yellow, fill opacity = 0.2] (6, 1) -- (9, 1) -- (6, 3) -- (6, 1);
+\draw [thick, fill = teal, fill opacity = 0.2] (9, 1) -- (9, 3) -- (6, 3);
+\draw [thick, fill = yellow, fill opacity = 0.2] (6, 3) -- (9, 3) -- (6, 5) -- (6, 3);
+\draw [thick, fill = teal, fill opacity = 0.2] (9, 3) -- (9, 5) -- (6, 5);
+\draw [thick, fill = yellow, fill opacity = 0.2] (3, 3) -- (6, 3) -- (3, 5) -- (3, 3);
+\draw [thick, fill = teal, fill opacity = 0.2] (6, 3) -- (6, 5) -- (3, 5);
+\node at  (3, 1) [above right] {0};
+\node at  (6, 3) [below left] {20};
+\node at  (3, 3) [above right] {1};
+\node at  (6, 5) [below left] {1};
+\node at  (6, 1) [above right] {8};
+\node at  (9, 3) [below left] {8};
+\node at  (6, 3) [above right] {20};
+\node at  (9, 5) [below left] {0};
+\node at (4, 5) [above] {\scriptsize Keep Quiet};
+\node at (7, 5) [above] {\scriptsize Confess};
+\node [rotate = 90] at (2.5, 1.7) {\scriptsize Confess};
+\node [rotate = 90] at (2.5, 4.3) {\scriptsize Keep Quiet};
+\node at (6, 6) {Prisoner B};
+\node [rotate = 90] at (1, 3) [below] {Prisoner A};
+\end{tikzpicture}
+\end{frame}
+
+%\begin{frame}{Prisoners' dilemma 2}
+%\begin{tikzpicture}[scale = 1.2]
+%\draw[very thin, color = gray](0, 0) grid (12, 7);
+%\draw [thick, fill = yellow, fill opacity = 0.2] (3, 1) -- (6, 1) -- (3, 3) -- (3, 1);
+%\draw [thick, fill = teal, fill opacity = 0.2] (6, 1) -- (6, 3) -- (3, 3);
+%\draw [thick, fill = yellow, fill opacity = 0.2] (6, 1) -- (9, 1) -- (6, 3) -- (6, 1);
+%\draw [thick, fill = teal, fill opacity = 0.2] (9, 1) -- (9, 3) -- (6, 3);
+%\draw [thick, fill = yellow, fill opacity = 0.2] (6, 3) -- (9, 3) -- (6, 5) -- (6, 3);
+%\draw [thick, fill = teal, fill opacity = 0.2] (9, 3) -- (9, 5) -- (6, 5);
+%\draw [thick, fill = yellow, fill opacity = 0.2] (3, 3) -- (6, 3) -- (3, 5) -- (3, 3);
+%\draw [thick, fill = teal, fill opacity = 0.2] (6, 3) -- (6, 5) -- (3, 5);
+%\node at  (3, 1) [above right] {60bn};
+%\node at  (6, 3) [below left] {30bn};
+%\node at  (3, 3) [above right] {50bn};
+%\node at  (6, 5) [below left] {50bn};
+%\node at  (6, 1) [above right] {40bn};
+%\node at  (9, 3) [below left] {40bn};
+%\node at  (6, 3) [above right] {30bn};
+%\node at  (9, 5) [below left] {60bn};
+%\node at (4, 5) [above] {\scriptsize Low Production};
+%\node at (7, 5) [above] {\scriptsize High Production};
+%\node [rotate = 90] at (2.5, 1.7) {\scriptsize High Production};
+%\node [rotate = 90] at (2.5, 4.3) {\scriptsize Low Production};
+%\node at (6, 6) {Saudi Arabia};
+%\node [rotate = 90] at (1, 3) [below] {Iran};
+%\end{tikzpicture}
+%\end{frame}
+%
+\begin{frame}{Prisoners' dilemma 2}
+\begin{tikzpicture}[scale = 1.2]
+%\draw[very thin, color = gray](0, 0) grid (12, 7);
+\draw [thick, fill = yellow, fill opacity = 0.2] (3, 1) -- (6, 1) -- (3, 3) -- (3, 1);
+\draw [thick, fill = teal, fill opacity = 0.2] (6, 1) -- (6, 3) -- (3, 3);
+\draw [thick, fill = yellow, fill opacity = 0.2] (6, 1) -- (9, 1) -- (6, 3) -- (6, 1);
+\draw [thick, fill = teal, fill opacity = 0.2] (9, 1) -- (9, 3) -- (6, 3);
+\draw [thick, fill = yellow, fill opacity = 0.2] (6, 3) -- (9, 3) -- (6, 5) -- (6, 3);
+\draw [thick, fill = teal, fill opacity = 0.2] (9, 3) -- (9, 5) -- (6, 5);
+\draw [thick, fill = yellow, fill opacity = 0.2] (3, 3) -- (6, 3) -- (3, 5) -- (3, 3);
+\draw [thick, fill = teal, fill opacity = 0.2] (6, 3) -- (6, 5) -- (3, 5);
+\node at  (3, 1) [above right] {5bn};
+\node at  (6, 3) [below left] {2bn};
+\node at  (3, 3) [above right] {4bn};
+\node at  (6, 5) [below left] {4bn};
+\node at  (6, 1) [above right] {3bn};
+\node at  (9, 3) [below left] {3bn};
+\node at  (6, 3) [above right] {2bn};
+\node at  (9, 5) [below left] {5bn};
+\node at (4, 5) [above] {\scriptsize No Advertising};
+\node at (7, 5) [above] {\scriptsize Advertising};
+\node [rotate = 90] at (2.5, 1.7) {\scriptsize Advertising};
+\node [rotate = 90] at (2.5, 4.3) {\scriptsize No Advertising};
+\node at (6, 6) {Firm B};
+\node [rotate = 90] at (1, 3) [below] {Firm A};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{Cooperative games}
+It is often the case that a better outcome can be reached with cooperation.  However, this demand some agreement between the parties. 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Written agreements are very risky
+\item Commitment: taking some action that determines future decisions (\emph{Conquistadores})
+\item Threats and punishment (Over-production, beating $\dots$)
+\item Repeated games and \emph{Super-games}
+\item The auction of G3 networks in the UK
+\end{itemize}
+\end{frame}
+
+
+
+
+%\section{Cournot, Bertrand and Stackleberg}
+% This is left out because not interesting.  Could be re-added but needs more 
+% Substance to make worthwhile. 
+%\begin{frame}{Models of Oligopoly}
+%Two firms facing a market demand curve can set quantity or price. 
+%\begin{itemize}[<+-| alert@+>]
+%\item \emph{Cournot model} Firms set output based on market demand and expected %output of rival
+%\item \emph{residual demand} as the difference between market demand and the output of rival firm
+%\item \emph{Reaction function} is the output of firm A given the output of firm B
+%\item Nash equilibrium shows the optimal decision of each firm give the action of the rival
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Cournot model}
+%\begin{columns}[T]
+%\begin{column}{0.48\textwidth}
+%\begin{tikzpicture}
+%\draw [help lines] (0, 0) grid (5, 5);
+%\draw [<->, thick] (0, 5) node (yaxis) [above] {$A$} 
+%  |- (5, 0) node (xaxis) [right] {$B$};;
+%\draw (4, 0) -- (0, 4);
+%\draw (5, 0) --  (0, 3);
+%\node at (2.5, 1.5) [above right] {E};
+%\end{tikzpicture}
+%\end{column}
+%\begin{column}{.48\textwidth}
+%\begin{tikzpicture}
+%\draw[very thin, color = gray](0, 0) grid (5, 5);
+%\draw [<->, thick] (0, 5) node (yaxis) [above] {$P$} 
+%  |- (5, 0) node (xaxis) [right] {$Q$};
+%\draw (0, 5) to (5, 0);
+%\node at (5, 0) [below] {\tiny $D_t$};
+%\draw (0, 5) to (4, 0); 
+%\node at (4.0, 0) [below] {\tiny $MR_t$};
+%\draw (0, 3.8) to (3.5, 0);
+%\node at (3.5, 0) [below] {\tiny $D_1$};
+%\draw (0, 3.8) to (3, 0); 
+%\node at (3, 0) [below] {\tiny $MR_1$};
+%\draw (0, 3.5) to (2.5, 0);
+%\node at (2.5, 0) [below] {\tiny $D_2$};
+%\draw (0, 3.5) to (2, 0); 
+%\node at (2, 0) [below] {\tiny $MR_2$};
+%\draw (0, 1.5) -- (5, 1.5);
+%\node at (5, 1.5) [above left] {MC};
+%%\draw (0.25, 0.25) to (4.5, 3);
+%%\draw [dashed] (5, 1.70) to (0, 1.70);
+%%\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+%\end{tikzpicture}
+%\end{column}
+%\end{columns}
+%\end{frame}
+
+%\begin{frame}{Bertrand Model}
+%The two firms compete on price.  
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item If the first firm sets price above MC, the second can win market share by %reducing the price
+%\item Competition will reduce the price towards the MC
+%\item MC is the Nash equilibrium
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Stackelberg Model}
+%Sequential moves  
+%\pause
+%\begin{itemize}[<+-| alert@+>]
+%\item One firm moves first (price or output)
+%\item There is \emph{first mover advantage}
+%\item Decision must consider what rival will do
+%\item Rival reacts to the credible announcement of the first mover
+%\item Issues
+%\begin{itemize}
+%\item Increased investment and output can lower costs through economies of scale
+%\item Increased costs will not be faced by rival
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}{Other issues}
+\begin{itemize}[<+-| alert@+>]
+\item Product differentiation
+\begin{itemize}
+\item The more differentiated, the more market power
+\end{itemize}
+\item Barriers to entry
+\begin{itemize}
+\item \emph{Contestable markets}
+\item Credible threats
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Credible Threats: No investment}
+\begin{tikzpicture}[scale = 1.2]
+%\draw[very thin, color = gray](0, 0) grid (12, 7);
+\draw [->] (0, 3) -- (4,5);
+\draw [->] (0, 3) -- (4, 2);
+\node [below] at (4, 2) {Don't Enter};
+\node [above] at (4, 5) {Enter};
+\node at (4, 1) {Firm B};
+\pause
+\draw [->](4, 5) -- (7, 6);
+\draw [->] (4, 5) -- (7, 4);
+\draw [->] (4, 2) -- (7, 2);
+\node [above] at (7, 6) {Don't Fight};
+\node [above] at (7, 4) {Fight};
+\node at (6.8, 1) {Firm A};
+\pause
+\node at (8.5, 6) {(1, 1)};
+\node at (8.5, 4) {(-1, -1)};
+\node at (8.5, 2) {(5, 0)};
+\node at (8.8, 1) {No Investment}; 
+%\pause
+%\node at (9.5, 6) {(-2, 1)};
+%\node at (9.5, 4) {(-1, -1)};
+%\node at (9.5, 2) {(2, 0)};
+%\node at (9.5, 1) {Investment};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Credible Threats: Investment}
+\begin{tikzpicture}[scale = 1.2]
+%\draw[very thin, color = gray](0, 0) grid (12, 7);
+\draw [->] (0, 3) -- (4,5);
+\draw [->] (0, 3) -- (4, 2);
+\node [below] at (4, 2) {Don't Enter};
+\node [above] at (4, 5) {Enter};
+\draw [->](4, 5) -- (7, 6);
+\draw [->] (4, 5) -- (7, 4);
+\draw [->] (4, 2) -- (7, 2);
+\node [above] at (7, 6) {Don't Fight};
+\node [above] at (7, 4) {Fight};
+\node at (4, 1) {Firm B};
+\node at (6.8, 1) {Firm A};
+%\pause
+%\node at (8.5, 6) {(1, 1)};
+%\node at (8.5, 4) {(-1, -1)};
+%\node at (8.5, 2) {(5, 0)};
+%\node at (8.8, 1) {No Investment}; 
+\node at (8.5, 6) {(-2, 1)};
+\node at (8.5, 4) {(-1, -1)};
+\node at (8.5, 2) {(2, 0)};
+\node at (8.5, 1) {Investment};
+
+\end{tikzpicture}
+\end{frame}
+
+\section{Controversies}
+\begin{frame}{Controversies}
+\begin{itemize}[<+-| alert@+>]
+\item Retail price maintenance
+\begin{itemize}
+\item De Beers/Jeans 
+\end{itemize}
+\item Predatory pricing
+\begin{itemize}
+\item Lemon bus 
+\end{itemize}
+\item Tying
+\begin{itemize}
+\item Gillette-printers 
+\end{itemize}
+\item Behavioural theories
+\end{itemize}
+\end{frame}
+%[<+-| alert@+>]
+
+
+
+
+\section{Elasticity}
+\begin{frame}{Introduction}
+Economics is all about relationships between variables.  We will look at three main types.  These all assess the change in demand.  Remember, demand will fall as the price increases.  Elasticity attempts to quantify that relationship.
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Price-elasticity of demand
+\item Income elasticity of demand
+\item Cross-price elasticity of demand
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Determinants of elasticity}
+Five factors determine elasticity of demand.
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Availability of substitutes
+\item Necessities vs luxuries
+\item Definition of the market
+\item Proportion of income devoted to the product
+\item Time horizon
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Price elasticity of demand}
+Elasticity is the percentage change in quantity demanded relative to the change in price.
+\begin{align*}
+ped &= \frac{\text{percentage change in quantity demanded}}{\text{percentage change in price}}\\
+      & = \frac{\%\Delta Q_d}{\%\Delta P}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Example (ped)}
+\begin{itemize}[<+-| alert@+>]
+\item The price of coffee increases by 4\%
+\item The demand for coffee falls by 2\%
+\end{itemize}
+\pause
+\begin{align*}
+ped &= \frac{-2}{4}\\
+&= -0.5
+\end{align*}
+\end{frame}
+
+\begin{frame}{Price elasticity of demand}
+\begin{itemize}[<+-| alert@+>]
+\item The price elasticity of demand is negative
+\item It can range from zero to minus infinity
+\item Between zero and minus one, usually say it is inelastic
+\item Above one, it is elastic
+\item Usually speak in terms of relative elasticity
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Measuring elasticity}
+There are two ways of measuring elasticity 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Mid-point or arc elasticity of demand
+\item Point elasticity of demand
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Example}
+If there are two points
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Point A:  P = 4, Q = 120
+\item Point B: P = 6, Q = 80
+\end{itemize}
+\pause
+\begin{align*}
+  ped(A to B) &= \frac{-0.33}{0.50} = -0.66\\
+ped(B to A) & = \frac{0.50}{-0.33} = -1.5
+\end{align*}
+\end{frame}
+
+\begin{frame}{Solution}
+Calculate the percentage from the mid-point rather than the starting point. 
+\begin{align*}
+\% \Delta Q =& \frac{40}{100} = 0.4\\
+\% \Delta P =& \frac{2}{5} = 0.4\\
+ped = &\frac{0.4}{0.4} = 1
+\end{align*}
+\end{frame}
+
+\begin{frame}{Solution}
+Calculation 
+\begin{equation*}
+ped = \frac{(Q_2 - Q_1)/[(Q_2 + Q_1)/2]}{(P_2 - P_1)/[(P_2 + P_1)/2]}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Point Elasticity of Demand}
+Elasticity is 
+\begin{align*}
+ped =& \frac{\%\Delta Q_d}{\% \Delta P}\\
+= & \frac{\Delta Q_d}{Q_d}/\frac{\Delta P}{P}\\
+= & \frac{\Delta Q}{\Delta P} \times  \frac{P}{Q_d}
+\end{align*}
+Or (reciprocal) of the slope multiplied by point
+\end{frame}
+
+\begin{frame}{Elasticity changes through the demand curve}
+\begin{tikzpicture}[scale = 2]
+%\usetiktzlibrary{calc}
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$P$} 
+  |- (5, 0) node (xaxis) [right] {$Q_d$};
+\node at (1, 0) [below] {$1$};
+\node at (2, 0) [below] {$2$};
+\node at (3, 0) [below] {$3$};
+\node at (4, 0) [below] {$4$};
+\node at (0, 1) [left] {$1$};
+\node at (0, 2) [left] {$2$};
+\node at (0, 3) [left] {$3$};
+\draw[domain = 0.1:3.9, color = blue] plot(\x, {2 - 0.5*\x});
+\node at (1, 1.8) {Elastic};
+\node at (3.7, 0.5) {Inelastic};
+\fill (2, 1) circle (2pt);
+\node at (2, 1) [right] {Unit Elasticity};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Elasticities: relatively elastic}
+\begin{tikzpicture}[scale = 2]
+%\usetiktzlibrary{calc}
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$P$} 
+  |- (5, 0) node (xaxis) [right] {$Q_d$};
+\node at (1, 0) [below] {$1$};
+\node at (2, 0) [below] {$2$};
+\node at (3, 0) [below] {$3$};
+\node at (4, 0) [below] {$4$};
+\node at (0, 1) [left] {$1$};
+\node at (0, 2) [left] {$2$};
+\node at (0, 3) [left] {$3$};
+\draw[domain = 0.1:4.9, color = blue] plot(\x, {2 - 0.25*\x});
+\def\demand{\x, {2 - 0.25*\x}};
+\fill [fill = black!60!green!80] (4, 0) -- (0, 0) -- (0, 1) -- (4, 1) -- cycle;
+\fill [fill = black!60!green!80] (2, 0) -- (0, 0) --(0, 1.5) -- (2, 1.5) -- cycle;
+\draw[domain = 0.1:4.9, color = blue] plot(\x, {2 - 0.25*\x});
+\draw  (2,0) -- (2, 1.5);
+\draw  (4,0) -- (4, 1);
+\draw  (0,1) -- (4, 1);
+\draw (0, 1.5) -- (2, 1.5);
+\node at (3, 3) {$P = 2 - 0.25Q_d$};
+%\node at (3, 2) {Relatively Elastic};
+\node at (3, 0.5) {Big Change};
+\node at (1, 1.25) {Small Change};
+%\fill (2, 1) circle (2pt);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Elasticities: relatively in-elastic}
+\begin{tikzpicture}[scale = 2]
+%\usetiktzlibrary{calc}
+%\draw[very thin, color = gray](0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$P$} 
+  |- (5, 0) node (xaxis) [right] {$Q_d$};
+\node at (1, 0) [below] {$1$};
+\node at (2, 0) [below] {$2$};
+\node at (3, 0) [below] {$3$};
+\node at (4, 0) [below] {$4$};
+\node at (0, 1) [left] {$1$};
+\node at (0, 2) [left] {$2$};
+\node at (0, 3) [left] {$3$};
+\draw[domain = 0.5:3, color = blue] plot(\x, {4 - 1.25*\x});
+\def\demand{\x, {4 - 1.25 * \x}};
+\fill [fill = black!60!green!80] (2.4,0) -- (0, 0) -- (0, 1) -- (2.4, 1) -- cycle;
+\fill [fill = black!60!green!80] (1.6, 0) -- (0, 0) -- (0, 2) -- (1.6, 2) -- cycle;
+%\draw[domain = 0.1:4.9, color = blue] plot(\x, {4 - 1.25*\x});
+\draw  (2.4,0) -- (2.4, 1);
+\draw  (1.6, 0) -- (1.6, 2);
+\draw  (0,1) -- (2.4, 1);
+\draw (0, 2) -- (1.6, 2);
+\node at (3, 3) {$P = 4 - 1.25Q_d$};
+%\node at (3, 2) {Relatively In-elastic};
+\node at (0.7, 1.5) {Big Change};
+\node at (2.12, 0.5) [text width = 2cm] {Small Change};
+%\fill (2, 1) circle (2pt);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Elasticity and revenues}
+\begin{block}{}
+As elasticity is measured with quantity and price, elasticity can tell us something about total revenue (TR = QP)
+\end{block}
+\pause
+\begin{block}{}
+\begin{itemize}
+\item If demand is elastic, cutting prices will raise total revenue
+\item If demand is inelastic, raising prices will raise total revenue
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Income elasticity of demand}
+Income elasticity of demand is the percentage change in quantity demanded relative to the change in income.
+\begin{align*}
+ied &= \frac{\text{percentage change in quantity demanded}}{\text{percentage change in income}}\\
+      & = \frac{\%\Delta Q_d}{\%\Delta Y}
+\end{align*}
+Normal good have a positive relationship, luxury is above 1 and \emph{inferior} is a negative relationship.
+\end{frame}
+
+\begin{frame}{Cross-price elasticity of demand}
+Elasticity is the percentage change in quantity demanded relative to the change in price.
+\begin{align*}
+xped &= \frac{\text{percentage change in quantity demanded good i}}{\text{percentage change in price of good j}}\\
+      & = \frac{\%\Delta Q_{d, i}}{\%\Delta P_j}
+\end{align*}
+Positive relationship for substitutes and negative for compliments. 
+\end{frame}
+
+
+\begin{frame}{Importance of elasticity}
+Why care about elasticity?
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Monopolist should raise prices while demand is inelastic and drop them when demand is elastic
+\item Indirect tax
+\item Luxury or normal or inferior goods
+\item Importance of competitors' actions (oligopoly and monopolistic competition)
+\item Price discrimination
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Price Discrimination}
+Charging different prices for the same product
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item There must be some element of market power
+\item Perfect price discrimination will change a unique price to each buyer
+\item Related to market segmentation
+\item Need to identify the elasticity of demand for groups of customers
+\item Need to make sure that buyers cannot swap between markets
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Price Discrimination}
+\includegraphics<1>[width=12cm, height=9cm]{"train"}
+\end{frame}
+
+
+
+
+\begin{frame}{Price elasticity of supply}
+Factors that affect the response of supply to a change in price
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The time period
+\item Productive capacity (economy or firm)
+\item The size of the firm/industry
+\item The mobility of factors of production
+\item Ease/cost of storing inventory
+\end{itemize}
+\end{frame}
+
+
+\section{Price Discrimination}
+\begin{frame}{Price Discrimination}
+\begin{itemize}[<+-| alert@+>]
+\item Charge different prices to different customers
+\item Higher price for those with less elastic demand
+\item This will increase the revenue and profits of the firm
+\item Ethical issues
+\item Branding issues
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Price Discrimination}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray] (0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+%\node at (4.5, 1.5) [above left] {AC};
+%\node at (3.2, 2.0) [above left] {MC};
+%\draw [thick] (0.0, 2.0) to [out = -60, in = 180] (2, 0.5) to 
+%[out = 10, in = 220] (4, 1.5);
+%\draw [thick] (0, 1.2) to [out = -35, in = 190] (2, 0.5) to [out = %10, in = 250] (3.2, 2.0);
+\draw [thick, color = blue] (0, 3) to (5, 1); 
+\node at (5, 1.25) [above left] {D = AR};
+\node at (4, 0) [above] {MR};
+\draw [thick, color = red] (0, 3) to (4, 0);
+\draw [thick] (0, 1) to (5, 1);
+\node at (5, 1) [below] {MC};
+\pause
+\draw [fill = red] (2.7, 1.0) circle [radius = 0.05];
+\draw [dashed] (2.7, 0) to (2.7, 1.9);
+\draw [dashed] (0, 1.9) to (2.7, 1.9);
+\pause
+\draw [thick, fill = yellow, fill opacity = 0.2] 
+(0, 1) -- (2.7, 1) -- (2.7, 1.9) -- (0, 1.9);
+\node at (1.5, 1.5) {Profit};
+\pause
+\draw [thick, fill = red, fill opacity = 0.2] 
+(0, 1.9) -- (0, 3) -- (2.7, 1.9);
+\node at (1.3, 2.5) [right] {Consumer Surplus};
+\pause
+\draw [thick, fill = blue, fill opacity = 0.2]
+(2.7, 1) -- (5, 1) -- (2.7, 1.9);
+\node at (3.3, 1.8) [right] {Dead-weight loss};
+%\pause
+%\draw [fill = red] (2.35, 1.6) circle [radius = 0.05];
+%\draw [dashed] (2.35, 0) to (2.35, 2.2);
+%\node at (2.35, 0) [below] {qm};
+%\draw [dashed] (0, 2.2) to (2.35, 2.2);
+%\node at (0, 2.2) [left] {pm};
+%\pause
+%\draw [dashed] (2.9, 0) to (2.9, 2);
+%\draw [dashed] (0, 2) to (2.9, 2);
+%\draw [fill = red] (2.9, 1.3) circle [radius = 0.05];
+%\node at (0, 2) [left] {$pm_2$};
+%\node at (2.9, 0) [below] {$qm_2$};%
+
+%\pause
+%\draw [dashed] (4.22, 1.53) to (4.22, 0);
+%\node at (5, 1.5) [above left] {LRS};
+%\node at (4.22, 0) [below] {qc};
+%\node at (0, 1.53) [left] {pc};
+%\draw [fill = red] (4.22, 1.53) circle [radius = 0.05];
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Perfect Price Discrimination}
+\begin{tikzpicture}[scale = 2]
+\draw[very thin, color = gray] (0, 0) grid (5, 3);
+\draw [<->, thick] (0, 3) node (yaxis) [above] {$TC$} 
+  |- (5, 0) node (xaxis) [right] {$Q$};
+%\node at (4.5, 1.5) [above left] {AC};
+%\node at (3.2, 2.0) [above left] {MC};
+%\draw [thick] (0.0, 2.0) to [out = -60, in = 180] (2, 0.5) to 
+%[out = 10, in = 220] (4, 1.5);
+%\draw [thick] (0, 1.2) to [out = -35, in = 190] (2, 0.5) to [out = %10, in = 250] (3.2, 2.0);
+\draw [thick, color = blue] (0, 3) to (5, 1); 
+\node at (5, 1.25) [above left] {D = AR};
+\node at (4, 0) [above] {MR};
+\draw [thick, color = red] (0, 3) to (4, 0);
+\draw [thick] (0, 1) to (5, 1);
+\node at (5, 1) [below] {MC};
+%\draw [fill = red] (2.7, 1.0) circle [radius = 0.05];
+%\draw [dashed] (2.7, 0) to (2.7, 1.9);
+%\draw [dashed] (0, 1.9) to (2.7, 1.9);
+\pause
+\draw [thick, fill = yellow, fill opacity = 0.2] 
+(0, 1) -- (5, 1) -- (0, 3);
+\node at (1.5, 1.5) {Profit};
+\end{tikzpicture}
+\end{frame}
+
+\section{Strategy}
+% there is a good overview in Gemeni that may offer more. 
+%https://gemini.google.com/share/c5da6154c66e
+\begin{frame}{Competitive advantage}
+Michael Porter (Harvard Business School)
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Cost leadership
+\item Innovation strategy 
+\item Operational effectiveness
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Michael Porter}
+\frametitle{Michael Porter}
+\begin{center}
+\includegraphics[height = 3.0in]{../../Pictures/Michael_Porter}
+\end{center}
+\end{frame}
+
+\begin{frame}{Five Competitive Forces}
+Five competitive forces
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \textbf{Bargaining power} of suppliers
+\item \textbf{Threat} of substitutes
+\item \textbf{Bargaining power} of customers
+\item \textbf{Threat} of new entrants
+\end{itemize}
+\pause
+\begin{block}{}
+Industry Rivalry
+\end{block}
+\end{frame}
+
+%\begin{frame}{Bargaining power of suppliers}
+%\begin{itemize}[<+-| alert@+>]
+%\item How many substitute suppliers are there
+%\item Impact of inputs on cost or differentiation
+%\item Strength of distribution channel
+%\item Supplier concentration
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Threat of substitutes}
+%\begin{itemize}[<+-| alert@+>]
+%\item Are there alternative products or services that serve the same need or desire?
+%\item Propensity of buyers to switch
+%\item Buyer switching costs
+%\item Number of substitute products
+%\item Quality of substitutes
+%\item Price of substitutes
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Bargaining power of customers}
+%\begin{itemize}[<+-| alert@+>]
+%\item Buyer concentration
+%\item Dependency on lines of distribution
+%\item Sensitivity to buyer action (high fixed costs)
+%\item Buyer sensitivity to price
+%\item Buyer switching costs
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}{Threat of new entrants}
+%\begin{itemize}[<+-| alert@+>]
+%\item Existence of barriers to entry 
+%\begin{itemize}
+%\item patents
+%\item rights 
+%\end{itemize}
+%\item Costs of entering
+%\item Economies of scale
+%\item Product differentiation
+%\item Switching costs
+%\item Possibility of retaliation
+%\item Distribution channel
+%\item Network effects
+%\end{itemize}
+%\end{frame}
+\end{document}

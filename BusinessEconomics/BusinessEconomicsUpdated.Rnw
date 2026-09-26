@@ -1,0 +1,84 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage[comma, sort&compress]{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{textpos}
+\graphicspath{{../../Pictures/}}
+\bibliographystyle{agsm}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
+% Title and author information
+\title{Business Analytics}
+\author{Rob Hayward}
+\date{Dec 2025}
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Strategy}
+% there is a good overview in Gemeni that may offer more. 
+%https://gemini.google.com/share/c5da6154c66e
+\begin{frame}{Competitive advantage}
+Michael Porter (Harvard Business School)
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Cost leadership
+\item Innovation strategy 
+\item Operational effectiveness
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Michael Porter}
+\frametitle{Michael Porter}
+\begin{center}
+\includegraphics[height = 3.0in]{../../Pictures/Michael_Porter}
+\end{center}
+\end{frame}
+
+\begin{frame}{Five Competitive Forces}
+Five competitive forces
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item \textbf{Bargaining power} of suppliers
+\item \textbf{Threat} of substitutes
+\item \textbf{Bargaining power} of customers
+\item \textbf{Threat} of new entrants
+\end{itemize}
+\pause
+\begin{block}{}
+Industry Rivalry
+\end{block}
+\end{frame}
+
+
+\end{document}

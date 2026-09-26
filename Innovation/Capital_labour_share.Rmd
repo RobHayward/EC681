@@ -1,0 +1,99 @@
+---
+title: Capital-Labour share and development
+output: 
+  html_document: 
+    theme: cerulean
+bibliography: '../../myrefs.bib'
+---
+
+
+# Introduction
+
+The rise of AI has been accompanied by an increase in the share of income that goes to capital relative to labour.  This is likely to continue under many alternative views of AI development. Much of the following is developed from [AI and our future](https://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.20261505) which outlines two alternative views of economic development with the AI.  
+
+Artificial intelligence (AI) will likely be the most transformative technology of the modern era. Earlier technologies such as electricity, semiconductors, and the internet profoundly reshaped economic activity and increased living standards throughout the world. These technologies did little to deflect the long run growth rate of the US economy from its two percent per year underlying growth rate. In some sense, AI is simply the latest in this line of general purpose technologies and at a minimum should continue the economic transformation that has been ongoing for the past century. 
+
+![Underlying growth](~/robohay@gmail.com/Research/GIT/Pictures/longrunUSprod.png)	
+
+## Weakest Link
+
+This includes the @Kremer-O-ring O-ring model or **weakest link production function**.  This will limit output to the maximum determined by the weakest part of the production chain.  In our case, it could be supervision of machines.  If that supervision is limited by the lack of basic sector-knowledge trading, it will also limit overall production in this model. 
+
+> To see a familiar example of this phenomenon, just look at your computer. You have on your desk roughly 100 million times the computing power that was available on the best computers from the early 1970s. But you and I are not 100 million times more productive than the economists of that time. Matrices get inverted much more rapidly, but we still have to decide what data to put in the matrix, what the structure of the economic model is, and what theory we are testing. In other words, our production is limited by the weak links  
+	
+	
+Even in the case of automated discovery, the part of the economy that is not automated continues to provide a drag on growth.  The factor increase in output becomes larger as the proportion of the economy that can be automated increases - reaching infinity and 100 percent.  However, even if we progress towards that level, the early improvement remains contained by the weakest link.  Me: probably an opportunity to use the Ann Robinson picture here. 
+
+There is a very nice list of references here.   Jobs are bundles of tasks.  Different tasks are affected in different ways.   In a weak-link world, automation will raise the task price of the weak link.   Automation of some of the *essential* tasks of radiologists raises the productivity of radiologists overall. 
+
+Page 14 says that total computing power is finite.  Comparative advantage will come into play.  However, that is what is being developed now. 
+
+> None of this is to say that some workers cannot see their wages fall. Perhaps humans leave highly-paid occupations like software engineers and lawyers in order to take lower paying jobs that retain value precisely because they are performed by humans (for example, artists and musicians). The wage can fall when people switch jobs even when the wage for artists is always rising. Similarly, even if in some scenarios the share of GDP paid to labor is falling to zero, this does not mean that the wage is falling. For example, if total labor income rises at 3 percent per year while total capital income rises at 5 percent per year, the labor share will fall to zero. But labor incomes are rising. All of this is simply to reinforce that the labor market consequences of AI can be nuanced.
+
+There are two issues here: 
+
+1. The **career switch effect**: if AI becomes so good that AI and coding jobs disappear, former lawyers and software engineers look for new jobs. If they move into creative fields like music or art (where a 'human touch' is necessary), their income will go down even if the demand for music and art means that overall wages of musicians and artists increase. 
+
+2. The **labour-share illusion**.  Labour share of income might fall beause capital grows at a faster rate that labour, however, this does not mean that labour income falls. 
+
+## Capital-labour share
+
+In the second quarter of 2026, US corporate profits reached $4.8tn or 18 percent of national income; employees' share from wages and benefits was just 60 percent.  This is the lowest level since the 1950s.  
+
+[FT: US corporate profits surge to record as worker payouts wilt: accessed 29 Aug 2026](https://www.ft.com/content/6f3ada65-c56c-499c-8eb6-008fac58949d)
+
+If capital and labour start out as half the economy with income (and output) of 100 and capital grows at 5 percent while labour grows at just 1 percent, this will allow the return to capital to increase by about 62% over the next 10 years will the return to labour will rise only about 10 percent. 
+
+In a counterfactual world where there is no changes in share of factor returns and there is 2 percent growth, the labour would achieve double the return.  
+
+```{r, echo = TRUE}
+# CapitalDevelopment.R
+#==================================================
+# This will provide the example pf capital development, 
+# rising capital share and still increasing wages
+# This comes from 24 August 2026 and there is an 
+# accompanying file called Capital_labour_share.Rmd
+# Set up the opening quantities of capital and labour 
+# Total capital
+TC <- 100
+# Total labour
+TL <- 100
+# Growth rates - 5 percent capital, 2 percent labour
+GC <- 1.05
+GL <- 1.01
+# Now create the timeseries of labour and capital 
+# given sartingt points and growth rates
+TCts <- 100 * cumprod(c(1, rep(GC, 10)))
+TLts <- 100 * cumprod(c(1, rep(GL, 10)))
+GDP <- TCts + TLts
+#================================================
+# Create a re-based function (it is not yet in mypackage)
+myrebase <- function(x, index = 1, value = 100){
+  tempdata <- x/x[index] * value
+  return(tempdata)
+}
+TCts_rebased <- myrebase(TCts)
+TLts_rebased <- myrebase(TLts)
+GDP_rebased <- myrebase(GDP)
+plot(1:11, TCts_rebased, type = 'l', main = 
+       "Capital, Labour and GDP Rebased", 
+     xlab = "Years ahead", ylab = "Income-output")
+lines(1:11, GDP_rebased, col = 'red', lty = 2)
+lines(1:11, TLts_rebased, col = 'blue', lty = 3)
+legend('topleft', inset = 0.02, legend = c("Capital", 
+                                           "Labour", 
+                                           "GDP", 
+                                           "Counterfactual"), 
+       col = c("black", "red", "blue", "green"), 
+       lty = 1:4, cex = 0.88)
+#==================================================
+# Maybe the counterfactual where economy grows at 2 percent 
+# and shares remain the same. 
+GDP_counterfactual <- 100 * cumprod(c(1, rep(1.02, 10)))
+lines(1:11, GDP_counterfactual, col = 'green', lty = 4)
+```
+
+So in this scenario there is a sixty percent return to capital over 10 years and a 10 pecent return to labour.  The labour share falls from fifty percent to ten percent. 
+
+# Bibliography
+

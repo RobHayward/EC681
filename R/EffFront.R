@@ -1,6 +1,6 @@
 # EffFront.R
 # Creates an efficient frontier
-# from Copiolet
+# from Copilot
 
 # Example: Efficient Frontier with 4 assets in base R
 
@@ -33,25 +33,70 @@ plot(port_risks, port_returns,
      pch=20, col=rgb(0,0,1,0.3))
 
 # Highlight frontier (approximate by upper envelope)
-# THat does not work.  
+# That does not work.  
 # I do not understand the code below. 
-frontier_idx <- which(port_returns == ave(port_returns, port_risks, FUN=max))
-points(port_risks[frontier_idx], port_returns[frontier_idx], col="red", pch=20)
-lines(port_risks[frontier_idx], port_returns[frontier_idx], col="grey", lwd=2)
-
-#===========================================
+#frontier_idx <- which(port_returns == ave(port_returns, 
+#                                          port_risks, FUN=max))
+#points(port_risks[frontier_idx], port_returns[frontier_idx], 
+#       col="red", pch=20)
+#lines(port_risks[frontier_idx], port_returns[frontier_idx], 
+#      col="grey", lwd=2)
 # Still working on this and the code above. 
+#===========================================
+# This is from Le Chat
+# Calculate the Sharpe Ratios 
+sharp_ratios <- port_returns / port_risks
+#===========================================
+sorted_volatilities <- sort(unique(port_risks))
+efficient_frontier <- sapply(sorted_volatilities, function(v) {
+  portfolios_at_v <- which(abs(port_risks - v) < 0.0001)
+  max_return_at_v <- max(port_returns[portfolios_at_v])
+  which.max(port_returns[portfolios_at_v] +
+              (port_returns == max_return_at_v) * 
+    portfolios_at_v)
+})
+efficient_returns <- port_returns[efficient_frontier]
+efficient_volatilities <- port_risks[efficient_frontier]
+# lines(efficient_volatilities, efficient_returns, col = 'blue')
+# Extract max sharpe index
+max_sharpe_index <- which.max(sharp_ratios)
+max_sharpe_return <- port_returns[max_sharpe_index]
+max_sharpe_volatility <- port_risks[max_sharpe_index]
+# Extract min variance portfolio
+min_var_index <- which.min(port_risks)
+min_var_return <- port_returns[min_var_index]
+min_var_volatility <- port_risks[min_var_index]
+#=================================================
+# Now get the weights
+weights[max_sharpe_index, ]
+weights[min_var_index, ]
+# Plot
+# pch 16 is a solid circle
+points(max_sharpe_volatility, max_sharpe_return, 
+       pch = 16, type = 'p', col = 'yellow')
+text(max_sharpe_volatility + 0.003,  max_sharpe_return + 0.015, 
+     'Max \n Sharpe', cex = 0.5)
+points(min_var_volatility, min_var_return, 
+       pch = 16, type = 'p', col = 'orange')
+text(min_var_volatility, min_var_return -0.013, 'Min \n Vol', 
+     cex = 0.5)
 # This will show a particular portfolio of a partcular weights. 
 myweights <- c(0.6, 0.2, 0.1, 0.1)
 myreturn <- myweights %*% mu
 # Need to calculate risk
 myrisk <- sqrt(sum(myweights %*% Sigma * myweights))
-points(myrisk, myreturn, col = 'yellow', pch = 20)
+points(myrisk, myreturn, col = 'red', pch = 20)
 myrisk
 myreturn
+# Want to get the weights of the max sharpe and min vol portfolios.  
+weights[max_sharpe_index, ]
+weights[min_var_index, ]
+# This is a discussion of portfolio optimisiation with le chat
+# https://chat.mistral.ai/chat/ae617e78-347d-43b2-8c21-0e12f4e63305
 #=========================================================
+
 # This comes from Introduction to R for Quantitative Finance 
-# Chapter 2: Porfolio Optimisation
+# Chapter 2: Portfolio Optimisation
 minvariance <- function(assets, mu = 0.05){
   return <- log(tail(assets, -1) / head(assets, -1))
   Q <- rbind(cov(return), rep(1, ncol(assets)), colMeans(return))
@@ -61,6 +106,7 @@ minvariance <- function(assets, mu = 0.05){
 }
 #===============================================
 # This is the Portfolio Optimisation package vignette
+# https://cran.r-project.org/web/packages/PortfolioAnalytics/vignettes/portfolio_vignette.pdf
 library(PortfolioAnalytics)
 returns <- edhec[ ,1:4]
 colnames(returns) <- c("CA", "CTAG", "DS", "EM")
@@ -77,7 +123,7 @@ pspec <- add.constraint(portfolio = pspec,
                         type = "weight_sum", 
                         min_sum = 0, 
                         max_sum = 0)
-pspec <- add.constraint(portfolio = pspect,
+pspec <- add.constraint(portfolio = pspec,
                         type = "dollar_neutral")
 pspec <- add.constraint(portfolio = pspec)
 str(pspec)
