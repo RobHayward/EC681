@@ -21,7 +21,7 @@
 % Title and author information
 \title{Financial Institutions}
 \author{Rob Hayward}
-\date{Oct 2025}
+\date{Oct 2026}
 
 \begin{document}
 
@@ -170,7 +170,7 @@ There are a wide range of different types of fund
 \item Pension funds
 \item Insurance funds
 \item Mutual funds or ETF
-\item Hedge funds
+\item Hedge funds (Citadel, Jane Street)
 \item Private equity (Soft Bank and Apollo)
 \end{itemize}
 \end{frame}
@@ -220,7 +220,7 @@ There is a distinction between
 There are a wide range of additional institutions that facilitate the smooth operation of the financial system
 \pause
 \begin{itemize}[<+-| alert@+>]
-\item Exchanges (NYSE, LSE, NASDAQ, Binance)
+\item Exchanges (NYSE, LSE, NASDAQ, Binance, Polymarket)
 \item Clearing Houses (LCH, ICE, NSCC)
 % National Securities Clearing Corporation 
 % https://www.cfainstitute.org/en/advocacy/issues/central-clearing-houses
@@ -244,10 +244,10 @@ There are a wide range of additional institutions that facilitate the smooth ope
 \item Index business has a 76\% margin
 \end{itemize}
 \pause 
-\href{https://www.ft.com/content/29c9e079-a6df-4cbf-8c79-528426b3c7fb}{FT 15 Oct 2021}
 \end{frame}
 
-\begin{frame}{Silicon Valley}
+\begin{frame}{Learn more}
+\includegraphics[scale = 0.3]{MattLevine.png}
 \includegraphics[scale = 1.0]{Siliconvalley.png}
 \end{frame}
 

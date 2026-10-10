@@ -30,13 +30,17 @@
 % Title and author information
 \title{Introduction to the financial system}
 \author{Rob Hayward}
-\date{Oct 2025}
+\date{Oct 2026}
 
 
 \begin{document}
 
 \begin{frame}
 \titlepage
+\end{frame}
+
+\begin{frame}{Learning}
+\includegraphics[scale = 0.2]{AIlearning.jpg}
 \end{frame}
 
 \section{Introduction}
@@ -112,7 +116,21 @@ The system should allow risk to be pooled, diversified and transferred
 \end{itemize}
 \end{frame}
 
-\begin{frame}{The payment system}
+\begin{frame}{The payment system 1}
+The international payment system 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item The role of the US dollar
+\item Alternatives to US control
+\begin{itemize}
+\item CIPS: China's Cross-Border Interbank Payment System
+\item SPFS: Russian alternative to SWIFT
+\item BRICS Bridge: multi-central bank digital currency
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The payment system 2}
 \includegraphics[scale = 1.0]{Bitcoinlogo}
 \end{frame}
 
