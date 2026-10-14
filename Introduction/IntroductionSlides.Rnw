@@ -39,10 +39,6 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Learning}
-\includegraphics[scale = 0.2]{AIlearning.jpg}
-\end{frame}
-
 \section{Introduction}
 \begin{frame}{Introduction}
 \begin{block}{}
@@ -106,7 +102,7 @@ The financial system also requires supportive infrastructure such as
 \includegraphics[scale = 0.05]{Enron}
 \end{frame}
 
-\begin{frame}{Risk}
+\begin{frame}{Transfer risk}
 The system should allow risk to be pooled, diversified and transferred
 \begin{itemize}[<+-| alert@+>]
 \pause
@@ -181,25 +177,6 @@ Firms want to
 \end{itemize}
 \item reduce risk
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Firm types}
-\begin{table}
-\begin{center}
-\begin{tabular}{l r r}
-Type & Access to finance & Agency risk\\
-\hline
-Sole proprietorship & Limited & None \\
-Partnership & Limited & Low \\
-Private firm & Variable & High \\
-Public firm & Large & High \\
-\hline
-\end{tabular}
-\end{center}
-\caption{Firm types}
-\end{table}
-\pause 
-There are also joint ventures, cooperatives, open-source communities and Decentralised Autonomous Organisations (DAO)
 \end{frame}
 
 \begin{frame}{Access to finance}
