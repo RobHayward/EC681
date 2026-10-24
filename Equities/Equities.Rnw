@@ -7,6 +7,7 @@
 \usepackage{tikz}
 \graphicspath{{../../Pictures/}}
 \usetikzlibrary{arrows,positioning}
+\usetikzlibrary{shapes.geometric, arrows.meta, calc}
 \usepackage{multirow}
 % Specify base color
 \usecolortheme[named=OliveGreen]{structure}
@@ -15,10 +16,21 @@
 % Specify other colors and options as required
 \setbeamercolor{alerted text}{fg=Maroon}
 \setbeamertemplate{items}[square]
-
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
 % Title and author information
 \title{Equities}
 \author{Rob Hayward}
+\date{Oct 2026}
+
 \begin{document}
 
 \begin{frame}
@@ -74,6 +86,22 @@ Primary and secondary markets
 \pause
 \vspace{1cm}
 Keynes made the case that liquidity was for individual investors but not for society as a whole. 
+\end{frame}
+
+\begin{frame}{IPOs}
+Going public
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Raising funds
+	\item Realising equity gains
+	\item Raising attention
+\end{itemize}
+\end{frame}
+
+\begin{frame}{IPOs 2}
+\includegraphics[scale=0.2]{SpaceX}
+\includegraphics[scale=0.2]{Anthropic}
+\includegraphics[scale=0.2]{OpenAI}
 \end{frame}
 
 \section{Agency theory}
@@ -245,9 +273,9 @@ There are two major problems with using dividend yield as a valuation approach:
 \begin{frame}{Price-earnings}
 Another approach would look at total earnings 
 \pause
-\begin{block}{}
+\begin{block}{Gordon Growth Model}
 \begin{equation*}
-R = \frac{D_0}{P} + g \rightarrow \frac{E}{P}
+R = \frac{D_1}{P} + g \rightarrow \frac{E}{P}
 \end{equation*}
 \end{block}
 \pause
@@ -273,7 +301,7 @@ The price-earnings ratio is a nice metric to value firms
 \end{itemize}
 \end{itemize}
 \end{frame}
-
+\section{Overall equity valuation}
 \begin{frame}{Equities and the economy}
 There are two broad approaches to valuation
 \begin{itemize}[<+-| alert@+>]
@@ -309,12 +337,13 @@ names <- c("Date", "S&P", "Dividend", "Earnings", "CPI", "Date.frac", "Long rate
 da <- read.csv("../../Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
 da <- da[,-dim(da)[2]]
 da$Date <- as.yearmon(da$Date, format = "&Y.%m")
-plot(da$Date, da$CAPE, type = 'l', main = "CAPE 1871 to 2025", 
+plot(da$Date, da$CAPE, type = 'l', main = "CAPE 1871 to 2026", 
      ylab = "CAPE", xlab = "Year")
 text(1966, 26, "24.1 Jan 1966", col = "darkgreen")
 #text(2007, 25, "23.7 2007", col = "darkgreen")
 text(1925, 34, "32.6 Jan 1929", col = "darkgreen")
 text(1982, 44, "44.2 Dec 1999", col = "darkgreen")
+text(2014, 42, "40.71 \n Oct 2026", col = "darkgreen")
 @
 \end{frame}
 
@@ -322,12 +351,12 @@ text(1982, 44, "44.2 Dec 1999", col = "darkgreen")
 \begin{table}
 \begin{center}
 \rowcolors{1}{OliveGreen!20}{OliveGreen!5}
-\begin{tabular}{l r r}
-\textbf{Market} & \textbf{Current PE} & \textbf{One year ago}\\
+\begin{tabular}{l r r r}
+	\textbf{Market} & \textbf{PE today} & \textbf{PE -1yr} & \textbf{Index 1yr \%}\\
 \hline
-Russell 2000 & 35.32 & 25.0  \\
-NASDAQ 100 & 33.15 & 31.7 \\
-S\&P 500 & 25.47 & 24.4 \\
+Russell 2000 & 34.62 & 35.32 & 10.3\% \\
+NASDAQ 100 & 30.27 & 33.15 & 15.86\%\\
+S\&P 500 & 23.51 & 25.47 & 15.54\%\\
 \end{tabular}
 \end{center}
 \end{table}
@@ -342,7 +371,7 @@ Q = \frac{\text{Market value}}{\text{Corporate net worth}}
 \end{block}
 \end{frame}
 
-\begin{frame}{Tobin's Q over time}
+\begin{frame}{Tobin's Q over time:Smithers}
 <<tobinq, echo = FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.cap= "Tobin's Q">>=
 da <- read.csv('../../Data/TobinQSmithers.csv', skip = 6, nrows = 500)
 require(zoo)
@@ -352,6 +381,26 @@ plot(da$Date, da$Value, type = 'l', col = 'lightgreen',
 lines(da$Date, da[, 22], col = 'darkgreen', lty = 2)
 legend('top', inset = 0.01, legend = c("Q", "Q-ex IP"), 
        col = c("lightgreen", "darkgreen"), lty = c(1, 2), cex = 0.8)
+@
+\end{frame}
+ 
+\begin{frame}{Tobin's Q over timie: Fred}
+<<tobinq2, echo = FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.cap= "Tobin's Q">>=
+da <- read.csv('../../Data/NCBEILQ027S_TNWMVBSNNCB.csv')
+names(da) <- c("Date", "Q")
+da$Date <- as.Date(da$Date, format = "%Y-%m-%d")
+Qmean <- mean(da$Q, na.rm = TRUE)
+plot(da$Date, da$Q, type = 'l', main = "Tobin-Q Ratio", 
+     xlab = "Date", ylab = "Ratio")
+abline(h = Qmean, col = 'red', lty = 2)
+text(as.Date("1980-12-01"), 0.0009, 
+     labels = "Expensive", cex = 0.8)
+text(as.Date("1980-10-01"), 0.0008, 
+     labels = "Cheap", cex = 0.8)
+legend('topright', inset = 0.01, 
+       legend = c("Tobin's Q", "Average Q value"), 
+       col = c('black', 'red'), 
+       lty = c(1, 2), cex = 0.8)
 @
 \end{frame}
 
@@ -369,5 +418,95 @@ Where $ERP$ is the equity risk premium; $R_e$ is the return on equity; $R_fr$ is
 \includegraphics[scale=1.0]{bondstock}
 \end{frame}
 
+\begin{frame}{Chip story}
+\includegraphics[scale = 0.3]{GPU}
+\includegraphics[scale = 0.3]{matrix}
+\end{frame}
+
+\section{Current conditions}
+
+\begin{frame}{The AI industry}
+\begin{center}
+\begin{tikzpicture}[
+    % Define styles for the stack layers
+    layer/.style={
+        rectangle, 
+        draw=black!70, 
+        line width=0.3mm, 
+        text width=6.2cm, 
+        text width=6.2cm, 
+        align=center, 
+        rounded corners=2mm, 
+        inner sep=6pt,
+        font=\sffamily
+    },
+    % Define specific colors for the layers
+    topcolor/.style={fill=green!30},
+    midcolor/.style={fill=orange!10},
+    botcolor/.style={fill=teal!10}
+]
+
+    % --- DRAW THE STACKED LAYERS ---
+    
+    % Bottom Layer: Chipmakers
+    \node[layer, botcolor] (chips) {
+        \textbf{\footnotesize LAYER 1: Chipmakers \& Hardware} \\ 
+        \vskip0.2em
+        {\scriptsize NVIDIA, Micron, TSMC, AMD} \\ 
+    };
+
+    % Middle Layer: Hyperscalers
+    \node[layer, midcolor, above = 12pt of chips] (hyper) {
+        \textbf{\footnotesize LAYER 2: Hyperscalers \& Cloud Infrastructure} \\ 
+        \vskip0.2em
+        {\scriptsize Microsoft Azure, AWS, Google Cloud, Meta} \\ 
+    };
+
+    % Top Layer: LLM Labs
+    \node[layer, topcolor, above = 12pt of hyper] (labs) {
+        \textbf{\footnotesize LAYER 3: AI LLM Labs \& Applications} \\ 
+        \vskip0.2em
+        {\small \scriptsize OpenAI, Anthropic, Meta AI (Llama)} \\ 
+    };
+
+    % --- DRAW THE SIDE VALUE/DEPENDENCY ARROW ---
+    
+    % Define the position for the arrow on the left side
+    \coordinate (arrowstart) at (-5.3, -0.8);
+    \coordinate (arrowend) at (-5.3, 5.4);
+    
+    % Draw the vertical gradient arrow
+    \draw[-{Stealth[scale=1.0]}, line width=1.0mm, black!60] (arrowstart) -- (arrowend);
+    
+    % Add text along the side arrow
+    \node[rotate=90, anchor=south, font=\sffamily\footnotesize\bfseries\color{black!70}] at (-5.5, 2.3) {
+        Value Stack \& Operational Dependency 
+    };
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{This week}
+	Meta shock!
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item 10-year US fell 19bp to 4.96%
+	\item NASDAQ fell 2.6%
+\end{itemize}
+\vspace{2mm}
+\pause
+But consumer spending is strong and earnings are expected to increase 33 percent this year and 16 percent next. 
+\end{frame}
+
+\begin{frame}{Sectors}
+	\includegraphics[scale=0.35]{sectors3.jpg}
+\end{frame}
+
+\begin{frame}{Weekly question}
+\begin{block}{Prompt}
+When will Anthropic IPO?  What valuation is expected?  How is this calculated? 
+\end{block}
+\end{frame}
+
+
 \end{document}
-%[<+-| alert@+>]

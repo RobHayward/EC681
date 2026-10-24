@@ -17,11 +17,21 @@
 % Specify other colors and options as required
 \setbeamercolor{alerted text}{fg=Maroon}
 \setbeamertemplate{items}[square]
-
+% This will provide a section header
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
 % Title and author information
 \title{The bond market}
 \author{Rob Hayward}
-
+\date{Oct 2026}
 
 \begin{document}
 
@@ -38,16 +48,30 @@
 \begin{itemize}[<+-| alert@+>]
 \pause
 \item Debt is an IOU
-\item Firms and the government issue debt
+\item Firms and the government issue debt securities
 \item The \emph{maturity} of the debt is the time until it is repaid
-\item Short-term
+\item Categories
 \begin{itemize} 
 \item less than one year: tbills or commercial paper (at discount)
 \item more than one year: bonds (usually have a coupon)
 \end{itemize}
 \item Traditionally clipped \emph{the coupon}
-\item Financial engineering (zeros and stripped bonds)
+\item The yield is a \emph{benchmark} and related to the fundamental or \emph{real interest rate} or $\mathbf{R^*}$
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Risk free rate}
+<<rr, fig.height=4.6, echo=FALSE, warning=FALSE,message=FALSE>>=
+# This comes from the St, Louis Fed REAINTRATREARAT1YE
+da <- read.csv('../../Data/US1yrreal.csv', col.names = c("Date", "R.Rate"))
+da$Date <- as.Date(da$Date)
+plot(da$Date, da$R.Rate, type = 'l', xlab = "Date", ylab = "Rate", main = "US 1-year real rate")
+abline(h  = 0, col = 'brown')
+@
+\end{frame}
+
+\begin{frame}{Rising rates}
+	\includegraphics[scale=0.3]{bond.png}
 \end{frame}
 
 \section{Valuation}
@@ -260,6 +284,34 @@ There are three theories to explain the shape of the yield curve
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Liquidity premium}
+	\includegraphics[scale = 0.3]{Aust100Y}
+\end{frame}
+
+\begin{frame}{The Term premium}
+	The \emph{term premium} will encompass:
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Interest rate expectations
+	\item Liquidity premium
+	\item Other
+		\begin{itemize}
+			\item volatility
+			\item convenience
+			\item investment (diverification)
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Current conditions}
+\begin{frame}{Inflation}
+	\includegraphics[scale=0.3]{inflation2.png}
+\end{frame}
+
+\begin{frame}{Energy contribution}
+	\includegraphics[scale=0.3]{inflation3.png}
+\end{frame}
+
 \begin{frame}{US interest rates}
 <<money, echo=FALSE, fig.height=4.6, fig.width=6.7>>=
 da <- read.csv('../../Data/FEDFUNDS.csv')
@@ -294,106 +346,26 @@ lines(x, y, col = "DarkGreen")
   @
 \end{frame}
 
-\begin{frame}[label=NKMspread]{New Keynesian model}
-\includegraphics[scale=0.5]{markup}
+\section{The Fed}
+\begin{frame}{Fed Chair: Kevin Warsh}
+\includegraphics[scale=0.3]{Warsh.jpg}
 \end{frame}
 
-\begin{frame}{Test the model}
-Data
+\begin{frame}{Trump and Warsh and Fed credibility}
+Appointed January 2026
 \pause
 \begin{itemize}[<+-| alert@+>]
-\item BoE data 
-\begin{itemize}
-\item 2-year fixed mortgage rate (75\% deposit)
-\item base rate
+\item Controversial
+\item Jerome Powell
+\item Lisa Cook 
+\item \emph{Credibility}
 \end{itemize}
-\end{itemize}
 \end{frame}
 
-\begin{frame}{Base and mortgage rate}
-<<spread, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
-da <- read.csv('../../Data/UKMortgageData.csv')
-da$Date <- as.Date(da$Date, format = "%d %b %y")
-colnames(da) <- c("Date", "2-yr Mortgage (95%)", 
-                  "2-yr Mortgage (90%)", "2-yr Mortgage (75%)")
-# it appears that the 75% mortgage starts at April 1998. Start here? 
-da2 <- subset(da, subset = da$Date >= as.Date("1998-04-30"), 
-              select = c(1,4))
-#=========================================================
-#Base rate
-da3 <- read.csv('../../Data/BoEBaseRateTotal.csv')
-da3$Date <- as.Date(da3$Date, format = "%d %b %y")
-da3 <- da3[, -2]
-colnames(da3) <- c("Date", "Base rate")
-# merge with other database
-da4 <- merge(da2, da3, by = "Date")
-plot(da4$Date, da4$`2-yr Mortgage (75%)`, type = 'l', ylim = c(0, 6.5), 
-     main = "UK base and mortgage rates", ylab = "Percentage", 
-     xlab = "Date")
-lines(da4$Date, da4$`Base rate`, type = 'l', col = 'chartreuse4')
-legend('topright', inset = 0.08, c('Mortgage rate', 'Base rate'), 
-       lty = c(1, 1), col = c('black', 'chartreuse4'))
-@
-\end{frame}
-
-\begin{frame}{Base-mortgage spread}
-<<spread2, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
-plot(da4$Date, da4$`2-yr Mortgage (75%)` - da4$`Base rate`, type = 'l',
-     main = "UK mortgage rate to base rate spread", xlab = "Date", 
-     ylab = "Spread")
-@
-\end{frame}
-
-\againframe{NKMspread}
-
-\section{Silicon Valley Bank}
-\begin{frame}{Commercial bank}
-\begin{figure}
-\begin{tikzpicture}[scale = 0.75]
-%\draw [very thin, color = gray](0, 0) grid (14, 7);
-\draw [thick] (2, 6) to (12, 6);
-\draw [thick] (7, 7) to (7, 0);
-\node [above] at (10, 6) {Liabilities};
-\node [above] at (4, 6) {Assets};
-\node [right] at (7, 5) {Deposits 1000};
-\node [left] at (7, 5) {Cash 100};
-\node [right] at (7, 4) {Borrowing 200};
-\node [left] at (7, 4) {Loans 1000};
-\draw (3, 2) to (11, 2);
-\node [right] at (7, 3) {Capital 200};
-\node [left] at (7, 3) {Gov bond 300};
-\node [right] at (7, 1) {Total 1400};
-\node [left] at (7, 1) {Total 1400};
-\end{tikzpicture}
-\caption{Commercial bank balance sheet}
-\label{figref:bb}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Commercial bank 2}
-Bank profits are the difference between return on assets and the cost of liabilities.
-\begin{block}{}
-\begin{equation*}
-\pi_b = RA + OI - CL - FC
-\end{equation*}
+\Tell me about hyperscaler bond issuance.  How is this related to free cash flow?  Tell me about CoreWeave credit.begin{frame}{Weekly question}
+\begin{block}{Prompt}
+Tell me about hyperscaler bond issuance.  How is this related to free cash flow?  Tell me about CoreWeave credit.
 \end{block}
-\pause
-Where $\pi_b$ is the bank profit, RA is the return on assets, OI is other income, CL is the cost of loans and FC are fixed costs
 \end{frame}
-
-\begin{frame}{Bank weakness}
-The inherent weakness of a bank is that it provides liquidity and maturity transformation
-\begin{itemize}[<+-| alert@+>]
-\pause
-\item This is important for savings-lending intermediation
-\item However, it makes banks vulnerable
-\item It can cause banks to collapse
-\item When bond yields go up, prices (value) goes down
-\item It causes \emph{feedback effects} and \emph{non-linear effects}
-\end{itemize}
-\end{frame}
-
-
 
 \end{document}
-

@@ -18,6 +18,17 @@
 \setbeamercolor{alerted text}{fg=Maroon}
 \setbeamertemplate{items}[square]
 
+\AtBeginSection[]{
+\begin{frame}
+\vfill
+\centering
+\begin{beamercolorbox}[sep=8pt, center, shadow=true, rounded=true]{title}
+\usebeamerfont{title}\insertsectionhead\par%
+\end{beamercolorbox}
+\vfill
+\end{frame}
+}
+
 % Title and author information
 \title{Diversification}
 \author{Rob Hayward}
@@ -28,6 +39,7 @@
 \titlepage
 \end{frame}
 
+\section{Introduction}
 \begin{frame}{Introduction}
 Some fundamentals
 \pause
@@ -330,6 +342,7 @@ Bad & 6 (1/2) &
 \end{itemize}
 \end{frame}
 
+\section{MPT}
 \begin{frame}{Modern Portfolio Theory 1}
 \begin{itemize}[<+-| alert@+>]
 \item Harry Markowitz (1952)
