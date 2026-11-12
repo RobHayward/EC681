@@ -9,10 +9,22 @@
 \usepackage{tikz}
 \graphicspath{{../../Pictures/}}
 \usepackage{caption}
+\setbeamertemplate{caption}{\insertcaption}
 % Specify base color
 \usecolortheme[named=OliveGreen]{structure}
 % See http://goo.gl/p0Phn for other colors
 % for the feedbackloop.  Details https://tex.stackexchange.com/questions/502559/feedback-diagram/502563
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
 
 % Specify other colors and options as required
 \setbeamercolor{alerted text}{fg=Maroon}
@@ -21,7 +33,7 @@
 % Title and author information
 \title{Financial Institutions}
 \author{Rob Hayward}
-\date{Oct 2026}
+\date{Nov 2026}
 
 \begin{document}
 
@@ -29,6 +41,7 @@
 \titlepage
 \end{frame}
 
+\section{Introduction}
 \begin{frame}{Functions of finance}
 \includegraphics[scale = 1.0]{FinSystem.jpeg}
 \end{frame}
@@ -43,6 +56,30 @@ Functions of finance
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Saving and borrowing}
+The financial system must allow savers and borrowers to find each other. This can improve the position of each
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Jane has \$100 spare for 1 year.  She would like a return of \$10 for delaying consumption; 
+\item Alex has a project that requires \$100 to earn \$120 in one year.
+\item everyone is better off as long as \emph{transaction costs} do not exceed \$10. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transaction costs}
+Transaction costs must be kept low to ensure that transactions are carried out and each side benefits.  The main transaction costs are:
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item search
+\item verification
+\item monitor
+\item enforce
+\end{itemize}
+\pause
+
+These will be affected by technology, changing the nature of the financial system. 
+\end{frame}
+
 \begin{frame}{Asymmetric information}
 A major issue in finance is the imbalance of information 
 \begin{itemize}[<+-| alert@+>]
@@ -51,6 +88,22 @@ A major issue in finance is the imbalance of information
 \item \emph{Adverse selection}
 \item \emph{Regulation}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Other necessary factors}
+The financial system also requires supportive infrastructure such as 
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item a legal system that works effectively
+\item confidence and trust
+\item institutions: banks, regulators, lawyers and many more
+\end{itemize}
+\pause
+\vspace{1cm}
+\includegraphics[scale = 0.05]{Enron}
+\includegraphics[scale = 0.5]{Lehman}
+\hspace{5mm}
+\includegraphics[scale = 0.5]{swissbank}
 \end{frame}
 
 \section{Financial institutions}
@@ -163,6 +216,25 @@ They do not make investments; they are not banks.  Revenue come from,
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Investment bank 3}
+	Intermediation
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Firms
+		\begin{itemize}
+			\item restructuring and advice and funding
+		\end{itemize}
+	\item Funds
+		\begin{itemize}
+			\item investments and advice and access
+		\end{itemize}
+	\item Government 
+		\begin{itemize}
+			\item advice about debt issuance
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Funds 1}
 There are a wide range of different types of fund
 \pause
@@ -170,8 +242,9 @@ There are a wide range of different types of fund
 \item Pension funds
 \item Insurance funds
 \item Mutual funds or ETF
-\item Hedge funds (Citadel, Jane Street)
-\item Private equity (Soft Bank and Apollo)
+\item Hedge funds (Citadel Securities, Pod shops)
+\item Private equity (SoftBank and Apollo)
+\item Sovereign Wealth Funds
 \end{itemize}
 \end{frame}
 
@@ -216,6 +289,84 @@ There is a distinction between
 \end{figure}
 \end{frame}
 
+\begin{frame}{ETF}
+	Investment revolution
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Tax efficient
+	\item Economies of scale
+	\item Phases
+		\begin{itemize}
+			\item Index
+			\item Theme
+			\item Active
+		\end{itemize}
+	\item Authorised particpants
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hedge funds}
+	They have evolved 
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Alfred Jone 1949
+	\item Macro funds
+		\begin{itemize}
+			\item George Soros
+			\item Tudor Jones
+			\item Ray Dalio
+		\end{itemize}
+	\item Quantitative (Renaissance Capital)
+	\item Multi-manager \emph{Pod shop}
+		\begin{itemize}
+			\item Citadel
+			\item Millennium
+			\item Point72
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sovereign Wealth}
+	They have evolved
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Dutch disease (Norway)
+	\item Reserve diversification (China)
+	\item Strategic investment (Saudi, Abu Dhabi)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sovereign wealth size}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrr}
+  \hline
+	 \textbf{Country} & \textbf{Name} & \textbf{Assets (bn)} & \textbf{Start} \\ 
+  \hline
+	Norway & Pension fund & \$2,499 & 1990 \\
+  	China  & SAFE & \$2,047 & 1997 \\
+	China & CII & \$1,567 & 2007 \\
+	Singapore & CIG & \$1,181 & 1981 \\
+	UAE & ADIA & \$1,180 & 1976 \\
+   \hline
+\end{tabular}
+	\caption{Wikipedia}
+\end{table}
+\end{frame}
+
+\begin{frame}{Private equity}
+	Invest in private business
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Collection of assets
+	\item Gathering small firms, leverage and expertise
+	\item Illiquidity premium
+	\item Sell in five years but...
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Other institutions}
 There are a wide range of additional institutions that facilitate the smooth operation of the financial system
 \pause
@@ -246,6 +397,16 @@ There are a wide range of additional institutions that facilitate the smooth ope
 \pause 
 \end{frame}
 
+\begin{frame}{Electronic Market-makers}
+	Jane Street and Citadel Securities
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Electronic market makers
+	\item Proprietory trading firms
+	\item Quantitative trading firms
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Learn more}
 \includegraphics[scale = 0.3]{MattLevine.png}
 \includegraphics[scale = 1.0]{Siliconvalley.png}
@@ -253,5 +414,3 @@ There are a wide range of additional institutions that facilitate the smooth ope
 
 
 \end{document}
-
-
