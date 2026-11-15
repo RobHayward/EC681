@@ -197,6 +197,28 @@ Hyman Minsky developed the \emph{Financial Instability Hypothesis (FIH)}
 Minsky argued for compartmentalisation of parts of the financial system to prevent contagion
 \end{frame}
 
+\begin{frame}{Hyman Minsky}
+There is inherent instability in the system.  The \emph{Financial Instability Hypothesis} (FIH)
+\begin{itemize}[<+-| alert@+>]
+\item The economy will evolve from one of \emph{hedge financing}
+\item To \emph{speculative financing}
+\begin{itemize}[<+-| alert@+>]
+\item Debt-to-equity ratio rises
+\item Repayments are high relative to income
+\end{itemize}
+\item \emph{Ponzie Finance} where income is insufficient to pay interest or principal 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Minsky Moment}
+The reversal is brutal
+\begin{itemize}[<+-| alert@+>]
+\item It is very hard to determine when the bubble will burst
+\item The crash is more intense and explosive than the build up of instability
+\item Financial institutions are interconnected.  There are non-linear network effects
+\end{itemize}
+\end{frame}
+
 \section{Sovereign debt crises}
 \begin{frame}{Reinhart and Rogoff}
 \begin{block}{}
@@ -216,7 +238,6 @@ C.M. Reinhard and K.S. Rogoff, \emph{This Time is Different}
 Interaction of forces.  
 \end{itemize}
 \end{frame}
-
 
 \begin{frame}{Interplay of sovereign debt and financial system}
 \begin{itemize}[<+-| alert@+>]
@@ -249,7 +270,6 @@ Interaction of forces.
 \label{figref:bb}
 \end{figure}
 \end{frame}
-
 
 \begin{frame}{Irish case}
 Irish banks bankrupted the government after collapse of Irish property market
@@ -305,7 +325,6 @@ and therefore,
 \end{equation}
 \end{block}
 \end{frame}
-
 
 \begin{frame}{Debt Sustainability 3}
 If the ratio of debt to GDP remains stable, that could be considered to be sustainable.  Therefore, if $\Delta \frac{D_t}{Y_t}$ is set to zero, Equation \ref{eqref:debt3} becomes 

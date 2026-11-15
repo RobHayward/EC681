@@ -1,0 +1,621 @@
+\documentclass[14pt,xcolor=pdftex,dvipsnames,table]{beamer}
+
+% Specify theme
+\usetheme{Madrid}
+% See deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html for other themes
+\usepackage{caption}
+\usepackage{tikz}
+\graphicspath{{../../Pictures/}}
+\usetikzlibrary{arrows,positioning}
+\usepackage{multirow}
+\usepackage{eurosym}
+% Specify base color
+\usecolortheme[named=OliveGreen]{structure}
+% See http://goo.gl/p0Phn for other colors
+
+% Specify other colors and options as required
+\setbeamercolor{alerted text}{fg=Maroon}
+\setbeamertemplate{items}[square]
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+% Title and author information
+\title{Financial Crisis}
+\author{Rob Hayward}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Reading}
+The main reading for this week are from 
+\begin{itemize}
+\item Kindleberger, C.P., \emph{Manias, Panics, and Crashes}, Wiley 
+\item C. Reinhard and K.S. Rogoff, \emph{This time is different: eight centuries of financial folly}
+\item Krugman, P. \emph{International Economies: Theory and Policy}: financial globalisation, opportunity and risk
+\item Howells, P. and K. Bain, \emph{The Economics of Money Banking and Finance}, Case Studies: 1, 2, 4 and 6
+\end{itemize}
+
+Also reading on My Studies
+\end{frame}
+
+\begin{frame}{History of crisis}
+\begin{itemize}[<+-| alert@+>]
+	\item 1987 Dow Jones Crash 
+	\item 1992 ERM crisis
+	\item 1995 Mexican currency crisis
+	\item 1997 Asian currency crisis 
+	\item 1998 Russian default
+	\item 2001 Dot.com crash
+	\item 2008 Lehman Brothers and GFC
+	\item 2010-12 European debt crisis
+	\item 2023 Silicon Valley Bank
+	\end{itemize}
+\end{frame}
+
+\section{Theory}
+\begin{frame}{Creative Destruction}
+\begin{itemize}[<+-| alert@+>]
+		\pause
+\item Schumpeter
+\begin{itemize}
+\item The creation of new industries and ideas
+\item The new replaces the old
+\end{itemize}
+\item Marx
+\begin{itemize}
+\item The destruction of capitalism
+\item Destroys the old ways of doing things
+\item Crisis to keep workers subservient
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher's debt deflation}
+Irvin Fisher identified nine factors behind the \emph{Great Depression}
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Over-indebtedness; 
+\item Collapse in the volume of currency; 
+\item A falling price level; 
+\item A decline in net worth; 
+\item Declining profits; 
+\item Falling production, trade and employment; 
+\item The replacement of optimism with pessimism; 
+\item The hoarding of cash and the slowing of velocity of circulation; 
+\item The constraint imposed by the inability of the nominal rate of interest to fall below zero 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fisher findings}
+As a result of Fisher
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item The effects of default were more widely assessed
+\item Default does more than just re-distribute wealth
+\item Deflation increases the real burden of debt
+\item Bernanke: default can affect bank balance sheet and credit supply 
+\item Importance of preventing deflation
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Anatomy of typical crisis}
+\begin{block}{}
+Charles P Kindleberger, \textbf{Manias, Crashes and Panics: A history of financial crisis}
+\end{block}
+\pause
+Drawing from a detailed examination of 46 episodes from 1618 to the present. 
+\end{frame}
+
+\begin{frame}{Kindleberger anatomy}
+Kindleberger identifies five key components
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Displacement
+\item Credit boom 
+\item Speculation
+\item Tipping point
+\item Revulsion 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hyman Minsky}
+There is inherent instability in the system.  The \emph{Financial Instability Hypothesis} (FIH)
+\begin{itemize}[<+-| alert@+>]
+		\pause
+\item The economy will evolve from one of \emph{hedge financing}
+\item To \emph{speculative financing}
+\begin{itemize}[<+-| alert@+>]
+\item Debt-to-equity ratio rises
+\item Repayments are high relative to income
+\end{itemize}
+\item \emph{Ponzie Finance} where income is insufficient to pay interest or principal 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Minsky Moment}
+The reversal is brutal
+\begin{itemize}[<+-| alert@+>]
+		\pause
+\item It is very hard to determine when the bubble will burst
+\item The crash is more intense and explosive than the build up of instability
+\item Financial institutions are interconnected.  There are non-linear network effects
+\item Like a cinema or football ground
+\end{itemize}
+\end{frame}
+
+\section{Case studies}
+\section{Asian crisis}
+
+\begin{frame}{Sudden Stops}
+Krugman and others analysed the process of the Asian crisis.  It also applies to the ERM and elsewhere
+\begin{itemize}[<+-| alert@+>]
+		\pause
+\item There is some fundamental imbalance or weakness
+\item There are speculative attacks on fixed exchange rates
+\item \emph{Hedge Funds} Use leverage to increase the size of their bets
+\item Crash requires overseas borrowing (to plug the loss of foreign exchange reserves)
+\item IMF have imposed austerity measures on the top of collapse of financial system and devaluation of the exchange rate
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sudden Stops 2}
+This is most frequently associated with fixed exchange rates, a reversal of currency flow and banking crisis
+\begin{itemize}[<+-| alert@+>]
+		\pause
+\item Positive attitude encourages inflow of capital
+\item Wages and asset prices rise
+\item Central Bank fights exchange rate appreciation
+\item Low interest foreign currency loans increase fragility
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Asian Crisis: Rupiah}
+\begin{center}
+\includegraphics[height = 3.2in]{IND}
+\end{center}
+\end{frame} 
+
+\section{Dot com bubble}
+%\begin{frame}{Dot com bubble}
+%<<Dotcom, fig.height=4.5, echo=FALSE, message=FALSE, cache=TRUE,warning=FALSE,fig.cap="Dotcom">>=
+%require('quantmod')
+%getSymbols('QQQ', from = as.Date("1990-01-01"))
+%da <- as.data.frame(QQQ)
+%da$Date <- as.Date(row.names(da))
+%colnames(da) <- c('Open', 'High', 'Low', 'Close', 'Vol', 'Ad', 
+%                  'Date')
+%myda <- subset(da, da$Date < as.Date("2001-12-31"))
+%plot(myda$Date, myda$Close, 
+%     main = "NASDAQ Technology Index", 
+%     type = 'l', xlab = "Date", ylab = "Price")
+%mydrawdown <- round(max(Cl(QQQ))/min(Cl(QQQ)) - 1, 1)
+%mytext <- paste("Drawdown is", mydrawdown, "percent")
+%text(as.Date("2000-08-01"), 40, mytext, cex = 0.8)
+%@
+%\end{frame}
+
+\begin{frame}{Dot.com}
+	Similarities to today
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item New technology
+	\item Huge investment
+	\item Equity market phonomenon
+	\item Funds and individuals
+\end{itemize}
+\end{frame}
+
+\begin{frame}{But...}
+	Differences
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Expansion of equity holdings
+	\item Uncertain \emph{financialisation}
+		\begin{itemize}
+			\item individual holdings and gambling
+			\item crypto currencies
+			\item prediction markets
+			\item private credit
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{GFC}
+\begin{frame}{2007-08 Financial Crisis}
+\emph{The Economist} of 7th September 2013 (on MyStudies): The 2007-08 financial crisis was a consequence of five factors.
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Financiers
+\item Central bank and regulators
+\item The macroeconomic backdrop
+\item The 'savings glut' in Asia
+\item European banks
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Financiers}
+\begin{itemize}[<+-| alert@+>]
+\item Excessive lending (US housing and others)
+\item Excessive risk taking (incentives for short-term profits)
+\item New financial products
+\item \emph{Moral hazard}
+\item Implicit subsidy
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Central bank and regulators}
+Allowed financiers to take too much risk
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Complacent view of sector
+\item Regulatory capture
+\item \emph{Washington consensus}
+\item Independent central banks and inflation targets drew attention away from asset price inflation and bank excess
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The macroeconomic backdrop 1}
+1985 to 2007-08 was a relatively benign period for developed economies
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item GDP and inflation growth was quite stable
+\item Shocks were mostly confined to emerging economies and were largely confined
+\item Monetary policy was believed to be powerful and effective
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The macroeconomic backdrop 2}
+<<macro, fig.height=4.5, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="US GDP">>=
+da <- read.csv("../../Data/USGDP.csv", na.strings = "n/a", 
+               stringsAsFactors = FALSE)
+names <- c("Date", "GDP")
+names(da) <- names
+da$Date <- as.Date(da$Date, format = "%d/%m/%Y")
+da$GDPl <- c(rep(NA, 1), da$GDP)[1:length(da$GDP)]
+da$GDPr <- (da$GDP - da$GDPl)/da$GDPl
+plot(da$Date[93:244], da$GDPr[93:244], type = 'l', main = "Percent change in quarterly US GDP", xlab = "Date", ylab = "Quarterly Percentage Change")
+@
+\end{frame}
+
+\begin{frame}{The savings glut in Asia 1}
+Large current account surpluses in Asian and oil-exporting countries export savings to the rest of the world
+\begin{block}{}
+\begin{equation*}
+\underbrace{(S-I)}_{\text{Private}} + \underbrace{(T-G)}_{\text{Public}} + \underbrace{(M-X)}_{\text{Overseas}} = 0
+\label{eqref:bal}
+\end{equation*}
+\end{block}
+\end{frame}
+
+\begin{frame}{The savings glut in Asia 2}
+<<CA, fig.height=4.5, echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Selected current account positions of emerging economies">>=
+require(quantmod)
+names <- c("Date", "CA.B", "CA.C", "CA.I", "CA.SA", "CA.V")
+da <- read.csv("../../Data/Current.csv", na.strings = "n/a", 
+               stringsAsFactors = FALSE)
+names(da) <- names
+par(mfrow = c(2,2))
+plot(da$Date[16:28], da$CA.B[16:28], type = 'l', main = "Brazil Current Account", 
+     xlab = "Date", ylab = "Percentage of GDP")
+plot(da$Date[16:28], da$CA.C[16:28], type = 'l', main = "Chinese Current Account", 
+     xlab = "Date", ylab = "Percentage of GDP")
+plot(da$Date[16:28], da$CA.V[16:28], type = 'l', main = "Vietnam Current Account", 
+     xlab = "Date", ylab = "Percentage of GDP")
+plot(da$Date[16:28], da$CA.SA[16:28], type = 'l', main = "Saudi Current Account", 
+     xlab = "Date", ylab = "Percentage of GDP")
+@
+\end{frame}
+
+\begin{frame}{European banks}
+As a version of the carry trade, European (and other) banks borrowed US dollars and bought other USD-denominated assets
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item US government bonds
+\item Safe parts of CDO
+\item Fannie Mae and Freddie Mac
+\item Other risky assets
+\end{itemize}
+\end{frame}
+
+\begin{frame}{US House Prices}
+\begin{center}
+\includegraphics[height = 3.2in]{USloans}
+\end{center}
+\end{frame}
+
+\begin{frame}{Political Economy}
+There are a range of views that suggest that economic and financial crisis are a function of political power
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Financialisation of the economy
+\begin{itemize}
+\item Trading of commodities
+\end{itemize}
+\item Rising consumer debt is a response to the increase in inequality
+\begin{itemize}
+\item The only way to maintain consumer spending
+\end{itemize}
+\item Globalisation of capital has led to a flow of financial capital around the world
+\begin{itemize}
+\item Evades regulation and tax
+\item Causes problems when it arrives and when it leaves
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Larry Summers - bubble land}
+Lack of investment requires bubbles
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Real interest rate required to stimulate investment is negative
+\begin{itemize}
+\item Cyclical caution
+\item Lack of monetisable investment opportunities
+\end{itemize}
+\item Investment must be encouraged by capital gains
+\item Capital gains are asset appreciation 
+\item Economy lurches from one bubble to the next to encourage sufficient investment to spur the economy
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Citigroup}
+	\includegraphics[scale=0.11]{sinking_liner_captain_quote_attribution.png}
+\end{frame}
+
+\section{ERM and Euro-debt}
+\begin{frame}{Sterling and ERM}
+\begin{center}
+\includegraphics[height = 3.2in]{GBPDEM.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{Reinhart and Rogoff}
+\begin{block}{}
+C.M. Reinhard and K.S. Rogoff, \emph{This Time is Different}
+\end{block}
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item Sovereign debt is usually a political decision
+\item Four types of sovereign debt
+\begin{itemize}
+\item Domestic investors and domestic debt
+\item Domestic investors and foreign debt
+\item Foreign investors and domestic debt
+\item Foreign investors and foreign debt
+\end{itemize}
+\pause
+Interaction of forces.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Interplay of sovereign debt and financial system}
+\begin{itemize}[<+-| alert@+>]
+\item Banks hold government debt as a \emph{risk-free asset} that is liquid and safe
+\item There may be a carry trade
+\item Increased risk or reduced liquidity will reduce debt value and affect balance sheet
+\item Viscous feedback loop in European debt crisis
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Commercial bank balance sheet}
+\begin{figure}
+\begin{tikzpicture}[scale = 0.75]
+%\draw [very thin, color = gray](0, 0) grid (14, 7);
+\draw [thick] (2, 6) to (12, 6);
+\draw [thick] (7, 7) to (7, 0);
+\node [above] at (10, 6) {Liabilities};
+\node [above] at (4, 6) {Assets};
+\node [right] at (7, 5) {Deposits 1000};
+\node [left] at (7, 5) {Cash 100};
+\node [right] at (7, 4) {Borrowing 200};
+\node [left] at (7, 4) {Tbills 200};
+\draw (3, 2) to (11, 2);
+\node [right] at (7, 3) {Capital 200};
+\node [left] at (7, 3) {Loans 1200};
+\node [right] at (7, 1) {Total 1400};
+\node [left] at (7, 1) {Total 1400};
+\end{tikzpicture}
+\caption{Commercial bank balance sheet}
+\label{figref:bb}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Irish case}
+Irish banks bankrupted the government after collapse of Irish property market
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item 29 Sep 2008 bank deposits and debt guaranteed
+\item Irish banks had debts of \euro{} 100 bn
+\item Irish government deficit rose to 32\% in 2010
+\item Euro funds required Dec 2010
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ireland}
+<<Ire, echo=FALSE, fig.height=4.5, fig.cap="Irish Deficit to GDP Ratio", message=FALSE, warning=FALSE>>=
+names <- c("Date", "Def.F", "Sdef.F", "Deb.F", "Def.G", "Sdef.G", "Deb.G",
+           "Def.Gr", "Sdef.Gr", "Deb.Gr", "Def.Ir", "Sdef.Ir", "Deb.Ir",
+           "Def.I", "Sdef.I", "Deb.I","Def.S", "Sdef.S", "Deb.S",
+           "Def.UK", "Sdef.UK", "Deb.UK", "Def.US", "Sdef.US", "Deb.US")
+da <- read.csv("../../Data/EUDef.csv", skip = 1, na.strings = "n/a")
+names(da) <- names
+plot(da$Date, da$Def.Ir, type = 'l', xlab = "Date", ylab = "Percent of GDP", main = "Irish deficit to GDP ratio")
+@
+\end{frame}
+\begin{frame}{Case study 1: Greece}
+On-going. Greece aims to have a primary surplus of 3.5\% of GDP but has outstanding debt of 179\% of GDP
+\begin{block}{}
+\begin{equation}\label{eqref:debt}
+\Delta \frac{D_t}{Y_t} = d_p + (r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{Debt sustainability 1}
+\begin{block}{}
+\begin{equation}\label{eqref:debt1}
+\frac{D_t}{Y_t} = d_p + (1 + r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+Where $D_t$ is the level of debt at time $t$; $Y_t$ is the \emph{nominal} GDP at time $t$; $d-P$ is the primary government deficit; $r$ is the average interest payment on the debt; $g$ is the growth rate of nominal GDP.
+\end{frame}
+
+\begin{frame}{Debt sustainability 2}
+Re-arranging Equation \ref{eqref:debt1}
+\begin{block}{}
+\begin{equation}\label{eqref:debt2}
+\frac{D_t}{Y_t} = d_p + \frac{D_{t-1}}{Y_{t-1}} + (r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+and therefore,
+\begin{block}{}
+\begin{equation}\label{eqref:debt3}
+\Delta \frac{D_t}{Y_t} = d_p + (r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{Debt Sustainability 3}
+If the ratio of debt to GDP remains stable, that could be considered to be sustainable.  Therefore, if $\Delta \frac{D_t}{Y_t}$ is set to zero, Equation \ref{eqref:debt3} becomes 
+\begin{block}{}
+\begin{equation}\label{eqref:debt4}
+0 = d_p + (r - g)\frac{D_{t-1}}{Y_{t-1}}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}{Debt Sustainability 4}
+This makes it very clear that, with the ratio of debt to GDP $(\frac{D_{t-1}}{Y_{t-1}})$ given, sustainability depends on 
+\pause
+\begin{itemize}[<+-| alert@+>]
+\item The primary balance $(d_p)$
+\item The average interest paid on the debt $(r)$ 
+\item The rate of nominal GDP growth $(g)$.  
+\end{itemize}
+\pause
+Therefore, for the debt to be sustainable, the primary balance must be equal to the difference between the rate of interest paid on the debt and the rate of nominal growth in the economy. 
+\end{frame}
+
+\begin{frame}{Primary balance}
+Taxation $(T)$ and Government spending $(G)$ are affected by the rate of economic growth $(g)$
+\begin{block}{}
+\begin{equation}
+T = \beta_1(Y), \qquad \beta_1 > 0;
+\end{equation}
+\end{block}
+and
+\begin{block}{}
+\begin{equation}
+G = \beta_2(Y), \qquad \beta_2 < 0;
+\end{equation}
+\end{block}
+\end{frame}
+
+\section{Swiss franc mortgages}
+\begin{frame}{Swiss franc mortgages}
+	Swiss and Austrian banks moved into CEE
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item PLN and HUF mortgages are 10\%
+	\item CHF mortgage are 1\%
+	\item SNB promise to keep exchange rate fixed
+	\item Until Jan 15 2015
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Swiss franc}
+	January 15 2015
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Exchange rate cap of EUR 1.2
+	\item Abandoned with 20-30 pecent appreciation
+	\item Interest rates cut to -0.25-0.75\%
+	\item Hungary vs Poland
+		\begin{itemize}
+			\item \$25bn cost to Polish banks
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{PLNCHF}
+<<PLNCHF, fig.height=4.5, echo=FALSE, message=FALSE,warning=FALSE,fig.cap="PLNCHF">>=
+da1 <- read.csv('../../Data/CHFPLN.csv', na.strings = "n/a")
+da1$Date <- as.Date(da1$Date, format = "%d %b %y")
+da2 <- read.csv('../../Data/CHFHUF.csv', na.strings = "n/a") 
+da2$Date <- as.Date(da2$Date, format = "%d %b %y")
+# Merge the two files
+da <- merge(da1, da2, by = "Date")
+# Create the Swiss rates
+da$PLNCHF <- da$PLN/da$CHF.x
+da$HUFCHF <- da$HUF/da$CHF.y
+da <- da[complete.cases(da), ]
+da <- da[, c(1, 6, 7)]
+enddate <- as.Date("2015-12-31") 
+startdate <- as.Date("2014-01-01")
+shockdate <- as.Date("2015-01-15")
+dasubset <- da[da$Date > startdate & da$Date < enddate, ]
+dabefore <- da[da$Date > startdate & da$Date < shockdate, ]
+daafter <- da[da$Date > shockdate & da$Date < enddate, ]
+plot(dasubset$Date, dasubset$PLNCHF, type = 'l', 
+	main = "CHF rises 14 percent vs PLN", 
+	   xlab = "Date", ylab = "PLN/CHF")
+PLNbeforeaverage <- mean(dabefore$PLNCHF)
+PLNafteraverage <- mean(daafter$PLNCHF)
+lines(dabefore$Date, rep(PLNbeforeaverage, length(dabefore$Date)), 
+    col = 'red')
+lines(daafter$Date, rep(PLNafteraverage, length(daafter$Date)), 
+  col = 'red')
+mybefore <- paste("Average", round(PLNbeforeaverage, 2))
+text(shockdate + 90, PLNbeforeaverage, mybefore, cex = 0.8)
+lines(daafter$Date, rep(PLNafteraverage, length(daafter$Date)), 
+   col = 'red')
+lines(daafter$Date, rep(PLNafteraverage, length(daafter$Date)), 
+	col = 'red')
+myafter <- paste("Average", round(PLNafteraverage, 2))
+text(shockdate - 90, PLNafteraverage, myafter, cex = 0.8)
+@
+\end{frame}
+
+\begin{frame}{HUFCHF}
+<<HUFCHF, fig.height=4.5, echo=FALSE, message=FALSE,warning=FALSE,fig.cap="HUFCHF">>=
+plot(dasubset$Date, dasubset$HUFCHF, type = 'l', 
+     main = "CHF rises 14 percent vs HUF", 
+     xlab = "Date", ylab = "HUF/CHF")
+HUFbeforeaverage <- mean(dabefore$HUFCHF)
+HUFafteraverage <- mean(daafter$HUFCHF)
+lines(dabefore$Date, rep(HUFbeforeaverage, length(dabefore$Date)), 
+                         col = 'red')
+lines(daafter$Date, rep(HUFafteraverage, length(daafter$Date)), 
+      col = 'red')
+mybefore <- paste("Average", round(HUFbeforeaverage, 2))
+text(shockdate + 100, HUFbeforeaverage, mybefore, cex = 0.8)
+myafter <- paste("Average", round(HUFafteraverage, 2))
+text(shockdate - 100, HUFafteraverage, myafter, cex = 0.8)
+@
+\end{frame}
+
+\section{SVB}
+\begin{frame}{Silicon Valley Bank}
+	Key characteristics
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Regional bank
+	\item Specific and pampered customers
+	\item Treasury bond assets
+	\item Deposit beta
+\end{itemize}
+\end{frame}
+
+\end{document}
