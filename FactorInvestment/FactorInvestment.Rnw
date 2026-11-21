@@ -43,7 +43,7 @@ text width = 1.4cm, draw = black]
 % Title and author information
 \title{Factor Investment}
 \author{Rob Hayward}
-\date{October 2024}
+\date{November 2026}
 
 \begin{frame}
 \titlepage
@@ -61,12 +61,12 @@ text width = 1.4cm, draw = black]
 \draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
   |- (5, 0) node (xaxis) [right] {$Risk$};
 \pause
-\draw[thick, color ={rgb: brown, 5; white, 1}] (1.0, 0.5) to [out = 120, in = 210] (2.0, 2.0) to [out = 25, in = 180] (5, 2.5);
+\draw[thick, color ={rgb: olive, 5; white, 1}] (1.0, 0.5) to [out = 120, in = 210] (2.0, 2.0) to [out = 25, in = 180] (5, 2.5);
 \pause
 \node at (1.0, 1.0) [right] {\scriptsize Efficient Frontier};
 \pause
 \node at (1.9, 2) [above left] {MP};
-\draw [fill = brown] (2, 2) circle [radius = 0.05];
+\draw [fill = olive] (2, 2) circle [radius = 0.05];
 \pause
 \node at (0, 1) [left] {rf};
 \pause
@@ -99,7 +99,7 @@ Some questions about MPT
 \pause
 \node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
 \draw [domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
-\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+\draw [fill = olive] (2.5, 1.75) circle [radius = 0.05];
 \pause
 \node at (2.5, 1.75) [above left] {$\beta$ = 1};
 \end{tikzpicture}
@@ -123,39 +123,186 @@ A number of additional risk factors have been found
   |- (5, 0) node (xaxis) [right] {$Risk$};
 \pause
 \draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
-\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
+\draw [fill = olive] (2.5, 1.75) circle [radius = 0.05];
 %\node at (2.5, 1.75) [above left] {$\beta$ = 1};
 \node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
 \pause
-\draw [fill = brown] (3.5, 2.5) circle [radius = 0.05];
+\draw [fill = olive] (3.5, 2.5) circle [radius = 0.05];
 \node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
 \pause
-\draw [fill = brown] (1.5, 1.5) circle [radius = 0.05];
+\draw [fill = olive] (1.5, 1.5) circle [radius = 0.05];
 \node at (1.5, 1.5) [left] {\scriptsize Value};
 \pause
-\draw [fill = brown] (3.5, 2.0) circle [radius = 0.05];
+\draw [fill = olive] (3.5, 2.0) circle [radius = 0.05];
 \node at (3.5, 2.0) [right] {\scriptsize Growth};
 \end{tikzpicture}
 \end{frame}
 
-%
-\section{Smart beta}
-%\begin{frame}{Criticisms of index investment}
-%There are a number of persistent criticisms of using traditional indices as the basis for investment
-%\begin{itemize}[<+-| alert@+>]
-%\pause
-%\item An index may not be available (non-investable)
-%\item Index investment impedes the process of \emph{price discovery}
-%\item Capitalisation-weighted indices are \textbf{NOT} equivalent to the \emph{market portfolio}
-%\begin{itemize}
-%\item weights must be increased as shares gain in price
-%\item causes investors to buy \emph{winning stocks} and sell \emph{losing stocks}
-%\item buy \emph{growth} and sell \emph{value}
-%\item overweight over-valued and under-weight undervalued
-%\end{itemize}
-%\end{itemize}
-%\end{frame}
+\section{ETF}
+\begin{frame}{Reasons for ETF growth}
+	Reasons for ETF growth
+	\pause
+\begin{itemize}[<+-| alert@+>]
+\item ETF are a response to increased doubts about the benefits of active fund management
+\begin{itemize}
+\item performance of active managers
+\item fees
+\end{itemize}
+	\item ETF are an efficient vehicle for retail and professional investors
+		\begin{itemize}
+     \item they allow cheap access to a wide variety of diversified investments
+			\item their liquidity allows institutions to take large positions even when underlying liquidity may be more limited
+		\end{itemize}
+\end{itemize}
+\end{frame}\begin{frame}{How they work}
+For the physical ETF
+\pause
+\begin{itemize}[<+-| alert@+>]
+	\item An \emph{Authorised Participant} will deliver the underlying assets to the ETF in exchange for \emph{creation units}
+		\begin{itemize}
+			\item Creation units tend to be in the region of 50,000 shares
+			\item They can be between 20,000 and 600,000
+		\end{itemize}
+	\item Retail and Institutional investors can then purchase the shares through the stock exchange
+	\item The AP can create or redeem shares if there is any divergence between the price of the ETF in the secondary market and the underlying asset value
+\end{itemize}
+\end{frame}
+\begin{frame}{ETF list}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l p{8cm} l}
+\textbf{Ticker} & \textbf{Description} & \textbf{Cost}\\
+\hline
+SPY & S\&P 500 index & 0.09\\
+TLT & 10-year plus government & 0.15\\ 
+EEM & MSCI emerging markets & 0.48\\
+GLD & Gold index & 0.40\\
+EWJ & MSCI Japan & 0.48\\
+XLK & Technology sector & 0.15\\
+LQD & Investment grade corporate bond & 0.15\\
+RSP & Equal-weight S\&P 500 & 0.48\\
+USO & US oil & 0.66\\
+QQQ & NASDAQ technology & 0.20\\
+BOND&  Pimco active bond investment & 0.55\\
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
 
+\begin{frame}{Different types}
+	There are two standard models of the ETF: 
+	\pause
+\begin{itemize}[<+-| alert@+>]
+	\item Physical ETF: the Authorised Participant will exchange underlying securities or assets for \emph{creation units} with the ETF sponsor
+		\begin{itemize}
+			\item these securities or assets form the assets of the ETF
+			\item the authorised participant can arbitrage the ETF and assets if there is a divergence in price
+		\end{itemize}
+	\item Synthetic ETF: the Authorised Participant will provide cash in exchange for shares
+		\begin{itemize}
+			\item the fund will use the money to purchase derivatives (usually swaps or futures) that will replicate the desired assets
+			\item structure is more complex but arbitrage may be easier
+			\item underlying assets are not held by the fund  
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Physical  ETF structure}
+%\resizebox{4cm}{!}{
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}
+\scope[shift = {(-6cm, -5.0cm)}, transform canvas={scale=0.9}]
+%  \draw[very thin, color = gray](0, 0) grid (12, 7);
+\node at (2, 2.5) (Stock Exchange) [block] {Stock Exchange};  
+\node at (10, 2.5) [block] {Retail and Institutional Investors};  
+\node at (2, 6.5) [block] {Authorised Participant};  
+\node at (10, 6.5) [block] {ETF};  
+% AP - stock exchange
+\draw [arrow2] (1, 3.5) -- node[left] {Cash} (1, 5.5);
+\draw [arrow2] (3, 5.5) -- node[right] {ETF} (3, 3.5);
+% Primary Market - creation
+\node at (6, 8.5) {\textbf{PRIMARY MARKET}}; 
+\node at (6, 8) {\textbf{Creation}}; 
+\draw [arrow] (3.6, 7) -- node[above] {Creation Unit} (8.4, 7);
+\draw [arrow] (8.4, 7.1) -- node[below] {Portfolio of Securities} (3.6, 7.1);
+% Primary market - redemption
+\node at (6, 5.1) {\textbf{Redemption}}; 
+\draw [arrow] (3.6, 6) -- node[above] {Creation Unit} (8.4, 6);
+\draw [arrow] (8.4, 5.9) -- node[below] {Portfolio of Securities} (3.6, 5.9);
+% Secondary Market
+\node at (6, 0.6) {\textbf{SECONDARY MARKET}}; 
+\draw [arrow2] (3.6, 2.5) -- node[above] {Cash} (8.4, 2.5);
+\draw [arrow2] (8.4, 2.0) -- node[below] {ETF} (3.6, 2.0);
+\endscope
+\end{tikzpicture}
+%\caption{\small{ETF: Primary and Secondary markets: Researve Bank of Australia (March 2011 Bulletin)}}
+\end{figure}
+\end{center}
+\end{frame}
+
+\begin{frame}{Synthetic ETF structure}
+\begin{center}
+\begin{figure}
+\begin{tikzpicture}
+\scope[shift = {(-6cm, -4.8cm)}, transform canvas={scale=0.85}]
+% structure 
+%\draw[very thin, color = gray](0, 0) grid (12, 8);
+%\draw[dashed] (3, 1) -- (3, 8);
+%\draw[dashed] (9, 1) -- (9, 8);
+%\node at (2, 8) {Stage One};
+%\node at (6, 8) {Stage Two};
+%\node at (10, 8) {Stage Three};
+% main blocks
+\node at (6.2, 7.5) [block] {Swap Counterparty};  
+\node at (1, 4.3) [block] {Authorised Participant};  
+\node at (11.0, 5.0) [shape1]{Collateral Basket};
+\node at (6.2, 4.3) [block] {ETF};  
+%\node at (10, 1) [block] {Swap Counterparty 2};  
+\node at (6.2, 1.0) [block] {Retail and Institutional Investors};  
+\node at (1, 1.0) [block] {Exchange};  
+% the arrows
+% Interest rate swap
+\draw [arrow] (7.8, 4.1) -- node[below] {Cash} (9.5, 4.8);
+\draw [arrow] (9.5, 4.8) -- node[above right, text width=2cm, align=center] {Return on collateral} (7.8, 7.9);
+%\draw [arrow] (6, 6.0) -- node[left] {Variable rate cash} (6, 4.8);
+% Creatiom units 
+\draw [arrow] (4.6, 4.0) -- node[above, text width=2cm, align=center] {Index Return} (2.6, 4);
+\draw [arrow] (2.6, 3.8) -- node[below] {Cash} (4.6, 3.8);
+% AP arbitrage
+\draw [arrow2] (1, 2.0) -- node[left] {Cash} (1, 3.3);
+\draw [arrow2] (1.2, 2.0) -- node[right] {ETF} (1.2, 3.3);
+% Secondary market
+\draw [arrow2] (2.6, 1.2) -- node[above] {ETF} (4.6, 1.2);
+\draw [arrow2] (2.6, 0.8) -- node[below] {Cash} (4.6, 0.8);
+% Return swap
+%\draw [arrow] (7.5, 2.9) -- node[above right, distance = 2cm] {Variable rate cash} (10.1, 2.0);
+\draw [arrow] (6.5, 6.5) -- node[left] {Index return} (6.5, 5.3);
+\endscope
+\end{tikzpicture}
+%\caption{Synthetic ETF: Primary and Secondary markets: Researve Bank of Australia (March 2011 Bulletin)}
+\end{figure}
+\end{center}
+\end{frame}
+
+\begin{frame}{Criticisms of index investment}
+There are a number of persistent criticisms of using traditional indices as the basis for investment
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item An index may not be available (non-investable)
+\item Index investment impedes the process of \emph{price discovery}
+\item Capitalisation-weighted indices are \textbf{NOT} equivalent to the \emph{market portfolio}
+\begin{itemize}
+\item weights must be increased as shares gain in price
+\item causes investors to buy \emph{winning stocks} and sell \emph{losing stocks}
+\item buy \emph{growth} and sell \emph{value}
+\item overweight over-valued and under-weight undervalued
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Smart beta}
 \begin{frame}{Smart Beta}
 There are two types of Smart Beta:
 \begin{itemize}[<+-| alert@+>]
@@ -165,7 +312,6 @@ There are two types of Smart Beta:
 \end{itemize}
 \end{frame}
 
-\section{Factor investment}
 \begin{frame}{Factor investment}
 Fundamentally-weighted indices would tend to pick up the value and growth anomalies: Ang, Goetzmann and Schaefer (2009)
 \begin{itemize}[<+-| alert@+>]
@@ -180,28 +326,122 @@ Fundamentally-weighted indices would tend to pick up the value and growth anomal
 \end{itemize}
 \end{frame}
 
-\begin{frame}{CAPM}
-\begin{tikzpicture}[scale = 2] 
-%\draw[very thin, color = gray](0, 0) grid (5, 3);
-\draw [<->, thick] (0, 3) node (yaxis) [above] {$Return$} 
-  |- (5, 0) node (xaxis) [right] {$Risk$};
+\begin{frame}{Fundamental indexation}
+%\begin{textblock*}{3cm}(1cm, 1.5cm)
+%\includegraphics[scale = 0.3]{RA}
+%\end{textblock*}
+Research Affiliates is generally credited with introducing the first \emph{Smart Beta} fund 
+\begin{itemize}[<+-| alert@+>]
 \pause
-\draw[domain = 0.0:5.0, color = olive] plot(\x, {0.5 + 0.5*\x});
-\draw [fill = brown] (2.5, 1.75) circle [radius = 0.05];
-%\node at (2.5, 1.75) [above left] {$\beta$ = 1};
-\node at (2.5, 1.75) [below right] {\scriptsize Market Portfolio};
-\pause
-\draw [fill = brown] (3.5, 2.5) circle [radius = 0.05];
-\node at (3.5, 2.5) [left] {\scriptsize Small Capitalisation};
-\pause
-\draw [fill = brown] (1.5, 1.5) circle [radius = 0.05];
-\node at (1.5, 1.5) [left] {\scriptsize Value};
-\pause
-\draw [fill = brown] (3.5, 2.0) circle [radius = 0.05];
-\node at (3.5, 2.0) [right] {\scriptsize Growth};
-\end{tikzpicture}
+\item Arnott, R., J. Hsu and P. Moore, \emph{Fundamental Indexation}, Financial Analysts Journal, 2005
+\item Fundamentally-weight index fund was launched in 2005. 
+\item \textbf{RAFI}
+\end{itemize}
 \end{frame}
 
+\begin{frame}{Fundamentally weighted indices}
+\begin{columns}{}
+\begin{column}{0.48\linewidth}
+\includegraphics[scale = 0.38]{Main-Street}
+\end{column}
+\begin{column}{0.47\linewidth}
+\includegraphics[scale = 0.18]{Wall-Street}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices}
+Arnott, Hsu and More tested a range of alternative (fundamental) weightings
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item Book value
+\item Trailing 5-year average cash flow
+\item Trailing 5-year average revenue
+\item Trailing 5-year average gross sales
+\item Trailing 5-year average gross dividends
+\item Total employment
+\item Composite of book, cash-flow, sales and dividends (most widely available for most countries)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Details}
+\begin{itemize}[<+-| alert@+>]
+\item Compustat data from 1962 to 2004
+\item Portfolio re-balanced once a year (at end of year)
+\item Comparison of expansion and recession
+\item Comparison of rising and falling interest rate environments
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fundamentally weighted indices: results}
+\begin{table}
+\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{tabular}{l r r r}
+\textbf{Portfolio/index} & \textbf{1980s} & \textbf{1990s} & \textbf{2000-04}\\
+\hline
+S\&P 500 & 17.7\% & 18.6\% & -2.1\% \\
+Book & 18.3\%     & 17.1\% & 5.8\%\\
+Income & 19.0\%   & 17.7\% & 7.6\% \\
+Sales & 19.5\%    & 16.8\% & 8.7\% \\
+Dividends & 19.2\% & 15.4\% & 8.0\% \\
+Employment & 17.7\% & 15.7\% & 7.8\%\\
+Composite & 19.0\% & 16.6\% & 7.7\% 
+\end{tabular}
+\end{center}
+\end{table}
+Annualised returns by decade.  Arnott, Hsu and More (2005)
+\end{frame}
+
+\begin{frame}{Fundamentally-weighted index}
+\begin{itemize}[<+-| alert@+>]
+\item Is this \emph{data mining}?
+\begin{itemize}
+\item Based on fundamental measures of company size
+\item Results hold across decades 
+\item Results hold across expansions and contractions
+\item Results hold in rising and falling rate environment
+\end{itemize}
+\item Choosing individual value and growth companies is difficult
+\item Here \emph{market inefficiencies} are found on average
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison with capitalisation-weighted investment}
+You have the advantages of the \emph{capitalisation-weighted} investment without the costs
+\begin{itemize}[<+-| alert@+>]
+\pause
+\item It is a passive strategy with natural re-weighting
+\item Large stocks have the largest weight
+\begin{itemize}
+\item This means high liquidity and low trading costs
+\end{itemize}
+\item Correlation with the returns and volatility of the capitalisation-weighted index is high
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comparison to Capitalisation-weighed index (2000-04)}
+%\begin{center}
+\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
+\begin{table}
+\begin{center}
+\begin{tabular}{l r r r}
+\textbf{Portfolio/index} & \textbf{Value-added} & \textbf{Std Dev} &  \textbf{Sharpe}\\
+\hline
+S\&P 500 & -0.43pp & 18.0\%& 0.27 \\
+Book &      7.57pp&  18.2\%& 0.17\\
+Income &    9.33pp&  17.5\%& 0.28 \\
+Sales &     10.4pp&  18.2\%& 0.31 \\
+Dividends & 9.71pp&  15.3\%& 0.35 \\
+Employment & 9.55pp& 18.6\%& 0.28\\
+Composite &  9.32pp& 17.2\%& 0.28 
+\end{tabular}
+\end{center}
+\end{table}
+Value-added and risk adjusted returns.  Arnott, Hsu and More (2005)
+\end{frame}
+
+\section{Factor investment}
 \begin{frame}{Factor investment}
 \begin{table}
 \begin{center}
@@ -291,303 +531,28 @@ International stocks; risk-adjusted return is return per unit of volatility. Ben
 % produce excess retruns over the long-run. 
 % Do we use the next slide or put some of this information in the sliede abovve
 
-\section{ETF}
-\begin{frame}{Reasons for ETF growth}
-	Reasons for ETF growth
-	\pause
-\begin{itemize}[<+-| alert@+>]
-\item ETF are a response to increased doubts about the benefits of active fund management
-\begin{itemize}
-\item performance of active managers
-\item fees
-\end{itemize}
-	\item ETF are an efficient vehicle for retail and professional investors
-		\begin{itemize}
-     \item they allow cheap access to a wide variety of diversified investments
-			\item their liquidity allows institutions to take large positions even when underlying liquidity may be more limited
-		\end{itemize}
-\end{itemize}
-\end{frame}\begin{frame}{How they work}
-For the physical ETF
-\pause
-\begin{itemize}[<+-| alert@+>]
-	\item An \emph{Authorised Participant} will deliver the underlying assets to the ETF in exchange for \emph{creation units}
-		\begin{itemize}
-			\item Creation units tend to be in the region of 50,000 shares
-			\item They can be between 20,000 and 600,000
-		\end{itemize}
-	\item Retail and Institutional investors can then purchase the shares through the stock exchange
-	\item The AP can create or redeem shares if there is any divergence between the price of the ETF in the secondary market and the underlying asset value
-\end{itemize}
-\end{frame}
-\begin{frame}{ETF list}
-\begin{table}
-\begin{center}
-\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
-\begin{tabular}{l p{8cm} l}
-\textbf{Ticker} & \textbf{Description} & \textbf{Cost}\\
-\hline
-SPY & S\&P 500 index & 0.09\\
-TLT & 10-year plus government & 0.15\\ 
-EEM & MSCI emerging markets & 0.48\\
-GLD & Gold index & 0.40\\
-EWJ & MSCI Japan & 0.48\\
-XLK & Technology sector & 0.15\\
-LQD & Investment grade corporate bond & 0.15\\
-RSP & Equal-weight S\&P 500 & 0.48\\
-USO & US oil & 0.66\\
-QQQ & NASDAQ technology & 0.20\\
-BOND&  Pimco active bond investment & 0.55\\
-\end{tabular}
-\end{center}
-\end{table}
+\section{Today}
+\begin{frame}{Factor rotation}
+	\includegraphics[scale=0.2]{up}
 \end{frame}
 
-\begin{frame}{Different types}
-	There are two standard models of the ETF: 
-	\pause
-\begin{itemize}[<+-| alert@+>]
-	\item Physical ETF: the Authorised Participant will exchange underlying securities or assets for \emph{creation units} with the ETF sponsor
-		\begin{itemize}
-			\item these securities or assets form the assets of the ETF
-			\item the authorised participant can arbitrage the ETF and assets if there is a divergence in price
-		\end{itemize}
-	\item Synthetic ETF: the Authorised Participant will provide cash in exchange for shares
-		\begin{itemize}
-			\item the fund will use the money to purchase derivatives (usually swaps or futures) that will replicate the desired assets
-			\item structure is more complex but arbitrage may be easier
-			\item underlying assets are not held by the fund  
-		\end{itemize}
-\end{itemize}
+\begin{frame}{Factor rotation}
+	\includegraphics[scale=0.2]{down}
 \end{frame}
 
-  
-\begin{frame}{Physical  ETF structure}
-%\resizebox{4cm}{!}{
-\begin{center}
-\begin{figure}
-\begin{tikzpicture}
-\scope[shift = {(-6cm, -5.0cm)}, transform canvas={scale=0.9}]
-%  \draw[very thin, color = gray](0, 0) grid (12, 7);
-\node at (2, 2.5) (Stock Exchange) [block] {Stock Exchange};  
-\node at (10, 2.5) [block] {Retail and Institutional Investors};  
-\node at (2, 6.5) [block] {Authorised Participant};  
-\node at (10, 6.5) [block] {ETF};  
-% AP - stock exchange
-\draw [arrow2] (1, 3.5) -- node[left] {Cash} (1, 5.5);
-\draw [arrow2] (3, 5.5) -- node[right] {ETF} (3, 3.5);
-% Primary Market - creation
-\node at (6, 8.5) {\textbf{PRIMARY MARKET}}; 
-\node at (6, 8) {\textbf{Creation}}; 
-\draw [arrow] (3.6, 7) -- node[above] {Creation Unit} (8.4, 7);
-\draw [arrow] (8.4, 7.1) -- node[below] {Portfolio of Securities} (3.6, 7.1);
-% Primary market - redemption
-\node at (6, 5.1) {\textbf{Redemption}}; 
-\draw [arrow] (3.6, 6) -- node[above] {Creation Unit} (8.4, 6);
-\draw [arrow] (8.4, 5.9) -- node[below] {Portfolio of Securities} (3.6, 5.9);
-% Secondary Market
-\node at (6, 0.6) {\textbf{SECONDARY MARKET}}; 
-\draw [arrow2] (3.6, 2.5) -- node[above] {Cash} (8.4, 2.5);
-\draw [arrow2] (8.4, 2.0) -- node[below] {ETF} (3.6, 2.0);
-\endscope
-\end{tikzpicture}
-%\caption{\small{ETF: Primary and Secondary markets: Researve Bank of Australia (March 2011 Bulletin)}}
-\end{figure}
-\end{center}
+\begin{frame}{Factor rotation}
+	\includegraphics[scale=0.25]{techsales}
 \end{frame}
 
-\begin{frame}{Synthetic ETF structure}
-\begin{center}
-\begin{figure}
-\begin{tikzpicture}
-\scope[shift = {(-6cm, -4.8cm)}, transform canvas={scale=0.85}]
-% structure 
-%\draw[very thin, color = gray](0, 0) grid (12, 8);
-%\draw[dashed] (3, 1) -- (3, 8);
-%\draw[dashed] (9, 1) -- (9, 8);
-%\node at (2, 8) {Stage One};
-%\node at (6, 8) {Stage Two};
-%\node at (10, 8) {Stage Three};
-% main blocks
-\node at (6.2, 7.5) [block] {Swap Counterparty};  
-\node at (1, 4.3) [block] {Authorised Participant};  
-\node at (11.0, 5.0) [shape1]{Collateral Basket};
-\node at (6.2, 4.3) [block] {ETF};  
-%\node at (10, 1) [block] {Swap Counterparty 2};  
-\node at (6.2, 1.0) [block] {Retail and Institutional Investors};  
-\node at (1, 1.0) [block] {Exchange};  
-% the arrows
-% Interest rate swap
-\draw [arrow] (7.8, 4.1) -- node[below] {Cash} (9.5, 4.8);
-\draw [arrow] (9.5, 4.8) -- node[above right, text width=2cm, align=center] {Return on collateral} (7.8, 7.9);
-%\draw [arrow] (6, 6.0) -- node[left] {Variable rate cash} (6, 4.8);
-% Creatiom units 
-\draw [arrow] (4.6, 4.0) -- node[above, text width=2cm, align=center] {Index Return} (2.6, 4);
-\draw [arrow] (2.6, 3.8) -- node[below] {Cash} (4.6, 3.8);
-% AP arbitrage
-\draw [arrow2] (1, 2.0) -- node[left] {Cash} (1, 3.3);
-\draw [arrow2] (1.2, 2.0) -- node[right] {ETF} (1.2, 3.3);
-% Secondary market
-\draw [arrow2] (2.6, 1.2) -- node[above] {ETF} (4.6, 1.2);
-\draw [arrow2] (2.6, 0.8) -- node[below] {Cash} (4.6, 0.8);
-% Return swap
-%\draw [arrow] (7.5, 2.9) -- node[above right, distance = 2cm] {Variable rate cash} (10.1, 2.0);
-\draw [arrow] (6.5, 6.5) -- node[left] {Index return} (6.5, 5.3);
-\endscope
-\end{tikzpicture}
-%\caption{Synthetic ETF: Primary and Secondary markets: Researve Bank of Australia (March 2011 Bulletin)}
-\end{figure}
-\end{center}
-\end{frame}
-%
-\section{Portfolio Construction}
-\begin{frame}{Portfolio construction}
-Portfolio construction
-\begin{itemize}[<+-| alert@+>]
-\pause
-\item Equal weights (50:50) of SPY and TLT
-\item No costs
-\item No re-balancing (they are 60:40 at the end)
-\begin{itemize}
-\item rebalancing will tend to improve returns as it will sell winners and buy losers
-\item rebalancing will increase costs
-\end{itemize}
-\end{itemize}
+\begin{frame}{Factor rotation}
+	\includegraphics[scale=0.15]{vqg}
 \end{frame}
 
-\begin{frame}{Portfolio performance}
-<<port, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
-da <- read.csv('../../CamTrading/Data/port.csv')
-da$Date <- as.Date(da$Date, format = "%Y-%m-%d")
-plot(da$Date, da$rebasePort, type = 'l', xlab = "Date", ylab = "Re-based Value", 
-     main = "Portfolio Performance", ylim = c(min(da$rebasespy), max(da$rebasespy)))
-lines(da$Date, da$rebasetlt, col = 'DarkGreen')
-lines(da$Date, da$rebasespy, col = 'Brown')
-legend(inset = 0.02, 'topleft', c('Portfolio', 'SPY', 'TLT'), lty = 1, 
-       col = c("Black", "DarkGreen", "Brown"), cex = 0.8)
-@
+\begin{frame}{Sector three month performance}
+	\includegraphics[scale = 0.17]{Sectors.png}
 \end{frame}
 
-\begin{frame}{Relative Performance}
-% latex table generated in R 3.2.3 by xtable 1.8-2 package
-% Fri Feb  2 07:58:59 2018
-\begin{table}[ht]
-\centering
-\rowcolors{1}{OliveGreen!20}{OliveGreen!5}
-\begin{tabular}{rrrrrr}
-  \hline
- Asset & AnnRet & AnnVol & Sharpe & DailyMax & DailyMin \\ 
-  \hline
-SPY & 9.22 & 14.14 & 0.65 & 14.52 & -9.84 \\
-TLT & 7.56 & 13.54 & 0.56 & 5.17 & -5.04\\
-Port & 8.64 & 8.55 & 1.01 & 5.18 & -3.80\\
-   \hline
-\end{tabular}
-\end{table}
-\end{frame}
-
-\begin{frame}{Adjusting portfolio weights}
-Some active management? 
-\begin{itemize}[<+-| alert@+>]
-\pause
-\item The weights do not have to be 50:50
-\begin{itemize}
-\item Change to meet circumstances
-\item \emph{Market-timing} is not usually successful
-\end{itemize}
-\item Add other assets to the portfolio
-\begin{itemize}
-\item asset diversification: cash, commodities, real estate
-\item country diversification
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Market timing}
-When are stocks and bonds going to do well? 
-\begin{itemize}[<+-| alert@+>]
-\pause
-\item Equity valuation
-\begin{itemize}
-\item earnings
-\item the business cycle
-\end{itemize}
-\item Bond valuation
-\begin{itemize}
-\item the real return (nominal less inflation expectation)
-\item the business cycle
-\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Equity valuation}
-There are three main ways of looking at value
-\pause
-\begin{itemize}[<+-| alert@+>]
-\item Cyclically adjusted price earnings ratio (CAPE). 
-\item Tobin's Q
-\item The equity risk premium
-\end{itemize}
-\end{frame}
-
-\begin{frame}{CAPE}
-Used by Robert Shiller in \emph{Irrational Exuberance}
-\pause
-\begin{block}{}
-\begin{equation*}
-CAPE = \frac{\text{S\&P500 real price}}{\text{10-year MA S\&P 500 earnings}}
-\end{equation*}
-\end{block}
-\end{frame}
-
-\begin{frame}{CAPE}
-<<earnings, echo = FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.cap= "Cumulative, adjusted price earnings ratio">>=
-library(xts)
-names <- c("Date", "S&P", "Dividend", "Earnings", "CPI", "Date.frac", "Long rate", "Real price", "Real dividend", "Real earnings", "PE10")
-da2 <- read.csv("../../Data/ie_data.csv", skip = 7, stringsAsFactors = FALSE)
-da2 <- da2[, c(1, 13)]
-da2$Date <- as.yearmon(da2$Date, format = "&Y.%m")
-plot(da2$Date, da2$CAPE, type = 'l', main = "CAPE 1871 to 2024", 
-     ylab = "CAPE", xlab = "Year")
-text(1966, 26, "24.1 Jan 1966", col = "DarkGreen")
-text(2017, 36, "36.3", col = "DarkGreen")
-text(1925, 34, "32.6 Jan 1929", col = "DarkGreen")
-text(1982, 44, "44.2 Dec 1999", col = "DarkGreen")
-@
-\end{frame}
-
-\begin{frame}{Tobin's Q}
-The market value of equity relative to the replacement cost of capital
-\begin{block}{}
-\begin{equation*}
-Q = \frac{\text{Market value}}{\text{Corporate net worth}}
-\end{equation*}
-\end{block}
-\end{frame}
-
-\begin{frame}{Equity risk premium}
-The equity risk premium is the return required for taking risk.
-\begin{block}{}
-\begin{equation}
-ERP = R_e - R_{rf} \quad \text{or} \quad R_e - R_b
-\end{equation}
-\end{block}
-Where $ERP$ is the equity risk premium; $R_e$ is the return on equity; $R_fr$ is the risk-free return and $R_b$ is the return on bonds. 
-\end{frame}
-
-
-\begin{frame}{Current bond trendline}
-<<trend2, echo=FALSE, fig.height=4.6, message=FALSE, warning=FALSE>>=
-da2 <- read.csv('../../CamTrading/Data/Bond.csv')
-da2[,1] <- as.Date(da2$DATE, format = '%Y-%m-%d')
-colnames(da2) <- c("Date", "Yield")
-plot(da2, type = 'l', main = "US 10-year bond yield")
-y <- c(10, 1.0)
-x <- c(6085, 20050)
-lines(x, y, col = "DarkGreen")
-@
-\end{frame}
-
+\section{Reading}
 \begin{frame}{References and further reading}
 \begin{itemize}
 
