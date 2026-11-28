@@ -31,7 +31,6 @@
 \title{ESG}
 \author{Rob Hayward}
 
-
 \begin{document}
 
 \begin{frame}
@@ -42,28 +41,39 @@
 \tableofcontents
 \end{frame}
 
+\begin{frame}{Asian PEs}
+	\includegraphics[scale = 0.5]{AsiaPEEPS}
+\end{frame}
+
+\begin{frame}{Software Rebound}
+	\includegraphics[scale=0.23]{SoftwareRebound}
+\end{frame}
+
+\begin{frame}{Shiller CAPE}
+	\includegraphics[scale=0.3]{ShillerFPE}
+\end{frame}
+
+\section{Introduction}
 \begin{frame}{}
 \includegraphics[scale = 1.2]{worldaflame}
 \end{frame}
 
-
-
 \begin{frame}{Rise of ESG}
-\includegraphics[scale = 0.6]{esggrowth}
+\includegraphics[scale = 0.8]{esggrowth}
 \end{frame}
 
-\begin{frame}{The backlash}
+\begin{frame}{European dominance (84\%)}
 \begin{table}[h!]
 \begin{center}
 \rowcolors{1}{OliveGreen!80}{OliveGreen!5}
 \begin{tabular}{l r r r}
-Region & Flow 2Q25 & Flow 3Q2025 & Assets\\
+Region & Flow 2Q26 & Flow 3Q2026 & Assets\\
 \hline
-Europe & 11.3bn & -51.0bn & 3,187bn \\
-US & -5.8bn & -5.1bn &  367b \\
-Asia (ex-Japan) & 0.8bn & 0.9bn & 80bn \\
-Japan & 0.0bn & -0.8bn & 23bn \\
-Total & 6.2bn & -55.1bn & 3,735bn \\
+Europe & 3.7bn & 9.4bn & 3,189bn \\
+US & 3.0bn & -2.8bn &  389bn \\
+Asia (ex-Japan) & -2.8bn & -0.1bn & 55bn \\
+Japan & -0.2bn & -0.2bn & 22bn \\
+Total & 1.2bn & 6.5bn & 3,788bn \\
 \hline
 \end{tabular}
 \end{center}
@@ -71,7 +81,6 @@ Total & 6.2bn & -55.1bn & 3,735bn \\
 \label{tabref:MS}
 \end{table}
 \end{frame}
-
 
 \begin{frame}{Investment styles}
 The ESG focus has changed over time
@@ -86,11 +95,12 @@ The ESG focus has changed over time
 \item search for ESG factors
 \item ESG may be linked to low volatility and value
 \end{itemize}
-\item There is increased attention on involvement in firms and influencing their behaviour
+\item There was increased attention on involvement in firms and influencing their behaviour, but...
 \item Trump and backlash
 \end{itemize}
 \end{frame}
 
+\section{Theory}
 \begin{frame}{Theory}
 \begin{itemize}[<+-| alert@+>]
 \pause
@@ -208,6 +218,15 @@ Governance
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Jensen Huang}
+	\includegraphics[scale=0.6]{JensenHuang}
+\end{frame}
+
+\begin{frame}{Fearless girl}
+\includegraphics[scale = 0.5]{FearlessGirl}
+	\includegraphics[scale=0.5]{FearlessGirl2}
+\end{frame}
+
 \section{UN}
 \begin{frame}{United Nations}
 UN 17 Sustainable Development Goals
@@ -233,7 +252,7 @@ PRI
 \end{frame}
 
 \begin{frame}{New Accounting Rules}
-UK and EU are at the forefront 
+UK and EU were at the forefront 
 \begin{itemize}[<+-| alert@+>]
 \pause
 \item Financial Conduct Authority (FCA) announced measures on in March 2020
@@ -249,8 +268,7 @@ UK and EU are at the forefront
 \end{itemize}
 \end{itemize}
 \end{frame}
-
-\section{Case study}
+\section{Case studies}
 \begin{frame}{RepRisk Business Intelligence Index (RRI}
 Identifies vulnerable projects, firms and sectors
 \begin{itemize}[<+-| alert@+>]
@@ -261,6 +279,21 @@ Identifies vulnerable projects, firms and sectors
 \item Index will return to zero after 2 years of no incidents
 \item \href{https://www.reprisk.com/our-approach}{https://www.reprisk.com/our-approach}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{North sea assets}
+	North sea assets shifted to private companies
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Direct private sales or ring-fenced joint ventures
+	\item No consumer brand to protect
+	\item Immune from activist shareholders
+	\item Lower public disclosure
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Yet another reason to hate Man U}
+	\includegraphics[scale=0.6]{RATCliff}
 \end{frame}
 
 \section{Issues}
@@ -293,8 +326,6 @@ There are a number of issues associated with ESG
 \item airlines-technology
 \end{itemize}
 \end{itemize}
-% put something in here about the measurement. 
-% Look for developments. 
 \end{frame}
 
 \begin{frame}{Comparison of performance}
@@ -312,8 +343,30 @@ Measurement of risk and return
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Trump: OBBB}
-	\includegraphics[scale=1.0]{trump}
+\begin{frame}{Aggregate confusion}
+	\begin{block}{}
+		Review of finance: Different indices, different firms
+		\end{block}
+		\pause
+\begin{itemize}[<+-| alert@+>]
+	\item Divergence in 6 agencies rating
+	\item Measurement (56\%)
+	\item Scope (38\%)
+	\item Weight (6\%)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Mixed with factors?}
+	It is possible that ESG can mix with factors
+\begin{itemize}[<+-| alert@+>]
+		\pause
+	\item Are ESG just more factors?
+	\item How do they mix with sectors
+		\begin{itemize}
+				\item covid
+		\end{itemize}
+	\item Governance and technology
+\end{itemize}
 \end{frame}
 
 \begin{frame}{BlackRock}
@@ -340,10 +393,7 @@ Measurement of risk and return
 	\end{block}
 \end{frame}
 
-\begin{frame}{Solar}
-	\includegraphics[scale=0.3]{sola}
-\end{frame}
-
+\section{Homework}
 \begin{frame}{For you}
 \begin{block}{}
 Read the Morgan Stanley article on ESG performance and then complete the multiple choice questions
@@ -352,50 +402,8 @@ Read the Morgan Stanley article on ESG performance and then complete the multipl
 
 \begin{frame}{For you 2}
 \begin{block}{}
-Collect data for the $S\&P$ 500 (SPY) and an ESG version of this index (ESGV), 
-assess the performance!
+Compare the well-known $S\&P$ 500 (SPY) ETF with and an ESG version of this index (ESGV). What are the key differences in holdings and performance? 
 \end{block}
 \end{frame}
 
-%\begin{frame}{For you}
-%\begin{itemize}[<+-| alert@+>]
-%\pause
-%\item We have three groups
-%\begin{itemize}
-%\item Environmental
-%\item Social
-%\item Governance
-%\end{itemize}
-%\item Answer the following questions:
-%\begin{itemize}
-%\item What is it? 
-%\item How is it measured? 
-%\item What is the performance? 
-%\end{itemize}
-%\item Output
-%  \begin{itemize}
-%  \item Report
-%  \item Slides/presentation
-%\end{itemize}
-%\end{itemize}
-%\pause
-%Send to me by midnight Wednesday 24 March
-%\end{frame}
-%
-%\begin{frame}{Output}
-%Deliverables
-%\begin{itemize}[<+-| alert@+>]
-%\pause
-%\item From you
-%  \begin{itemize}
-%  \item the report, slides or presentation
-%  \item an audit of tasks that were completed
-%  \end{itemize}
-%\item From me
-%  \begin{itemize}
-%  \item I will review and correct (if necessary)
-%  \item I will post to My Studies so that you get the overall picture
-%  \end{itemize}
-%\end{itemize}
-%\end{frame}
 \end{document}
